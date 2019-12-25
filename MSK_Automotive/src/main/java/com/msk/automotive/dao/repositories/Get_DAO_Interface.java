@@ -10,7 +10,7 @@ import com.msk.automotive.service.entities.Location;
 import com.msk.automotive.service.entities.MSK_Owner;
 import com.msk.automotive.service.entities.Notification;
 import com.msk.automotive.service.entities.Parts;
-import com.msk.automotive.service.entities.Service_Adviser;
+import com.msk.automotive.service.entities.Service_Advisor;
 import com.msk.automotive.service.entities.Service_Invoice_Card;
 import com.msk.automotive.service.entities.Service_Type;
 
@@ -56,7 +56,7 @@ public interface Get_DAO_Interface {
 
 	List<Customer_Details> getExistingCustomerModelDetails(Integer car_models_id);
 
-	List<Service_Adviser> getServiceAdvicers();
+	List<Service_Advisor> getServiceAdvicers();
 
 	List<Notification> getAllNotificationDetails();
 

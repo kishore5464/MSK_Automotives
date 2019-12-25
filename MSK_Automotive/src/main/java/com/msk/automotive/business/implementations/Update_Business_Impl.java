@@ -150,7 +150,7 @@ public class Update_Business_Impl implements Update_Business_Interface {
 	public List<Service_Parts_Pojo> updateStockPartsAndStatus(String model_id, Service_Parts_Pojo service_Parts_Pojo) {
 		// TODO Auto-generated method stub
 		List<Parts> parts = get_DAO_Interface.getSparePartsAtParticularModel(model_id);
-		List<Service_Parts_Pojo> parts_list = new ArrayList<Service_Parts_Pojo>();
+		//List<Service_Parts_Pojo> parts_list = new ArrayList<Service_Parts_Pojo>();
 
 		if (!parts.isEmpty()) {
 			for (int i = 0; i < parts.size(); i++) {

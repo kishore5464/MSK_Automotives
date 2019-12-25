@@ -31,7 +31,7 @@ public class Service_Invoice_Card implements Serializable {
 
 	private Customer_Details customer_Details;
 	private Service_Type service_Type;
-	private Service_Adviser service_Adviser;
+	private Service_Advisor service_Adviser;
 
 	private String service_detail;
 	private String tool_kit;
@@ -54,7 +54,7 @@ public class Service_Invoice_Card implements Serializable {
 	}
 
 	public Service_Invoice_Card(Integer id, String service_id, Customer_Details customer_Details,
-			Service_Type service_Type, Service_Adviser service_Adviser, String service_detail, String tool_kit,
+			Service_Type service_Type, Service_Advisor service_Adviser, String service_detail, String tool_kit,
 			String spare_wheel, String jack, String jack_handler, String car_perfume, String clock, String cd_player,
 			Integer kilometer, Card_Type card_type, Card_Status card_status, Date current_service_date,
 			Date service_expire_date, Double total_amount, Date created_date) {
@@ -123,11 +123,11 @@ public class Service_Invoice_Card implements Serializable {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "service_adviser_id")
-	public Service_Adviser getService_Adviser() {
+	public Service_Advisor getService_Adviser() {
 		return service_Adviser;
 	}
 
-	public void setService_Adviser(Service_Adviser service_Adviser) {
+	public void setService_Adviser(Service_Advisor service_Adviser) {
 		this.service_Adviser = service_Adviser;
 	}
 

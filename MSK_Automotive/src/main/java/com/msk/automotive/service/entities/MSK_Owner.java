@@ -33,14 +33,14 @@ public class MSK_Owner implements Serializable {
 	private String access_code;
 	private Date created_date;
 
-	private Set<Service_Adviser> service_Advisers = new HashSet<Service_Adviser>();
+	private Set<Service_Advisor> service_Advisers = new HashSet<Service_Advisor>();
 
 	public MSK_Owner() {
 		super();
 	}
 
 	public MSK_Owner(Integer id, String name, String email, String mobile, String password, String access_code,
-			Date created_date, Set<Service_Adviser> service_Advisers) {
+			Date created_date, Set<Service_Advisor> service_Advisers) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -119,11 +119,11 @@ public class MSK_Owner implements Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "msk_Owner")
-	public Set<Service_Adviser> getService_Advisers() {
+	public Set<Service_Advisor> getService_Advisers() {
 		return service_Advisers;
 	}
 
-	public void setService_Advisers(Set<Service_Adviser> service_Advisers) {
+	public void setService_Advisers(Set<Service_Advisor> service_Advisers) {
 		this.service_Advisers = service_Advisers;
 	}
 

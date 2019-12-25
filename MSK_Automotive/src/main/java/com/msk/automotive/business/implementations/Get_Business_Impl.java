@@ -21,7 +21,7 @@ import com.msk.automotive.service.entities.Location;
 import com.msk.automotive.service.entities.MSK_Owner;
 import com.msk.automotive.service.entities.Notification;
 import com.msk.automotive.service.entities.Parts;
-import com.msk.automotive.service.entities.Service_Adviser;
+import com.msk.automotive.service.entities.Service_Advisor;
 import com.msk.automotive.service.entities.Service_Invoice_Card;
 import com.msk.automotive.service.entities.Service_Type;
 import com.msk.automotive.service.pojo.Car_Brands_Pojo;
@@ -433,7 +433,7 @@ public class Get_Business_Impl implements Get_Business_Interface {
 	@Override
 	public List<Service_Advicer_Pojo> getServiceAdvicers() {
 		// TODO Auto-generated method stub
-		List<Service_Adviser> service_advicer_list = get_DAO_Interface.getServiceAdvicers();
+		List<Service_Advisor> service_advicer_list = get_DAO_Interface.getServiceAdvicers();
 		List<Service_Advicer_Pojo> service_Advicer_Pojos = new ArrayList<Service_Advicer_Pojo>();
 
 		if (!service_advicer_list.isEmpty()) {

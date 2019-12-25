@@ -20,7 +20,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "service_adviser")
-public class Service_Adviser implements Serializable {
+public class Service_Advisor implements Serializable {
 
 	/**
 	 * 
@@ -35,11 +35,11 @@ public class Service_Adviser implements Serializable {
 
 	private Set<Service_Invoice_Card> service_Invoice_Cards = new HashSet<Service_Invoice_Card>();
 
-	public Service_Adviser() {
+	public Service_Advisor() {
 		super();
 	}
 
-	public Service_Adviser(Integer id, MSK_Owner msk_Owner, String name, String mobile, Date created_date,
+	public Service_Advisor(Integer id, MSK_Owner msk_Owner, String name, String mobile, Date created_date,
 			Set<Service_Invoice_Card> service_Invoice_Cards) {
 		super();
 		this.id = id;
