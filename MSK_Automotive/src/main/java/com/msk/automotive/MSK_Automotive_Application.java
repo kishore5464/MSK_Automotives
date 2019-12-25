@@ -1,13 +1,13 @@
-package com.kishore;
+package com.msk.automotive;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SApplication {
+public class MSK_Automotive_Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SApplication.class, args);
+		SpringApplication.run(MSK_Automotive_Application.class, args);
 	}
 
 }
