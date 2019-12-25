@@ -1,0 +1,58 @@
+	<div class="row clearfix">
+			<div class="col-md-12 column"
+				style="border-bottom: 2px solid #e3e3e3; padding-bottom: 3px">
+				<div class="pull-left" style="margin-top: 11px;margin-left: 79px;font-size: 18px;">
+				<%if(session.getAttribute("nickname")==null){ %>
+				<%}else{ %>
+					<span>Hi </span><span id="nickname" style="text-transform:uppercase;"><%=session.getAttribute("nickname")%></span>
+				<%}%>
+				
+				</div>
+				
+				
+				<div id='cssmenu' class="pull-right" style="margin-right: 15px;">
+					<ul>
+					<li ><a id="#md" class="md disabled" data-placement="bottom"  href='dashboard'>Dashboard</a></li>
+				 	<li data-placement="bottom"  class='has-sub dashboardactive'><a  href='javascript:void(0)'>Invite Your Friends</a>
+							<ul>
+							    <li><a href="points">Your Earned Points</a></li>
+								<li><a href="referfriends">Refer Your Friends</a></li>
+								<li><a href="rewardpoints">Reward Points</a></li>
+								<li><a href="rewardoffers">Reward & Benefits</a></li>
+							</ul></li>
+						
+						<li data-placement="bottom" class='has-sub profileactive'><a href='javascript:void(0)'>Profile</a>
+							<ul>
+								<li><a href="personal">Personal</a></li>
+								<li><a href="address">Address</a></li>
+								<li><a href="education">Education</a></li>
+								<li><a href="techskills">Existing Skills</a></li>
+								<li><a href="experience">Experience</a></li>
+								<li><a href="preference">Work Preference</a></li>
+								<li><a href="password">Change Password</a></li>
+							</ul>
+						</li>
+
+					    
+					    <li class="assessment">
+						<a data-placement="bottom"  id="ass" class="disabled" href='assessment'>Assessment</a>
+						</li>	
+					    
+					    
+								<li data-placement="bottom"  id="an" class='has-sub announcementactive disabled'><a href='javascript:void(0)'>Announcements</a>
+							<ul>
+								<li><a href="announcement">Job Announcement </a></li>
+								<!-- 	<li><a href="workshop">Workshops & Seminars</a></li> -->
+							</ul></li>
+						<li data-placement="bottom" id="in" class='has-sub interviewactive disabled'><a href='javascript:void(0)'>Interviews</a>
+							<ul>
+								<li><a href="calletter">Interview Calls</a></li>
+								<!-- 	<li><a href="schedueleinterview">Scheduled Interviews</a></li>
+			<li><a href="passedinterviews">Passed Interviews</a></li> -->
+							</ul></li>
+                       
+
+					</ul>
+				</div>
+			</div>
+		</div>

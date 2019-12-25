@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<%@include file="/WEB-INF/common/taglibs.jsp"%>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width">
+<link rel="icon" type="img/ico" href="images/ex.ico">
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/menu.css" rel="stylesheet">
+<link rel="stylesheet" href="css/bootstrapValidator.css">
+<link rel="stylesheet" href="css/datapicker.css">
+<link rel="stylesheet" href="css/bootstrap-select.min.css">
+<link href="css/font-awesome.css" rel="stylesheet">
+<style>
+.pp{
+padding-top:5px;
+}
+#main_body { 
+  background: url("images/collage.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+}
+#personal .form-control-feedback {
+	top: 26px;
+	right: -24px;
+}
+</style>
+<script src="js/jquery.js"></script>
+<script src="js/jstorage.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ 
+  ga('create', 'UA-58259459-1', 'auto');
+  ga('send', 'pageview');
+ </script>
+<title>TalentEx - Personal</title>
+</head>
+<body>
+<div class="container-fluid">
+<!-- col-lg-  col-md-  col-sm-  col-xs- -->
+<!-- col-lg-pull-  col-md-pull-  col-sm-pull-  col-xs-pull- -->
+<!-- col-lg-push-  col-md-push-  col-sm-push-  col-xs-push- -->
+<!-- visible-lg-  visible-md-  visible-sm-  visible-xs- --> 
+<!-- hidden-lg hidden-md hidden-sm hidden-xs -->
+<!-- <img src="" 
+	data-position="" data-in="" data-delay="" data-step="" data-out=""> -->
+	<!-- <p class="small"
+		data-position="" data-in="" data-delay="" data-step="" data-out="">
+								
+	</p> -->
+
+
+
+
+
+	<%@include file="/WEB-INF/common/header_back.jsp"%>
+	<!-- <div class="row clearfix">
+		<div class="col-md-12 column" style="border-bottom: 2px solid #e3e3e3;padding-bottom:3px">		
+			<div id='cssmenu' class="pull-right" style="margin-right: 15px;">
+<ul>
+   <li><a  href='dashboard' id="loginbut">Dashboard</a></li>
+   <li class='has-sub'><a class='active' href='javascript:void(0)'>Profile</a>
+      <ul>
+		<li><a href="personal">Personal</a></li>
+		<li><a href="address">Address</a></li>
+		<li><a href="education">Education</a></li>
+		<li><a href="techskills">Existing Skills</a></li>
+		<li><a href="experience">Experience</a></li>
+		<li><a href="preference">Work Preference</a></li>
+		<li><a href="password">Change Password</a></li>
+	  </ul>
+   </li>
+    <li class='has-sub'><a href='javascript:void(0)'>Announcements</a>
+    	<ul>
+    		<li><a href="announcement">Job Announcement </a></li>
+   	<li><a href="workshop">Workshops & Seminars</a></li>
+    	</ul>
+    </li>
+    <li class='has-sub'><a href='javascript:void(0)'>Skills</a>
+    	<ul>
+    		<li><a href="mycourse">My Skills</a></li>
+			<li><a href="tech">Technical Skills</a></li>
+			<li><a href="nontech">Non-Technical Skills</a></li>
+			<li><a href="schedulexams">Scheduled Exams</a></li>
+			<li><a href="pastexam">Past Exams</a></li>
+    	</ul>
+    </li>
+    <li class='has-sub'><a href='javascript:void(0)'>Interviews</a>
+    	<ul>
+    		<li><a href="calletter">Interview Calls</a></li>
+   	<li><a href="schedueleinterview">Scheduled Interviews</a></li>
+			<li><a href="passedinterviews">Passed Interviews</a></li>
+    	</ul>
+    </li>
+     
+    
+</ul>
+</div>
+		</div>
+	</div> -->
+	<%@include file="/WEB-INF/common/menu.jsp"%>
+	<div class="row clearfix" id="main_body">
+			<div class="col-md-12 column" style="padding: 0px">
+				<div class="container" style="background-color:white;border-right: 6px solid grey;border-left: 6px solid grey">
+				
+				
+				
+				<div class="row" style="min-height: 450px; border: solid 0px black;">
+			<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="">
+				<div class="row" style="height: 450px;margin-top:10px">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<%@include file="/WEB-INF/common/userwidget.jsp"%>
+					</div>
+
+
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+						style="margin-top: 3px;min-height: 400px;">
+						<div class="row" style=margin-left:-9px;">
+						<div class="panel panel-primary" style="width: 100%;margin: auto;">
+                        <div class="panel-heading">Profile</div>
+                        <div class="panel-body">
+						<div class="list-group">
+							<a href="javascript:void(0)" class="list-group-item active">
+								<span class="glyphicon glyphicon-user"></span> Personal <span id="perdetails"
+								class="text-danger pull-right  glyphicon-asterisk"><span  style="font-size:10px;">(mandatory)</span></span>
+							</a> <a href="address" class="list-group-item"> <span
+								class="glyphicon glyphicon-road"></span> Address <span id="address"
+								class="text-danger pull-right glyphicon-asterisk"><span  style="font-size:10px;">(mandatory)</span></span>
+							</a> <a href="education" class="list-group-item"> <span 
+								class="glyphicon glyphicon-book"></span> Education <span id="education" 
+								class="text-danger pull-right glyphicon-asterisk"><span style="font-size:10px;">(mandatory)</span></span>
+							</a> <a href="techskills" class="list-group-item"> <span
+								class="glyphicon glyphicon-star-empty"></span> Skills
+							</a> <a href="experience" class="list-group-item"> <span
+								class="glyphicon glyphicon-list-alt"></span> Experience 
+							</a> <a href="preference" class="list-group-item "> <span
+								class="glyphicon glyphicon-list-alt"></span> Work Preference 
+							</a> <a href="password" class="list-group-item"> <span
+								class="glyphicon glyphicon-off"></span> Change Password
+							</a>
+						</div></div></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+				<div class="row" style="height: auto">
+					<form id="personal" action="supersonal" method="post">
+
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+							style="height: auto">
+							<div class="row">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+									>
+									<div class="alert alert-success alert-dismissible"
+										id="chksuccess" role="alert" style="display: none;">
+										<button type="button" class="close">
+											<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+										</button>
+										<strong>Warning!</strong> Better check yourself, you're not
+										looking too good.
+									</div>
+									<div class="alert alert-info alert-dismissible" id="chkinfo"
+										role="alert" style="display: none">
+										<button type="button" class="close">
+											<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+										</button>
+										<strong>Warning!</strong> Better check yourself, you're not
+										looking too good.
+									</div>
+									<div class="alert alert-warning alert-dismissible"
+										id="chkwarning" role="alert" style="display: none">
+										<button type="button" class="close">
+											<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+										</button>
+										<strong>Warning!</strong> Better check yourself, you're not
+										looking too good.
+									</div>
+									
+								<div class="alert alert-danger alert-dismissible" id="chkdanger"
+					role="alert" style="display: none;">
+					<button type="button" class="close">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<div id="dangerdata"></div>
+				</div>
+								</div>
+								
+
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="row">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+											style="border: 0px solid;">
+											<div class="breadcrumb">
+												<li><a href="javascript:void(0)"><span class="glyphicon glyphicon-home"></span></a></li>
+												<li class="active">Profile</li>
+												<li class="active">Personal</</li>
+											</div>
+										</div>
+									</div>
+
+									<div class="panel panel-primary" id="editdiv"
+										style="display: none;">
+										<div class="panel-heading">
+											Personal Details
+										</div>
+										<div class="panel-body">
+											<div class="row">
+												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+													<h5 style="color: #1ABC9C;font-size: 18px;">
+														Your registered email id:<em><b>${jobseekerInfo.pemail}</b></em>
+													</h5>
+												</div>
+												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+													<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+														<div class="form-group">
+															<h5>Alternate email:</h5>
+																 <input
+																autocomplete="on"	name="altemail" type="text" class="form-control txbx"
+																	id="altem1" placeholder="Email">
+														</div>
+													</div>
+													<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+														<div class="form-group">
+															<h5>
+																<span class="text-danger">*</span>Nickname:
+															</h5>
+																<input
+																	name="nkname" type="text" value=""
+																	class="form-control txbx" id="nick1"
+																	placeholder="You want us to call you">
+														</div>
+													</div>
+
+												</div>
+
+												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+													<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+														<div class="form-group">
+															<h5>
+																<span class="text-danger">*</span>Mobile number:
+																<span class="glyphicon glyphicon-question-sign nvsign qicon"
+																	style="font-size: 1em; margin-right: 6px;cursor:pointer;">
+																</span> 
+																
+											<span class="text-danger nvsign pvtext" style="margin-top: 3px; position: absolute;text-decoration:underline;cursor:pointer;">Please Verify</span></h5>
+															
+															
+																	 <input
+																		name="contact" type="text" class="form-control txbx" autocomplete="off"
+																		style="" id="contnu1" maxlength="10"
+																		placeholder="Mobile number">
+
+															
+															
+
+														</div>
+
+													</div>
+													<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+														<div class="form-group">
+															<h5>Alternate Mobile / Landline  number:</h5>
+																 <input
+																	name="altcontact" type="text" class="form-control"
+																autocomplete="on"	id="acn1" maxlength="15" placeholder="Mobile number">
+														</div>
+													</div>
+
+												</div>
+
+												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+													<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+														<div class="form-group">
+															<h5 class="control-label">
+																<span class="text-danger">*</span>Date of birth:
+															</h5>
+
+															<div class="input-group input-group-sm date"
+																id="datetimePicker">
+																<span class="form-control txbx" id="dob1"
+																	data-date-format="DD-MM-YYYY"></span> <input
+																	type="hidden" name="dob" id="dob2" /> 
+																	<span
+																	class="input-group-addon"> <span
+																	class="glyphicon glyphicon-calendar" id="calender"
+																	style="cursor: default;"></span>
+																</span>
+															</div>
+														</div>
+													</div>
+													<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+														<div class="form-group">
+															<h5>Passport number:</h5>
+																 <input value=""
+																	name="pasno" id="psn1" type="text" class="form-control"
+																	placeholder="Passport No">
+														</div>
+													</div>
+
+												</div>
+
+
+												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+													<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+														<div class="form-group">
+															<h5>
+																<span class="text-danger">*</span>Father's name:
+															</h5>
+																 <input
+																	name="fname" type="text" class="form-control txbx"
+																	maxlength="30" id="fname1" placeholder="Father's name">
+														</div>
+
+													</div>
+													<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+														<div class="form-group">
+															<h5>PAN number:</h5>
+															 <input value=""
+																	id="pan1" name="panno" type="text" maxlength="10"
+																	class="form-control  nman" placeholder="Pan No">
+																<input type="hidden" name="gender"
+																	value="${jobseekerInfo.gender}" /> <input
+																	type="hidden" name="uniqueid"
+																	value="${jobseekerInfo.userUniqueid}" /> <input
+																	type="hidden" name="masterid"
+																	value="${jobseekerInfo.userMasterid}" /> <input
+																	type="hidden" name="pmid"
+																	value="${jobseekerInfo.primaryMasterContactid}" /> <input
+																	type="hidden" name="smid"
+																	value="${jobseekerInfo.secondaryMasterContactid}" /> <input
+																	type="hidden" name="createdate"
+																	value="${jobseekerInfo.createdate}" /> <input
+																	type="hidden" name="sandc" id="req" value="0" />
+														</div>
+													</div>
+
+												</div>
+
+											</div>
+
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+												style="border: 0px solid black; height: 20px">
+												<p class="text-danger">
+																<i><span class="text-danger">( * )</span> Indicates required field</i>
+															</p>
+
+											</div>
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+												style="border: 0px solid black; height: 50px">
+
+												<input type="submit" id="save"
+													class="btn btn-primary pull-right but "
+													value="Save and Continue"
+													style="position: absolute; bottom: 5px; right: 5px;" />
+
+
+											</div>
+										</div>
+
+									</div>
+
+
+									<div class="panel panel-primary" id="displaydiv">
+										<div class="panel-heading">
+											Personal Details
+										</div>
+										<div class="panel-body">
+											<div class="row">
+
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+												<h5>
+													Your registered email id:&nbsp;<em><b>${jobseekerInfo.pemail}</b></em>
+												</h5>
+												</div>
+												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+													<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+														<div class="form-group">
+															<h5>Alternate email:</h5>
+															<div class="input-group input-group-sm">
+																<span class="input-group-addon"></span> <span
+																	class="form-control" id="altem">${jobseekerInfo.semail}</span>
+															</div>
+														</div>
+													</div>
+													<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+														<div class="form-group">
+															<h5>Nickname:</h5>
+															<div class="input-group input-group-sm">
+																<span class="input-group-addon"></span> <span
+																	class="form-control" id="nick">${jobseekerInfo.nickname}</span>
+															</div>
+														</div>
+													</div>
+												</div>
+
+												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+													<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+														<div class="form-group">
+															<h5>Mobile number: <span class="glyphicon glyphicon-question-sign nvsign qicon"
+																	style="font-size: 1em; margin-right: 6px;cursor:pointer;">
+																</span>
+																
+					 <span class="text-danger nvsign pvtext" style="margin-top: 3px; position: absolute; text-decoration:underline;cursor:pointer;">Please Verify</span>
+															</h5>
+															
+															
+																<div class="input-group input-group-sm">
+																	<span class="input-group-addon"></span> <span
+																		class="form-control" id="contnu">${jobseekerInfo.pcontact}</span>
+
+																</div>
+															
+															
+													
+																
+															
+
+
+														</div>
+													</div>
+													<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+														<div class="form-group">
+															<h5>Alternate Mobile / Landline number:</h5>
+															<div class="input-group input-group-sm">
+																<span class="input-group-addon"></span> <span
+																	class="form-control" id="acn">${jobseekerInfo.scontact}</span>
+															</div>
+														</div>
+													</div>
+												</div>
+
+												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+													<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+														<h5 class="control-label">Date of birth:</h5>
+
+														<div class="input-group input-group-sm date"
+															id="datetimePicker">
+															<span class="form-control" id="dob">${jobseekerInfo.dob}</span>
+
+															<span class="input-group-addon"> <span
+																class="glyphicon glyphicon-calendar" id="calendar"
+																style="cursor: default;"> </span>
+															</span>
+														</div>
+													</div>
+													<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+														<div class="form-group">
+															<h5>Passport number:</h5>
+															<div class="input-group input-group-sm">
+																<span class="input-group-addon"></span> <span id="psn"
+																	class="form-control">
+																	${jobseekerInfo.passnumber}</span>
+															</div>
+														</div>
+													</div>
+												</div>
+
+												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+													<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+														<div class="form-group">
+															<h5>Father's name:</h5>
+															<div class="input-group input-group-sm">
+																<span class="input-group-addon"></span> <span
+																	class="form-control" id="fname"
+																	placeholder="Father's name">${jobseekerInfo.fathername}</span>
+															</div>
+														</div>
+													</div>
+													<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+														<div class="form-group">
+															<h5>PAN number:</h5>
+															<div class="input-group input-group-sm">
+																<span class="input-group-addon"></span> <span id="pan"
+																	class="form-control" placeholder="Pan No">${jobseekerInfo.pannumber}</span>
+																<input type="hidden" name="gender"
+																	value="${jobseekerInfo.gender}" /> <input
+																	type="hidden" name="uniqueid"
+																	value="${jobseekerInfo.userUniqueid}" /> <input
+																	type="hidden" name="masterid"
+																	value="${jobseekerInfo.userMasterid}" /> <input
+																	type="hidden" name="pmid"
+																	value="${jobseekerInfo.primaryMasterContactid}" /> <input
+																	type="hidden" name="smid"
+																	value="${jobseekerInfo.secondaryMasterContactid}" />
+															</div>
+														</div>
+													</div>
+												</div>
+
+
+
+
+
+
+
+
+
+
+
+
+											</div>
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+												style="border: 0px solid black; height: 50px">
+
+												<button type="button" id="edit" value="edit"
+													class="btn btn-default pull-right but"
+													style="position: absolute; bottom: 5px; right: 5px;width:100px;">Edit</button>
+
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</form>
+
+				</div>
+			</div>
+		</div>
+				
+				
+				
+				
+				
+			</div>
+		</div>
+	</div>
+
+		
+	</div>	
+	<%@include file="/WEB-INF/common/footer_back.jsp"%>
+
+					<div id="myModal2" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title">Instruction:</h4>
+					</div>
+					
+						<div class="modal-body">
+							<p>To Get the Link for the Career Path Analysis to your Register Email ID. Please follow these Steps:</p>
+							<ul>
+							<li>Complete Personal,Address and Education Page.
+							</li>
+							<li>Continue till Work preference page and click the finish button in order to get the Career Path Analysis test link  in your Register Email ID.</li>
+							<li>Click the link in your Email to take the Exam.
+							</li></ul>
+							
+						</div>
+						<div class="modal-footer">
+						<button  type="button" class="btn btn-primary" data-dismiss="modal">Continue</button>
+						</div>
+					
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+<div style="display: none;" id="reftype"><%=(session.getAttribute("reftype"))%></div>
+	<input type="text" id="alertvalue" style="display: none;">
+	<input type="text" id="alertdata" style="display: none;">
+<input type="hidden" id="mstatus" value="${mobistatus}"/>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/menu.js"></script>
+<script src="js/bootstrapValidator.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script>
+	$(document).ready(function() {
+		
+		
+var status1=$("#user-status").text()==="Profile Incomplete";
+
+var status2=!$("#fname").text()==="";
+	if(status1===true || status2===true)
+		{
+	if($("#reftype").text()==="nbc001")
+		{
+		$("#myModal2").modal('show');
+		}
+	
+		}
+	else
+		{
+		}
+
+
+
+	
+	if ($('#mstatus').val() === "1") 
+	{
+		$(".qicon").removeClass("glyphicon glyphicon-question-sign nvsign").addClass("glyphicon glyphicon-ok").css("cursor", "default").tooltip("destroy");
+		$(".pvtext").text("Verified").removeClass("text-danger nvsign").addClass("text-success").css("text-decoration", "none");
+		$(".pvtext").css("cursor", "default").tooltip("destroy");
+	}
+
+		$(".txbx").change(function() {
+		var id = "#" + $(this).attr("id");
+		$(id).attr("data-bv-excluded", "false");
+	});
+
+	
+
+	var detect = $("#fname").text();
+	if (detect === "" || detect === "null") {
+
+		$("#displaydiv").hide();
+		$("#editdiv").show();
+		$("#req").val("1");
+		$("#dob2").val($("#dob").text());
+		$("#contnu1").val($("#contnu").text()).attr("data-bv-excluded", "true");
+		$("#dob1").text($("#dob").text());
+		$("#pan1").attr("data-bv-excluded", "true");
+		$("#altem1").attr("data-bv-excluded", "true");
+		$("#acn1").attr("data-bv-excluded", "true");
+
+	}
+	else 
+	{
+		$("#editdiv").hide();
+		$("#spandiv").show();
+		mob = $("#contnu").text();
+		$(document).on("click",".but",function() {
+			var id = "#" + $(this).attr("id");
+			var value = $(id).attr("value");
+			if (value === "edit") 
+				{
+				$("#displaydiv").hide();
+                $("#editdiv").show();
+				$("#save").attr("value","Save").css("width","100px");
+				$("#nick1").val($("#nick").text()).attr("data-bv-excluded","true");
+				$("#dob2").val($("#dob").text());
+				$("#altem1").val($("#altem").text()).attr("data-bv-excluded","true");
+				$("#contnu1").val($("#contnu").text());
+				$("#dob1").text($("#dob").text()).attr("data-bv-excluded","true");
+				$("#fname1").val($("#fname").text()).attr("data-bv-excluded","true");
+				$("#acn1").val($("#acn").text()).attr("data-bv-excluded","true");
+				$("#psn1").val($("#psn").text().trim()).attr("data-bv-excluded","true");
+				$("#pan1").val($("#pan").text()).attr("data-bv-excluded","true");
+       			}
+
+		});
+	}
+
+		
+
+
+	$("#dob1").tooltip({
+		title: 'To request for DOB Changes mail us at info@talentex.in',
+		placement: 'bottom'
+	});
+
+	$('#personal').bootstrapValidator({
+		// To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+		feedbackIcons: {
+			valid: 'glyphicon glyphicon-ok',
+			invalid: 'glyphicon glyphicon-remove',
+			validating: 'glyphicon glyphicon-refresh'
+		},
+		fields: {
+			fname: {
+				message: 'The name is not valid',
+				validators: {
+					notEmpty: {
+						message: "Father's name is required and cannot be empty"
+					},
+					stringLength: {
+						min: 1,
+						max: 30,
+						message: 'The name must be more than 1 and less than 30 characters long'
+					},
+					regexp: {
+						regexp: /^[a-z\s.]+$/i,
+						message: 'Enter  Character Only'
+					}
+
+				}
+			},
+			/* altemail: {
+				live: 'enabled',
+				trigger: 'blur',
+				validators: {
+					emailAddress: {
+						message: 'The value is not a valid email address'
+					}
+				}
+			}, */
+
+			nkname: {
+				validators: {
+					notEmpty: {
+						message: 'Nick name is required and cannot be empty'
+					}
+				}
+			},
+
+		/* 	altcontact: {
+				validators: {
+					digits: {
+						message: 'The phone number can contain digits only'
+					},
+					/*  notEmpty: {
+															     message: 'The phone number is required'
+															 }, 
+					stringLength: {
+						min: 10,
+						max: 15,
+						message: 'The phone number must have 10-15 digits'
+					},
+					regexp: {
+						regexp: /^[0-9]+$/,
+						message: 'Enter a valid phone number'
+					}
+				}
+			}, */
+
+			contact: {
+				validators: {
+					digits: {
+						message: 'The phone number can contain digits only'
+					},
+					notEmpty: {
+						message: 'The phone number is required'
+					},
+					stringLength: {
+						min: 10,
+						max: 10,
+						message: 'The phone number must have 10 digits'
+					},
+					regexp: {
+						regexp: /^[789]\d{9}$/i,
+						message: 'Enter a valid phone number'
+					}
+				}
+			}/* ,
+
+			panno: {
+				validators: {
+					/* notEmpty: {
+															   message: 'The PAN number is required'
+															}, 
+					regexp: {
+						regexp: /^[A-Z]{5}\d{4}[A-Z]{1}$/,
+						message: 'Enter a valid PAN number'
+					}
+				}
+			} */
+		}
+
+	});
+	/* 	.on(
+		'status.field.bv',
+
+	function(e, data) {
+		if (data.bv.isValid()) {
+			data.bv.disableSubmitButtons(false);
+			$('#save')
+				.removeClass(
+				'btn-default')
+				.addClass(
+				'btn-primary');
+		} else {
+			data.bv.disableSubmitButtons(true);
+		}
+	}); */
+
+	$("#cancel").on("click",function() {
+		$("#personal").data(
+			'bootstrapValidator')
+			.resetForm();
+	});
+
+
+	
+	  function emailValid(emailAddress) {
+		    var pattern = new RegExp(/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i);
+		    return pattern.test(emailAddress);
+		};
+	$('#altem1').keyup(function() {
+		$('.alert').fadeOut('slow');
+						var email = $('#altem1').val();
+						
+						if (email === ''|| email === 'null'|| email === null || emailValid( email )=== false)
+						{
+							
+						}
+						 else
+							  {
+							$.ajax({
+										url : 'chkmail',
+										type : 'GET',
+										dataType : 'text',
+
+										data : {
+											'email' : email
+										},
+										success : function(responseText) {
+											$('.close').click(function() {
+																$('.alert').fadeOut('slow');
+															});
+											var res=$.trim(responseText).replace(" ","");
+											
+										if(res==="true")
+												{
+												$('#dangerdata').text('Your email id already exists in our database. Use a different email');
+												$('#chkdanger').fadeIn();
+												$('#altem1').val("");
+												}
+
+										},
+										error : function() {
+										}
+									});
+
+						}
+					});
+
+	 function phonenumber(phone) {
+		    var pattern = new RegExp(/^[789]\d{9}$/i);
+		    return pattern.test(phone);
+		};
+		
+		$('#acn1').blur(function() {
+			$('.alert').fadeOut('slow');
+			var mobnum = $('#acn1').val();
+		
+		if($("#contnu1").val()===mobnum)
+			{
+				 $("#acn1").val("");
+	               $('.alert-dismissible').css('display','none');
+					$('#dangerdata').text('Alternate Contact Number is same as Contact Number. Please use a different mobile number.');
+					$('#chkdanger').fadeIn();
+					
+					
+					$('.close').click(function()
+							{
+								$('.alert').fadeOut('slow');
+							});
+			}
+		});
+		
+		$('#contnu1').keyup(function() {
+			$('.alert').fadeOut('slow');
+			var mobnum = $('#contnu1').val();
+			var moblength=mobnum.length;
+			mob=mobnum
+			if (mobnum === ''|| mobnum === 'null'|| mobnum === null || phonenumber(mobnum)=== false || $("#contnu").text()===mobnum) 
+			{
+			}
+			else if(moblength===10)
+			{
+			$.ajax({
+               type:"post",
+               url:"verifymob", 
+               data:{number:mobnum} ,
+               success:function(responsetext){
+               	var status = responsetext;
+               	if(($.trim(status).toUpperCase() === "INVALID"))
+               	 {
+               $("#contnu1").val("");
+               $('.alert-dismissible').css('display','none');
+               $('#personal').bootstrapValidator('revalidateField','contact');
+				$('#dangerdata').text('Your mobile number is already registered with us . Please use a different mobile number.');
+				$('#chkdanger').fadeIn();
+				$('.close').click(function()
+						{
+							$('.alert').fadeOut('slow');
+						});
+                  	 }
+               	else
+                   	{
+               /* 		$('.alert-dismissible').css('display','none');
+            		$(".qicon").removeClass("glyphicon glyphicon glyphicon-ok").addClass("glyphicon-question-sign nvsign").css("cursor", "pointer");
+            		$(".pvtext").text("Please verify").removeClass("text-success ").addClass("text-danger nvsign").css("text-decoration", "underline");
+            		$(".pvtext").css("cursor", "pointer");
+            		$('.close').click(function()
+    						{
+    							$('.alert').fadeOut('slow');
+    						}); */
+                   	}
+                   },
+                   error:function(responsetext)
+                   {
+                   } 
+               
+				});
+			
+			}
+			else
+				{
+				
+				}
+			
+			
+			
+		});
+	
+		$(".profileactive").addClass("active");
+
+});
+		</script>
+
+
+
+
+
+</body>
+
+</html>

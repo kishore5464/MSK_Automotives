@@ -1,0 +1,939 @@
+<%-- 
+    Document   : Work Preference
+    Author     : Vengatesh K
+--%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@include file="/WEB-INF/common/taglibs.jsp"%>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width">
+<link rel="icon" type="img/ico" href="images/ex.ico">
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/menu.css" rel="stylesheet">
+<link rel="stylesheet" href="css/bootstrapValidator.css">
+<link rel="stylesheet" href="css/bootstrap-select.min.css">
+<link rel="stylesheet" href="css/bootstrap-multiselect.css" />
+<link href="css/font-awesome.css" rel="stylesheet">
+<style>
+.pp{
+padding-top:5px;
+}
+#main_body { 
+  background: url("images/collage.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+}
+#pgform .form-control-feedback {
+	top: 22px;
+	right: -25px;
+}
+</style>
+<script src="js/jquery.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ 
+  ga('create', 'UA-58259459-1', 'auto');
+  ga('send', 'pageview');
+ </script>
+<title>TalentEx - Work Preference</title>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ 
+  ga('create', 'UA-58259459-1', 'auto');
+  ga('send', 'pageview');
+ </script>
+</head>
+<body>
+<div class="container-fluid">
+<!-- col-lg-  col-md-  col-sm-  col-xs- -->
+<!-- col-lg-pull-  col-md-pull-  col-sm-pull-  col-xs-pull- -->
+<!-- col-lg-push-  col-md-push-  col-sm-push-  col-xs-push- -->
+<!-- visible-lg-  visible-md-  visible-sm-  visible-xs- --> 
+<!-- hidden-lg hidden-md hidden-sm hidden-xs -->
+<!-- <img src="" 
+	data-position="" data-in="" data-delay="" data-step="" data-out=""> -->
+	<!-- <p class="small"
+		data-position="" data-in="" data-delay="" data-step="" data-out="">
+								
+	</p> -->
+
+
+
+
+
+	<%@include file="/WEB-INF/common/header_back.jsp"%>
+<!-- 	<div class="row clearfix">
+		<div class="col-md-12 column" style="border-bottom: 2px solid #e3e3e3;padding-bottom:3px">		
+			<div id='cssmenu' class="pull-right" style="margin-right: 15px;">
+<ul>
+   <li><a  href='dashboard' id="loginbut">Dashboard</a></li>
+   <li class='has-sub'><a class='active'  href='javascript:void(0)'>Profile</a>
+      <ul>
+		<li><a href="personal">Personal</a></li>
+		<li><a href="address">Address</a></li>
+		<li><a href="education">Education</a></li>
+		<li><a href="techskills">Existing Skills</a></li>
+		<li><a href="experience">Experience</a></li>
+		<li><a href="preference">Work Preference</a></li>
+		<li><a href="password">Change Password</a></li>
+	  </ul>
+   </li>
+    <li class='has-sub'><a href='javascript:void(0)'>Announcements</a>
+    	<ul>
+    		<li><a href="announcement">Job Announcement </a></li>
+   	<li><a href="workshop">Workshops & Seminars</a></li>
+    	</ul>
+    </li>
+    <li class='has-sub'><a href='javascript:void(0)'>Skills</a>
+    	<ul>
+    		<li><a href="mycourse">My Skills</a></li>
+			<li><a href="tech">Technical Skills</a></li>
+			<li><a href="nontech">Non-Technical Skills</a></li>
+			<li><a href="schedulexams">Scheduled Exams</a></li>
+			<li><a href="pastexam">Past Exams</a></li>
+    	</ul>
+    </li>
+    <li class='has-sub'><a href='javascript:void(0)'>Interviews</a>
+    	<ul>
+    		<li><a href="calletter">Interview Calls</a></li>
+   	<li><a href="schedueleinterview">Scheduled Interviews</a></li>
+			<li><a href="passedinterviews">Passed Interviews</a></li>
+    	</ul>
+    </li>
+     
+    
+</ul>
+</div>
+		</div>
+	</div> -->
+	<%@include file="/WEB-INF/common/menu.jsp"%>
+	
+	<div class="row clearfix" id="main_body">
+			<div class="col-md-12 column" style="padding: 0px">
+				<div class="container" style="background-color:white;border-right: 6px solid grey;border-left: 6px solid grey">
+				
+				<div class="row" style="min-height: 450px; border: solid 0px black;">
+			<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="">
+				<div class="row" style="min-height: 450px;margin-top:10px">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<%@include file="/WEB-INF/common/userwidget.jsp" %>
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+						style="margin-top: 3px;min-height: 400px;">
+						<div class="row" style=margin-left:-9px;">
+						<div class="panel panel-primary" style="width: 100%;margin: auto;">
+                        <div class="panel-heading">Profile</div>
+                        <div class="panel-body">
+						<div class="list-group">
+							<a href="personal" class="list-group-item"> <span
+								class="glyphicon glyphicon-user"></span> Personal <span id="perdetails" class="text-danger pull-right  glyphicon-asterisk"><span id="perd" style="font-size:10px;">(mandatory)</span></span>
+							</a> <a href="address" class="list-group-item"> <span
+								class="glyphicon glyphicon-road"></span> Address <span id="address" class="text-danger pull-right  glyphicon-asterisk"><span id="addr" style="font-size:10px;">(mandatory)</span></span>
+							</a> <a href="education" class="list-group-item "> <span
+								class="glyphicon glyphicon-book"></span> Education <span id="education" class="text-danger pull-right  glyphicon-asterisk"><span id="educ" style="font-size:10px;">(mandatory)</span></span>
+							</a> <a href="techskills" class="list-group-item"> <span
+								class="glyphicon glyphicon-star-empty"></span> Skills 
+							</a> <a href="experience" class="list-group-item"> <span
+								class="glyphicon glyphicon-list-alt"></span> Experience 
+							</a> <a href="javascript:void(0)" class="list-group-item active"> <span
+								class="glyphicon glyphicon-list-alt"></span> Work Preference 
+							</a> <a href="password" class="list-group-item"> <span
+								class="glyphicon glyphicon-off"></span> Change Password
+							</a>
+						</div></div></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12" style="">
+				<div class="row" style="height: auto">
+					<form id="pgform" action="suworkpreference" method="POST">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+							style="height: auto">
+							<div class="row">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+									>
+
+									<div class="alert alert-success alert-dismissible" role="alert"
+										style="display: none">
+										<button type="button" class="close" data-dismiss="alert">
+											<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+										</button>
+										<strong>Warning!</strong> Better check yourself, you're not
+										looking too good.
+									</div>
+									<div class="alert alert-info alert-dismissible" role="alert"
+										style="display: none">
+										<button type="button" class="close" data-dismiss="alert">
+											<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+										</button>
+										<strong>Warning!</strong> Better check yourself, you're not
+										looking too good.
+									</div>
+									<div class="alert alert-warning alert-dismissible" role="alert"
+										style="display: none">
+										<button type="button" class="close" data-dismiss="alert">
+											<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+										</button>
+										<strong>Warning!</strong> Better check yourself, you're not
+										looking too good.
+									</div>
+										<div class="alert alert-danger alert-dismissible" id="chkdanger"
+					role="alert" style="display: none;">
+					<button type="button" class="close">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<div id="dangerdata"></div>
+				</div>
+								</div>
+								<hr style="display: none;" />
+
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+									style="border: 0px solid;" id="dandanakka">
+
+
+									<div class="row">
+
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+											style="border: 0px solid;">
+											<div class="breadcrumb">
+												<li><a href="personal"><span class="glyphicon glyphicon-home"></span></a></li>
+												<li class="active">Profile</</li>
+												<li class="active">Work Preference</</li>
+											</div>
+										</div>
+									</div>
+									<div class="panel panel-primary" id="editdiv" style="min-height:400px;">
+
+
+										<div class="panel-heading">Work Preference Details</div>
+										<div class="panel-body">
+
+											<div class="row">
+											<!-- <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3">
+											<center><h1 style="margin-left:60px;font-size:50px;">N/A</h1></center>
+											
+											
+											</div>
+											 -->
+											 	<!-- <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"></div> -->
+												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+													<div class="row sgpd">
+
+														
+<div class="col-lg-offset-4 col-lg-5 col-md-offset-4 col-md-5 col-sm-12 col-xs-12">
+
+                                                              	<div class="form-group">
+																<h5><span class="text-danger">* </span>Industry:</h5>
+																<select name="industry" id="industry2" 
+																	class="form-control input-group-sm txbx" multiple="multiple">
+																	<c:forEach var="list" items="${industry}">
+																		<option value="${list.industryName.toUpperCase()}">${list.industryName.toUpperCase()}</option>
+																	</c:forEach>
+																
+																</select>
+															</div>
+                                                              	<input type="hidden" name="industry[]" id="industryhidden"/>
+															<div class="form-group">
+																<h5><span class="text-danger">* </span>Specify your preference:</h5>
+																<select name="perference" id="ypr" 
+																	class="form-control input-group-sm txbx">
+																	<option value="1">FULL TIME</option>
+																	<option value="2">PART TIME</option>
+																	<option value="3">INTENSHIP</option>
+																
+																</select>
+															</div>
+</div>
+
+<div class="col-lg-offset-4 col-lg-5 col-md-offset-4 col-md-5 col-sm-12 col-xs-12 ">
+															<div class="form-group">
+																<h5><span class="text-danger">* </span>I would like to work:</h5>
+																<select name="country" 
+																	class="form-control input-group-sm txbx country">
+																	<option value="sel" disabled selected>Select your preference</option>
+																	<option value="any where in india">Any where in india</option>
+																	<option value="only my state">Only my state</option>
+																	<option value="only my city">Only my city</option>
+																	
+																	
+																	
+																
+																</select>
+															</div>
+</div>
+
+															
+														<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sh">
+														<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+															<div class="form-group">
+																<h5><span class="text-danger">* </span>Preferred State</h5>
+																<select name="cstate" data-live-search="true"
+																	class="form-control input-group-smsopt state txbx dis sta selectpicker"
+																	id="cstate">
+
+																	<c:forEach var="cstate" items="${workstate}">
+																		<option value="${cstate}">${cstate}</option>
+																	</c:forEach>
+
+																</select>
+															</div>
+															</div>
+															<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+															<div class="form-group">
+																<h5><span class="text-danger">* </span>Preferred City</h5>
+																
+																<select name="ccity" data-live-search="true"
+																	class="form-control  input-group-sm txbx dis cit selectpicker"
+																	id="ccity">
+
+
+																	<c:forEach var="cdist" items="${ccitylist}">
+																		<option value="${cdist.id}">${cdist.name.toUpperCase()}</option>
+																	</c:forEach>
+																</select>
+																<input type="hidden" id="nul" name="ccity"/>
+															</div></div>
+														</div>
+												
+												</div>
+
+
+											</div>
+												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+												style="border: 0px solid black;">
+											<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12"
+												style="border: 0px solid black;">
+											<p class="text-danger">
+																<i><span class="text-danger">( * )</span> Indicates required field</i>
+															</p>
+
+											</div>
+											<input
+																	type="hidden" name="sandc" id="req" value="0"/>
+											<input type="hidden" name="workprefid" value="${workpref.workPreferenceId}" />
+											<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12"
+												style="border: 0px solid black; height: 50px">
+
+												<input type="submit" id="save" value="Update"
+													class="btn btn-primary pull-right"
+													style="position: absolute;  right: 5px;width:100px;">
+
+											</div>
+											</div>
+<!-- <a href="landing"><button style="margin-right:10px;" type="button" id="skip"  class="btn btn-default pull-right">Skip & Continue</button></a>
+ -->										</div>
+
+
+									</div>
+									</div>
+									<div class="panel panel-primary" id="displaydiv" style="display:none;">
+
+
+										<div class="panel-heading">Work Preference Details</div>
+										<div class="panel-body">
+
+											<div class="row">
+											<!-- <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3">
+											<center><h1 style="margin-left:60px;font-size:50px;">N/A</h1></center>
+											
+											
+											</div>
+											 -->
+											 	<!-- <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"></div> -->
+												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+													<div class="row sgpd">
+<div class="col-lg-offset-4 col-lg-5 col-md-offset-4 col-md-5 col-sm-12 col-xs-12">
+														
+														
+														<div class="form-group">
+																<h5>Industry :</h5>
+																<div class="input-group input-group-sm">
+																<span class="input-group-addon"><span
+																	class="glyphicon glyphicon-book"></span></span> <span
+																	id="industry1" class="form-control" style="height: inherit;">${workpref.industryName}</span>
+															</div>
+															</div>
+														
+
+															<div class="form-group">
+																<h5>Specify your preference :</h5>
+																<div class="input-group input-group-sm">
+																<span class="input-group-addon"><span
+																	class="glyphicon glyphicon-book"></span></span> <span
+																	id="pref" class="form-control">${workpref.workPreferenceJobtypeId}</span>
+															</div>
+															</div>
+</div>
+
+<div class="col-lg-offset-4 col-lg-5 col-md-offset-4 col-md-5 col-sm-12 col-xs-12 ">
+															<div class="form-group">
+																<h5>I would like to work:</h5>
+
+													<div class="input-group input-group-sm">
+																<span class="input-group-addon"><span
+																	class="glyphicon glyphicon-book"></span></span> <span
+																	id="country" class="form-control">${workpref.workPreferenceCountry.toUpperCase()}</span>
+															</div>
+
+															</div>
+															
+														</div>
+														<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nodata">
+														<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pstate">
+															<div class="form-group">
+																<h5>Preferred State</h5>
+										                     <div class="input-group input-group-sm">
+																<span class="input-group-addon"><span
+																	class="glyphicon glyphicon-book"></span></span> <span
+																	id="state" class="form-control">${workpref.workPreferenceState.toUpperCase()}</span>
+															</div>
+															</div></div>
+															<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pcity" >
+															<div class="form-group">
+																<h5>Preferred City</h5>
+																<div class="input-group input-group-sm">
+																<span class="input-group-addon"><span
+																	class="glyphicon glyphicon-book"></span></span> <span
+																	id="city" class="form-control">${workpref.workPreferenceCity.toUpperCase()}</span>
+															</div>
+															</div>
+															</div>
+														
+													</div>
+												
+
+
+											</div>
+								
+											<input type="hidden" name="workprefid" value="${workpref.workPreferenceId}" />
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+												style="border: 0px solid black; height: 50px">
+
+												<button type="button" id="edit"
+													class="btn btn-primary pull-right"
+													style="position: absolute; bottom: 5px; right: 5px;width:100px;">Edit</button>
+
+											</div>
+
+										</div>
+
+
+									</div>
+								</div></div>
+						<!-- <input type="button" class="col-lg-offset-6 col-md-offset-5 btn btn-success" type="button" value="Finish" id="finish"/>
+ -->				<!-- 		<br/> -->
+		
+				</div>	
+						</div>
+						</div>
+
+							</form>
+				</div>
+			</div>
+		</div>
+				
+				
+				
+				
+			</div>
+		</div>
+	</div>
+
+		
+	</div>	
+<%@include file="/WEB-INF/common/footer_back.jsp"%>
+<div id="myModal" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title">Confirmation</h4>
+					</div>
+					
+						<div class="modal-body">
+							<p>Thank You for completing the Profile. A confirmation has been sent to your Email.</p>
+							
+						</div>
+						<div class="modal-footer">
+						<a href="personal"><button  type="button" class="btn btn-success" id="goto"
+								>THANK YOU</button></a>
+
+						</div>
+					
+				</div>
+			</div>
+		</div>
+		<input type="text" id="alertvalue" style="display: none;">
+	<input type="text" id="alertdata" style="display: none;">
+		
+<script src="js/bootstrap.min.js"></script>
+<script src="js/menu.js"></script>
+<script src="js/bootstrap-select.min.js"></script>
+<script src="js/bootstrapValidator.js"></script>
+<script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
+<script>
+            $(document).ready(function() {
+
+                
+$("#finish").click(function(){
+	$.ajax({
+		type:"post",
+		url:"profilecompleted",
+
+				});
+	window.location.href="landing";
+});
+
+
+if($.trim($("#pstatus").text()).replace(" ","")==="1")
+{
+$("#finish").hide();
+}
+if($.trim($("#user-status").text().replace(" ",""))==="Active")
+{
+}
+else
+{
+$('#dangerdata').text('Please note that you have not completed the mandatory fields required in order to make your profile Active. Please complete it in order to get full access to our portal.');
+$('#chkdanger').fadeOut();
+$('.close').click(function() {
+$('.alert').fadeOut('slow');
+		});
+$("#finish").attr("disabled","disabled");
+}
+
+$("#goto").click(function(){
+	$("#save").trigger("click");
+});
+
+
+
+	
+
+	
+
+
+                
+            	 var detect=$("#pref").text();
+            	if(detect===""||detect==="null")
+               {
+            	$("#editdiv").show();
+            	$("#displaydiv").hide();
+            	$("#req").val("1");
+            	$("#save").attr("value","Save and Continue").css("width","140px");
+            	
+            	}
+            	else
+            		{
+               		$("#editdiv").hide();
+            		$("#displaydiv").show();
+                   if($("#pref").text()==="1")
+                       {
+                	   $("#pref").text("FULL TIME");
+                       }
+                   if($("#pref").text()==="2")
+                       {
+                	   $("#pref").text("PART TIME");
+                       }
+                   if($("#pref").text()==="3")
+                   {
+            	   $("#pref").text("INTENSHIP");
+                   }
+                   var valu=$.trim($("#country").text()).replace(" ","");
+            		if(valu==="ANYWHERE IN INDIA")
+                		{
+                		$(".nodata").hide();
+                		}
+            		if(valu==="ONLYMY STATE")
+                		{
+                		$(".pcity").hide();
+                		$(".pstate").removeClass("col-lg-6 col-md-6").addClass("col-lg-offset-4 col-lg-5 col-md-offset-4 col-md-5");
+                		}
+            		
+            		
+            		
+            		
+            	    $("#edit").click(function(){
+            	    	$("#editdiv").show();
+                		$("#displaydiv").hide();
+                		
+                		var getindustry=$("#industry1").text().split(", ");
+                		$('#industry2').val(getindustry);
+                		$('#industry2').multiselect('refresh');
+                		$("#industryhidden").val($("#industry1").text());
+                		
+                		
+            	        if($("#pref").text()==="FULL TIME")
+                        {
+            	        	$("#ypr").val("1");
+                        }
+                    if($("#pref").text()==="PART TIME")
+                        {
+                    	$("#ypr").val("2");
+                        }
+                    if($("#pref").text()==="INTENSHIP")
+                    {
+                    	$("#ypr").val("3");
+                    }
+
+                    if($("#country").text()==="ANY WHERE IN INDIA")
+                        {
+                        $(".country").val("any where in india");
+                        $(".dis").find('.selectpicker').attr("disabled","disabled");
+                        $(".filter-option").css("display","none");
+                        $('#cstate option[value="ANDAMAN AND NICOBAR ISLANDS"]').attr('selected', 'selected');
+                        $
+                        }
+                   
+                    if($("#country").text()==="ONLY MY STATE")
+                    {
+                    	
+                    $(".country").val("only my state");
+                    $(".dis").find('.selectpicker').removeAttr("disabled","disabled");
+                    $(".cit").find('.selectpicker').attr("disabled","disabled").attr("cursor","not-allowed");
+                    $(".cit").find(".selectpicker").find(".filter-option").css("display","none");
+                    }
+              
+
+                    if($("#country").text()==="ONLY MY CITY")
+                    {
+                    	
+                    $(".country").val("only my city");
+                    $(".dis").find('.selectpicker').removeAttr("disabled","disabled");
+                    /* $('#cstate option[value=ANDAMAN AND NICOBAR ISLANDS]').attr('selected', 'selected'); */
+                 
+                    }
+               
+                    $('#cstate').val($("#state").text().toUpperCase()).selectpicker('render');
+                	
+            		/* $("#cstate").val($("#state").text().toUpperCase()); */
+            		var data1= $("#state").text().toUpperCase();
+                    var data2=$("#city").text();
+                	$.ajax({
+						url : "wpcityServ",
+						type : 'POST',
+						data : {'value' : data1},
+						success : function(response) {
+							
+							document.getElementById('ccity').innerHTML = response;
+							$("#ccity option[value='1']").remove();
+							$("#ccity option[value='2']").remove();
+							$("#ccity option[value='3']").remove();
+							$("#ccity option[value='preferred location']").remove();
+							$("#ccity option[value='any where in india']").remove();
+							$("#ccity option[value='only my state']").remove();
+							$("#ccity option[value='only my city']").remove();
+							$("#ccity option[value='india']").remove();
+							$("#ccity option[value='sel']").remove();
+							$('#pgform').find('[name="ccity"]').selectpicker('refresh');
+							/* console.log("The text is-->"+$("#ccity option:eq(1)").text()); */
+							var count=0;
+							
+							$('#ccity option').each(function(){
+								
+                            var comp=$(this).text();
+                            if(data2===comp)
+                                {
+                              /*   $('#ccity option[value='+$(this).val()+']').attr('selected', 'selected'); */
+                                $('#ccity').val($(this).val()).selectpicker('render');
+                                $("#nul").val($(this).val());
+                                
+                                }
+								});
+							
+							
+			/* 		$('#pgform').find('[name="ccity[]"]').selectpicker('refresh');
+					$('#pgform').find('[name="ccity[]"]').selectpicker('render'); */	
+					
+						},
+						error : function() {
+						}
+					});
+            		
+
+            		});
+            		
+            		}
+            		
+            	
+
+                	
+            		$('.state').change(function(event) { 
+
+						var id = $(this).attr('id');
+						var oselect = "#" + id+ " option:selected";
+						var data = $(oselect).val();
+					$.ajax({
+										url : "wpcityServ",
+										type : 'POST',
+										data : {'value' : data},
+										success : function(response) {
+											
+											document.getElementById('ccity').innerHTML = response;
+											
+											$("#ccity option[value='1']").remove();
+											$("#ccity option[value='2']").remove();
+											$("#ccity option[value='3']").remove();
+											$("#ccity option[value='preferred location']").remove();
+											$("#ccity option[value='any where in india']").remove();
+											$("#ccity option[value='india']").remove();
+											$("#ccity option[value='only my state']").remove();
+											$("#ccity option[value='only my city']").remove();
+											$("#ccity option[value='sel']").remove();
+											$('#ccity option:eq(1)').attr('selected', 'selected');
+									/* 	$('#pgform').find('[name="ccity[]"]').selectpicker('refresh'); */
+										$('#pgform').find('[name="ccity"]').selectpicker('refresh');
+									$("#nul").val($('#ccity option:selected').val());
+										},
+										error : function() {
+										}
+									});
+						
+					});
+            		
+            		
+
+
+        		
+            	$(".country").change(function(){
+            		var country=$.trim($(this).val().replace(" ","")).toLowerCase();
+            		
+            		if(country==="onlymy state")
+            			{
+            			$(".dis").find('.selectpicker').removeAttr("disabled","disabled");
+            			$(".cit").find('.selectpicker').attr("disabled","disabled");
+            			$(".filter-option").css("display","block");
+            			$(".cit").find(".selectpicker").find(".filter-option").css("display","none");
+            			$("#nul").val("1486");
+            			}
+            		else if(country==="onlymy city")
+            			{
+            			
+            			$(".dis").find('.selectpicker').removeAttr("disabled","disabled");
+            			$(".filter-option").css("display","block");
+            			
+            			}
+            		else
+                		{
+            			
+            			$(".dis").find('.selectpicker').attr("disabled","disabled");
+            			 $(".filter-option").css("display","none");
+            			$("#nul").val("1486");
+                		}
+            	});
+            		$('.state').change(function(event) {
+
+								var id = $(this).attr('id');
+								var oselect = "#" + id+ " option:selected";
+								var data = $(oselect).val();
+							$.ajax({
+												url : "wpcityServ",
+												type : 'POST',
+												data : {'value' : data},
+												success : function(response) {
+													
+													document.getElementById('ccity').innerHTML = response;
+													
+													$("#ccity option[value='1']").remove();
+													$("#ccity option[value='2']").remove();
+													$("#ccity option[value='3']").remove();
+													$("#ccity option[value='preferred location']").remove();
+													$("#ccity option[value='any where in india']").remove();
+													$("#ccity option[value='india']").remove();
+													$("#ccity option[value='only my state']").remove();
+													$("#ccity option[value='only my city']").remove();
+													$("#ccity option[value='sel']").remove();
+													$('#ccity option:eq(0)').attr('selected', 'selected');
+											$('#pgform').find('[name="ccity"]').selectpicker('refresh');
+												
+											
+												},
+												error : function() {
+												}
+											});
+								
+							}) ;
+
+                
+                $('#pgform').bootstrapValidator({
+                    feedbackIcons: {
+                        valid: 'glyphicon glyphicon-ok',
+                        invalid: 'glyphicon glyphicon-remove',
+                        validating: 'glyphicon glyphicon-refresh'
+                    },
+                    framework: 'bootstrap',
+                 
+                    excluded: ':disabled',
+                    fields: {
+                    	industry: {
+                            message: 'The industry  is not valid',
+                            validators: {
+                                notEmpty: {
+                                    message: 'The industry is required and cannot be empty'
+                                },
+                                callback: {
+                                    message: 'you can choose maximum 2 industry',
+                                    callback: function(value, validator, $field) {
+                                        // Get the selected options
+                                        var options = validator.getFieldElements('industry').val();
+                                        return (options != null   && options.length >= 1 && options.length <= 2);
+                                    }
+                                }
+                            }
+                        },
+                    	perrference: {
+                            message: 'The course type is not valid',
+                            validators: {
+                                notEmpty: {
+                                    message: 'The course type is required and cannot be empty'
+                                }
+                            }
+                        },
+                        country: {
+                            message: 'The course type is not valid',
+                            validators: {
+                                notEmpty: {
+                                    message: 'The preference is required and cannot be empty'
+                                }
+                            }
+                        },
+                      ycun: {
+                            message: 'The university is not valid',
+                            validators: {
+                                notEmpty: {
+                                    message: 'The university is required and cannot be empty'
+                                }
+                            }
+                        },
+                      yst: {
+                            message: 'The college is not valid',
+                            validators: {
+                                notEmpty: {
+                                    message: 'The college is required and cannot be empty'
+                                }
+                            }
+                        },
+                        yct: {
+                            message: 'The degree is not valid',
+                            validators: {
+                                notEmpty: {
+                                    message: 'The degree is required and cannot be empty'
+                                }
+                            }
+                        }/* ,
+                        pdep: {
+                            message: 'The department is not valid',
+                            validators: {
+                                notEmpty: {
+                                    message: 'The department is required and cannot be empty'
+                                }
+                            }
+                        },
+                        pyop: {
+                            message: 'The year of passing is not valid',
+                            validators: {
+                                notEmpty: {
+                                    message: 'The year of passing is required and cannot be empty'
+                                }
+                            }
+                            
+                        },
+                        pbglk: {
+                            message: 'The backlog is not valid',
+                            validators: {
+                                notEmpty: {
+                                    message: 'The backlog is required and cannot be empty'
+                                }
+                            }
+                        },
+                     
+
+                        paggr: {
+                            message: 'The aggregate is not valid',
+                            validators: {
+                                notEmpty: {
+                                    message: 'The aggregate is required and cannot be empty'
+                                },
+                                digits: {
+                                    message: 'The aggregate should be a number between 0 - 100'
+                                }
+                            }
+                        } */
+
+                    }
+                })/* .on('status.field.bv', function(e, data) {
+                    if (data.bv.isValid()) {
+                        data.bv.disableSubmitButtons(false);
+                        $('#save').removeClass('btn-default').addClass('btn-primary');
+                    }
+                    else {
+                        data.bv.disableSubmitButtons(true);
+                    }
+                }) */;
+            	$(".profileactive").addClass("active");
+            	
+            	 $('#industry2').multiselect({
+            			buttonText: function(options, select) {
+            				if (options.length === 0) {
+            			
+            					return 'Select Industry';
+            				}
+            				else {
+            					var labels = [];
+            					options.each(function() {
+            						if ($(this).attr('label') !== undefined) {
+            							labels.push($(this).attr('label'));
+            						}
+            						else {
+            							labels.push($(this).html());
+            						}
+            					});
+            					return labels.join(',  ') + '';
+            				}
+            			},
+            			buttonWidth: '315px ',
+            			dropRight: true,
+            			inheritClass: true,
+            			enableFiltering: true,
+            			filterBehavior: 'value',
+            			includeSelectAllOption: false,
+            			filterPlaceholder: 'Search Industry...',
+            			 maxHeight: 200
+
+            		});
+            	 var industry=[];
+            	 $('#industry2').on("change", function() {
+            		 industry.length=0;
+         			$('#industry2 option:selected').each(function() {
+         				industry.push($(this).val());
+         				
+         			});
+         	 	$("#industryhidden").val(industry.join(", ")); 
+         		});
+            	
+            	 $(".multiselect-search").bind("input",function(){
+            			this.value= this.value.toUpperCase();
+            		});
+            	 
+            	 
+            });
+        </script>
+
+</body>
+
+</html>

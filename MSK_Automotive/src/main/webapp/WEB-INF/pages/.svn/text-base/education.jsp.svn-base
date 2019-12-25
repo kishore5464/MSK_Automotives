@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<%@include file="/WEB-INF/common/taglibs.jsp"%>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width">
+<link rel="icon" type="img/ico" href="images/ex.ico">
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/menu.css" rel="stylesheet">
+<link href="css/font-awesome.css" rel="stylesheet">
+<link rel="stylesheet" href="css/bootstrapValidator.css">
+<link rel="stylesheet" href="css/bootstrap-select.min.css">
+<style>
+.pp{
+
+padding-top:5px;
+}
+#main_body { 
+  background: url("images/collage.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+}
+</style>
+<script src="js/jquery.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-58259459-1', 'auto');
+  ga('send', 'pageview');
+ </script>
+ <style>
+#sslcform .form-control-feedback {
+	top: 22px;
+	right: -25px;
+}
+</style>
+<title>TalentEx - 10th Studies</title>
+</head>
+<body>
+<div class="container-fluid">
+<%@include file="/WEB-INF/common/header_back.jsp"%>
+	
+	</div>
+
+	
+	<%@include file="/WEB-INF/common/menu.jsp"%>
+	<div class="row clearfix" id="main_body">
+			<div class="col-md-12 column" style="padding: 0px">
+				<div class="container" style="background-color:white;border-right: 6px solid grey;border-left: 6px solid grey">
+				
+				<div class="row" style="min-height: 450px; border: solid 0px black;">
+			<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="">
+				<div class="row" style="min-height: 450px;margin-top:10px">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<%@include file="/WEB-INF/common/userwidget.jsp"%>
+					</div>
+
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+						style="margin-top: 3px;min-height: 400px;">
+						<div class="row" style="margin-left:-9px;">
+						<div class="panel panel-primary" style="width: 100%;margin: auto;">
+                        <div class="panel-heading">Profile</div>
+                        <div class="panel-body">
+						<div class="list-group">
+							<a href="personal" class="list-group-item"> <span
+								class="glyphicon glyphicon-user"></span> Personal <span id="perdetails" class="text-danger pull-right glyphicon-asterisk"><span style="font-size:10px;">(mandatory)</span></span>
+							</a> <a href="address" class="list-group-item"> <span
+								class="glyphicon glyphicon-road"></span> Address <span id='address' class="text-danger pull-right glyphicon-asterisk"><span style="font-size:10px;">(mandatory)</span></span>
+							</a> <a href="javascript:void(0)" class="list-group-item active">
+								<span class="glyphicon glyphicon-book"></span> Education <span id="education" class="text-danger pull-right glyphicon-asterisk"><span style="font-size:10px;">(mandatory)</span></span>
+							</a> <a href="techskills" class="list-group-item"> <span
+								class="glyphicon glyphicon-star-empty"></span> Skills 
+							</a> <a href="experience" class="list-group-item"> <span
+								class="glyphicon glyphicon-list-alt"></span> Experience 
+							</a> <a href="preference" class="list-group-item "> <span
+								class="glyphicon glyphicon-list-alt"></span> Work Preference  
+							</a> <a href="password" class="list-group-item"> <span
+								class="glyphicon glyphicon-off"></span> Change Password
+							</a>
+						</div></div></div>
+					
+					</div>
+				</div>
+			</div>
+			</div>
+			<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+				<div class="row" style="height: auto">
+
+
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+						style="height: auto">
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+								style="display: none;">
+
+								<div class="alert alert-success alert-dismissible" role="alert"
+									style="display: none">
+									<button type="button" class="close" data-dismiss="alert">
+										<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+									</button>
+									<strong>Warning!</strong> Better check yourself, you're not
+									looking too good.
+								</div>
+								<div class="alert alert-info alert-dismissible" role="alert"
+									style="display: none">
+									<button type="button" class="close" data-dismiss="alert">
+										<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+									</button>
+									<strong>Warning!</strong> Better check yourself, you're not
+									looking too good.
+								</div>
+								<div class="alert alert-warning alert-dismissible" role="alert"
+									style="display: none">
+									<button type="button" class="close" data-dismiss="alert">
+										<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+									</button>
+									<strong>Warning!</strong> Better check yourself, you're not
+									looking too good.
+								</div>
+								<div class="alert alert-danger alert-dismissible" role="alert"
+									style="display: none">
+									<button type="button" class="close" data-dismiss="alert">
+										<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+									</button>
+									<strong>Warning!</strong> Better check yourself, you're not
+									looking too good.
+								</div>
+							</div>
+							<hr style="display: none;" />
+							<form id="sslcform" action="suseducation" method="POST">
+
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+									style="border: 0px solid;">
+									<div class="row">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+											style="border: 0px solid;">
+											<div class="breadcrumb">
+												<li><a href="personal"><span class="glyphicon glyphicon-home"></span></a></li>
+												<li class="active">Profile</li>
+												<li class="active">Education</li>
+												<li class="active">10th</</li>
+											</div>
+										</div>
+									</div>
+									<div class="panel panel-primary" id="editdiv"
+										style="display: none;">
+
+
+										<div class="panel-heading">10th Details</div>
+										<div class="panel-body">
+											<ul class="nav nav-tabs" role="tablist">
+												<li class="active"><a style="color:blue;font-weight:bold;" href="javascript:void(0)">10th</a></li>
+												<li id="twt"class="disabled twt"><a class="disabled twt" href="education1">12th</a></li>
+												<li id="dt"class="disabled dt"><a  class="disabled dt" href="diploma">Diploma</a></li>
+												<li id="ugt" class="disabled ugt"><a  class="disabled ugt" href="ug">U.G</a></li>
+												<li id="pgt" class="disabled pgt"><a  class="disabled pgt" href="pg">P.G</a></li>
+
+											</ul>
+										
+											<div class="row">
+   <p style="border-bottom: 1px solid #D6D7D8;font-size: 15px;padding: 10px 0 3px;text-align: center;">
+   <strong style="color: #999;font-size:17px;">10th Details</strong>
+   </p>
+												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+													<div class="row sgpd" id="sslc">
+														<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+															<div class="form-group">
+																<h5><span class="text-danger">*</span>School name:</h5>
+																<div class="input-group input-group-sm">
+																	<span class="input-group-addon"><span
+																		class="glyphicon glyphicon-book"></span></span> <input
+																		name="ssname" id="sname1" type="text"
+																		class="form-control txbx">
+																</div>
+															</div>
+															
+															<div class="form-group">
+																<h5><span class="text-danger">*</span>Board:</h5>
+
+																<select name="sboard" id="bname1"
+																	class="form-control input-group-sm">
+																	<option value="" disabled selected>Select your Board</option>
+																	<option value="cbse">CBSE</option>
+																	<option value="matric">MATRIC</option>
+																	<option value="state">STATE</option>
+																	<option value="icsc">ICSC</option>
+																	<option value="anglo-indian">ANGLO-INDIAN</option>
+																</select>
+
+															</div>
+															
+															<div class="form-group">
+																<h5 class="control-label">
+																	<span class="text-danger">*</span>Year of passing:
+																</h5>
+																<select name="syop"
+																	class="form-control input-group-sm" id="syoc1">
+
+																</select>
+															</div>
+														</div>
+														
+														<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+
+															<div class="form-group">
+																<h5><span class="text-danger">*</span>Aggregate</h5>
+																<div class="input-group input-group-sm"
+																	style="width: 250px">
+																	<span class="input-group-addon"><span
+																		class="glyphicon glyphicon-book"></span></span> <input
+																		name="saggr" id="saggr1" value="" type="text"
+																		maxlength="5" class="form-control txbx"> <input
+																		type="hidden" name="mid" value="${sslc.mid}"><span
+																		class="input-group-addon">% / CGPA</span>
+																</div>
+															</div>
+														</div>
+
+													</div>
+
+
+												</div>
+
+											</div>
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+												style="border: 0px solid black;">
+											<p class="text-danger">
+																<i><span class="text-danger">( * )</span> Indicates required field</i>
+															</p>
+
+											</div>
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+												style="border: 0px solid black; height: 50px">
+
+												<input type="submit" id="save" value="Update"
+													class="btn btn-primary pull-right"
+													style="position: absolute; bottom: 5px; right: 5px;width:100px;" />
+
+											</div>
+<input type="hidden" id="req" name="sandc"value="0"/>
+
+										</div>
+									</div>
+
+
+
+
+									<div class="panel panel-primary" id="displaydiv">
+
+										<div class="panel-heading">10th Details</div>
+										<div class="panel-body">
+											<ul class="nav nav-tabs" role="tablist">
+												<li class="active"><a style="color:blue;font-weight:bold;" href="javascript:void(0)">10th</a></li>
+												<li id="twt"class="disabled twt"><a class="disabled twt" href="education1">12th</a></li>
+												<li id="dt"class="disabled dt"><a  class="disabled dt" href="diploma">Diploma</a></li>
+												<li id="ugt" class="disabled ugt"><a  class="disabled ugt" href="ug">U.G</a></li>
+												<li id="pgt" class="disabled pgt"><a  class="disabled pgt" href="pg">P.G</a></li>
+											</ul>
+										  <p style="border-bottom: 1px solid #D6D7D8;font-size: 15px;padding: 10px 0 3px;text-align: center;">
+   <strong style="color: #999;font-size:17px;">10th Details</strong>
+   </p>
+											<div class="row">
+
+												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+													<div class="row sgpd" id="sslc">
+														<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+															<h5>School name:</h5>
+															<div class="input-group input-group-sm">
+																<span class="input-group-addon"><span
+																	class="glyphicon glyphicon-book"></span></span> <span
+																	id="sname" class="form-control">${sslc.mschoolname}</span>
+															</div>
+
+
+
+															<h5>Board:</h5>
+															<div class="input-group input-group-sm">
+																<span class="input-group-addon"><span
+																	class="glyphicon glyphicon-book"></span></span> <span
+																	id="bname" class="form-control">${sslc.mboard}</span>
+															</div>
+
+
+
+
+
+															<h5 class="control-label">Year of passing:</h5>
+															<div class="input-group input-group-sm">
+																<span class="input-group-addon"><span
+																	class="glyphicon glyphicon-book"></span></span> <span
+																	id="syoc" class="form-control">${sslc.myoc}</span>
+															</div>
+														</div>
+														<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+															<h5>Aggregate</h5>
+															<div class="input-group input-group-sm"
+																style="width: 250px">
+																<span class="input-group-addon"><span
+																	class="glyphicon glyphicon-book"></span></span> <span
+																	id="saggr" class="form-control">${sslc.maggregate}</span>
+
+
+
+																<input type="hidden" name="mid" value="${sslc.mid}">
+																<span class="input-group-addon">% / CGPA</span>
+																<input type="hidden" id="e10thch" value="0" name="e10thch"/>
+															</div>
+
+														</div>
+
+													</div>
+
+
+												</div>
+
+											</div>
+
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+												style="border: 0px solid black; height: 50px">
+
+												<button type="button" id="edit"
+													class="btn btn-default pull-right"
+													style="position: absolute; bottom: 5px; right: 5px;width: 100px;">Edit</button>
+
+											</div>
+
+
+										</div>
+									</div>
+
+								</div>
+
+								<input type="hidden" name="uniqueid"
+									value="${sslc.userUniqueid}" />
+							</form>
+						</div>
+
+
+
+
+
+
+
+
+
+
+
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+				
+				
+				
+				
+				
+			</div>
+		</div>
+	</div>
+
+		
+	</div>	
+<%@include file="/WEB-INF/common/footer_back.jsp"%>
+		
+		
+		
+<input type="text" id="alertvalue" style="display: none;">
+<input type="text" id="alertdata" style="display: none;">
+<script src="js/bootstrap.min.js"></script>
+<script src="js/menu.js"></script>
+
+	
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrapValidator.js"></script>
+	
+	
+	<script>
+$(document).ready(function() {
+
+
+	var d = new Date();
+    var n = d.getFullYear();
+	for (i = 1995; i <= n; i++) {
+		$(
+				'#syoc1')
+				.append(
+						"<option value='"+i+"'>"
+								+ i
+								+ "</option>")
+	}
+var sna=$("#sname").text();
+var value1;
+if(sna==="" || sna===null)
+		{
+	
+		$("#displaydiv").hide();
+		$("#editdiv").show();
+		$("#save").attr("value","Save and Continue").css("width","140px");
+		$("#req").val("1");
+		$("#sname1").val($("#sname").text());
+	    $("#bname1").val($("#bname").text());
+		$("#syoc1").val($("#syoc").text());
+		$("#saggr1").val($("#saggr").text());
+		}
+	else
+		{
+		$("#editdiv").hide();
+		$("#displaydiv").show();
+		$(document).on('click','#edit',function(){
+		$("#displaydiv").hide()
+	    $("#editdiv").show();
+	    $("#sname1").val($("#sname").text()).attr("data-bv-excluded","true");
+	    $("#bname1").val($("#bname").text().toLowerCase()).attr("data-bv-excluded","true");
+		$("#syoc1").val($("#syoc").text()).attr("data-bv-excluded","true");
+		$("#saggr1").val($("#saggr").text()).attr("data-bv-excluded","true");
+	
+
+			
+		});
+
+		} 
+		
+$(".txbx").change(function(){
+	var id="#"+$(this).attr("id");
+	$(id).attr("data-bv-excluded","false");
+	
+});
+              $('#sslcform').bootstrapValidator({
+                    feedbackIcons: {
+                        valid: 'glyphicon glyphicon-ok',
+                        invalid: 'glyphicon glyphicon-remove',
+                        validating: 'glyphicon glyphicon-refresh'
+                    },
+                    fields:{
+                         ssname: {
+                            message: 'The school name is not valid',
+                            validators: {
+                                notEmpty: {
+                                    message: 'The School name is required and cannot be empty'
+                                }
+                            }
+                        },
+                        sboard:{
+                             message: 'The school board is not valid',
+                            validators: {
+                                notEmpty: {
+                                    message: 'The School board is required and cannot be empty'
+                                }
+                            } 
+                        },
+                        syop:{
+                             message: 'The year of passing is not valid',
+                            validators: {
+                                notEmpty: {
+                                    message: 'The year of passing is required and cannot be empty'
+                                }
+                            } 
+                        },
+                        saggr:{
+                             message: 'The aggregate is not valid',
+                            validators: {
+                                notEmpty: {
+                                    message: 'The aggregate is required and cannot be empty'
+                                },
+                                regexp: {
+                                    
+        	                        regexp: /^(?:[1-9][0-9](?:\.0)?|[1-9][0-9](?:\.[0-9])|[1-9][0-9](?:\.[0-9][0-9])|[5-9](?:\.[0-9])|[5-9](?:\.[0-9][0-9])|[5-9])$/i,
+        	                        message: 'Enter a valid Percentage'
+        	                    }
+
+                                /* ,
+                                digits:{
+                                    message: 'The aggregate should be a number between 0 - 100'
+                                } */
+                            } 
+                        }
+                        
+                    }
+                }).on('status.field.bv', function(e, data) {
+                    if (data.bv.isValid()) {
+                        data.bv.disableSubmitButtons(false);
+                        $('#save').removeClass('btn-default').addClass('btn-primary');
+                    }
+                    else {
+                        data.bv.disableSubmitButtons(true);
+                    }
+                });
+                $('.close').click(function() {
+        	        $('.alert').fadeOut('slow');
+        	    });
+
+$("#saggr1").blur(function(){
+	var ch=$("#saggr").text().substring(0,$("#saggr").text().length-2);
+	if(ch===$("#saggr1").val())
+		{
+		console.log("Same value");
+		}
+	else
+		{
+		$("#e10thch").val("1");
+		console.log("The edu value is-->"+$("#e10thch").val());
+		}
+});
+        	    
+        	   /*  var alert = "chksuccess";
+        	    switch (alert) {
+        	        case 'chksuccess':
+        	            $('#' + alert).fadeIn();
+        	            break;
+        	        case 'chkinfo':
+        	            $('#' + alert).fadeIn();
+        	            break;
+        	        case 'chkwarning':
+        	            $('#' + alert).fadeIn();
+        	            break;
+        	        case 'chkdanger':
+        	            $('#' + alert).fadeIn();
+        	            break;
+        	        default:
+        	            alert('You have met with an unexpected error . Sorry for the inconvenience made . We will look into it as soon as possible');
+        	    } */
+        	    
+$(".profileactive").addClass("active");
+        	    
+            });
+        </script>
+
+</body>
+
+</html>

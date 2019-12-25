@@ -1,0 +1,1126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@include file="/WEB-INF/common/taglibs.jsp"%>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width">
+<link rel="icon" type="img/ico" href="images/ex.ico">
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/menu.css" rel="stylesheet">
+<link href="css/font-awesome.css" rel="stylesheet">
+<link rel="stylesheet" href="css/bootstrap-select.min.css">
+<link rel="stylesheet" href="css/bootstrapValidator.css">
+<style>
+.pp {
+	padding-top: 5px;
+}
+
+#main_body {
+	background: url("images/collage.jpg") no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+#pgform .form-control-feedback {
+	top: 22px;
+	right: -25px;
+}
+</style>
+<script src="js/jquery.js"></script>
+<script>
+	(function(i, s, o, g, r, a, m) {
+		i['GoogleAnalyticsObject'] = r;
+		i[r] = i[r] || function() {
+			(i[r].q = i[r].q || []).push(arguments)
+		}, i[r].l = 1 * new Date();
+		a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+		a.async = 1;
+		a.src = g;
+		m.parentNode.insertBefore(a, m)
+	})(window, document, 'script', '//www.google-analytics.com/analytics.js',
+			'ga');
+
+	ga('create', 'UA-58259459-1', 'auto');
+	ga('send', 'pageview');
+</script>
+<title>TalentEx - Edit-PG</title>
+</head>
+<body>
+	<div class="container-fluid">
+		<!-- col-lg-  col-md-  col-sm-  col-xs- -->
+		<!-- col-lg-pull-  col-md-pull-  col-sm-pull-  col-xs-pull- -->
+		<!-- col-lg-push-  col-md-push-  col-sm-push-  col-xs-push- -->
+		<!-- visible-lg-  visible-md-  visible-sm-  visible-xs- -->
+		<!-- hidden-lg hidden-md hidden-sm hidden-xs -->
+		<!-- <img src="" 
+	data-position="" data-in="" data-delay="" data-step="" data-out=""> -->
+		<!-- <p class="small"
+		data-position="" data-in="" data-delay="" data-step="" data-out="">
+								
+	</p> -->
+
+
+
+
+
+		<%@include file="/WEB-INF/common/header_back.jsp"%>
+		<!-- 	<div class="row clearfix">
+		<div class="col-md-12 column" style="border-bottom: 2px solid #e3e3e3;padding-bottom:3px">		
+			<div id='cssmenu' class="pull-right" style="margin-right: 15px;">
+<ul>
+   <li><a href='dashboard' id="loginbut">Dashboard</a></li>
+   <li class='has-sub'><a class='active'  href='javascript:void(0)'>Profile</a>
+      <ul>
+		<li><a href="personal">Personal</a></li>
+		<li><a href="address">Address</a></li>
+		<li><a href="seducation">Education</a></li>
+		<li><a href="techskills">Existing Skills</a></li>
+		<li><a href="experience">Experience</a></li>
+		<li><a href="preference">Work Preference</a></li>
+		<li><a href="password">Change Password</a></li>
+	  </ul>
+   </li>
+    <li class='has-sub'><a href='javascript:void(0)'>Announcements</a>
+    	<ul>
+    		<li><a href="announcement">Job Announcement </a></li>
+   	<li><a href="workshop">Workshops & Seminars</a></li>
+    	</ul>
+    </li>
+    <li class='has-sub'><a href='javascript:void(0)'>Skills</a>
+    	<ul>
+    		<li><a href="mycourse">My Skills</a></li>
+			<li><a href="tech">Technical Skills</a></li>
+			<li><a href="nontech">Non-Technical Skills</a></li>
+			<li><a href="schedulexams">Scheduled Exams</a></li>
+			<li><a href="pastexam">Past Exams</a></li>
+    	</ul>
+    </li>
+    <li class='has-sub'><a href='javascript:void(0)'>Interviews</a>
+    	<ul>
+    		<li><a href="calletter">Interview Calls</a></li>
+   	<li><a href="schedueleinterview">Scheduled Interviews</a></li>
+			<li><a href="passedinterviews">Passed Interviews</a></li>
+    	</ul>
+    </li>
+     
+    
+</ul>
+</div>
+		</div>
+	</div> -->
+		<%@include file="/WEB-INF/common/menu.jsp"%>
+
+		<div class="row clearfix" id="main_body">
+			<div class="col-md-12 column" style="padding: 0px">
+				<div class="container"
+					style="background-color: white; border-right: 6px solid grey; border-left: 6px solid grey">
+
+					<div class="row"
+						style="min-height: 450px; border: solid 0px black;">
+						<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"
+							style="">
+							<div class="row" style="min-height: 450px; margin-top: 10px">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<%@include file="/WEB-INF/common/userwidget.jsp"%>
+								</div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+									style="margin-top: 3px;">
+									<div class="row" style="margin-left:-9px;">
+									<div class="panel panel-primary"
+										style="width: 100%; margin: auto;">
+										<div class="panel-heading">Profile</div>
+										<div class="panel-body">
+											<div class="list-group">
+												<a href="personal" class="list-group-item"> <span
+													class="glyphicon glyphicon-user"></span> Personal <span
+													id="perdetails" class="text-danger pull-right"><span
+														id="perd" style="font-size: 10px;"></span></span>
+												</a> <a href="address" class="list-group-item"> <span
+													class="glyphicon glyphicon-road"></span> Address <span
+													id="address" class="text-danger pull-right"><span
+														id="addr" style="font-size: 10px;"></span></span>
+												</a> <a href="seducation" class="list-group-item active"> <span
+													class="glyphicon glyphicon-book"></span> Education <span
+													id="education" class="text-danger pull-right"><span
+														id="educ" style="font-size: 10px;"></span></span>
+												</a> <a href="techskills" class="list-group-item"> <span
+													class="glyphicon glyphicon-star-empty"></span> Skills
+												</a> <a href="experience" class="list-group-item"> <span
+													class="glyphicon glyphicon-list-alt"></span> Experience
+												</a> <a href="preference" class="list-group-item "> <span
+													class="glyphicon glyphicon-list-alt"></span> Work
+													Preference
+												</a> <a href="password" class="list-group-item"> <span
+													class="glyphicon glyphicon-off"></span> Change Password
+												</a>
+											</div>
+										</div>
+									</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12" style="">
+							<div class="row" style="height: auto">
+								<form id="pgform" action="supg" method="POST">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+										style="height: auto">
+										<div class="row">
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+												style="display: none;">
+
+												<div class="alert alert-success alert-dismissible"
+													role="alert" style="display: none">
+													<button type="button" class="close" data-dismiss="alert">
+														<span aria-hidden="true">&times;</span><span
+															class="sr-only">Close</span>
+													</button>
+													<strong>Warning!</strong> Better check yourself, you're not
+													looking too good.
+												</div>
+												<div class="alert alert-info alert-dismissible" role="alert"
+													style="display: none">
+													<button type="button" class="close" data-dismiss="alert">
+														<span aria-hidden="true">&times;</span><span
+															class="sr-only">Close</span>
+													</button>
+													<strong>Warning!</strong> Better check yourself, you're not
+													looking too good.
+												</div>
+												<div class="alert alert-warning alert-dismissible"
+													role="alert" style="display: none">
+													<button type="button" class="close" data-dismiss="alert">
+														<span aria-hidden="true">&times;</span><span
+															class="sr-only">Close</span>
+													</button>
+													<strong>Warning!</strong> Better check yourself, you're not
+													looking too good.
+												</div>
+												<div class="alert alert-danger alert-dismissible"
+													role="alert" style="display: none">
+													<button type="button" class="close" data-dismiss="alert">
+														<span aria-hidden="true">&times;</span><span
+															class="sr-only">Close</span>
+													</button>
+													<strong>Warning!</strong> Better check yourself, you're not
+													looking too good.
+												</div>
+											</div>
+											<hr style="display: none;" />
+
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+												style="border: 0px solid;" id="dandanakka">
+												<div class="row">
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+														style="border: 0px solid;">
+														<div class="breadcrumb">
+															<li><a href="personal"><span
+																	class="glyphicon glyphicon-home"></span></a></li>
+															<li class="active">Profile</li>
+															<li class="active">Education</li>
+															<li class="active">PG</</li>
+														</div>
+													</div>
+												</div>
+
+												<div class="panel panel-primary" id="displaydiv">
+													<div class="panel-heading">PG Details</div>
+													<div class="panel-body">
+														<ul class="nav nav-tabs" role="tablist">
+															<li><a href="education">10th</a></li>
+															<li><a href="education1">12th</a></li>
+															<li><a href="diploma">Diploma</a></li>
+															<li><a href="ug">U.G</a></li>
+															<li class="active"><a href="javascript:void(0);">P.G</a></li>
+														</ul>
+														<hr>
+														<div class="row">
+
+															<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+																<div class="row">
+
+																	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+																		<div class="form-group ">
+																			<h5>*University:</h5>
+
+																			<div class="input-group input-group-sm">
+																				<span class="input-group-addon"><span
+																					class="glyphicon glyphicon-book"></span></span> <span
+																					style="height: inherit;" id="spuniv"
+																					class="form-control hsc">${pg.pgunivercity}</span>
+																			</div>
+																		</div>
+
+																		<div class="form-group">
+																			<h5>*Degree:</h5>
+																			<div class="input-group input-group-sm">
+																				<span class="input-group-addon"><span
+																					class="glyphicon glyphicon-book"></span></span> <span
+																					style="height: inherit;" id="spdeg"
+																					class="form-control hsc">${pg.pgdegreetype}</span>
+																			</div>
+																		</div>
+																		<div class="form-group">
+																			<h5>*Course mode:</h5>
+																			<div class="input-group input-group-sm">
+																				<span class="input-group-addon"><span
+																					class="glyphicon glyphicon-book"></span></span> <span
+																					id="spmode" class="form-control hsc">${pg.pgcollegemode}</span>
+																			</div>
+																		</div>
+																		<div class="form-group">
+																			<h5>Exam registration number :</h5>
+																			<div class="input-group input-group-sm">
+																				<span class="input-group-addon"><span
+																					class="glyphicon glyphicon-book"></span></span> <span
+																					id="spreg" class="form-control hsc">${pg.pgregnumber}</span>
+																			</div>
+																		</div>
+																		<div class="form-group">
+																			<h5>*Aggregate</h5>
+																			<div class="input-group input-group-sm">
+																				<span class="input-group-addon"><span
+																					class="glyphicon glyphicon-book"></span></span> <span
+																					id="spaggr" class="form-control hsc">${pg.pgaggregate}</span>
+																			</div>
+																		</div>
+
+
+																	</div>
+
+																</div>
+															</div>
+
+
+															<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+																<div class="row sgpd" id="diploma">
+
+																	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+																		<div class="form-group ">
+																			<h5>*College / institution:</h5>
+																			<div class="input-group input-group-sm">
+																				<span class="input-group-addon"><span
+																					class="glyphicon glyphicon-book"></span></span> <span
+																					style="height: inherit;" id="spcol"
+																					class="form-control hsc">${pg.pgcollegename}</span>
+																			</div>
+																		</div>
+																		<div class="form-group">
+																			<h5>*Department / Major:</h5>
+																			<div class="input-group input-group-sm">
+																				<span class="input-group-addon"><span
+																					class="glyphicon glyphicon-book"></span></span> <span
+																					id="spdep" class="form-control hsc">${pg.pgdepartment}</span>
+																			</div>
+																		</div>
+
+
+																		<div class="form-group ">
+																			<h5>*Year of completion:</h5>
+																			<div class="input-group input-group-sm">
+																				<span class="input-group-addon"><span
+																					class="glyphicon glyphicon-book"></span></span> <span
+																					id="spyoc" class="form-control hsc">${pg.pgyoc}</span>
+																			</div>
+																		</div>
+
+																		<div class="form-group">
+																			<h5>*Backlogs:</h5>
+																			<div class="input-group input-group-sm">
+																				<span class="input-group-addon"><span
+																					class="glyphicon glyphicon-book"></span></span> <span
+																					id="spbklgs" class="form-control hsc">${pg.pgbacklogs}</span>
+																			</div>
+																		</div>
+
+																	</div>
+
+																</div>
+															</div>
+														</div>
+														<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+															style="border: 0px solid black;">
+														<p class="text-danger">
+																<i><span class="text-danger">( * )</span> Indicates required field</i>
+															</p>
+
+														</div>
+														<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+															style="border: 0px solid black; height: 50px">
+
+															<button type="button" id="edit"
+																class="btn btn-default pull-right"
+																style="position: absolute; bottom: 5px; right: 5px;">Edit</button>
+
+														</div>
+													</div>
+												</div>
+
+
+
+
+
+												<div class="panel panel-primary" id="editdiv"
+													style="display: none;">
+													<div class="panel-heading">PG Details</div>
+													<div class="panel-body">
+														<ul class="nav nav-tabs" role="tablist">
+															<li><a href="education">10th</a></li>
+															<li><a href="education1">12th</a></li>
+															<li><a href="diploma">Diploma</a></li>
+															<li><a href="ug">U.G</a></li>
+															<li class="active"><a href="javascript:void(0);">P.G</a></li>
+														</ul>
+														<hr>
+														<div class="row">
+
+															<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+																<div class="row">
+																	<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
+																	<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+																		<!-- <div class="form-group">
+																<h5>*Course Type</h5>
+																<div class="input-group input-group-sm">
+
+																	<input type="radio" class="ctype txbx" name="pctype"
+																		id="engg"><span class="text-primary">&nbsp;Engineering</span>&nbsp;&nbsp;
+																	<input type="radio" class="ctype txbx" name="pctype"
+																		id="arts"><span class="text-primary">&nbsp;Arts
+																		and Science</span>
+																</div>
+															</div> -->
+																		<div class="form-group ">
+																			<h5>*University:</h5>
+																			<select name="puniv" data-live-search="true"
+																				class="input-group-sm form-control psel txbx"
+																				id="puniv">
+
+																				<c:forEach var="pguniv" items="${univlist}">
+																					<option value="${pguniv}">${pguniv.toUpperCase()}</option>
+																				</c:forEach>
+																			</select>
+																		</div>
+																		<div class="form-group " id="coldiv">
+																			<h5>*College / institution:</h5>
+																			<select name="pcol" data-live-search="true"
+																				class="input-group-sm form-control psel txbx"
+																				id="pcol">
+
+																				<c:forEach var="pgcol" items="${collegelist}">
+																					<option value="${pgcol.id}">${pgcol.name.toUpperCase()}</option>
+																				</c:forEach>
+																			</select>
+																		</div>
+																		<div class="form-group">
+																			<h5>*Degree:</h5>
+																			<select name="pdeg" data-live-search="true"
+																				class="input-group-sm form-control psel txbx"
+																				id="pdeg">
+																				<c:forEach var="pgdeg" items="${degreelist}">
+																					<option value="${pgdeg}">${pgdeg.toUpperCase()}</option>
+																				</c:forEach>
+																			</select>
+																		</div>
+
+
+
+																		<div class="form-group" id="depdiv">
+																			<h5>*Department / Major:</h5>
+																			<select name="pdep" data-live-search="true"
+																				class="input-group-sm form-control psel txbx"
+																				id="pdep">
+																				<c:forEach var="pgdep" items="${deplist}">
+																					<option value="${pgdep.dno}">${pgdep.department.toUpperCase()}</option>
+																				</c:forEach>
+																			</select>
+																		</div>
+																		<div class="form-group ">
+																			<h5>*Year of completion:</h5>
+																			<select name="pyop"
+																				class="input-group-sm form-control txbx" id="pyop">
+
+																			</select>
+																		</div>
+
+																	</div>
+
+																</div>
+															</div>
+
+
+															<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+																<div class="row sgpd" id="diploma">
+																	<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
+																	<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+																		<div class="form-group">
+																			<h5>*Course Mode</h5>
+																			<div class="input-group input-group-sm ">
+																				<label><input type="radio" id="fulltime"
+																					name="pgcollegemode" class="cmode txbx"
+																					value="Full Time" id="ftime"> <span
+																					class="text-primary">&nbsp;Full Time</span>&nbsp;&nbsp;</label>
+																				<label><input type="radio" id="parttime"
+																					name="pgcollegemode" class="cmode txbx" id="ptime"
+																					value="Part Time"><span
+																					class="text-primary">&nbsp;Part Time</span>&nbsp;&nbsp;</label>
+
+																				<label><input type="radio" id="corres"
+																					class="cor cmode txbx" name="pgcollegemode"
+																					value="Corres" id="cors"><span
+																					class="text-primary cor">&nbsp;Corres</span></label>
+																			</div>
+																		</div>
+
+
+																		<div class="form-group">
+																			<h5>Exam registration number :</h5>
+																			<div class="input-group input-group-sm">
+																				<input type="text" name="examreg" value=""
+																					id="ernum1" maxlength="14" class="form-control">
+																				<span class="input-group-addon txbx" id="preg"
+																					data-bv-excluded="true"><span
+																					class="glyphicon glyphicon-book"></span></span>
+																			</div>
+																		</div>
+																		<div class="form-group">
+																			<h5>*Backlogs:</h5>
+																			<select name="pbglk"
+																				class="input-group-sm form-control txbx"
+																				id="pbacklog">
+
+
+
+																			</select>
+																		</div>
+																		<input type="hidden" name="sandc" id="req" value="0" />
+																		<div class="form-group">
+																			<h5>*Aggregate</h5>
+																			<div class="input-group input-group-sm"
+																				style="width: 150px">
+																				<input value="${pg.pgaggregate }" type="text"
+																					id="pgagr" name="paggr" class="form-control txbx"
+																					maxlength="5"> <input type="hidden"
+																					name="pgid" value="${pg.pgid}"> <span
+																					class="input-group-addon">% / CGPA</span>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
+																</div>
+															</div>
+														</div>
+														<input type="hidden" id="epgch" value="0" name="epgch" />
+														<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+															style="border: 0px solid black;">
+															<p class="text-danger">
+																<i><span class="text-danger">( * )</span> Indicates required field</i>
+															</p>
+
+														</div>
+														<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+															style="border: 0px solid black; height: 50px">
+
+															<input type="submit" id="save" value="Save"
+																class="btn btn-primary pull-right"
+																style="position: absolute; bottom: 5px; right: 5px;" />
+
+														</div>
+													</div>
+												</div>
+
+
+											</div>
+										</div>
+									</div>
+									<%-- 	<input type="hidden" name="uniqueid" value="${pg.userUniqueid}" /> --%>
+								</form>
+							</div>
+						</div>
+					</div>
+
+
+
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+	<%@include file="/WEB-INF/common/footer_back.jsp"%>
+	<input type="text" id="alertvalue" style="display: none;">
+	<input type="text" id="alertdata" style="display: none;">
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/menu.js"></script>
+	<script src="js/bootstrapValidator.js"></script>
+	<script src="js/bootstrap-select.min.js"></script>
+	<script>
+		$(document)
+				.ready(
+						function() {
+							$('#pgform')
+									.find('[name="puniv"]')
+									.selectpicker()
+									.change(
+											function(e) {
+												// revalidate the color when it is changed
+												$('#pgform')
+														.bootstrapValidator(
+																'revalidateField',
+																'puniv');
+												$('#pgform')
+														.bootstrapValidator(
+																'revalidateField',
+																'pcol');
+												$('#pgform')
+														.bootstrapValidator(
+																'revalidateField',
+																'pdeg');
+											})
+									.end()
+									.find('[name="pcol"]')
+									.selectpicker()
+									.change(
+											function(e) {
+												// revalidate the language when it is changed
+												$('#pgform')
+														.bootstrapValidator(
+																'revalidateField',
+																'pcol');
+											})
+									.end()
+									.find('[name="pdeg"]')
+									.selectpicker()
+									.change(
+											function(e) {
+												// revalidate the language when it is changed
+												$('#pgform')
+														.bootstrapValidator(
+																'revalidateField',
+																'pdeg');
+
+											})
+									.end()
+									.find('[name="pdep"]')
+									.selectpicker()
+									.change(
+											function(e) {
+												// revalidate the language when it is changed
+												$('#pgform')
+														.bootstrapValidator(
+																'revalidateField',
+																'pdep');
+											})
+									.end()
+									.bootstrapValidator(
+											{
+												framework : 'bootstrap',
+												excluded : ':disabled',
+												feedbackIcons : {
+													valid : 'glyphicon glyphicon-ok',
+													invalid : 'glyphicon glyphicon-remove',
+													validating : 'glyphicon glyphicon-refresh'
+												},
+												fields : {
+													puniv : {
+														message : 'The university is not valid',
+														validators : {
+															notEmpty : {
+																message : 'The university is required and cannot be empty'
+															}
+														}
+													},
+													pcol : {
+														message : 'The college is not valid',
+														validators : {
+															notEmpty : {
+																message : 'The college is required and cannot be empty'
+															}
+														}
+													},
+													pdeg : {
+														message : 'The degree is not valid',
+														validators : {
+															notEmpty : {
+																message : 'The degree is required and cannot be empty'
+															}
+														}
+													},
+													pdep : {
+														message : 'The department is not valid',
+														validators : {
+															notEmpty : {
+																message : 'The department is required and cannot be empty'
+															}
+														}
+													},
+													paggr : {
+														message : 'The aggregate is not valid',
+														validators : {
+															notEmpty : {
+																message : 'The aggregate is required and cannot be empty'
+															},
+															regexp : {
+																regexp : /^(?:[1-9][0-9](?:\.0)?|[1-9][0-9](?:\.[0-9])|[1-9][0-9](?:\.[0-9][0-9])|[5-9](?:\.[0-9])|[5-9](?:\.[0-9][0-9])|[5-9])$/i,
+																message : 'Enter a valid Percentages'
+															}
+
+														}
+													},
+												}
+											});
+						});
+	</script>
+
+	<!-- <script>
+$(document).ready(function(){
+	$('#pgform')
+	.find('[name="puniv"]')
+	.change(
+			function(e) {
+				// revalidate the color when it is changed
+				$('#pgform')
+						.bootstrapValidator(
+								'revalidateField',
+								'puniv');
+				console.log("SUCCESS");
+			})
+	.end()
+	.find('[name="pcol"]')
+	.change(
+			function(e) {
+				// revalidate the language when it is changed
+				$('#pgform')
+						.bootstrapValidator(
+								'revalidateField',
+								'pcol');
+				console.log("SUCCESS");
+			})
+	.end()
+	.find('[name="pdeg"]')
+	.change(
+			function(e) {
+				// revalidate the language when it is changed
+				$('#pgform')
+						.bootstrapValidator(
+								'revalidateField',
+								'pdeg');
+			})
+	.end()
+	.find('[name="pdep"]')
+	.change(
+			function(e) {
+				// revalidate the language when it is changed
+				$('#pgform')
+						.bootstrapValidator(
+								'revalidateField',
+								'pdep');
+			})
+	.end()
+	.find('[name="pyop"]')
+	.change(
+			function(e) {
+				// revalidate the language when it is changed
+				$('#pgform')
+						.bootstrapValidator(
+								'revalidateField',
+								'pyop');
+			})
+	.end()
+	.find('[name="pbglk"]')
+	.change(
+			function(e) {
+				// revalidate the language when it is changed
+				$('#pgform')
+						.bootstrapValidator(
+								'revalidateField',
+								'pbglk');
+			})
+	.end()
+			.bootstrapValidator(
+					{
+						feedbackIcons : {
+							valid : 'glyphicon glyphicon-ok',
+							invalid : 'glyphicon glyphicon-remove',
+							validating : 'glyphicon glyphicon-refresh'
+						},
+						fields : {
+							pctype : {
+								message : 'The course type is not valid',
+								live:'enabled',trigger: 'blur',
+								validators : {
+									notEmpty : {
+										message : 'The course type is required and cannot be empty'
+									}
+								}
+							},
+							pcmode : {
+								message : 'The course type is not valid',
+								live:'enabled',trigger: 'blur',
+								validators : {
+									notEmpty : {
+										message : 'The course type is required and cannot be empty'
+									}
+								}
+							},
+							pgcollegemode : {
+								message : 'The course type is not valid',
+								live:'enabled',trigger: 'blur',
+								validators : {
+									notEmpty : {
+										message : 'The course type is required and cannot be empty'
+									}
+								}
+							},
+							puniv : {
+								message : 'The university is not valid',
+								live:'enabled',trigger: 'blur',
+								validators : {
+									notEmpty : {
+										message : 'The university is required and cannot be empty'
+									}
+								}
+							},
+							pcol : {
+								message : 'The college is not valid',
+								live:'enabled',trigger: 'blur',
+								validators : {
+									notEmpty : {
+										message : 'The college is required and cannot be empty'
+									}
+								}
+							},
+							pdeg : {
+								message : 'The degree is not valid',
+								live:'enabled',trigger: 'blur',
+								validators : {
+									notEmpty : {
+										message : 'The degree is required and cannot be empty'
+									}
+								}
+							},
+							pdep : {
+								message : 'The department is not valid',
+								live:'enabled',trigger: 'blur',
+								validators : {
+									notEmpty : {
+										message : 'The department is required and cannot be empty'
+									}
+								}
+							},
+							pyop : {
+								message : 'The year of passing is not valid',
+								live:'enabled',trigger: 'blur',
+								validators : {
+									notEmpty : {
+										message : 'The year of passing is required and cannot be empty'
+									}
+								}
+
+							},
+							pbglk : {
+								message : 'The backlog is not valid',
+								live:'enabled',trigger: 'blur',
+								validators : {
+									notEmpty : {
+										message : 'The backlog is required and cannot be empty'
+									}
+								}
+							},
+
+							paggr : {
+								message : 'The aggregate is not valid',
+								live:'enabled',trigger: 'blur',
+								validators : {
+									notEmpty : {
+										message : 'The aggregate is required and cannot be empty'
+									},
+									regexp : {
+										regexp: /^(?:[1-9][0-9](?:\.0)?|[1-9][0-9](?:\.[0-9])|[1-9][0-9](?:\.[0-9][0-9])|[5-9](?:\.[0-9])|[5-9])$/i,
+										message : 'Enter a valid Percentages'
+									}
+								}
+							}
+
+						}
+					})
+			.on('status.field.bv',
+					function(e, data) {
+						if (data.bv.isValid()) {
+							data.bv
+									.disableSubmitButtons(false);
+							$('#save')
+									.removeClass(
+											'btn-default')
+									.addClass(
+											'btn-primary');
+						} else {
+							data.bv
+									.disableSubmitButtons(true);
+						}
+					});
+});
+</script> -->
+	<script>
+		$(document)
+				.ready(
+						function() {
+
+							var yoc = parseInt($("#uyoc").text(), 10) + 2;
+							var yocto = parseInt(yoc, 10) + 5;
+							for (i = yoc; i <= yocto; i++) {
+
+								$('#pyop').append(
+										"<option value='"+i+"'>" + i
+												+ "</option>");
+							}
+							$('#pbacklog')
+									.append(
+											"<option value='0'>Nil</option><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>Above 5</option>");
+
+							$('#pgform').find('[name="puniv"]').selectpicker();
+							$('#pgform').find('[name="pcol"]').selectpicker();
+							$('#pgform').find('[name="pdeg"]').selectpicker();
+							$('#pgform').find('[name="pdep"]').selectpicker();
+							$('#pgform').find('[name="pyop"]').selectpicker();
+							$('#pgform').find('[name="pbglk"]').selectpicker();
+
+							$(".cor").tooltip({
+								title : 'Correspondence',
+								placement : 'bottom'
+							});
+
+							$('.psel')
+									.change(
+											function() {
+
+												var id = $(this).attr('id');
+												//console.log(type+id);
+												var oselect = "#" + id
+														+ " option:selected";
+
+												switch (id) {
+												case "puniv":
+													var univ = $(oselect)
+															.text();
+													$
+															.ajax({
+																url : 'colServ',
+																type : 'post',
+																data : {
+																	'univ' : univ,
+																	'type' : 'pg'
+																},
+																success : function(
+																		response) {
+
+																	document
+																			.getElementById('pcol').innerHTML = response;
+
+																	$('#pgform')
+																			.find(
+																					'[name="pcol"]')
+																			.selectpicker(
+																					'refresh');
+																	$('#pgform')
+																			.find(
+																					'[name="pcol"]')
+																			.selectpicker(
+																					'render');
+																	$('#pgform')
+																			.bootstrapValidator(
+																					'revalidateField',
+																					'pcol');
+																	$('#pgform')
+																			.bootstrapValidator(
+																					'revalidateField',
+																					'pdeg');
+																},
+																error : function() {
+
+																}
+															});
+													$
+															.ajax({
+																url : 'degServ',
+																type : 'post',
+																data : {
+																	'type' : 'pg'
+																},
+																success : function(
+																		response) {
+
+																	document
+																			.getElementById('pdeg').innerHTML = response;
+																	$('#pgform')
+																			.find(
+																					'[name="pdeg"]')
+																			.selectpicker(
+																					'refresh');
+																	$('#pgform')
+																			.find(
+																					'[name="pdeg"]')
+																			.selectpicker(
+																					'render');
+
+																},
+																error : function() {
+
+																}
+															});
+													break;
+
+												case "pdeg":
+													var deg = $(oselect).text();
+													$
+															.ajax({
+																url : 'depServ',
+																type : 'post',
+																data : {
+																	'deg' : deg,
+																	'type' : 'pg'
+																},
+																success : function(
+																		response) {
+
+																	document
+																			.getElementById('pdep').innerHTML = response;
+																	$('#pgform')
+																			.find(
+																					'[name="pdep"]')
+																			.selectpicker(
+																					'refresh');
+																	$('#pgform')
+																			.find(
+																					'[name="pdep"]')
+																			.selectpicker(
+																					'render');
+																	$('#pgform')
+																			.bootstrapValidator(
+																					'revalidateField',
+																					'pdep');
+
+																},
+																error : function() {
+
+																}
+															});
+													break;
+												default:
+												}
+
+											});
+
+							$("#editdiv").show();
+							$("#displaydiv").hide();
+
+							var type = $("#spmode").text().toLowerCase()
+									.replace(/ /gi, "");
+							$(".cmode").each(function() {
+								var id = $(this).attr('id');
+								if (id === type) {
+									var id1 = "#" + $(this).attr('id');
+									$(id1).attr('checked', true);
+								}
+							});
+
+							var pguniv = $('#spuniv').text();
+							var pgcol = $('#spcol').text();
+							var pcolval = $(
+									'select[name="pcol"] > option:contains("'
+											+ pgcol + '")').val();
+							var pgdeg = $('#spdeg').text();
+
+							var pgdep = $('#spdep').text();
+							var pdepval = $(
+									'select[name="pdep"] > option:contains("'
+											+ pgdep + '")').val();
+							var pgyoc = $('#spyoc').text();
+							var pgreg = $('#spreg').text();
+							var pgbklgs = $('#spbklgs').text();
+							var pgaggr = $('#spaggr').text();
+
+							//.attr("data-bv-excluded", "true"); 
+							$(".cmode").attr("data-bv-excluded", "true");
+							$("#puniv").val(pguniv).selectpicker('render');
+							$("#pcol").val(pcolval).selectpicker('render');
+							$("#pdeg").val(pgdeg).selectpicker('render');
+							$("#pdep").val(pdepval).selectpicker('render');
+							$("#pyop").val(pgyoc).selectpicker('render').attr(
+									"data-bv-excluded", "true");
+							$("#pbacklog").val(pgbklgs).selectpicker('render')
+									.attr("data-bv-excluded", "true");
+							$("#ernum1").val(pgreg).attr("data-bv-excluded",
+									"true");
+							$("#pgagr").val(pgaggr).attr("data-bv-excluded",
+									"true");
+
+							$(".txbx").change(function() {
+								var id = "#" + $(this).attr("id");
+								$(id).attr("data-bv-excluded", "false");
+							});
+
+							$("#pgagr")
+									.blur(
+											function() {
+												var ch = $("#spaggr")
+														.text()
+														.substring(
+																0,
+																$("#spaggr")
+																		.text().length - 2);
+												if (ch === $("#pgagr").val()) {
+												} else {
+													$("#epgch").val("1");
+												}
+											});
+
+							if ($.trim($("#user-name").text()).replace(" ", '') === ''
+									|| $.trim($("#user-name").text()).replace(
+											" ", '') === null
+									|| $.trim($("#user-name").text()).replace(
+											" ", '') === "null") {
+
+							} else {
+								if ($("#ms").text() === "1") {
+
+								} else {
+									$('#perdetails')
+											.tooltip(
+													{
+														title : "Please Complete Your Personal Details.",
+														position : "bottom"
+													});
+									$("#perdetails").addClass(
+											"glyphicon-asterisk");
+									$("#perd").text("(mandatory)");
+
+								}
+							}
+
+							if (pin === '' || pin === null || pin === "null") {
+								$('#address')
+										.tooltip(
+												{
+													title : "Please Complete Your Address Details.",
+													position : "bottom"
+												});
+								$("#address").addClass("glyphicon-asterisk");
+
+								$("#addr").text("(mandatory)");
+							} else {
+								$("#address").hide();
+
+							}
+							$(".profileactive").addClass("active");
+						});
+	</script>
+</body>
+
+</html>

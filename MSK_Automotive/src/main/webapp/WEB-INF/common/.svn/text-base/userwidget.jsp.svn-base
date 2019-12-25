@@ -1,0 +1,1162 @@
+<script src="js/uploadimg.js"></script>
+<script type="text/javascript" src="js/bootstrap-filestyle.min.js"></script>
+ <script src="js/jstorage.js"></script>
+<style>
+.hideli
+{
+display:none;
+cursor: not-allowed;
+}
+.changeimg
+{
+display:none;
+}
+.imageshow:hover .changeimg
+{
+display: block;
+}
+#preview 
+{
+	background-color: #fff;
+	display: block;
+	margin-top: -75px;
+	float: right;
+	margin-right: 5px;
+	width: 200px;
+	position: relative;
+}
+
+#fileinfo,#error,#error2,#abort,#warnsize,#none 
+{
+	color: #aaa;
+	display: none;
+	font-size: 10pt;
+	font-style: italic;
+	margin-top: 10px;
+}
+
+@media only screen and (max-width:400px) {
+	#preview {
+		background-color: #fff;
+		display: block;
+		margin-left: 82px;
+		margin-top: 50px;
+		float: left;
+		width: 200px;
+	}
+}
+
+@media only screen and (max-width:350px) {
+	#preview {
+		background-color: #fff;
+		display: block;
+		margin-left: 22px;
+		float: left;
+		width: 200px;
+	}
+}
+</style>
+<div id="myModal3" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title">MOBILE VERIFICATION REQUIRED</h4>
+					</div>
+					
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="col-lg-4 col-md-7 col-sm-7 col-xs-7">
+						<div class="pull-left"
+							style="margin-top:5px;">
+							<img src="images/sms.png" width="150px" height="200px" />
+						</div>
+						
+						</div>
+					<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="border-left: 5px solid #EEEEEE;margin-top: 10px;">
+						    <div style="font-size:15px;"><em>Hi! &nbsp;</em><em style="font-size: 17px;">
+						    <%
+ 	if (session.getAttribute("nickname") == " " || session.getAttribute("nickname") == null) {
+ %><%
+ 	} else {
+ %> <%=session.getAttribute("nickname")%> <%
+ 	}
+ %></em></div>
+						    <div class=""
+							style="margin-right: 10px;margin-top:5px; margin-bottom: 10px;">
+							<div style="color: #D9534F;font-size: 17px;">You have not verified your mobile number: 
+							<em style="color:#72469B;" >
+							
+							<%if(session.getAttribute("mobile")==null){ %><%}else{ %>
+								
+								<%=session.getAttribute("mobile")%>
+				<%}%>
+							
+							</em> </div>
+							
+						</div>
+							<div style="margin-top:5px;font-size: 17px;color: #5CB85C;"><em>Please Verify Your Mobile Number</em></div>
+						<div class="" style="margin-right: 10px;margin-top:5px; margin-bottom: 10px;font-size: 16px;">
+							Please click send OTP button, to receive a One Time Password(OTP) in your Registered Mobile to verify your Mobile number
+						</div>
+						
+						</div>
+						
+						
+						</div>
+						
+						<div class="modal-footer">
+						<a href="" id="logoutid1" class="" ><button  type="button" class="btn btn-primary">Skip</button></a>
+						<button  id="sendotp" type="button" class="btn btn-primary nvsign" data-dismiss="modal">Send OTP</button>
+						
+						</div>
+					
+				</div>
+			</div>
+		</div>
+<div class="row" style="margin-left:-9px;">
+<div class="panel panel-primary">
+<div class="panel-heading"><i class="glyphicon glyphicon-user"></i>  Personal Details</div>
+<div class="panel-body" style="padding-left:0px;padding-right:0px;padding-top:5px;padding-bottom:0px;">
+	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 imageshow" data-toggle="modal" data-target="#photomodel">
+		<img src="http://www.localcrimenews.com/wp-content/uploads/2013/07/default-user-icon-profile.png" width="100" height="100" style="cursor: pointer" class="profile"  id="img" />
+        <div class="changeimg"  style="cursor: pointer;position:absolute;top:80px;border:1px solid black;padding:2.5px;left:17px;box-shadow: 1px 1px 7px rgba(0,0,0,1.2);font-size:12px;width:102px;color:white;background-color:gray;">
+		<i class="fa fa-camera"></i>&nbsp;Change Photo</div>
+	</div>
+
+	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding-left:0px;">
+	
+			 <div class="row">
+				<p class="text-center" style="margin:0 0 6px;">
+
+					<strong  id="collegerank" style="font-size:13px;">
+
+						<%if(session.getAttribute("globalrank")==null){ %>
+			<a href="javascript:void(0)" class='rank'>Know your <span style="">Global Rank</span></a>	<%}else{ %>
+				<%=session.getAttribute("globalrank")%>
+				<%}%>
+
+					</strong>
+				</p>
+					<p class="text-center" style="margin:0 0 6px;">
+						<span id="rank" style="font-size:13px;" class="label label-success">Global Rank</span>
+					</p>
+			</div>
+		
+			<div class="row">
+					<p class="text-center" style="margin:0 0 6px;">
+						<strong  style="font-size:13px;" id="percentilerank">
+
+						<%if(session.getAttribute("collegerank")==null)
+						{ 
+						%><a href="javascript:void(0)" class='rank'>Know your Percentile</a><% 
+				        }
+						else
+						{
+					%><%=session.getAttribute("collegerank")%><%
+						}%>
+						</strong>
+
+				
+
+								</p>
+					<p class="text-center" style="margin:0 0 6px;">
+						<span id="percentile" style="font-size:13px" class="label label-primary">Percentile</span>
+					</p>
+			</div> 
+	</div>
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 divider text-center"></div>
+
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	
+	
+	
+	<table align="center" width="270" border="0" cellspacing="0" cellpadding="0" style="margin-top:5px;font-family:Arial;font-size:14px;color:#191919;line-height:22px">
+	    <tbody><tr>
+
+        <td width="180"></td>
+
+        <td width="20"></td>
+
+        <td width="390"></td>
+
+      </tr>
+
+      <tr>
+
+        <td align="left" valign="top"><b style="color:#1ABC9C;">FRID</b></td>
+        <td align="center" valign="top">:</td>
+        <td align="left" valign="top">FBT<%=session.getAttribute("jobseekerid")%></td>
+
+      </tr>
+       <tr>
+
+        <td align="left" valign="top"><b style="color:#1ABC9C;">Email ID</b></td>
+        <td align="center" valign="top">:</td>
+        <td align="left" valign="top" style="word-break:break-all"><%=session.getAttribute("emailid")%></td>
+
+      </tr>
+      </tbody>
+      </table>
+	
+	<span id="user-name" style="display:none;"> <%
+ 	if (session.getAttribute("nickname") == " ") {
+ %>
+					null <%
+ 	} else {
+ %> <%=session.getAttribute("nickname")%> <%
+ 	}
+ %>
+				</span>
+
+	</div>
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 divider text-center"></div>
+	
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom:15px;">
+	<table align="center" width="270" border="0" cellspacing="0" cellpad	ding="0" style="margin-top:5px;margin-bottom:5px;font-family:Arial;font-size:14px;color:#191919;line-height:22px">
+	    <tbody><tr>
+
+        <td width="300" id="widthstatus"></td>
+
+        <td width="15"></td>
+
+        <td width="400"></td>
+
+      </tr>
+      <tr>
+      <td><b style="color:#1ABC9C;">Status</b></td>
+      <td>:</td>
+      <td>
+      <span class="label" style="font-size:13px;" id="user-status" style="cursor: pointer;"></span>
+      </td>
+      </tr>
+      </tbody>
+      </table>
+	<div class="progress" style="margin-bottom:5px;">
+    <div class="progress-bar" id="barwidth" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:55%;">
+      <span style="position:absolute;left:0;width:100%;text-align:center;z-index:2;color:white;"id="barwidth1">55%</span>
+    </div>
+    
+  </div> 
+<ul style="list-style:none;margin-bottom:-2px;margin-left:-40px;">
+<li><a href="javascript:void(0)" data-toggle="modal" data-target="#photomodel" class="img"></a></li>
+<li><a id="personalink" href="personal"></a></li>
+<li><a id="addresslink" href="address"></a></li>
+<li><a id="10thlink" href="education"></a></li>
+<li><a id="12thlink" href="education1"></a></li>
+<li><a id="uglink" href="ug"></a></li>
+<li><a id="rolelink" href="jobrolelanding"></a></li>
+</ul>
+	  
+
+	
+		</div>
+
+	
+
+</div>
+	<span style="display:none;" id="ugth"><%if (session.getAttribute("ugper")==null) 
+	{
+ 		
+ %>
+					null <%
+ 	} else 
+ 	{
+ 		
+ %> <%=session.getAttribute("sslcper")%>
+					<%
+						}
+					%>
+				</span>
+<span style="display:none;" id="twth"> <%
+ 	if (((session.getAttribute("hscper")==null ) || (session.getAttribute("hscper").equals(0.0)) || (session.getAttribute("hscper").equals("0.0"))) 
+ 			&& ((session.getAttribute("diplomaper")==null) || (session.getAttribute("diplomaper").equals(0.0))  || (session.getAttribute("diplomaper").equals("0.0")))) {
+       
+ 
+ %>
+					null <%
+ 	} 
+ 	else {
+ %> <%=session.getAttribute("sslcper") %>
+					<%
+						}
+					%>
+				</span>	
+				
+				<span id="sslcper" style="display:none;"><%=session.getAttribute("sslcper")%></span>
+			<span id="hscper" style="display:none;"><%=session.getAttribute("hscper")%></span>
+		    <span id="dipper" style="display:none;"><%=session.getAttribute("diplomaper")%></span>
+			<span id="ugper" style="display:none;"><%=session.getAttribute("ugper")%></span>
+		    <span id="syoc" style="display:none;"><%=session.getAttribute("sslcyoc")%></span>
+			<span id="uyoc" style="display:none;"><%=session.getAttribute("ugyoc")%></span>
+			<span id="hyoc" style="display:none;"><%=session.getAttribute("hscyoc")%></span>
+			<span id="dyoc" style="display:none;"><%=session.getAttribute("dyoc")%></span>
+			<span id="ms" style="display:none;"><%=session.getAttribute("mobistatus")%></span>
+			<span id="photo" style="display:none;"><%=session.getAttribute("photo")%></span>
+			<span id="pincode" style="display:none;"><%=session.getAttribute("pincode")%></span>
+			<span id="pstatus" style="display:none;"><%=session.getAttribute("fullprofile")%></span>
+			<span id="userstatus" style="display:none;"><%=session.getAttribute("userstatus")%></span>
+			<span id="mobstatus" style="display:none;"><%=session.getAttribute("mobstatus")%></span>
+			<span id="announcecount" style="display:none;"><%=session.getAttribute("announcecount")%></span>
+			<span id="interviewcount" style="display:none;"><%=session.getAttribute("interviewcount")%></span>
+			<span id="gender" style="display:none;"><%=session.getAttribute("gender")%></span>
+			<span id="activestatus" style="display:none;"><%=session.getAttribute("activestatus")%></span>
+			<span id="mobile" style="display:none;"><%=session.getAttribute("mobile")%></span>
+			<span id="firstlogin" style="display:none;"><%=session.getAttribute("firstlogin")%></span>
+		<%-- 	<span id="loginmail" style="display:none;"><%=session.getAttribute("loginmail")%></span> --%>
+</div>
+</div>
+
+	<div id="myModal1" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close closemodel" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title">Mobile Number Verification</h4>
+				</div>
+	                 <div class="alert alert-success alert-dismissible" id="fgpsuccess"
+						role="alert" style="display: none;">
+						<button id="closemsg" type="button" class="close">
+							<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+						</button>
+						<div id="fgpsuccessdata"></div>
+					</div>
+					  <div class="alert alert-success alert-dismissible" id="fgpsuccess1"
+						role="alert" style="display: none;">
+						<button id="closemsg" type="button" class="close">
+							<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+						</button>
+						<div id="fgpsuccessdata1"></div>
+					</div>
+
+					<div class="alert alert-danger alert-dismissible" id="fgpdanger"
+						role="alert" style="display: none;">
+						<button type="button" class="close">
+							<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+						</button>
+						<div id="fgpdangerdata"></div>
+					</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+					style="padding-top: 10px;" id="fullsms">
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+					<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8"
+						style="background-color: #FCFCFC; border: 5px solid #FCFCFC">
+					 <div
+							style="background-color: #ecf0f1; margin-top: 10px; border: 2px solid #F2F1EF">
+							<p class="text-warning"
+								style="padding-top: 10px; padding-bottom: 10px;">
+								<small style="padding-top: 10px; margin-left: 10px;">Haven't
+									received the code yet? <span class="text-primary"
+									style="cursor: pointer;" id="resend">Resend code</span>
+								</small>
+							</p>
+						</div> 
+						<div class="pull-left"
+							style="margin-right: 10px; margin-bottom: 10px;">
+							<img src="images/sms.png" width="80px" height="80px" />
+						</div>
+						<div>
+							<p>
+								A text message with your code has been sent to: ***** **<span	id="tdigit"></span>
+							</p>
+						</div>
+						<div style="margin-top:42px;">
+						<span  style="font-weight:bolder;font-size:19px;">Enter Code</span>
+						<input type="text" class="form-control" placeholder="Enter Code"
+							id="mobilecode" /></div>
+
+		<input type="submit" id="send" style="margin-left: 120px; margin-top: 10px; margin-bottom: 15px; margin-bottom: 20px;"
+							class="btn btn-primary" value="Verify"/>
+
+					</div>
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+
+				</div>
+				<div class="modal-footer">
+					<button id="closemodel" type="button" class="btn btn-default closemodel" data-dismiss="modal">Close</button>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+ <script>
+$(document).ready(function()
+		{
+	
+	
+	$.jStorage.set("accountactive","1");
+	
+	var mob=$("#mobile").text().replace(" ","");
+	
+	$("#resend").click(function() {
+		$('.alert').fadeOut('slow');
+		$.ajax({
+			url: "mobiverify",
+			type: "post",
+			data: {
+				mob: mob
+			},
+			success: function(response) {
+				status=$.trim(response).replace(" ","");
+				if(status==="0")
+					{
+				    $('#fgpdangerdata').text('Your Verification code has already been sent to your Mobile. Code delivery may be delayed from mobile service provider end. you can verify the code within 3 days.').css("font-size","15px");
+					$('#fgpdanger').fadeIn();
+				
+					}
+				else
+					{
+					$('#fgpsuccessdata').text('Your Verification code sent to your Mobile.').css("font-size","17px");
+					$('#fgpsuccess').fadeIn();
+					}
+				$('.close').click(function()
+						{
+							$('.alert').fadeOut('slow');
+						});
+			},
+			error: function(response) {
+				onsole.log("Mobile Number not send");
+			}
+		});
+
+	});
+	
+	
+	$("#send").click(function() {
+		var code = $("#mobilecode").val();
+		if (code === '' || code === 'null' || code === null) 
+		{
+			$("#mobilecode").css("border", "1px solid red");
+		} 
+		else 
+		{
+			$('.alert').fadeOut('slow');
+			$.ajax({
+				url: "verifysms",
+				type: "post",
+				data: {
+					code: code,
+					mob: mob,
+				},
+				success: function(responseText) {
+					var status = responseText;
+					if ($.trim(status).toUpperCase() === "SUCCESS") 
+					{
+						$('.alert-dismissible').css('display', 'none');
+						$(".qicon").removeClass("nvsign");
+						$(".qicon").removeClass("glyphicon glyphicon-question-sign").addClass("glyphicon glyphicon-ok").css("cursor", "default");
+						$(".pvtext").text("Verified").removeClass("text-danger").addClass("text-success").css("text-decoration", "none");
+						$(".pvtext").css("cursor", "default");
+						$('#fullsms').hide();
+						$('#fgpsuccessdata').text('Your mobile number has been verified successfully');
+						$('#fgpsuccess').fadeIn();
+
+						$('#closemsg').click(function() {
+							$('.alert').fadeOut('slow');
+							window.location.reload();
+						});
+						window.setTimeout(function() {
+							window.location.reload();
+						}, 900);
+
+					} 
+					else 
+					{
+						$('.alert-dismissible').css('display', 'none');
+						$('#fgpdangerdata').text('Please Enter the Valid Verification code');
+						$('#fgpdanger').fadeIn();
+						$('.close').click(function() {
+							$('.alert').fadeOut('slow');
+						});
+					}
+
+				},
+				error: function(responseText) {
+				}
+			});
+
+		}
+	});
+	
+	$('#fgpsuccess .close').click(function() {
+		$('.alert').fadeOut('slow');
+		$('#closemodel').trigger('click');
+		window.location.reload();
+	});
+	
+
+	$('.closemodel').click(function() {
+		window.location.reload();
+	});
+	
+	
+	$(document).on("click",".nvsign",function() {
+		$("#mobilecode").val("").focus();
+		$('#myModal1').modal('show');
+		$("#mobilecode").css("border", "1px solid green");
+		$("#tdigit").text(mob.substring(7, 10));
+		$('.alert').fadeOut('slow');
+		$.ajax({
+			url: "mobiverify",
+			type: "post",
+			data: 
+			{
+				mob: mob
+			},
+			success: function(response) 
+			{
+				
+				status=$.trim(response).replace(" ","");
+				if(status==="0")
+					{
+				    $('#fgpdangerdata').text('Your Verification code has  already been sent to your Mobile. Code delivery may be delayed from mobile service provider end. you can verify the code within 3 days.');
+					$('#fgpdanger').fadeIn();
+				
+					}
+				else
+				{
+				$('#fgpsuccessdata1').text('Your Verification code sent to your Mobile.');
+				$('#fgpsuccess1').fadeIn();
+				}
+			$('.close').click(function()
+					{
+						$('.alert').fadeOut('slow');
+					});
+			},
+			error: function(response)
+			{
+			
+			}
+		});
+
+	});
+	
+	
+	
+	
+	var barwidth=($("#barwidth").width() / $('#barwidth').parent().width() * 100).toFixed(0);
+	var photo=$("#photo").text();
+	var username=$.trim($("#user-name").text()).replace(" ",'');
+	var ugth=$.trim($("#ugth").text()).replace(" ",'');
+	var gender=$.trim($("#gender").text()).replace(" ",'');
+	var pin=$.trim($("#pincode").text()).replace(" ",'');
+	var tech=$.trim($("#user-technology").text()).replace(/\s+/g,'');
+
+
+	
+	if(photo===''||photo==="null")
+		{
+	$(".img").text("Photo Upload(+5%)");
+	if(gender==="male")
+		{
+		$("#img").attr("src","images/male.png");
+		}
+	else if(gender==="male")
+		{
+		$("#img").attr("src","images/female.png");
+		}
+		}
+	else
+		{
+		$("#img").attr("src",photo);
+		$("#barwidth1").text((parseInt($.trim($("#barwidth").text()).slice(0, -1), 10) + 5)+"%");
+		$("#barwidth").css("width",$.trim($("#barwidth").text()).slice(0, -1)+"%");
+		}
+
+if(username===''||username===null||username==="null")
+	{
+	$('#perdetails').tooltip({
+		title:"Please Complete Your Personal Details.",
+		position:"bottom"
+	});
+	
+	$("#perdetails").addClass("glyphicon-asterisk");
+	$("#perd").text("(mandatory)");
+	/* $("#user-status").text("Profile Incomplete").removeClass(" label label-success").addClass(" label label-danger"); */
+	$("#personalink").text("Personal Details(+5%)");
+	$.jStorage.set("accountactivestatus","0");
+	if($("#ms").text()==="1")
+	{
+		$("#barwidth1").text((parseInt($.trim($("#barwidth").text()).slice(0, -1), 10) + 15)+"%");
+		$("#barwidth").css("width",$.trim($("#barwidth").text()).slice(0, -1)+"%");
+	}
+	}
+else
+	{
+	if($("#ms").text()==="1")
+	{
+		$("#barwidth1").text((parseInt($.trim($("#barwidth").text()).slice(0, -1), 10) + 20)+"%");
+		$("#barwidth").css("width",$.trim($("#barwidth").text()).slice(0, -1)+"%");
+		$("#perdetails").hide();
+	}
+	else
+		{
+		$.jStorage.set("accountactivestatus","1");
+		barwidth=($("#barwidth").width() / $('#barwidth').parent().width() * 100).toFixed(0);
+		$("#barwidth1").text((parseInt($.trim($("#barwidth").text()).slice(0, -1), 10) + 5)+"%");
+		$("#barwidth").css("width",$.trim($("#barwidth").text()).slice(0, -1)+"%");
+		$('#perdetails').tooltip({
+			title:"Please verify your Mobile Number.",
+			position:"bottom"
+		});
+		$("#personalink").text("Mobile Number Not Verify(+15%)").addClass("nvsign").attr("href","javascript:void(0)");
+	     }
+	}
+
+
+   if(pin===''||pin===null||pin==="null")
+	{
+	$('#address').tooltip({
+		title:"Please Complete Your Address Details.",
+		position:"bottom"
+	});
+	$("#address").addClass("glyphicon-asterisk");
+	$("#addr").text("(mandatory)");
+	$("#addresslink").text("Address Details(+5%)");
+	}
+else
+	{
+	 $("#address").hide();
+	 $("#barwidth1").text((parseInt($.trim($("#barwidth").text()).slice(0, -1), 10) + 5)+"%");
+	 $("#barwidth").css("width",$.trim($("#barwidth").text()).slice(0, -1)+"%");
+	}
+
+	
+  
+   if(ugth===''||ugth===null||ugth==="null")
+	{
+	$('#education').tooltip({
+		title:"Please Complete Your Education Details.",
+		position:"bottom"
+	});
+	$("#educ").text("(mandatory)");
+	$("#education").addClass("glyphicon-asterisk");
+	}
+else
+	{
+	 $("#education").hide();
+	}
+
+
+   
+   if(ugth!="null" && username!=null && $("#ms").text()==="1")
+   {
+	   $.jStorage.set("addressactivestatus","3");
+   }
+   else
+	   {
+	   
+	   }
+
+
+   
+   if(ugth!="null" && username!=null && $("#ms").text()==="1" && pin!="null")
+	   {
+	   $("#user-status").text("Active").removeClass(" label label-danger").addClass(" label label-success");
+	   $("#widthstatus").css("width","177px");
+ 		$("#md,.md").removeClass("disabled");
+ 		$.jStorage.set("accountactivestatus","3");
+	   }
+   else
+	   {
+	   $("#user-status").text("Profile Incomplete").removeClass(" label label-success").addClass(" label label-danger");
+	   }
+
+   
+
+   
+/* Tooltips Starts */
+     
+ $('#rank').tooltip({
+	title:"Your Position for the choosen job role among all register participations.",
+	position:"bottom"
+});
+
+$('#percentile').tooltip({
+	title:"Number of people behind you for every hundred people in the Ranking System.",
+	position:"bottom"
+});
+
+/* Tooltips Ends */
+
+
+
+
+
+
+
+	var data1,data2,data3,data4,activestatus;
+	data1=$.trim($("#sslcper").text());
+	activestatus=$.trim($("#activestatus").text());
+	
+	
+	
+	if(activestatus==="0")
+	{
+			
+	if(data1==="null")
+		{
+		
+		$("#10thlink").text("10th Details(+5%)");
+		 $("#user-status").tooltip({
+             title:"Please Complete the mandatory Fields in your Profile",
+             position:"bottom"
+				});
+		    $("#twt,#dt,#ugt,#pgt").tooltip({
+				title: 'Please Enter the 10th Details',
+				position: 'bottom'
+			});
+		    $("#md,.md,#an,#in,#ass").tooltip({
+				title: 'Please Enter the 10th Details',
+				position: 'bottom'
+			});
+		    
+		    $(".disabled").find('ul').addClass('hide').css("cursor","not-allowed");
+		   
+		}
+	else
+		{
+		
+		 $("#barwidth1").text((parseInt($.trim($("#barwidth").text()).slice(0, -1), 10) + 5)+"%");
+		 $("#barwidth").css("width",$.trim($("#barwidth").text()).slice(0, -1)+"%");
+		$("#user-status").tooltip({
+            title:"Please Complete the mandatory Fields in your Profile",
+            position:"bottom"
+			});
+	    data2=$.trim($("#twth").text());
+		if(data2==="null")
+			{
+			 $(".disabled").find('ul').addClass('hide').css("cursor","not-allowed");
+			$("#12thlink").text("12th Details(+5%)");
+			$(".twt").removeClass("disabled");
+			$(".dt").removeClass("disabled");
+			$("#ugt,#pgt").tooltip({
+				title: 'Please Enter the 12th or Diploma Details',
+				position: 'bottom'
+			});
+			$("#md,.md,#an,#in,#ass").tooltip({
+				title: 'Please Enter the 12th or Diploma Details',
+				position: 'bottom'
+			});
+			 if($("#hscper").text()==="0.0")
+			  {
+		      $("#md,.md,#an,#in,#ass").tooltip("destroy");
+			  $("#12thlink").attr("href","diploma");
+			  $("#12thlink").text("Diploma Details(+5%)");
+			  $("#md,.md,#an,#in,#ass").tooltip({
+					title: 'Please Enter the Diploma Details',
+					position: 'bottom'
+				});
+			  }
+		   else
+			   {
+			   
+			   }
+			}
+		else
+			{
+			$("#barwidth1").text((parseInt($.trim($("#barwidth").text()).slice(0, -1), 10) + 5)+"%");
+			$("#barwidth").css("width",$.trim($("#barwidth").text()).slice(0, -1)+"%");
+			$("#user-status").tooltip({
+                title:"Please Complete the mandatory Fields in your Profile",
+                position:"bottom"
+				});
+			$(".twt").removeClass("disabled");
+			$(".dt").removeClass("disabled");
+			$(".ugt").removeClass("disabled");
+				data3=$.trim($("#ugth").text());
+	
+			if(data3==="null")
+				{
+				 $(".disabled").find('ul').addClass('hide').css("cursor","not-allowed");
+				$("#uglink").text("UG Degree Details(+5%)");
+			    $(".pgt").tooltip("destroy");
+				$("#pgt").tooltip({
+					title: 'Please Enter the UG Details',
+					position: 'bottom'
+				});
+				$("#md,.md,#an,#in,#ass").tooltip({
+					title: 'Please Enter the UG Details',
+					position: 'bottom'
+				});
+				}
+			else
+				{
+				$("#barwidth1").text((parseInt($.trim($("#barwidth").text()).slice(0, -1), 10) + 5)+"%");
+				$("#barwidth").css("width",$.trim($("#barwidth").text()).slice(0, -1)+"%");
+				$("#md,.md,#ass").tooltip('destroy');
+				
+
+
+
+				if(pin===''||pin===null||pin==="null")
+				{
+					 $("#md,.md,#ass,#an,#in").tooltip('destroy');
+					 $("#md,.md,#ass,#an,#in").tooltip({
+					    	title:"Please Enter Your Address Details",
+							position: 'bottom'
+						});
+					 $("#user-status").tooltip('destroy');
+						$("#user-status").tooltip({
+		                    title:"Please Enter Your Address Details",
+		                    position:"bottom"
+							});
+				}
+			   else
+				   {
+				 $("#ass").tooltip('destroy');
+				 $("#ass").removeClass("disabled");	
+
+				 if($("#ms").text()==="1")
+					{
+						
+					$("#user-status").tooltip('destroy');
+					$("#widthstatus").css("width","177px");
+					 $("#md,.md").removeClass("disabled");	
+				    }
+				else
+					{
+					 $("#user-status,#md,.md,#an,#in").tooltip('destroy');
+				 $("#user-status,#md,.md").tooltip({
+                 title:"Please verify your Mobile Number",
+                 position:"bottom"
+					});
+				 $("#an,#in").removeClass("disabled");
+					}
+
+
+
+				 
+				   }
+
+
+
+
+
+				
+				
+				 
+					$("#backlog").text();
+				    $(".pgt").removeClass("disabled");
+				}
+		
+		
+			}
+			}
+	}
+	else
+		{
+		 if($("#ms").text()==="1")
+		   {
+		   $("#user-status").text("Active").removeClass(" label label-danger").addClass(" label label-success");
+		   $("#widthstatus").css("width","177px");
+		   }
+	   else
+		   {
+		   $("#user-status").text("Profile Incomplete").removeClass(" label label-success").addClass(" label label-danger");
+		   }
+		
+		
+		$("#barwidth1").text((parseInt($.trim($("#barwidth").text()).slice(0, -1), 10) + 15)+"%");
+		$("#barwidth").css("width",$.trim($("#barwidth").text()).slice(0, -1)+"%");
+		
+		$("#md,.md,#ass").removeClass("disabled");
+		$("#an,.an,#in,.in,.twt,.dt,.ugt,.pgt").removeClass("disabled");
+		}
+
+	
+	
+
+
+
+
+	/* User Profile Progress Bar Starts */
+
+	
+var barwidthtext=$.trim($("#barwidth").text()).slice(0, -1);
+
+if(barwidthtext < "75" )
+	{
+	$(".progress-bar").css("background-color","#C61F00");
+	}
+else if(barwidthtext > "76" && barwidthtext <= "85")
+{
+$(".progress-bar").css("background-color","#06799F");
+}
+else if(barwidthtext > "85" && barwidthtext <= "95")
+{
+$(".progress-bar").css("background-color","#FF9700");
+}
+else if(barwidthtext > "96")
+	{
+	$(".progress-bar").css("background-color","#5CB85C");
+	}
+else
+	{
+
+	}
+	
+if(barwidthtext === "100" )
+{
+$(".progress-bar").css("background-color","#5CB85C");
+}
+
+/* User Profile Progress Bar Ends */
+
+	
+
+/* Click Event disable preventDefault */
+
+	$("li a,.tec,.alradd").on("click",function(e){
+			 if ($(this).hasClass("disabled")) {
+				 
+				 e.preventDefault();
+				   return false;
+				 }
+			}); 
+
+
+
+	/*  Click Event Photo Upload End */
+	
+ $(":file").filestyle({buttonName: "btn-primary"});
+
+
+
+/*  Click Event Photo Upload Start */
+	 
+	 $(document).on('click','#upload',function(){
+		 data = $("#dataurl").text();
+		 if (data === '')
+	        {
+			   $(".none").css("display","none");
+	            document.getElementById('none').style.display = 'block';
+	        }
+	        else
+	        {
+	        	var src=$("#preview").attr("src");
+	            $.ajax({
+                    url:"photoupload",
+                    type:"post",
+                    data:{photo:src}
+
+
+		            });
+		            
+		        $("#img").attr("src",src);
+		        $(".img").text("");
+		    	$("#barwidth1").text((parseInt($.trim($("#barwidth").text()).slice(0, -1), 10) + 5)+"%");
+				$("#barwidth").css("width",$.trim($("#barwidth").text()).slice(0, -1)+"%");
+			
+	        }
+		
+    });
+
+	/*  Click Event Photo Upload End */
+	    
+	 $(document).on('click','#cancel',function()
+     {
+		 window.location.href="personal";
+	 });
+	 
+
+
+
+
+/* User Status Ajax send Link start */
+
+var datavalue1=$.trim($("#user-status").text().replace(" ","").toLowerCase());
+var datavalue2=$.trim($("#userstatus").text().replace(" ","").toLowerCase());
+
+if(datavalue2==="inactive")
+	{
+	datavalue2="profileincomplete";
+	}
+
+ if(datavalue1===datavalue2)
+		 {
+	
+		 } 
+	 else
+		 {
+		 if(datavalue1==="profileincomplete")
+			 {
+			 datavalue1="inactive";
+			 } 
+		 
+		 $.ajax({
+type:"post",
+url:"userstatus",
+data:{status:datavalue1}
+			 
+			 }); 
+	
+		 }
+
+/*  User Status Ajax send Link End */
+
+
+/* Click Event Global Rank Start */
+
+ var globalrank1="";
+ var percentile1="";
+ $(document).on("click",".rank",function(){
+	 $.ajax({
+		 type:"post",
+		 url:"rank",
+		 success: function(response) {
+
+			 var rankdatas = $.trim(response).replace(" ","").split(/~/);
+			 globalrank1 = rankdatas[0];
+			 percentile1 = rankdatas[1];
+			 $("#collegerank").text(globalrank1);
+			 $("#percentilerank").text(percentile1);
+
+		 }
+	 
+		 			 
+		}); 
+ });
+ 
+/*  Click Event Global Rank End */
+ 
+
+ 
+ if(($("#ms").text()==="0" || $("#ms").text()==="null") && $("#firstlogin").text()==="1")
+	{
+	$(".logoutid").attr('href',"javascript:void(0)");
+	$(".logoutid").addClass("logout");
+	$("#logoutid1").attr("data-dismiss","modal");
+	$("#logoutid1").hide();
+	 <%session.setAttribute("firstlogin", "0");%>
+	 $("#myModal3").modal('show');
+	}
+else if(($("#ms").text()==="0" || $("#ms").text()==="null") && $("#firstlogin").text()==="0")
+	{
+	$(".logoutid").attr('href',"javascript:void(0)");
+	$(".logoutid").addClass("logout");
+	$("#logoutid1").attr("data-dismiss","modal");
+	}
+else
+	{
+	$(".logoutid").attr('href',"logout");
+	}
+ 
+
+ /* Click Event Logout Link Start*/
+$(document).on("click",".logoutid",function(){
+	 if ($(this).hasClass("logout")) {
+		 $("#myModal3").modal('show');
+		 $("#logoutid1").attr("href","logout").removeAttr("data-dismiss");
+		 $("#logoutid1").show();
+	 }
+	 
+});
+ 
+/* Click Event Logout Link End*/
+
+ $(".nvsign").tooltip({
+		title: "Click to Verify Your Mobile Number",
+		position: "top"
+	});
+ 
+ $('#sendotp').removeAttr("tooltip-data");
+ 
+/*  $(document).on("click",".logoutid",function(){
+	 $.ajax({
+		 type:"post",
+		 url:"logoutmailsend",
+		 success: function(response) {
+		 
+		 }
+ });
+ }); */
+		}); 
+
+</script> 
+
+<div id="photomodel" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title">Select your File and Click Upload</h4>
+				</div>
+				<div class="modal-body">
+					<div id="imgcontent" class="row">
+
+						<div class="container_image">
+							<div class="upload_form_cont">
+
+								
+									<label for="image_file">
+										<div id="hed">Please select image file with size less
+											then 1 MB</div>
+									</label>
+
+									<div id="textbo">
+										<input type="file" class="filestyle"
+											data-buttonName="btn-primary" id="image_file"
+											name="image_file" onchange="fileSelected();"> 
+										<!-- <input type="file" id="image_file" name="image_file" class="filestyle" data-buttonBefore="true" onchange="fileSelected();"> -->
+										<!-- <input type="file" name="image_file" id="image_file" onchange="fileSelected();" /> -->
+									</div>
+								<!-- 	<input type="button" class="btn btn-primary" value="Upload"  id="upload"/>
+                                <input type="button" class="btn btn-danger" value="Cancel" id="cancel"  /> -->
+
+									<div id="fileinfo">
+										<div id="filename"></div>
+										<div id="filesize"></div>
+										<div id="filetype"></div>
+										<div id="filedim"></div>
+									</div>
+									<div class="none" id="none">You should select valid image
+										files First!</div>
+									<div class="none" id="error">
+										Only Image Formats Such as BMP/GIF/JPEG/PNG/TIFF Can be
+										uploaded<br />You should select valid image files only!
+									</div>
+									<div class="none" id="error2">An error occurred while
+										uploading the file</div>
+									<div class="none" id="abort">The upload has been canceled
+										by the user or the browser dropped the connection</div>
+									<div class="none" id="warnsize">Your file is very big. We
+										can't accept it. Please select more small file</div>
+
+									<div id="progress_info">
+										<div id="progress"></div>
+										<div id="progress_percent"></div>
+										<div class="clear_both"></div>
+										<div>
+											<div id="speed"></div>
+											<div id="remaining"></div>
+											<div id="b_transfered"></div>
+											<div class="clear_both"></div>
+										</div>
+										<div id="upload_response" style="display: none"></div>
+									</div>
+								
+
+								<img id="preview" />
+							</div>
+
+						</div>
+						<div id="dataurl"
+							style="position: absolute; bottom: 0; left: 0; width: 100%; height: 20%; border: 2px solid black; overflow: scroll; display: none"></div>
+					</div>
+
+
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+					<button type="button" id="upload" class="btn btn-primary"
+						data-dismiss="modal">UPLOAD</button>
+				</div>
+			</div>
+		</div>
+	</div>

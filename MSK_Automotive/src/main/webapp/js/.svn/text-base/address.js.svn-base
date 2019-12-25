@@ -1,0 +1,698 @@
+	/**
+	 * Author Vignesh
+	 */
+
+	$(document).ready(function() {
+		
+/*Initiate selectpicker for address*/
+		
+		$('#addressform').find('[name="cstate[]"]').selectpicker();
+		$('#addressform').find('[name="ccity[]"]').selectpicker();
+		$('#addressform').find('[name="cdist[]"]').selectpicker();
+		$('#addressform').find('[name="pstate[]"]').selectpicker();
+		$('#addressform').find('[name="pcity[]"]').selectpicker();
+		$('#addressform').find('[name="pdist[]"]').selectpicker();
+		/* To detect if edit or save is to be enabled*/
+		
+		var detect = $("#cadd1").text();
+		
+		if (detect === "" || detect === null) {
+			$("#chcli").val("1");
+			console.log("the addressredirect is-->"+$("#addressredirect").val());
+			$("#displaydiv").hide();
+			$("#save").attr("value", "Save and Continue").css("width","140px");
+			$('#addressform').find('[name="pcity[]"]').selectpicker();
+			$('#addressform').find('[name="pdist[]"]').selectpicker();
+			$("#editdiv").show();
+			var addressstatus=$.jStorage.get("addressactivestatus");
+			if(addressstatus==="2")
+				{
+				$("#req").val("2");
+				console.log("the addressredirect is-->"+$("#addressredirect").val());
+				}
+			else
+				{
+				$("#req").val("1");
+				console.log("the addressredirect is-->"+$("#addressredirect").val());
+				}
+		} 
+		else 
+		{
+			$("#editdiv").hide();
+			$("#displaydiv").show();
+			$(document).on('click','#edit',function() {
+				$("#editdiv").show();
+				$("#permanentid").show();
+				$("#displaydiv").hide();
+				$("#checkbox").hide();
+				$("#peraddress").show();
+				$("#chcli").val("0");
+				var cstate=$("#cstate1").text();
+				var cdistdata=$("#cdis").text();
+				var ccitydata=$("#ccity1").text();
+				$("#ecadd1").val($("#cadd1").text()).attr("data-bv-excluded", "true");
+				$("#ecadd2").val($("#cadd2").text()).attr("data-bv-excluded", "true");
+				$("#cstate").val(cstate).selectpicker('render').attr("data-bv-excluded", "true");
+				$("#ecpin").val($("#cpin").text()).attr("data-bv-excluded", "true");
+
+				/* Change attribute value to no validation permanent address*/
+				var pstate=$("#pstate1").text();
+				$("#epadd1").val($("#padd1").text()).attr("data-bv-excluded", "true");
+				$("#epadd2").val($("#padd2").text()).attr("data-bv-excluded", "true");
+				$("#pstate").val(pstate).selectpicker('render').attr("data-bv-excluded", "true");
+				$("#epin").val($("#ppin").text()).attr("data-bv-excluded", "true");
+				
+				var cityServ = "ccityServ";
+				var distServ = "cdistServ";
+				
+				$.ajax({
+					url: cityServ,
+					type: 'post',
+					data: {
+						
+						'value': cstate
+					},
+					success: function(
+					response) {
+
+						document.getElementById('ccity').innerHTML = response;
+						$("#ccity").selectpicker('refresh');
+						$('#addressform').find('[name="ccity[]"]').selectpicker('refresh');
+						var ccitydata=$("#ccity1").text();
+						var ccity=$('select[name="ccity[]"] > option:contains("'+ccitydata+'")').val();
+						$('#ccity').val(ccity).selectpicker('render').attr("data-bv-excluded", "true");
+					},
+					error: function() {
+						console.log("ERROR");
+					}
+				});
+				
+				$.ajax({
+					url: distServ,
+					type: 'post',
+					data: {
+						'value': cstate
+					},
+					success: function(response) {
+						document.getElementById('cdistrict').innerHTML = response;
+						$('#addressform').find('[name="cdist[]"]').selectpicker('refresh');
+						var cdistdata=$("#cdis").text();
+						var cdistrict=$('select[name="cdist[]"] > option:contains("'+cdistdata+'")').val();
+					},
+					error: function() {
+						console.log("ERROR");
+					}
+				});
+				
+				var pstate=$("#pstate1").text();
+				var pdistdata=$("#pdis").text();
+				
+				$.ajax({
+					url: cityServ,
+					type: 'post',
+					data: {
+						
+						'value': pstate
+					},
+					success: function(
+					response) {
+
+						document.getElementById('pcity').innerHTML = response;
+						$("#pcity").selectpicker('refresh');
+						$('#addressform').find('[name="pcity[]"]').selectpicker('refresh');
+						var pcitydata=$("#pcity1").text();
+						var pcity=$('select[name="pcity[]"] > option:contains("'+pcitydata+'")').val();
+						$('#pcity').val(pcity).selectpicker('render').attr("data-bv-excluded", "true");
+					},
+					error: function() {
+						console.log("ERROR");
+					}
+				});
+				
+				$.ajax({
+					url: distServ,
+					type: 'post',
+					data: {
+						'value': pstate
+					},
+					success: function(response) {
+						document.getElementById('pdistrict').innerHTML = response;
+						$('#addressform').find('[name="pdist[]"]').selectpicker('refresh');
+						var pdistdata=$("#pdis").text();
+						var pdistrict=$('select[name="pdist[]"] > option:contains("'+pdistdata+'")').val();
+						$("#pdistrict").val(pdistrict).selectpicker('render').attr("data-bv-excluded", "true");
+					},
+					error: function() {
+						console.log("ERROR");
+					}
+				});
+
+				
+		});
+		}
+		
+
+		
+		
+		/*To initiate the validation for only the text that are clicked*/
+		$(".txbx").change(function() {
+			var id = "#" + $(this).attr("id");
+			$(id).attr("data-bv-excluded", "false");
+		});
+
+		/*Find state and send ajax request to get city n district*/
+		$('.state').change(function(event) {
+
+			var id = $(this).attr('id');
+			var oselect = "#" + id + " option:selected";
+			var data = $(oselect).val();
+
+			switch (id) {
+				case 'cstate':
+					var cityServ = "ccityServ";
+					var distServ = "cdistServ";
+
+					$.ajax({
+						url: cityServ,
+						type: 'post',
+						data: {
+							'value': data
+						},
+						success: function(
+						response) {
+
+							document.getElementById('ccity').innerHTML = response;
+							$('#addressform').find('[name="ccity[]"]').selectpicker('refresh');
+
+						},
+						error: function() {
+						}
+					});
+					$.ajax({
+						url: distServ,
+						type: 'post',
+						data: {
+							'value': data
+						},
+						success: function(
+						response) {
+							document.getElementById('cdistrict').innerHTML = response;
+							$('#addressform').find('[name="cdist[]"]').selectpicker('refresh');
+						},
+						error: function() {
+						}
+					});
+					break;
+				case 'pstate':
+					var cityServ = "pcityServ";
+					var distServ = "pdistServ";
+
+					$.ajax({
+						url: cityServ,
+						type: 'post',
+						data: {
+							'value': data
+						},
+						success: function(
+						response) {
+							document.getElementById('pcity').innerHTML = response;
+							$('#addressform').find('[name="pcity[]"]').selectpicker();
+							$('#addressform').find('[name="pcity[]"]').selectpicker('refresh');
+							
+							$('#addressform').find('[name="pcity[]"]').selectpicker('render');
+							
+							
+						},
+						error: function() {
+						}
+					});
+					$.ajax({
+						url: distServ,
+						type: 'post',
+						data: {
+							'value': data
+						},
+						success: function(
+						response) {
+							document.getElementById('pdistrict').innerHTML = response;
+							$('#addressform').find('[name="pdist[]"]').selectpicker();
+							$('#addressform').find('[name="pdist[]"]').selectpicker('refresh');
+							
+							$('#addressform').find('[name="pdist[]"]').selectpicker('render');
+							
+						},
+						error: function() {
+						}
+					});
+					break;
+				default:
+
+			}
+		});
+
+		
+
+		var a = $('input[name="chk"]:checked').length > 0;
+
+		if (a === false) {
+			
+			
+			$('#addressform').find('[name="pstate[]"]').selectpicker('refresh');
+			$('#addressform').find('[name="pcity[]"]').selectpicker('render');
+			$('#addressform').find('[name="pdist[]"]').selectpicker('render');
+
+			$('.padd').attr('disabled', a);
+			
+			$('#addressform').find('[name="cstate[]"]').change(function(e) {
+				
+				$('#addressform').bootstrapValidator('revalidateField','cstate[]');
+				
+			}).end().find('[name="ccity[]"]').change(function(e) {
+				
+				$('#addressform').bootstrapValidator('revalidateField','ccity[]');
+				
+			}).end().find('[name="cdist[]"]').change(function(e) {
+			
+				$('#addressform').bootstrapValidator('revalidateField','cdist[]');
+				
+			}).end().find('[name="pstate[]"]').change(function(e) {
+				
+				$('#addressform').bootstrapValidator('revalidateField','pstate[]');
+				
+			}).end().find('[name="pcity[]"]').change(function(e) {
+				
+				$('#addressform').bootstrapValidator('revalidateField','pcity[]');
+				
+			}).end().find('[name="pdist[]"]').change(function(e) {
+				
+				$('#addressform').bootstrapValidator('revalidateField','pdist[]');
+				
+			}).end().bootstrapValidator({
+				feedbackIcons: {
+					valid: 'glyphicon glyphicon-ok',
+					invalid: 'glyphicon glyphicon-remove',
+					validating: 'glyphicon glyphicon-refresh'
+				},
+				fields: {
+					caline1: {
+						validators: {
+							notEmpty: {
+								message: 'The address is a required field'
+							}
+						}
+					},
+					'cstate[]': {
+						validators: {
+							notEmpty: {
+								message: 'The State is required and cannot be empty'
+							}
+						}
+					},
+					'ccity[]': {
+						validators: {
+							notEmpty: {
+								message: 'The City is required and cannot be empty'
+							}
+						}
+					},
+					'cdist[]': {
+						validators: {
+							notEmpty: {
+								message: 'The District is required and cannot be empty'
+							}
+						}
+					},
+					cpin: {
+						validators: {
+							notEmpty: {
+								message: 'The pincode is a required field'
+							},
+							digits: {
+								message: 'The pincode can contain digits only'
+							},
+							stringLength: {
+								max: 6,
+								min: 6,
+								message: 'The pin number must be 6 characters'
+							}
+						}
+					},
+					paline1: {
+						validators: {
+							notEmpty: {
+								message: 'The address is a required field'
+							}
+						}
+					},
+					'pstate[]': {
+						validators: {
+							notEmpty: {
+								message: 'The State is required and cannot be empty'
+							}
+						}
+					},
+					'pcity[]': {
+						validators: {
+							notEmpty: {
+								message: 'The City is required and cannot be empty'
+							}
+						}
+					},
+					'pdist[]': {
+						validators: {
+							notEmpty: {
+								message: 'The District is required and cannot be empty'
+							}
+						}
+					},
+					ppin: {
+						validators: {
+							notEmpty: {
+								message: 'The pincode is a required field'
+							},
+							digits: {
+								message: 'The pincode can contain digits only'
+							},
+
+							stringLength: {
+								max: 6,
+								min: 6,
+								message: 'The pin number must be 6 characters'
+							}
+						}
+					}
+				}
+			});
+
+		}
+
+		$('#pchk').click(function() {
+			var b = $('input[name="chk"]:checked').length > 0;
+			if (b === true) {
+			
+				$("#peraddress").show();
+				$("#chcli").val("0");
+				/*$("#epadd1").val($("#ecadd1").val()).attr("disabled", "disabled");
+				$("#epadd11").val($("#ecadd1").val());
+				$("#epadd2").val($("#ecadd2").val()).attr("disabled", "disabled");
+				$("#epadd22").val($("#ecadd2").val());
+				$("#epin").val($("#ecpin").val()).attr("disabled", "disabled");
+				$("#epin1").val($("#ecpin").val());*/
+				/*
+				*/
+				/*var pstateval=$('select[name="cstate[]"]').val();
+	        	
+	        	console.log(pstateval);
+	        	
+	        	
+	        	$.ajax({
+					url: 'pcityServ',
+					type: 'post',
+					data: {
+						'value': pstateval
+					},
+					success: function(
+					response) {
+					//	console.log(data);
+						document.getElementById('pcity').innerHTML = response;
+						$('#addressform').find('[name="pcity[]"]').selectpicker();
+						$('#addressform').find('[name="pcity[]"]').selectpicker('refresh');
+						
+						$('#addressform').find('[name="pcity[]"]').selectpicker('render');
+						
+						
+					},
+					error: function() {
+						console.log("ERROR");
+					}
+				});
+				$.ajax({
+					url: 'pdistServ',
+					type: 'post',
+					data: {
+						'value': pstateval
+					},
+					success: function(
+					response) {
+						//console.log(data);
+						document.getElementById('pdistrict').innerHTML = response;
+						$('#addressform').find('[name="pdist[]"]').selectpicker();
+						$('#addressform').find('[name="pdist[]"]').selectpicker('refresh');
+						
+						$('#addressform').find('[name="pdist[]"]').selectpicker('render');
+						
+					},
+					error: function() {
+						console.log("ERROR");
+					}
+				});*/
+	        	
+	        	
+			/*	var pcityval=$('select[name="ccity[]"]').val();
+				$('#pcityval').val(pcityval);
+	        	var pdistval=$('select[name="cdist[]"]').val();
+	        	$('#pdistval').val(pdistval);
+				console.log("city--->"+pcityval);
+				console.log("dist--->"+pdistval);*/
+				
+				$('#addressform').find('[name="pstate[]"]').val(pstateval).selectpicker('render');
+				$('#addressform').find('[name="pcity[]"]').attr('disabled','disabled').selectpicker('refresh');
+				$('#addressform').find('[name="pdist[]"]').attr('disabled','disabled').selectpicker('refresh');
+				/*$('#addressform').find('[name="pstate[]"]').selectpicker('hide');
+				$('#addressform').find('[name="pcity[]"]').selectpicker('hide');
+				$('#addressform').find('[name="pdist[]"]').selectpicker('hide');*/
+				
+				
+				
+				$("#dis11").val($("#cstate").val()).attr("disabled","disabled");
+				$("#dis21").val($("#cdistrict option:selected").text()).attr("disabled","disabled");
+				$("#dis31").val($("#ccity option:selected").text()).attr("disabled", "disabled");
+				$("#hpd").val($("#cdistrict option:selected").val());
+				$("#hpc").val($("#ccity option:selected").val());
+				
+
+				
+				 $('#addressform').find('[name="cstate[]"]').change(function(e) {
+					
+					$('#addressform').bootstrapValidator('revalidateField','cstate[]');
+				}).end().find('[name="ccity[]"]').change(function(e) {
+
+					
+					$('#addressform').bootstrapValidator('revalidateField','ccity[]');
+				}).end().find('[name="cdist[]"]').change(function(e) {
+					
+					$('#addressform').bootstrapValidator('revalidateField','cdist[]');
+				}).end()
+				
+				
+				.bootstrapValidator({
+					feedbackIcons: {
+						valid: 'glyphicon glyphicon-ok',
+						invalid: 'glyphicon glyphicon-remove',
+						validating: 'glyphicon glyphicon-refresh'
+					},
+					fields: {
+						caline1: {
+							validators: {
+								notEmpty: {
+									message: 'The address is a required field'
+								}
+							}
+						},
+						'cstate[]': {
+							validators: {
+								notEmpty: {
+									message: 'The State is required and cannot be empty'
+								}
+							}
+						},
+						'ccity[]': {
+							validators: {
+								notEmpty: {
+									message: 'The City is required and cannot be empty'
+								}
+							}
+						},
+						'cdist[]': {
+							validators: {
+								notEmpty: {
+									message: 'The District is required and cannot be empty'
+								}
+							}
+						},
+						cpin: {
+							validators: {
+								notEmpty: {
+									message: 'The pincode is a required field'
+								},
+								digits: {
+									message: 'The pincode can contain digits only'
+								},
+								stringLength: {
+									max: 6,
+									min: 6,
+									message: 'The pin number must be 6 characters'
+								}
+							}
+						}
+					}
+				});
+
+			} else {
+				$("#peraddress").hide();
+				$("#chcli").val("1");
+			
+			
+				
+				$('#addressform').find('[name="pstate[]"]').val("ANDAMAN AND NICOBAR ISLANDS").selectpicker('render');
+				$('#addressform').find('[name="pcity[]"]').removeAttr('disabled').selectpicker('refresh');
+				$('#addressform').find('[name="pdist[]"]').removeAttr('disabled').selectpicker('refresh');
+				console.log("REACHED 2");
+				$('#addressform').find('[name="pstate[]"]').selectpicker('show');
+				$('#addressform').find('[name="pcity[]"]').selectpicker('show');
+				$('#addressform').find('[name="pdist[]"]').selectpicker('show');
+			
+			
+				
+				 $('#addressform').on('init.field.bv', function(e, data) {
+					
+					 $('#pchk').on('change click', function (e) {
+						
+					 var a = $('input[name="chk"]:checked').length > 0;
+
+						if (a === false) {
+							 $('#epin').val('');
+	                         $('#epadd1').val('');
+	                         data.bv.resetField('ppin');
+	                         data.bv.resetField('paline1');
+						}
+					 });
+					 
+				 }).end().find('[name="cstate[]"]').change(function(e) {
+					
+					$('#addressform').bootstrapValidator('revalidateField','cstate[]');
+				}).end().find('[name="ccity[]"]').change(function(e) {
+					
+					$('#addressform').bootstrapValidator('revalidateField','ccity[]');
+				}).end().find('[name="cdist[]"]').change(function(e) {
+				
+					$('#addressform').bootstrapValidator('revalidateField','cdist[]');
+				}).end().find('[name="pstate[]"]').change(function(e) {
+					
+					$('#addressform').bootstrapValidator('revalidateField','pstate[]');
+				}).end().find('[name="pcity[]"]').change(function(e) {
+					
+					$('#addressform').bootstrapValidator('revalidateField','pcity[]');
+				}).end().find('[name="pdist[]"]').change(function(e) {
+					$('#addressform').bootstrapValidator('revalidateField','pdist[]');
+				}).end()
+				 
+				.bootstrapValidator({
+					feedbackIcons: {
+						valid: 'glyphicon glyphicon-ok',
+						invalid: 'glyphicon glyphicon-remove',
+						validating: 'glyphicon glyphicon-refresh'
+					},
+					fields: {
+						caline1: {
+							validators: {
+								notEmpty: {
+									message: 'The address is a required field'
+								}
+							}
+						},
+						'cstate[]': {
+							validators: {
+								notEmpty: {
+									message: 'The State is required and cannot be empty'
+								}
+							}
+						},
+						'ccity[]': {
+							validators: {
+								notEmpty: {
+									message: 'The City is required and cannot be empty'
+								}
+							}
+						},
+						'cdist[]': {
+							validators: {
+								notEmpty: {
+									message: 'The District is required and cannot be empty'
+								}
+							}
+						},
+						cpin: {
+							validators: {
+								notEmpty: {
+									message: 'The pincode is a required field'
+								},
+								digits: {
+									message: 'The pincode can contain digits only'
+								},
+								stringLength: {
+									max: 6,
+									min: 6,
+									message: 'The pin number must be 6 characters'
+								}
+							}
+						},
+						paline1: {
+							validators: {
+								notEmpty: {
+									message: 'The address is a required field'
+								}
+							}
+						},
+						'pstate[]': {
+							validators: {
+								notEmpty: {
+									message: 'The State is required and cannot be empty'
+								}
+							}
+						},
+						'pcity[]': {
+							validators: {
+								notEmpty: {
+									message: 'The City is required and cannot be empty'
+								}
+							}
+						},
+						'pdist[]': {
+							validators: {
+								notEmpty: {
+									message: 'The District is required and cannot be empty'
+								}
+							}
+						},
+						ppin: {
+							validators: {
+								notEmpty: {
+									message: 'The pincode is a required field'
+								},
+								digits: {
+									message: 'The pincode can contain digits only'
+								},
+
+								stringLength: {
+									max: 6,
+									min: 6,
+									message: 'The pin number must be 6 characters'
+								}
+							}
+						}
+					}
+				}).on('error.form.bv', function(e) {
+		            
+		        });
+
+
+			}
+		});
+
+		$('.close').click(function() {
+			$('.alert').fadeOut('slow');
+		});
+	});
+
+	

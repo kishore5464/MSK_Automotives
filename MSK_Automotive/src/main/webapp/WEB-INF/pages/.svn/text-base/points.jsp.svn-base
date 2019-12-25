@@ -1,0 +1,352 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@include file="/WEB-INF/common/taglibs.jsp"%>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width">
+<link rel="icon" type="img/ico" href="images/ex.ico">
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/menu.css" rel="stylesheet">
+<link rel="stylesheet" href="css/credits.css">
+<link href="css/font-awesome.css" rel="stylesheet">
+<style>
+.pp{
+padding-top:5px;
+}
+#main_body { 
+  background: url("images/collage.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+}
+.badge
+{
+background-color:blue;
+}
+
+</style>
+<script src="js/jquery.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ 
+  ga('create', 'UA-58259459-1', 'auto');
+  ga('send', 'pageview');
+ </script>
+<title>TalentEx - Points</title>
+
+</head>
+<body>
+<div class="container-fluid">
+<!-- col-lg-  col-md-  col-sm-  col-xs- -->
+<!-- col-lg-pull-  col-md-pull-  col-sm-pull-  col-xs-pull- -->
+<!-- col-lg-push-  col-md-push-  col-sm-push-  col-xs-push- -->
+<!-- visible-lg-  visible-md-  visible-sm-  visible-xs- --> 
+<!-- hidden-lg hidden-md hidden-sm hidden-xs -->
+<!-- <img src="" 
+	data-position="" data-in="" data-delay="" data-step="" data-out=""> -->
+	<!-- <p class="small"
+		data-position="" data-in="" data-delay="" data-step="" data-out="">
+								
+	</p> -->
+
+
+
+
+
+	<%@include file="/WEB-INF/common/header_back.jsp"%>
+	<%@include file="/WEB-INF/common/menu.jsp"%>
+	<div class="row clearfix" id="main_body">
+			<div class="col-md-12 column" style="padding: 0px">
+				<div class="container" style="background-color:white;border-right: 6px solid grey;border-left: 6px solid grey">
+				
+				<div class="row" style="min-height: 450px; border: solid 0px black;">
+			<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="">
+				<div class="row" style="min-height: 450px;margin-top:10px">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<%@include file="/WEB-INF/common/userwidget.jsp"%>
+					</div>
+
+
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+						style="margin-top: 10px;">
+						<div class="row" style=margin-left:-9px;">
+						<div class="panel panel-primary" style="width: 100%;margin: auto;">
+                        <div class="panel-heading">
+                            <i class="fa fa-bell fa-fw"></i> Notifications Panel
+                        </div>
+                        <!-- /.panel-heading --> 
+                        <div class="panel-body">
+                            <div class="list-group" style="width: inherit;margin: -14px;">
+                   <a href="personal" class="list-group-item">
+                             <%--     <span class="badge pull-left btn btn-primary">${dashboard.acceptInterviewCount}</span> --%>
+                                    <i class="fa fa-user"></i> Profile
+                                   <!--  <span class="pull-right text-muted small"><em>43 minutes ago</em> -->
+                                </a>
+                              <%--  <a href="mycourse" class="list-group-item">
+                                <span class="badge pull-left btn btn-primary">${dashboard.announcementCount}</span>
+                                    <i class="glyphicon glyphicon-briefcase"></i> My Skill
+                             <!--        <span class="pull-right text-muted small"><em>4 minutes ago</em> -->
+                                </a> --%>
+                              <!--   <a href="workshop" class="list-group-item">
+                                 <span class="badge pull-left btn btn-primary">4</span>
+                                    <i class="fa fa-briefcase fa-fw"></i> Workshops
+                                    <span class="pull-right text-muted small"><em>12 minutes ago</em>
+                                    </span>
+                                </a> -->
+                             <!--    <a href="talentalerts" class="list-group-item">
+                                 <span class="badge pull-left btn btn-primary">4</span>
+                                    <i class="fa fa-bell fa-fw"></i> Talentex Alerts
+                                    <span class="pull-right text-muted small"><em>27 minutes ago</em>
+                                    </span>
+                                </a> -->
+                             
+                             <!--    <a href="schedueleinterview" class="list-group-item">
+                                 <span class="badge pull-left btn btn-primary">4</span>
+                                    <i class="fa fa-tasks fa-fw"></i> Accepted Interviews
+                                    <span class="pull-right text-muted small"><em>11:32 AM</em>
+                                    </span>
+                                </a> -->
+                            <a href="passedinterviews" class="list-group-item">
+                                 <!-- <span class="badge pull-left btn btn-primary">0</span> -->
+                                    <i class="fa fa-clipboard  fa-fw"></i> Past Interviews
+                            <!--         <span class="pull-right text-muted small"><em>11:13 AM</em> -->
+                                </a>
+                                <a href="defaultexam" class="list-group-item">
+                                 <%-- <span class="badge pull-left btn btn-primary">${dashboard.scheduledExamCount}</span> --%>
+                                    <i class="fa fa-graduation-cap fa-fw"></i> Assessment
+                                 <!--    <span class="pull-right text-muted small"><em>10:57 AM</em> -->
+                                </a>
+                               <%--  <a href="pastexam" class="list-group-item">
+                                 <span class="badge pull-left btn btn-primary">${dashboard.pastExamCount}</span>
+                                    <i class="fa fa-clipboard fa-fw"></i> Past Exams
+                                    <!-- <span class="pull-right text-muted small"><em>9:49 AM</em> -->
+                                </a> --%>
+                             <!--    <a href="#" class="list-group-item">
+                                    <i class="fa fa-money fa-fw"></i> Payments History
+                                    <span class="pull-right text-muted small"><em>Yesterday</em>
+                                    </span>
+                                </a> -->
+                            </div>
+                            <!-- /.list-group -->
+                          <!--   <a href="#" class="btn btn-default btn-block">View All Alerts</a> -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+			<div class="row">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+											style="border: 0px solid;">
+											<div class="breadcrumb">
+												<li><a href="dashboard"><span
+													class="glyphicon glyphicon-home"></span></a></li>
+									            <li class="active">Points</</li>
+											</div>
+										</div>
+									</div>
+				<div class="row" style="height: auto">
+						<div id="page-wrapper" >
+
+                <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-6">           
+			<div class="panel panel-back noti-box">
+                <span class="icon-box bg-color-red set-icon">
+                    <i class="fa  fa-support"></i>
+                </span>
+                <div class="text-box" >
+                    <p class="main-text">${points.totalAvailablePoints} Points</p>
+                    <p class="text-muted">Your Total Points</p>
+                </div>
+             </div>
+		     </div>
+                    <div class="col-md-3 col-sm-6 col-xs-6">           
+			<div class="panel panel-back noti-box">
+                <span class="icon-box bg-color-green set-icon">
+                    <i class="fa fa-user-plus"></i>
+                </span>
+                <div class="text-box" >
+                    <p class="main-text">${points.referralCompletedCount} Completed</p>
+                    <p class="text-muted">Referrals</p>
+                </div>
+             </div>
+		     </div>
+                    <div class="col-md-3 col-sm-6 col-xs-6">           
+			<div class="panel panel-back noti-box">
+                <span class="icon-box bg-color-blue set-icon">
+                    <i class="fa fa-user-times"></i>
+                </span>
+                <div class="text-box" >
+                    <p class="main-text">${points.referralPendingCount} Pending</p>
+                    <p class="text-muted">Referrals</p>
+                </div>
+             </div>
+		     </div>
+                   <div class="col-md-3 col-sm-6 col-xs-6">           
+		 <a href="rewardoffers" style="text-decoration:none;color:black;">	<div class="panel panel-back noti-box">
+                <span class="icon-box bg-color-brown set-icon">
+                    <i class="fa fa-rocket"></i>
+                </span>
+                <div class="text-box" >
+                    <p class="main-text">${points.availableRewardsCount} Rewards</p>
+                    <p class="text-muted">Redeemable & Benefits</p>
+                </div>
+             </div></a>
+		     </div>
+			</div>
+                 <!-- /. ROW  -->
+                <hr />                
+                <div class="row">
+          
+                    
+                    
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+             
+                                <a href="rewardpoints"><div class="panel">
+          <div class="main-temp-back" style="background-color:#2EA7EB;">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-xs-8"> <i class="glyphicon glyphicon-folder-open" style="font-size:44px;"></i><br/>Rewards & Points</div>
+               
+              </div>
+            </div>
+                <div class="panel-footer" style="background-color:#2e84b2;">
+                         <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            
+                        </div>
+          </div>
+          
+        </div></a>
+                    </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+ 
+                                <a href="referfriends"><div class="panel ">
+          <div class="main-temp-back" style="background-color:#5CB85C;">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-xs-10"> <i class="glyphicon glyphicon-envelope" style="font-size:44px;"></i><br/>Refer Your Friends</div>
+               
+              </div>
+            </div>
+                <div class="panel-footer" style="background-color:#009B50;">
+                         <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            
+                        </div>
+          </div>
+          
+        </div></a>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 ">
+               
+                        <div class="panel ">
+          <div class="main-temp-back" style="background-color:#A95DF0;">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-xs-8"> <i class="fa fa-cloud fa-3x"></i><br/>Redeemed History</div>
+                <div class="col-xs-4">
+                  <div class="text-temp">${points.pointsRedeemHistoryCount}</div>
+                </div>
+              </div>
+            </div>
+                <div class="panel-footer" style="background-color:#8702A8;">
+                         <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            
+                        </div>
+          </div>
+          
+        </div>
+                   
+			
+    </div>
+                         
+        </div>
+
+                <div class="row"> 
+                    
+                      
+                              <div class="col-md-12 col-sm-12 col-xs-12">
+               
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                           Your Referal Friends List 
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>S.NO</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Status</th>
+                                             <th>Points Received</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <c:forEach var="techlists" varStatus="counter"	items="${refhistory}" >
+                                        <tr>
+                                            <td>${counter.count}</td>
+                                            <td>${techlists.userName}</td>
+                                            <td>${techlists.userEmail}</td>
+                                            <td>${techlists.referralStatus}</td>
+                                            <td>${techlists.pointsEarned}</td>
+                                        </tr>
+                                 </c:forEach>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    </div>
+                   
+                
+           </div>
+      
+                    
+                 <!-- /. ROW  -->           
+             <!-- /. PAGE INNER  -->
+            </div>
+
+				</div>
+			</div>
+		</div>
+
+				
+				
+			</div>
+		</div>
+	</div>
+
+		
+	</div>	
+	<%@include file="/WEB-INF/common/footer_back.jsp"%>
+<input type="hidden" id="mstatus" value="${mobistatus}"/>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/menu.js"></script>
+<script>
+$(document).ready(function(){
+	 $(".dashboardactive").addClass("active");
+});
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,751 @@
+<%-- 
+    Document   : Experience
+    Author     : Vengatesh K
+--%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@include file="/WEB-INF/common/taglibs.jsp"%>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width">
+<link rel="icon" type="img/ico" href="images/ex.ico">
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/menu.css" rel="stylesheet">
+<link rel="stylesheet" href="css/datapicker.css">
+<link rel="stylesheet" href="css/bootstrap-table.min.css">
+<link rel="stylesheet" href="css/bootstrapValidator.css">
+<link href="css/font-awesome.css" rel="stylesheet">
+<style>
+.pp{
+padding-top:5px;
+}
+#main_body { 
+  background: url("images/collage.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+}
+#experience .form-control-feedback {
+	top: 22px;
+	right: -25px;
+}
+
+.hi {
+	display: none;
+}
+
+#preview {
+	background-color: #fff;
+	display: block;
+	margin-top: -75px;
+	float: right;
+	margin-right: 5px;
+	width: 200px;
+	position: relative;
+}
+
+#fileinfo,#error,#error2,#abort,#warnsize,#none {
+	color: #aaa;
+	display: none;
+	font-size: 10pt;
+	font-style: italic;
+	margin-top: 10px;
+}
+
+@media only screen and (max-width:400px) {
+	#preview {
+		background-color: #fff;
+		display: block;
+		margin-left: 82px;
+		margin-top: 50px;
+		float: left;
+		width: 200px;
+	}
+}
+
+@media only screen and (max-width:350px) {
+	#preview {
+		background-color: #fff;
+		display: block;
+		margin-left: 35px;
+		float: left;
+		width: 200px;
+	}
+}
+</style>
+<script src="js/jquery.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ 
+  ga('create', 'UA-58259459-1', 'auto');
+  ga('send', 'pageview');
+ </script>
+<title>TalentEx - Experience</title>
+</head>
+<body>
+<div class="container-fluid">
+<!-- col-lg-  col-md-  col-sm-  col-xs- -->
+<!-- col-lg-pull-  col-md-pull-  col-sm-pull-  col-xs-pull- -->
+<!-- col-lg-push-  col-md-push-  col-sm-push-  col-xs-push- -->
+<!-- visible-lg-  visible-md-  visible-sm-  visible-xs- --> 
+<!-- hidden-lg hidden-md hidden-sm hidden-xs -->
+<!-- <img src="" 
+	data-position="" data-in="" data-delay="" data-step="" data-out=""> -->
+	<!-- <p class="small"
+		data-position="" data-in="" data-delay="" data-step="" data-out="">
+								
+	</p> -->
+
+
+
+
+
+	<%@include file="/WEB-INF/common/header_back.jsp"%>
+	<!-- <div class="row clearfix">
+		<div class="col-md-12 column" style="border-bottom: 2px solid #e3e3e3;padding-bottom:3px">		
+			<div id='cssmenu' class="pull-right" style="margin-right: 15px;">
+<ul>
+   <li><a  href='dashboard' id="loginbut">Dashboard</a></li>
+   <li class='has-sub'><a class='active'  href='javascript:void(0)'>Profile</a>
+      <ul>
+		<li><a href="personal">Personal</a></li>
+		<li><a href="address">Address</a></li>
+		<li><a href="education">Education</a></li>
+		<li><a href="techskills">Existing Skills</a></li>
+		<li><a href="experience">Experience</a></li>
+		<li><a href="preference">Work Preference</a></li>
+		<li><a href="password">Change Password</a></li>
+	  </ul>
+   </li>
+    <li class='has-sub'><a href='javascript:void(0)'>Announcements</a>
+    	<ul>
+    		<li><a href="announcement">Job Announcement </a></li>
+   	<li><a href="workshop">Workshops & Seminars</a></li>
+    	</ul>
+    </li>
+    <li class='has-sub'><a href='javascript:void(0)'>Skills</a>
+    	<ul>
+    		<li><a href="mycourse">My Skills</a></li>
+			<li><a href="tech">Technical Skills</a></li>
+			<li><a href="nontech">Non-Technical Skills</a></li>
+			<li><a href="schedulexams">Scheduled Exams</a></li>
+			<li><a href="pastexam">Past Exams</a></li>
+    	</ul>
+    </li>
+    <li class='has-sub'><a href='javascript:void(0)'>Interviews</a>
+    	<ul>
+    		<li><a href="calletter">Interview Calls</a></li>
+   	<li><a href="schedueleinterview">Scheduled Interviews</a></li>
+			<li><a href="passedinterviews">Passed Interviews</a></li>
+    	</ul>
+    </li>
+     
+    
+</ul>
+</div>
+		</div>
+	</div> -->
+	
+	<%@include file="/WEB-INF/common/menu.jsp"%>
+	
+	<div class="row clearfix" id="main_body">
+			<div class="col-md-12 column" style="padding: 0px">
+				<div class="container" style="background-color:white;border-right: 6px solid grey;border-left: 6px solid grey">
+				
+				<div class="row" style="min-height: 450px; border: solid 0px black;">
+			<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="">
+				<div class="row" style="min-height: 450px;margin-top:10px">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<%@include file="/WEB-INF/common/userwidget.jsp"%>
+					</div>
+
+
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+						style="margin-top: 3px;min-height: 400px;">
+						<div class="row" style=margin-left:-9px;">
+						<div class="panel panel-primary" style="width: 100%;margin: auto;">
+                        <div class="panel-heading">Profile</div>
+                        <div class="panel-body">
+						<div class="list-group">
+							<a href="personal" class="list-group-item"> <span
+								class="glyphicon glyphicon-user"></span> Personal <span id="perdetails" class="text-danger pull-right  glyphicon-asterisk"><span style="font-size:10px;">(mandatory)</span></span>
+							</a> <a href="address" class="list-group-item"> <span
+								class="glyphicon glyphicon-road"></span> Address <span id="address" class="text-danger pull-right  glyphicon-asterisk"><span style="font-size:10px;">(mandatory)</span></span>
+							</a> <a href="education" class="list-group-item"> <span
+								class="glyphicon glyphicon-book"></span> Education <span id="education" class="text-danger pull-right glyphicon-asterisk"><span style="font-size:10px;">(mandatory)</span></span>
+							</a> <a href="techskills" class="list-group-item "> <span
+								class="glyphicon glyphicon-star-empty"></span> Skills 
+							</a> <a href="javascript:void(0)" class="list-group-item active">
+								<span class="glyphicon glyphicon-list-alt"></span> Experience 
+							</a> <a href="preference" class="list-group-item"> <span
+								class="glyphicon glyphicon-list-alt"></span> Work Preference 
+							</a> <a href="password" class="list-group-item"> <span
+								class="glyphicon glyphicon-off"></span> Change Password
+							</a>
+						</div></div></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+				<div class="row" style="height: auto">
+
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+						style="height: auto">
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="">
+								<div class="alert alert-success alert-dismissible"
+									id="chksuccess" role="alert" style="display: none">
+									<button type="button" class="close">
+										<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+									</button>
+									<strong>Warning!</strong> Better check yourself, you're not
+									looking too good.
+								</div>
+								<div class="alert alert-info alert-dismissible" id="chkinfo"
+									role="alert" style="display: none">
+									<button type="button" class="close">
+										<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+									</button>
+									<strong>Warning!</strong> Better check yourself, you're not
+									looking too good.
+								</div>
+								<div class="alert alert-warning alert-dismissible"
+									id="chkwarning" role="alert" style="display: none">
+									<button type="button" class="close">
+										<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+									</button>
+									<strong>Warning!</strong> Better check yourself, you're not
+									looking too good.
+								</div>
+								<div class="alert alert-danger alert-dismissible" id="chkdanger"
+									role="alert" style="display: none">
+									<button type="button" class="close">
+										<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+									</button>
+									<strong>Warning!</strong> Better check yourself, you're not
+									looking too good.
+								</div>
+							</div>
+
+
+
+							<hr style="display: none;" />
+
+
+
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="">
+								<!--  <div class="row">
+                                      
+                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> -->
+								<div class="row">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+										style="border: 0px solid;">
+										<div class="breadcrumb">
+											<li><a href="personal"><span class="glyphicon glyphicon-home"></span></a></li>
+											<li class="active">Profile</a></li>
+											<li class="active">Experience</</li>
+										</div>
+									</div>
+								</div>
+
+								<div class="panel panel-primary">
+									<div class="panel-heading">
+										Experience Details
+									</div>
+									<div class="panel-body">
+										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"
+											style="border-right: 2px solid gainsboro;">
+											<hr>
+											<h5 class="text-primary">EXPERIENCE LEVEL</h5>
+											<hr>
+											<form id="experience" action="suexperience" method="post">
+
+	<div class="form-group">
+													<h5>
+														<span class="text-danger">*</span>Industry Name:
+													</h5>
+													<div class="input-group  input-group-sm">
+
+														<span class="input-group-addon"></span> <input
+															name="industryname" id="iname" maxlength="30"
+															class="form-control txbx">
+													</div>
+												</div>
+
+												<div class="form-group">
+													<h5>
+														<span class="text-danger">*</span>Designation:
+													</h5>
+													<div class="input-group  input-group-sm">
+
+														<span class="input-group-addon"></span> <input
+															name="techname" id="tname" maxlength="30"
+															class="form-control txbx">
+													</div>
+												</div>
+												<div class="form-group">
+													<h5>
+														<span class="text-danger">*</span>Company name:
+													</h5>
+													<div class="input-group  input-group-sm">
+
+														<span class="input-group-addon"></span> <input
+															name="techcompany" id="cname" class="form-control txbx">
+													</div>
+												</div>
+												<div class="form-group">
+													<h5 class="control-label">
+														<span class="text-danger">*</span>From:
+													</h5>
+
+													<div class="input-group input-group-sm date"
+														id="datetimePicker1">
+														<input type="text" class="form-control txbx" id="data1"
+															name="from" data-date-format="DD/MM/YYYY" /> <span
+															class="input-group-addon"> <span
+															class="glyphicon glyphicon-calendar"></span>
+														</span>
+													</div>
+												</div>
+												<div class="form-group">
+													<h5 class="control-label">
+														<span class="text-danger">*</span>To:
+													</h5>
+
+													<div class="input-group input-group-sm date"
+														id="datetimePicker2">
+														<input type="text" class="form-control txbx" id="data2"
+															name="to" data-date-format="DD/MM/YYYY" /> <span
+															class="input-group-addon"> <span
+															class="glyphicon glyphicon-calendar"></span>
+														</span>
+													</div>
+												</div>
+
+												<div class="form-group">
+													<h5>
+														<span class="text-danger">*</span>CTC:
+													</h5>
+													<select class="form-control input-group-sm txbx" id="ctc"
+														name="ctc">
+														<option selected disabled value="">My ctc ....</option>
+														<option value="1">Below 1 lakh</option>
+														<option value="2">1-2 lakh</option>
+														<option value="3">2-3 lakh</option>
+														<option value="4">Above 3 lakh</option>
+													</select>
+
+												</div>
+												<input type="hidden" name="expid" id="eid" /> <input
+													type="hidden" id="uniqueid" name="Uniqueid"
+													value="${experiencelist.get(0).userUniqueid}" /> 
+													 
+																<input
+													type="submit"  id="save" value="Add"
+													class="btn btn-primary pull-right" style="width:100px;"/>
+													
+
+											</form>
+
+										</div>
+
+										<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12"
+											style="margin-top: 5px;" id="hid">
+											<hr class="hidden-lg hidden-md">
+
+											<div class="panel panel-primary">
+												<div class="panel-heading">My Experience</div>
+												<div class="panel-body">
+													<table id="tskilltable">
+														<thead>
+															<tr>
+																<th>Select</th>
+																<th data-field="industry" data-align="center">Industry</th>
+																<th data-field="technology" data-align="center">Designation</th>
+																<th data-field="company" data-align="center">Company</th>
+																<th data-field="from" data-align="center">From</th>
+																<th data-field="to" data-align="center">To</th>
+																<th class="hi">CTC</th>
+																<th class="hi"></th>
+																<th class="hi"></th>
+
+															</tr>
+														</thead>
+														<tbody>
+
+															<c:forEach var="explist" items="${experiencelist}">
+																<tr class="hid">
+																	<td><input class="rkv" type="radio" name="radio" /></td>
+																	<td>${explist.industryname}</td>
+																	<td>${explist.techname}</td>
+																	<td>${explist.companyname}</td>
+																	<td>${explist.servicefrom}</td>
+																	<td>${explist.serviceto}</td>
+																	<td class="hi">${explist.ctc}</td>
+																	<td class="hi">${explist.expid}</td>
+																	<td class="hi">${explist.jobexpid}</td>
+																</tr>
+															</c:forEach>
+
+														</tbody>
+													</table>
+
+													<input type="button" id="edit"
+														class="btn btn-primary pull-right" value="Edit"
+														style="margin-top: 10px;" disabled /> <input type="button"
+														id="delete" class="btn btn-danger pull-right"
+														value="Delete"
+														style="margin-top: 10px; margin-right: 5px;" disabled />
+												</div>
+											</div>
+											<input style="margin-right:10px;"
+																type="button" id="skip" value="Skip & Continue"
+																class="btn btn-default pull-right" />
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+										<!-- <input type="button" class="btn btn-success pull-right" type="button" value="Finish" id="finish"/> -->
+											</div>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+											style="border: 0px solid black;">
+											
+											<p class="text-danger">
+																<i><span class="text-danger">( * )</span> Indicates required field</i>
+															</p>
+											
+										
+											
+
+										</div>
+									</div>
+
+								</div>
+
+							</div>
+						</div>
+
+
+
+
+
+
+					</div>
+				</div>
+			</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+				style="border: 0px solid black; height: 50px"></div>
+		</div>
+				
+				
+			</div>
+		</div>
+	</div>
+
+		
+	</div>	
+<%@include file="/WEB-INF/common/footer_back.jsp"%>
+
+<script src="js/bootstrap.min.js"></script>
+<script src="js/menu.js"></script>
+ <script src="js/bootstrap-datepicker.js"></script> 
+<script src="js/bootstrapValidator.js"></script>
+<script src="js/bootstrap-table.min.js"></script>
+<script>
+$(document).ready(function(){  
+	var count=0;
+	$(".rkv").each(function(){
+		count++;
+		yess=$(this).closest('tr').find("td:eq(1)").text();
+	});
+
+	if(yess==="")
+		{
+		$("#edit,#delete").hide();
+		$('#tskilltable tbody tr ').remove();
+		$('#tskilltable').bootstrapTable({
+        pagination:false
+		});
+		}
+ if(count > 4)
+		{
+
+		$('#tskilltable').bootstrapTable({
+//		      url:data,
+//		      height: auto,
+		      clickToSelect: true,
+		      pagination:true,
+		      pageSize: 3,
+		      pageList: [3, 5, 8]
+
+		  });
+		}
+	else
+		{
+		$('#tskilltable').bootstrapTable({
+//	      url:data,
+//	      height: auto,
+	      clickToSelect: true,
+	      pagination:false,
+	      pageList: [3, 5, 8]
+
+	  });
+		
+		}
+	 
+
+
+	$("#edit").tooltip({
+	    title: 'Select any one Experience to Edit',
+	    placement: 'bottom'
+	});
+	$("#delete").tooltip({
+	    title: 'Select any one Experience to Delete',
+	    placement: 'bottom'
+	});
+	   
+	
+
+	
+ var data1,data2,data3,data4,data5,data6,data7;
+ 
+$(document).on("click",".rkv",function(){
+
+data1=$(this).closest('tr').find("td:eq(2)").text();
+data2=$(this).closest('tr').find("td:eq(3)").text();
+data3=$(this).closest('tr').find("td:eq(4)").text().replace(/-/g, "/");
+data4=$(this).closest('tr').find("td:eq(5)").text().replace(/-/g, "/");
+data5=$(this).closest('tr').find("td:eq(6)").text();
+data6=$(this).closest('tr').find("td:eq(7)").text();
+data7=$(this).closest('tr').find("td:eq(8)").text();
+data8=$(this).closest('tr').find("td:eq(1)").text();
+$("#edit").removeAttr("disabled");
+$("#delete").removeAttr("disabled");
+//alert(data1+" "+data2+" "+data3+" "+data4+" "+data5+" "+data6);  
+});
+
+$(document).on("click","#edit",function(){
+	$('#experience').data('bootstrapValidator').resetForm();
+$("#save").attr("value","Update").removeClass("btn btn-primary").addClass("btn btn-success");
+$("#iname").val(data8).trigger("change");
+$("#tname").val(data1).trigger("change");
+$("#cname").val(data2).trigger("change");
+$("#data1").val(data3).trigger("change");
+$("#data2").val(data4).trigger("change");
+$("#ctc").val(data5).trigger("change");
+$('#experience').bootstrapValidator('revalidateField', 'industryname');
+$('#experience').bootstrapValidator('revalidateField', 'techname');
+$('#experience').bootstrapValidator('revalidateField', 'techcompany');
+$('#experience').bootstrapValidator('revalidateField', 'from');
+$('#experience').bootstrapValidator('revalidateField', 'to');
+
+$("#eid").val(data6);
+});
+$(document).on("click","#delete",function(){
+	var uniqueid=$("#uniqueid").val();
+	var don=$.ajax({
+      url: "delexperience",
+      type: "post",
+     data: {"techcompany":data1,"techname":data2,"from":data3,"to":data4,"expid":data6,"uniqueid":uniqueid,"jobexpid":data7}
+ });
+	 don.done(function(){
+window.location.href="experience";
+});
+ 
+	 
+});
+
+
+$(document).on("change",".txbx",function(){
+	var id="#"+$(this).attr("id");
+	/* alert(id); */
+	$(id).attr("data-bv-excluded","false");
+});
+	
+});
+    </script>
+    <input type="text" id="alertvalue" style="display: none;">
+	<input type="text" id="alertdata" style="display: none;">
+
+
+	<script>
+            $(document).ready(function() {
+            	$(document).on("click","#skip",function(){
+    				window.location.href="preference";
+    			});
+              
+              //  for(i=0;i<10;i++){
+                //    $('#tskilltable tbody').append("<tr><td></td><td>data1"+i+"</td><td>data2"+i+"</td><td>data3"+i+"</td><td>data4"+i+"</td><td>data5"+i+"</td></tr>");
+
+               var FromEndDate = new Date();
+                $('#datetimePicker1').datepicker({
+                	format : "dd/mm/yyyy",
+					startView : 2,
+				    endDate: FromEndDate, 
+					autoclose : true
+                }) .on('changeDate', function(selected){
+                    startDate = new Date(selected.date.valueOf());
+                    startDate.setDate(startDate.getDate(new Date(selected.date.valueOf()))+1);
+                    $('#datetimePicker2').datepicker('setStartDate', startDate);
+                }); 
+                
+                $('#datetimePicker2').datepicker({
+                	format : "dd/mm/yyyy",
+                	startView : 2,
+                	endDate: FromEndDate, 
+					autoclose : true
+                });
+                
+                
+                $('#experience').on('init.field.bv', function(e, data) {
+
+                	$('#data1')
+                    .on('change keyup blur', function (e) {
+                        // Revalidate the date when user change it
+                         $('#data2').val('');
+                         data.bv.resetField('to');
+                       
+                    });
+					
+                	
+
+                    }).bootstrapValidator({
+                    feedbackIcons: {
+                        valid: 'glyphicon glyphicon-ok',
+                        invalid: 'glyphicon glyphicon-remove',
+                        validating: 'glyphicon glyphicon-refresh'
+                    },
+                    fields: {
+                    	
+                    	industryname: {
+                             message: 'The Industry name is not valid',
+                             validators: {
+                                 notEmpty: {
+                                     message: 'The Industry name is required and cannot be empty'
+                                 },
+                                 regexp:{
+ 									regexp: /^[a-z\s]+$/i,
+ 									message: 'The Industry name can consist of alphabetical characters and spaces only'
+                                     }
+                             }
+                         }, 
+                        techname: {
+                            message: 'The Designation is not valid',
+                            validators: {
+                                notEmpty: {
+                                    message: 'The Designation is required and cannot be empty'
+                                },
+                                regexp:{
+									regexp: /^[a-z\s]+$/i,
+									message: 'The Designation can consist of alphabetical characters and spaces only'
+                                    }
+                            }
+                        }, 
+                        techcompany: {
+                            message: 'The company is not valid',
+                            validators: {
+                                notEmpty: {
+                                    message: 'The company is required and cannot be empty'
+                                }
+                            }
+                        }, from: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Working from is required'
+                                },
+                                date: {
+                                	 format: 'DD/MM/YYYY'
+                                }
+                            }
+                        }, to: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Worked till is required and should be greater than worked from'
+                                },
+                                date: {
+                                	 format: 'DD/MM/YYYY'
+                                }
+                                
+                            }
+                        },ctc: {
+                            message: 'The CTC is not valid',
+                            validators: {
+                                notEmpty: {
+                                    message: 'The CTC is required and cannot be empty'
+                                }
+                            }
+                        }
+                    }
+
+
+
+                }).on('status.field.bv', function(e, data) {
+                    if (data.bv.isValid()) {
+                        data.bv.disableSubmitButtons(false);
+                        $('#save').removeClass('btn-default').addClass('btn-primary').attr('type','submit');
+                    }
+                    else {
+                        data.bv.disableSubmitButtons(true);
+                    }
+                });
+                $('#datetimePicker1').on('changeDate show', function(e) {
+                    // Revalidate the date when user change it
+               /* $('#datetimePicker2').data("DatePicker").setMinDate(e.date); */
+              
+        	   $('#experience').bootstrapValidator('revalidateField', 'from');
+			
+                   
+                });
+                
+                $('#datetimePicker2').on('changeDate show', function(e) {
+                   /*  $('#datetimePicker1').data("DatePicker").setMaxDate(e.date); */
+                    $('#experience').bootstrapValidator('revalidateField', 'to');
+                });
+
+
+                $('#tskilltable').bootstrapTable({
+//                    url:data,
+//                    height: auto,
+                    clickToSelect: true,
+                    pagination: false,
+                    pageList:[3,5,8]
+                    
+                });
+                $('#save').on('click',function(){
+                  var data=$('#experience').serialize();
+                   $.post( "experience", data);
+                    $("#experience").data('bootstrapValidator').resetForm();
+                    $('#save').attr('type','submit');
+                });
+                $('.close').click(function() {
+                    $('.alert').fadeOut('slow');
+                });
+            	$(".profileactive").addClass("active");
+                        
+            });
+        </script>
+</body>
+
+</html>

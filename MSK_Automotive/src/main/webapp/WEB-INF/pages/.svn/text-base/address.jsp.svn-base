@@ -1,0 +1,730 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@include file="/WEB-INF/common/taglibs.jsp"%>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width">
+<link rel="icon" type="img/ico" href="images/ex.ico">
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/menu.css" rel="stylesheet">
+<link rel="stylesheet" href="css/bootstrapValidator.css">
+<link rel="stylesheet" href="css/bootstrap-select.min.css">
+<link href="css/font-awesome.css" rel="stylesheet">
+<style>
+.pp{
+padding-top:5px;
+}
+#main_body { 
+  background: url("images/collage.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+}
+#addressform .form-control-feedback {
+	top: 24px;
+	right:-23px;
+}
+</style>
+<script src="js/jquery.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ 
+  ga('create', 'UA-58259459-1', 'auto');
+  ga('send', 'pageview');
+ </script>
+<title>TalentEx - Address</title>
+</head>
+<body>
+<div class="container-fluid">
+<!-- col-lg-  col-md-  col-sm-  col-xs- -->
+<!-- col-lg-pull-  col-md-pull-  col-sm-pull-  col-xs-pull- -->
+<!-- col-lg-push-  col-md-push-  col-sm-push-  col-xs-push- -->
+<!-- visible-lg-  visible-md-  visible-sm-  visible-xs- --> 
+<!-- hidden-lg hidden-md hidden-sm hidden-xs -->
+<!-- <img src="" 
+	data-position="" data-in="" data-delay="" data-step="" data-out=""> -->
+	<!-- <p class="small"
+		data-position="" data-in="" data-delay="" data-step="" data-out="">
+								
+	</p> -->
+
+
+
+
+
+	<%@include file="/WEB-INF/common/header_back.jsp"%>
+	<%@include file="/WEB-INF/common/menu.jsp"%>
+<!-- 	<div class="row clearfix">
+		<div class="col-md-12 column" style="border-bottom: 2px solid #e3e3e3;padding-bottom:3px">		
+			<div id='cssmenu' class="pull-right" style="margin-right: 15px;">
+<ul>
+   <li><a href='dashboard' id="loginbut">Dashboard</a></li>
+   <li class='has-sub'><a class='active' href='javascript:void(0)'>Profile</a>
+      <ul>
+		<li><a href="personal">Personal</a></li>
+		<li><a href="address">Address</a></li>
+		<li><a href="education">Education</a></li>
+		<li><a href="techskills">Existing Skills</a></li>
+		<li><a href="experience">Experience</a></li>
+		<li><a href="preference">Work Preference</a></li>
+		<li><a href="password">Change Password</a></li>
+	  </ul>
+   </li>
+    <li class='has-sub'><a href='javascript:void(0)'>Announcements</a>
+    	<ul>
+    		<li><a href="announcement">Job Announcement </a></li>
+   	<li><a href="workshop">Workshops & Seminars</a></li>
+    	</ul>
+    </li>
+    <li class='has-sub'><a href='javascript:void(0)'>Skills</a>
+    	<ul>
+    		<li><a href="mycourse">My Skills</a></li>
+			<li><a href="tech">Technical Skills</a></li>
+			<li><a href="nontech">Non-Technical Skills</a></li>
+			<li><a href="schedulexams">Scheduled Exams</a></li>
+			<li><a href="pastexam">Past Exams</a></li>
+    	</ul>
+    </li>
+    <li class='has-sub'><a href='javascript:void(0)'>Interviews</a>
+    	<ul>
+    		<li><a href="calletter">Interview Calls</a></li>
+   	<li><a href="schedueleinterview">Scheduled Interviews</a></li>
+			<li><a href="passedinterviews">Passed Interviews</a></li>
+    	</ul>
+    </li>
+     
+    
+</ul>
+</div>
+		</div>
+	</div> -->
+	<div class="row clearfix" id="main_body">
+			<div class="col-md-12 column" style="padding: 0px">
+				<div class="container" style="background-color:white;border-right: 6px solid grey;border-left: 6px solid grey">
+				
+				
+					<div class="row" style="min-height: 450px; border: solid 0px black;">
+
+			<form id="addressform" action="suaddress" method="POST">
+				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="">
+					<div class="row" style="min-height: 450px;margin-top:10px">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	                    <%@include file="/WEB-INF/common/userwidget.jsp"%>
+
+
+                 </div>
+
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+							style="margin-top: 3px;min-height: 400px;">
+							<div class="row" style="margin-left:-9px;">
+							<div class="panel panel-primary" style="width: 100%;margin: auto;">
+                        <div class="panel-heading">Profile</div>
+                        <div class="panel-body">
+							<div class="list-group">
+								<a href="personal" class="list-group-item"> <span
+									class="glyphicon glyphicon-user"></span> Personal <span id="perdetails" class="text-danger pull-right  glyphicon-asterisk"><span style="font-size:10px;">(mandatory)</span></span>
+								</a> <a href="javascript:void(0)" class="list-group-item active">
+									<span class="glyphicon glyphicon-road"></span> Address <span id="address" class="text-danger pull-right glyphicon-asterisk"><span style="font-size:10px;">(mandatory)</span></span>
+								</a> <a href="education" class="list-group-item"> <span
+									class="glyphicon glyphicon-book"></span> Education <span id="education" class="text-danger pull-right glyphicon-asterisk"><span style="font-size:10px;">(mandatory)</span></span>
+								</a> <a href="techskills" class="list-group-item"> <span
+									class="glyphicon glyphicon-star-empty"></span> Skills 
+								</a> <a href="experience" class="list-group-item"> <span
+									class="glyphicon glyphicon-list-alt"></span> Experience 
+								</a> <a href="preference" class="list-group-item "> <span
+									class="glyphicon glyphicon-list-alt"></span> Work Preference 
+								</a> <a href="password" class="list-group-item"> <span
+									class="glyphicon glyphicon-off"></span> Change Password
+								</a>
+							</div></div></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+
+					<div class="row" style="height: auto">
+
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+							style="height: auto">
+							<div class="row">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="msgbox"
+									style="">
+
+									<div class="alert alert-success alert-dismissible"
+										id="chksuccess" role="alert" style="display: none">
+										<button type="button" class="close">
+											<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+										</button>
+										<strong>Warning!</strong> Better check yourself, you're not
+										looking too good.
+									</div>
+									<div class="alert alert-info alert-dismissible" id="chkinfo"
+										role="alert" style="display: none">
+										<button type="button" class="close">
+											<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+										</button>
+										<strong>Warning!</strong> Better check yourself, you're not
+										looking too good.
+									</div>
+									<div class="alert alert-warning alert-dismissible"
+										id="chkwarning" role="alert" style="display: none">
+										<button type="button" class="close">
+											<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+										</button>
+										<strong>Warning!</strong> Better check yourself, you're not
+										looking too good.
+									</div>
+									<div class="alert alert-danger alert-dismissible"
+										id="chkdanger" role="alert" style="display: none">
+										<button type="button" class="close">
+											<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+										</button>
+										<strong>Warning!</strong> Better check yourself, you're not
+										looking too good.
+									</div>
+								</div>
+
+								<hr style="display: none;" />
+
+
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+									style="border: 0px solid;" id="dandanakka">
+									<div class="row">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+											style="border: 0px solid;">
+											<div class="breadcrumb">
+												<li><a href="personal"><span
+													class="glyphicon glyphicon-home"></span></a></li>
+												<li class="active">Profile</li>
+												<li class="active">Address</</li>
+											</div>
+										</div>
+									</div>
+
+									<!-- EDIT DIV -->
+
+									<div class="panel panel-primary" id="editdiv"
+										style="display: none">
+										<div class="panel-heading">Address Details</div>
+										<div class="panel-body">
+											<div class="row">
+												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+													<h5>
+														<b>Current Address</b>
+													</h5>
+												</div>
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-md-12">
+<div class="col-lg-6 col-md-6 col-sm-12 col-12">
+	<div class="form-group">
+														<h5>
+															<span class="text-danger">* </span>Address line 1:
+														</h5>
+														<div class="input-group input-group-sm">
+															<span class="input-group-addon"></span> <input
+																id="ecadd1" name="caline1" type="text"
+																class="form-control txbx" placeholder="Address">
+														</div>
+													</div>
+</div>
+<div class="col-lg-6 col-md-6 col-sm-12 col-12">
+<div class="form-group">
+														<h5>
+															<span class="text-danger">* </span>State:
+														</h5>
+
+
+														<select name="cstate[]" data-live-search="true"
+															class="form-control input-group-smsopt state txbx"
+															id="cstate">
+                          <c:forEach var="cstate" items="${statelist}">
+																<option value="${cstate}">${cstate}</option>
+															</c:forEach>
+															
+															
+
+														</select>
+
+
+</div>
+
+</div>
+</div>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+<div class="form-group">
+														<h5>Address line 2:</h5>
+														<div class="input-group input-group-sm">
+															<span class="input-group-addon"></span> <input
+																id="ecadd2" name="caline2" type="text"
+																class="form-control txbx" placeholder="Address">
+														</div>
+</div>
+</div>
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+<div class="form-group">
+														<h5>
+															<span class="text-danger">* </span>District:
+														</h5>
+
+
+														<select name="cdist[]" data-live-search="true"
+															class="form-control  input-group-sm txbx" id="cdistrict">
+
+<c:forEach var="cdist" items="${cdistlist}">
+																<option value="${cdist.id}">${cdist.name.toUpperCase()}</option>
+															</c:forEach>
+															
+															
+														</select>
+
+													</div>
+
+</div>
+</div>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+<div class="form-group">
+														<h5>
+															<span class="text-danger">* </span>Pincode:
+														</h5>
+														<div class="input-group input-group-sm">
+															<span class="input-group-addon"></span> <input
+																name="cpin" maxlength="6" type="text" id="ecpin"
+																class="form-control txbx" placeholder="Pincode">
+															<input type="hidden" name="smid" value="${address.pmid}" />
+															<input type="hidden" name="uniqueid"
+																value="${address.userUniqueid}">
+														</div>
+													</div>
+												
+</div>
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+	<div class="form-group">
+														<h5>
+															<span class="text-danger">* </span>City / Town:
+														</h5>
+
+
+														<select name="ccity[]" data-live-search="true"
+															class="form-control input-group-sm sopt city txbx"
+															id="ccity">
+
+															
+																<c:forEach var="ccity" items="${ccitylist}">
+																<option value="${ccity.id}">${ccity.name.toUpperCase()}</option>
+															</c:forEach>
+															
+														</select>
+
+													</div>
+</div>
+
+</div>
+
+												<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="border: 0px solid;">
+                                                    <input type="hidden" id="chcli" name="chcli"  />
+													<!-- <input type="hidden" name="sandc" id="req" value="0" />  -->
+													<input	type="hidden" name="pmid" value="${address.pmid}" />
+<input type="hidden" name="sandc" id="addressredirect" value="<%=session.getAttribute("addressredirect")%>"/>
+												</div>
+												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+													<div class="checkbox" id="checkbox">
+														<label> <input type="checkbox" value="paddchk"
+															id="pchk" name="chk">Check If your Permanent Address is different ?
+														</label>
+													</div>
+													<h5 id="permanentid" style="display:none;">
+														<b>Permanent Address</b>
+													</h5>
+												</div>
+
+											</div>
+											<div class="row" id="peraddress" style="display: none;">
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+	<div class="form-group">
+														<h5>
+															<span class="text-danger">* </span>Address line 1:
+														</h5>
+														<div class="input-group input-group-sm">
+															<span class="input-group-addon"></span> <input
+																id="epadd1" name="paline1" type="text"
+																class="form-control padd txbx" placeholder="Address">
+
+														</div>
+													</div>
+	</div>
+	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+		<div class="form-group">
+														<h5>
+															<span class="text-danger">* </span>State:
+														</h5>
+
+
+														<select name="pstate[]" data-live-search="true"
+															class="form-control input-group-smpadd state txbx"
+															id="pstate">
+
+															
+															
+															<c:forEach var="pstate" items="${statelist}">
+																<option value="${pstate}">${pstate}</option>
+															</c:forEach>
+															
+														</select>
+
+
+													</div>
+	</div>
+	</div>	
+	
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+	<div class="form-group">
+														<h5>Address line 2:</h5>
+														<div class="input-group input-group-sm">
+
+															<span class="input-group-addon"></span> <input
+																id="epadd2" name="paline2" type="text"
+																class="form-control padd txbx" placeholder="Address">
+														</div>
+													</div>
+
+    </div>
+	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+	<div class="form-group">
+														<h5>
+															<span class="text-danger">* </span>District:
+														</h5>
+
+
+														<select name="pdist[]" data-live-search="true"
+															class="form-control input-group-sm padd txbx"
+															id="pdistrict">
+
+															<c:forEach var="pdist" items="${pdistlist}">
+																<option value="${pdist.id}">${pdist.name.toUpperCase()}</option>
+															</c:forEach>
+
+														</select>
+													</div>
+
+	</div>
+	</div>									
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+<div class="form-group">
+														<h5>
+															<span class="text-danger">* </span>Pincode:
+														</h5>
+														<div class="input-group input-group-sm">
+															<span class="input-group-addon"></span> <input
+																name="ppin" type="text" maxlength="6" id="epin"
+																class="form-control padd txbx" placeholder="Pincode">
+														</div>
+													</div>
+
+</div>
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+	<div class="form-group">
+
+														<h5>
+															<span class="text-danger">* </span>City / Town:
+														</h5>
+
+														<select name="pcity[]" data-live-search="true"
+															class="form-control input-group-sm padd city txbx"
+															id="pcity">
+
+														<c:forEach var="pcity" items="${pcitylist}">
+																<option value="${pcity.id}">${pcity.name.toUpperCase()}</option>
+															</c:forEach>
+															
+														</select>
+
+
+													</div>
+</div>
+
+</div>
+											</div>
+
+
+
+
+
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+												style="border: 0px solid black; height: 20px">
+															<p class="text-danger">
+																<i><span class="text-danger">( * )</span> Indicates required field</i>
+															</p>
+
+														</div>
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+												style="border: 0px solid black; height: 50px">
+
+												<input type="submit" id="save"
+													class="btn btn-primary pull-right" value="Update"
+													style="position: absolute; bottom: 5px; right: 5px;width:100px;" />
+
+											</div>
+										</div>
+
+
+
+									</div>
+
+
+									<!-- Display div -->
+									<div class="panel panel-primary" id="displaydiv">
+										<div class="panel-heading">Address Details</div>
+										<div class="panel-body">
+											<div class="row">
+												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+												<h5>
+														<b>Current Address</b>
+													</h5>
+													</div>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+<div class="form-group">
+														<h5>Address line 1:</h5>
+														<div class="input-group input-group-sm">
+															<span class="input-group-addon"></span> <span id="cadd1"
+															style="height:inherit;"	class="form-control">${address.saddressline1}</span>
+
+														</div>
+													</div>
+</div>
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+<div class="form-group">
+
+														<h5>State:</h5>
+														<div class="input-group input-group-sm">
+															<span class="input-group-addon"></span> <span
+																id="cstate1" class="form-control">${address.sstate}</span>
+														</div>
+
+
+
+													</div>
+</div>
+
+</div>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+<div class="form-group">
+														<h5>Address line 2:</h5>
+														<div class="input-group input-group-sm">
+															<span class="input-group-addon"></span> <span id="cadd2"
+														style="height:30px;"		class="form-control">${address.saddressline2}</span>
+
+														</div>
+													</div>
+
+</div>
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+<div class="form-group">
+
+														<h5>District:</h5>
+														<div class="input-group input-group-sm">
+															<span class="input-group-addon"></span> <span id="cdis"
+																class="form-control">${address.sdistrict}</span>
+														</div>
+
+													</div>
+</div>
+
+</div>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+<div class="form-group">
+														<h5>Pincode:</h5>
+														<div class="input-group input-group-sm">
+															<span class="input-group-addon"></span> <span id="cpin"
+																class="form-control">${address.spincode}</span> <input
+																type="hidden" name="pmid" value="${address.smid}" /> <input
+																type="hidden" name="uniqueid"
+																value="${address.userUniqueid}">
+														</div>
+													</div>
+</div>
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+<div class="form-group">
+
+														<h5>City / Town:</h5>
+														<div class="input-group input-group-sm">
+															<span class="input-group-addon"></span> <span id="ccity1"
+																class="form-control">${address.scity}</span>
+														</div>
+
+
+													</div>
+
+</div>
+
+</div>
+<hr class="hidden-lg hidden-md" />
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<h5>
+														<b>Permanent Address</b>
+													</h5>
+</div>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+<div class="form-group">
+														<h5>Address line 1:</h5>
+														<div class="input-group input-group-sm">
+															<span class="input-group-addon"></span> <span id="padd1"
+															style="height:inherit;"	class="form-control padd">${address.paddressline1}</span>
+
+														</div>
+													</div>
+</div>
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+<div class="form-group">
+														<h5>State:</h5>
+														<div class="input-group input-group-sm">
+															<span class="input-group-addon"></span> <span
+																id="pstate1" class="form-control padd">${address.pstate}</span>
+
+
+														</div>
+
+													</div>
+</div>
+</div>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+<div class="form-group">
+														<h5>Address line 2:</h5>
+														<div class="input-group input-group-sm">
+															<span class="input-group-addon"></span> <span id="padd2"
+															style="height:30px;"	class="form-control padd">${address.paddressline2}</span>
+
+														</div>
+													</div>
+
+</div>
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+<div class="form-group">
+
+														<h5>District:</h5>
+														<div class="input-group input-group-sm">
+															<span class="input-group-addon"></span> <span id="pdis"
+																class="form-control padd">${address.pdistrict}</span>
+														</div>
+
+													</div>
+</div>
+</div>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+	<div class="form-group">
+														<h5>Pincode:</h5>
+														<div class="input-group input-group-sm">
+															<span class="input-group-addon"></span> <span id="ppin"
+																class="form-control padd">${address.ppincode}</span>
+
+														</div>
+													</div>
+</div>
+
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+<div class="form-group">
+
+														<h5>City / Town:</h5>
+														<div class="input-group input-group-sm">
+															<span class="input-group-addon"></span> <span id="pcity1"
+																class="form-control padd">${address.pcity}</span>
+														</div>
+
+
+													</div>
+												
+</div>
+</div>
+												
+													
+													
+													
+													
+													
+													
+
+
+													<input type="hidden" name="smid" value="${address.pmid}" />
+
+												
+											</div>
+
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+												style="border: 0px solid black; height: 50px">
+
+
+
+												<input type="button" id="edit" value="Edit"
+													class="btn btn-default pull-right"
+													style="position: absolute; bottom: 5px; right: 5px;width:100px;" />
+
+											</div>
+										</div>
+
+
+
+									</div>
+
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+
+				</div>
+
+			</form>
+		</div>
+				
+				
+				
+				
+			</div>
+		</div>
+	</div>
+
+		
+	</div>	
+	<%@include file="/WEB-INF/common/footer_back.jsp"%>
+<%-- 	<form action="editaddress" id="editform" method="POST">
+		<input type="hidden" name="chkcstate" value="${address.sstate}" /> <input
+			type="hidden" name="chkpstate" value="${address.pstate}" /> <input
+			type="submit" id="efbut" style="display: none" />
+
+	</form> --%>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/menu.js"></script>
+<script src="js/bootstrapValidator.js"></script>
+	<script src="js/bootstrap-select.min.js"></script>
+	<script src="js/address.js"></script>
+<script>
+$(document).ready(function(){
+	$(".profileactive").addClass("active");
+	
+
+	
+});
+</script>
+</body>
+
+</html>

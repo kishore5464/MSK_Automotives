@@ -1,0 +1,763 @@
+<%-- 
+    Document   : Technical Skills
+    Author     : Vengatesh K
+--%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@include file="/WEB-INF/common/taglibs.jsp"%>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width">
+<link rel="icon" type="img/ico" href="images/ex.ico">
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/menu.css" rel="stylesheet">
+<link rel="stylesheet" href="css/bootstrapValidator.css" />
+<link rel="stylesheet" href="css/bootstrap-table.min.css">
+<link href="css/font-awesome.css" rel="stylesheet">
+<style>
+.pp
+{
+padding-top:5px;
+}
+#main_body 
+{ 
+  background: url("images/collage.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+}
+#techskills .form-control-feedback 
+{
+	top: 22px;
+	right: -25px;
+}
+
+.hi {
+	display: none;
+}
+
+.tt-dropdown-menu {
+	text-align: left;
+}
+
+.typeahead,.tt-query,.tt-hint 
+{
+	width: 100px;
+	height: 30px;
+	padding: 8px 12px;
+	font-size: 15px;
+	line-height: 30px;
+/* 	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px; */
+	outline: none;
+}
+
+.typeahead 
+{
+	background-color: #fff;
+}
+
+.typeahead:focus 
+{
+	border: 2px solid #0097cf;
+}
+
+.tt-query 
+{
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.tt-hint 
+{
+	color: #999
+}
+
+.tt-dropdown-menu 
+{
+	width: 273px;
+	margin-top: 12px;
+	padding: 6px 0;
+	margin-left: -11px;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	/* -webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	-webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+	-moz-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+	box-shadow: 0 5px 10px rgba(0, 0, 0, .2); */
+}
+
+.tt-suggestion {
+	padding: 1px 15px;
+	font-size: 15px;
+	line-height: 21px;
+}
+
+.tt-suggestion.tt-is-under-cursor {
+	color: #fff;
+	background-color: #0097cf;
+}
+
+.tt-suggestion p {
+	margin: 0;
+}
+</style>
+<script src="js/jquery.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ 
+  ga('create', 'UA-58259459-1', 'auto');
+  ga('send', 'pageview');
+ </script>
+<title>TalentEx - Technical Skills</title>
+</head>
+<body>
+<div class="container-fluid">
+<!-- col-lg-  col-md-  col-sm-  col-xs- -->
+<!-- col-lg-pull-  col-md-pull-  col-sm-pull-  col-xs-pull- -->
+<!-- col-lg-push-  col-md-push-  col-sm-push-  col-xs-push- -->
+<!-- visible-lg-  visible-md-  visible-sm-  visible-xs- --> 
+<!-- hidden-lg hidden-md hidden-sm hidden-xs -->
+<!-- <img src="" 
+	data-position="" data-in="" data-delay="" data-step="" data-out=""> -->
+	<!-- <p class="small"
+		data-position="" data-in="" data-delay="" data-step="" data-out="">
+								
+	</p> -->
+
+
+
+
+
+	<%@include file="/WEB-INF/common/header_back.jsp"%>
+	<!-- 	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 column">
+			<div class="row clearfix">
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 column">
+					<img src="images/talentexcb.png" width="180px" height="60px"/>
+				</div>
+				<div class="col-lg-9 col-md-9 col-sm-6 col-xs-6 column">
+						<ul class="nav nav-pills pull-right" style="font-size: 13px">
+							<li role="presentation" class="active"><a href="https://www.facebook.com/talentex" target="_blank"><i style="color:#364F88" class="fa fa-2x fa-facebook-official"></i></a></li>
+							<li role="presentation" class="active"><a href="https://twitter.com/talent_ex" target="_blank"><i style="color:#179FD0" class="fa fa-2x fa-twitter-square"></i></a></li>
+							<li role="presentation" class="active"><a href="https://www.linkedin.com/grp/home?gid=6732104" target="_blank"><i style="color:#198ABA" class="fa fa-2x fa-linkedin-square"></i></a></li>
+							<li role="presentation" class="active"><a href="https://plus.google.com/105845670791792255444/posts" target="_blank"><i style="color:#E15C4D" class="fa fa-2x fa-google-plus-square"></i></a></li>
+							<li role="presentation" class="active pp"><a href="dashboard"><i class="fa fa-home"></i> HOME</a></li>
+							<li role="presentation" class="pp"><a href="service"><i class="fa fa-cogs"></i> SERVICES</a></li>
+							<li role="presentation" class="pp"><a href="about" target="_blank"><i class="fa fa-building-o"></i> ABOUT US</a></li>
+							<li role="presentation" class="pp"><a href="contact" target="_blank"><i class="fa fa-map-marker"></i> CONTACT</a></li>
+							<li role="presentation" class="pp"><a href="logout"><i class="fa fa-sign-out"></i> LOGOUT</a></li>
+						
+							<li role="presentation"><a href="faq">FAQ</a></li>
+						</ul>
+					</div>
+			</div>
+			
+		</div> -->
+	</div>
+	<!-- <div class="row clearfix">
+		<div class="col-md-12 column" style="border-bottom: 2px solid #e3e3e3;padding-bottom:3px">		
+			<div id='cssmenu' class="pull-right" style="margin-right: 15px;">
+<ul>
+   <li><a href='dashboard' id="loginbut">Dashboard</a></li>
+   <li class='has-sub active'><a href='javascript:void(0)'>Profile</a>
+      <ul>
+		<li><a href="personal">Personal</a></li>
+		<li><a href="address">Address</a></li>
+		<li><a href="education">Education</a></li>
+		<li><a href="techskills">Existing Skills</a></li>
+		<li><a href="experience">Experience</a></li>
+		<li><a href="preference">Work Preference</a></li>
+		<li><a href="password">Change Password</a></li>
+	  </ul>
+   </li>
+    <li class='has-sub'><a href='javascript:void(0)'>Announcements</a>
+    	<ul>
+    		<li><a href="announcement">Job Announcement </a></li>
+   	<li><a href="workshop">Workshops & Seminars</a></li>
+    	</ul>
+    </li>
+    <li class='has-sub'><a href='javascript:void(0)'>Skills</a>
+    	<ul>
+    		<li><a href="mycourse">My Skills</a></li>
+			<li><a href="tech">Technical Skills</a></li>
+			<li><a href="nontech">Non-Technical Skills</a></li>
+			<li><a href="schedulexams">Scheduled Exams</a></li>
+			<li><a href="pastexam">Past Exams</a></li>
+    	</ul>
+    </li>
+    <li class='has-sub'><a href='javascript:void(0)'>Interviews</a>
+    	<ul>
+    		<li><a href="calletter">Interview Calls</a></li>
+   	<li><a href="schedueleinterview">Scheduled Interviews</a></li>
+			<li><a href="passedinterviews">Passed Interviews</a></li>
+    	</ul>
+    </li>
+     
+    
+</ul>
+</div>
+		</div>
+	</div> -->
+	<%@include file="/WEB-INF/common/menu.jsp"%>
+	<div class="row clearfix" id="main_body">
+			<div class="col-md-12 column" style="padding: 0px">
+				<div class="container" style="background-color:white;border-right: 6px solid grey;border-left: 6px solid grey">
+			
+			<div class="row" style="min-height: 450px; border: solid 0px black;">
+			<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="">
+				<div class="row" style="min-height: 450px;margin-top:10px">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<%@include file="/WEB-INF/common/userwidget.jsp"%>
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+						style="margin-top: 3px;min-height: 400px;">
+						<div class="row" style=margin-left:-9px;">
+						<div class="panel panel-primary" style="width: 100%;margin: auto;">
+                        <div class="panel-heading">Profile</div>
+                        <div class="panel-body">
+						<div class="list-group">
+							<a href="personal" class="list-group-item"> <span 
+								class="glyphicon glyphicon-user"></span> Personal <span  id="perdetails" class="text-danger pull-right  glyphicon-asterisk"><span style="font-size:10px;">(mandatory)</span></span>
+							</a> <a href="address" class="list-group-item"> <span 
+								class="glyphicon glyphicon-road"></span> Address <span id="address" class="text-danger pull-right  glyphicon-asterisk"><span style="font-size:10px;">(mandatory)</span></span>
+							</a> <a href="education" class="list-group-item"> <span 
+								class="glyphicon glyphicon-book"></span> Education <span id="education" class="text-danger pull-right  glyphicon-asterisk"><span style="font-size:10px;">(mandatory)</span></span>
+							</a> <a href="javascript:void(0)" class="list-group-item active">
+								<span class="glyphicon glyphicon-star-empty"></span> Skills 
+							</a> <a href="experience" class="list-group-item"> <span
+								class="glyphicon glyphicon-list-alt"></span> Experience 
+							</a> <a href="preference" class="list-group-item"> <span 
+								class="glyphicon glyphicon-list-alt"></span> Work Preference 
+							</a> <a href="password" class="list-group-item"> <span
+								class="glyphicon glyphicon-off"></span> Change Password
+							</a>
+						</div></div></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12" style="">
+				<div class="row" style="height: auto">
+
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+						style="height: auto">
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+								style="display: none;">
+
+								<div class="alert alert-success alert-dismissible" role="alert"
+									style="display: none">
+									<button type="button" class="close" data-dismiss="alert">
+										<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+									</button>
+									<strong>Warning!</strong> Better check yourself, you're not
+									looking too good.
+								</div>
+								<div class="alert alert-info alert-dismissible" role="alert"
+									style="display: none">
+									<button type="button" class="close" data-dismiss="alert">
+										<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+									</button>
+									<strong>Warning!</strong> Better check yourself, you're not
+									looking too good.
+								</div>
+								<div class="alert alert-warning alert-dismissible" role="alert"
+									style="display: none">
+									<button type="button" class="close" data-dismiss="alert">
+										<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+									</button>
+									<strong>Warning!</strong> Better check yourself, you're not
+									looking too good.
+								</div>
+								<div class="alert alert-danger alert-dismissible" role="alert"
+									style="display: none">
+									<button type="button" class="close" data-dismiss="alert">
+										<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+									</button>
+									<strong>Warning!</strong> Better check yourself, you're not
+									looking too good.
+								</div>
+							</div>
+							<hr style="display: none;" />
+
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="row">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+										style="border: 0px solid;">
+										<div class="breadcrumb">
+											<li><a href="personal"><span
+													class="glyphicon glyphicon-home"></span></a></li>
+											<li class="active">Profile</li>
+											<li class="active">Skills</li>
+											<li class="active">Technical</</li>
+										</div>
+									</div>
+								</div>
+
+								<div class="panel panel-primary">
+									<div class="panel-heading">Technology Details</div>
+									<div class="panel-body">
+										<div class="row">
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+												<ul class="nav nav-tabs" role="tablist">
+													<li class="active"><a href="javascript:void(0)">Technical</a></li>
+													<li><a href="langskills">Language</a></li>
+													 <li><a href="proint">Project / Internship</a></li>
+													
+												</ul>
+											</div>
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+												<div class="row">
+													<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"
+														style="border-right: 2px solid gainsboro">
+														<hr>
+														<h5 class="text-primary">SKILLS SET</h5>
+														<hr>
+
+														<form id="techskills" action="sutechskills" method="post">
+															
+														<div class="form-group">
+																<h5>
+																	<span class="text-danger">*</span>Skill name:
+																</h5>
+																
+																	
+																	<input name="tskill" type="text" class="form-control txbx"
+																	style="width:250px;"	id="sname" style="border-radius: 4px;" />
+						        <%--                          <select name="tskill" data-live-search="true"
+															class="form-control input-group-sm"
+															id="sname">
+
+															<c:forEach var="courses" items="${courselist}">
+																<option value="${courses.id}">${courses.courseName.toUpperCase()}</option>
+															</c:forEach>
+
+														</select> --%>
+																		<!-- <input type="hidden" name="techKnownid" value="" id="techKnownid"/> -->
+
+															
+															</div>
+														
+															<div class="form-group">
+																<h5>
+																	<span class="text-danger">*</span>Skill level:
+																</h5>
+																<select class="form-control input-group-sm txbx"
+																	name="tlevel" id="tlevel">
+																	<option selected disabled value="">My level</option>
+																	<option value="1">Beginner</option>
+																	<option value="2">Intermediate</option>
+																	<option value="3">Expert</option>
+																</select>
+															</div>
+															<div class="form-group">
+																<h5>
+																	<span class="text-danger">*</span>Years used:
+																</h5>
+																<select class="form-control input-group-sm txbx"
+																	name="tused" id="yused">
+																	<option selected disabled value="">I have used
+																		it for</option>
+
+																	<option value="0">Less than a year</option>
+																	<option value="1">More than a year</option>
+																	<option value="2">More than 2 years</option>
+																</select>
+															</div>
+															<div class="form-group">
+																<h5>
+																	<span class="text-danger">*</span>Last used:
+																</h5>
+																<select class="form-control input-group-sm txbx"
+																	name="tlused" id="lused">
+																	<option selected disabled value="">I last used
+																		it</option>
+																	<option value="0">Few months ago</option>
+																	<option value="1">Less than a year</option>
+																	<option value="2">More than a year</option>
+																</select>
+															</div>
+															<input type="hidden" name="techid" id="techid" /> <input
+																type="hidden" id="uniqueid" name="uniqueid"
+																value="${techskilllist.get(0).userUniqueid}" /> 
+	
+		<input type="submit" id="save" value="Add" 	class="btn btn-primary pull-right" style="width:100px;" />
+															
+														</form>
+													</div>
+                                                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" style="margin-top:5px;" id="hid">
+                                                <div class="panel panel-primary">
+                                                <div class="panel-heading">
+                                                Technologies Known
+                                                </div>
+                                                <div class="panel-body">
+														<table id="tskilltable">
+															<thead>
+																<tr>
+																	<th data-field="state">Select</th>
+																	<th data-field="name" data-align="center">Name</th>
+																	<th data-field="level" data-align="center">Level</th>
+																	<th data-field="period" data-align="center">Period</th>
+																	<th data-field="lastused" data-align="center">Last
+																		Used</th>
+																	<th class="hi"></th>
+																</tr>
+															</thead>
+															<tbody>
+																<c:forEach var="techlist" items="${techskilllist}">
+																<tr class="hid">
+																		<td><input type="radio" name="radio" class="rkv" /></td>
+																		<td class="tname">${techlist.techskillname}</td>
+																		<td>${techlist.techskilllevel}</td>
+																		<td>${techlist.techyearuser}</td>
+																		<td>${techlist.techlastused}</td>
+																		<td class="hi">${techlist.techid}</td>
+																	</tr>
+																</c:forEach>
+															</tbody>
+														</table>
+														<input type="button" value="Edit"
+															class="btn btn-primary pull-right"
+															style="margin-top: 10px;" id="edit" disabled /> <input
+															type="button" value="Delete"
+															class="btn btn-danger pull-right"
+															style="margin-top: 10px; margin-right: 15px;" id="delete"
+															disabled />
+					                          <!--   <div class="col-1g-12" style="height:60px;background-color:#DCD8ED;">
+												<div class="col-1g-12" style="margin-left:10px;font-size:17px;">Skill Name</div>
+												<span style="margin-left:10px;font-size:14px;" >Level:</span><span style="margin-left:5px;font-size:14px;right:5px;border-right:1px solid black;">Intermediate</span>
+												</div> -->										
+													</div>
+												</div>
+													<input	style="margin-right:10px;" type="button" id="skip" value="Skip & Continue"	class="btn btn-default pull-right" />	
+												
+												
+												
+												
+												
+											</div>
+										</div>
+										
+										
+									
+									</div>
+									
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+											style="border: 0px solid black;">
+										<p class="text-danger">
+																<i><span class="text-danger">( * )</span> Indicates required field</i>
+															</p>
+																				</div>
+										
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+</div>
+			</div>
+				
+				
+				
+				
+				
+			</div>
+		</div>
+	</div>
+
+	
+	<%@include file="/WEB-INF/common/footer_back.jsp"%>
+	
+<input type="text" id="alertvalue" style="display: none;">
+	<input type="text" id="alertdata" style="display: none;">
+<div id="list">
+		<ul style="display: none;" id="oplist">
+
+			<c:forEach var="courses" items="${courselist}">
+				<li class="uli">${courses.courseName.toUpperCase()}</li>
+				<li class="uli1">${courses.id}</li>
+			</c:forEach>
+		</ul>
+	</div>
+
+<script src="js/bootstrap.min.js"></script>
+<script src="js/menu.js"></script>
+<script src="js/bootstrapValidator.js"></script>
+<script src="js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-filestyle.min.js"></script>
+<script src="js/typehead.js"></script>
+<script>
+      $(document).ready(function(){
+    	  $(".tname").each(function(){
+    		  var name=$(this).text().replace(/[\s\n\r]+/g,"").toLowerCase();
+    		  $("#list #oplist .uli").each(function()
+    	      {  
+        		  
+      			var con=$.trim($(this).text().replace(/[\s\n\r]+/g,""));
+      			if(con===name)
+      				{
+      				}
+      	      
+      	           });
+
+    		       });
+    	  
+    	  
+    	  var arr = $("#list #oplist .uli").map(function() { return $(this).text() }).get();
+    	  var arr1= $("#list #oplist .uli1").map(function() { return $(this).text() }).get();
+    	  var arr2 = $("#list #oplist li").map(function() { return $(this).text() }).get();
+    	  $("#sname").typeahead({
+    	        name: 'accounts',
+    	        local: arr
+    	      });
+         var yess;
+         var count=0;
+         if($('.rkv').closest('tr').find("td:eq(1)").text()==="")
+             {
+             $("#edit,#delete").hide();
+        	 $('#tskilltable tbody tr ').remove();
+        	 $('#tskilltable').bootstrapTable({
+                 pagination:false
+           	});
+                /* $(".rkv").hide();	 */
+              /*  $(".hid").append("<td colspan='6'></td>"); */
+           	
+             }
+        $(".rkv").each(function(){
+       /*   yess=$(this).closest('tr').find("td:eq(1)").text(); */
+         count++;
+        });
+
+    	
+    	if(count > 4)
+        	{
+        	
+    		 $('#tskilltable').bootstrapTable({
+//               url:data,
+//               height: auto,
+               clickToSelect: true,
+               pagination:true,
+               pageSize: 4,
+               pageList: [4, 8, 12]
+
+           });
+
+        	}
+    	else
+        	{
+    		 $('#tskilltable').bootstrapTable({
+//               url:data,
+//               height: auto,
+               clickToSelect: true,
+               pagination:false,
+               pageList: [3, 5, 8]
+
+           });
+        	
+        	 } 
+      var data1,data2,data3,data4,data5;
+      
+	 $(document).on("click",".rkv",function(){
+     data1=$(this).closest('tr').find("td:eq(1)").text();
+     data2=$(this).closest('tr').find("td:eq(2)").text();
+     data3=$(this).closest('tr').find("td:eq(3)").text();
+     data4=$(this).closest('tr').find("td:eq(4)").text();
+     data5=$(this).closest('tr').find("td:eq(5)").text();
+     $("#edit").removeAttr("disabled");
+     $("#delete").removeAttr("disabled");
+ //alert(data1+" "+data2+" "+data3+" "+data4+" "+data5); 
+ 
+		});
+
+	      $(document).on("click","#edit",function(){
+	    	  $('#techskills').data('bootstrapValidator').resetForm();
+		  $("#delete").addClass("disabled");
+		   /* console.log("The data is--->"+data1); 
+			$("#sname option").each(function(){            
+				var con=$.trim($(this).text());
+		        console.log(con); 
+		        if(con===data1)
+		            {
+		            /* console.log("The value is same"+data1+"The text is-->"+$(this).val()); 
+		            $('#techskills').find('[name="tskill"]').val($(this).val()).selectpicker('render');
+		            }
+		       
+		            
+		    }); */
+			
+			 $("#sname").val(data1).trigger("change");
+		    $('#techskills').bootstrapValidator('revalidateField', 'tskill');
+		  $("#tlevel").val(data2).trigger("change").attr("data-bv-excluded","true");
+          $("#yused").val(data3).trigger("change").attr("data-bv-excluded","true");
+          $("#lused").val(data4).trigger("change").attr("data-bv-excluded","true");
+          $("#techid").val(data5);
+         /*  console.log("The value is "+data5); */
+         /*  alert($("#uniqueid").val()); */
+          $("#save").attr("value","Update");		
+
+		});
+
+$(document).on("click","#delete",function(){
+	$("#edit").attr("disabled");
+	var uniqueid=$("#uniqueid").val();
+
+	 
+	var don=$.ajax({
+      url: "deltechskills",
+      type: "post",
+     data: {"tskill":data1,"tlevel":data2,"lused":data3,"yused":data4,"techid":data5,"uniqueid":uniqueid}
+ });
+	 
+don.done(function(){
+	
+window.location.href="techskills";
+
+}); 
+
+
+});
+
+$(document).on("change",".txbx",function(){
+	var id="#"+$(this).attr("id");
+	/* alert(id); */
+	$(id).attr("data-bv-excluded","false");
+});
+});
+        </script>
+        <script>
+            $(document).ready(function() {
+$(document).on("click","#skip",function(){
+	window.location.href="langskills";
+});
+
+
+
+/*     console.log("The array is-->"+arr);
+    console.log("The array is-->"+arr1);
+    console.log("The array is-->"+arr2); */
+
+            	
+            	
+
+	/*    var com1,com;
+                $("#tlevel").focusin(function(){
+                	 var count=0;
+                com=$("#sname").val().replace(/ /g,"").toLowerCase();
+               $(".uli").each(function(){
+                    count++;
+              com1=$(this).text().replace(/ /g,"");
+        
+              if(com1===com)
+                  {
+            	  console.log("matched");
+                  console.log(arr1[count-1])
+            	  $("#techKnownid").val(arr1[count-1]);
+
+                  }
+              else
+                  {
+                 
+                  }
+
+  });
+  }); */
+
+                    	/* $(document).append("<span>Hello</span>").css("background","red"); */
+                $('#save').on('click', function() {
+                    var data = $('#techskills').serialize();
+                    $.post("skills", data);
+                    $("#techskills").data('bootstrapValidator').resetForm();
+                    $('#save').attr('type', 'submit');
+                });
+
+
+                $('#techskills').bootstrapValidator({
+                    feedbackIcons: {
+                        valid: 'glyphicon glyphicon-ok',
+                        invalid: 'glyphicon glyphicon-remove',
+                        validating: 'glyphicon glyphicon-refresh'
+                    },
+                    fields: {
+                        tskill: {
+                            message: 'The Skill is not valid',
+                            validators: {
+                                notEmpty: {
+                                    message: 'The Skill is required and cannot be empty'
+                                }/* ,
+                                regexp:{
+									regexp: /^[a-z\s]+$/i,
+									message: 'The Skill can consist of alphabetical characters and spaces only'
+                                    } */
+                            }
+                        }, tlevel: {
+                            message: 'The Technology Level is not valid',
+                            validators: {
+                                notEmpty: {
+                                    message: 'The Technology Level is required and cannot be empty'
+                                }
+                            }
+                        }, tused: {
+                            message: 'The course type is not valid',
+                            validators: {
+                                notEmpty: {
+                                    message: 'The course type is required and cannot be empty'
+                                }
+                            }
+                        }, tlused: {
+                            message: 'The course type is not valid',
+                            validators: {
+                                notEmpty: {
+                                    message: 'The course type is required and cannot be empty'
+                                }
+                            }
+                        }
+                    }
+
+
+
+                }).on('status.field.bv', function(e, data) {
+                    if (data.bv.isValid()) {
+                        data.bv.disableSubmitButtons(false);
+                        $('#save').removeClass('btn-default').addClass('btn-primary').attr('type', 'submit');
+                    }
+                    else {
+                        data.bv.disableSubmitButtons(true);
+                    }
+                });
+                
+                $("#sname").tooltip({
+                    title: 'Ex: JAVA or .NET or ORACLE',
+                    placement: 'bottom'
+                }); 
+                $("#sname").bind("input",function(){
+			        this.value= this.value.toUpperCase();
+			});
+               
+
+
+                
+                $('.close').click(function() {
+        	        $('.alert').fadeOut('slow');
+        	    });
+            	$(".profileactive").addClass("active");
+            });
+        </script>
+</body>
+
+</html>

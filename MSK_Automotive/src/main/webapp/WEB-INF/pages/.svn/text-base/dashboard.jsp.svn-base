@@ -1,0 +1,785 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@include file="/WEB-INF/common/taglibs.jsp"%>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width">
+<link rel="icon" type="img/ico" href="images/ex.ico">
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/menu.css" rel="stylesheet">
+<link rel="stylesheet" href="css/ulanding.css">
+<link rel="stylesheet" href="css/timeline.css">
+<link href="css/font-awesome.css" rel="stylesheet">
+<link rel="stylesheet" href="css/bootstrap-table.min.css">
+<title>TalentEx - Dashboard</title>
+<style>
+.pp {
+	padding-top: 5px;
+}
+.hi 
+{
+	display: none;
+}
+.pagination-info,.page-list
+{
+font-size: 12px;
+} 
+.pagination
+{
+font-size: 11px;
+margin-top:0;
+}
+/* .fixed-table-pagination .pagination
+{
+margin-top: 20px;
+} */
+#main_body { 
+  background: url("images/collage.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+}
+</style>
+<script src="js/jquery.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ 
+  ga('create', 'UA-58259459-1', 'auto');
+  ga('send', 'pageview');
+ </script>
+
+</head>
+<body>
+	<div class="container-fluid">
+		<!-- col-lg-  col-md-  col-sm-  col-xs- -->
+		<!-- col-lg-pull-  col-md-pull-  col-sm-pull-  col-xs-pull- -->
+		<!-- col-lg-push-  col-md-push-  col-sm-push-  col-xs-push- -->
+		<!-- visible-lg-  visible-md-  visible-sm-  visible-xs- -->
+		<!-- hidden-lg hidden-md hidden-sm hidden-xs -->
+		<!-- <img src="" 
+	data-position="" data-in="" data-delay="" data-step="" data-out=""> -->
+		<!-- <p class="small"
+		data-position="" data-in="" data-delay="" data-step="" data-out="">
+								
+	</p> -->
+
+
+
+
+
+	<%@include file="/WEB-INF/common/header_back.jsp"%>
+	<%@include file="/WEB-INF/common/menu.jsp"%>
+		<div class="row clearfix" id="main_body">
+			<div class="col-md-12 column" style="padding: 0px">
+				<div class="container" style="background-color:white;border-right: 6px solid grey;border-left: 6px solid grey">
+					<div class="row" style="min-height: 450px; border: solid 0px black;">
+						<!-- SIDE PANEL -->
+						<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="">
+							<div class="row" style="height: 450px;margin-top:10px">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<%@include file="/WEB-INF/common/userwidget.jsp"%>
+								</div>
+
+
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+									style="margin-top: 10px;">
+									<div class="row" style=margin-left:-9px;">
+									<div class="panel panel-primary"
+										style="width: 100%; margin: auto;">
+										<div class="panel-heading">
+											<i class="fa fa-bell fa-fw"></i> Notifications Panel
+										</div>
+										<!-- /.panel-heading -->
+										<div class="panel-body">
+											<div class="list-group"
+												style="width: inherit; margin: -14px;">
+												<a href="personal" class="list-group-item"> <%--     <span class="badge pull-left btn btn-primary">${dashboard.acceptInterviewCount}</span> --%>
+													<i class="fa fa-user"></i> Profile <!--  <span class="pull-right text-muted small"><em>43 minutes ago</em> -->
+												</a> 
+												
+											<%-- 	<a href="mycourse" class="list-group-item">   <span class="badge pull-left btn btn-primary">${dashboard.announcementCount}</span>
+													<i class="glyphicon glyphicon-briefcase"></i> My Skill <!--        <span class="pull-right text-muted small"><em>4 minutes ago</em> -->
+												</a> --%>
+												<!--   <a href="workshop" class="list-group-item">
+                                 <span class="badge pull-left btn btn-primary">4</span>
+                                    <i class="fa fa-briefcase fa-fw"></i> Workshops
+                                    <span class="pull-right text-muted small"><em>12 minutes ago</em>
+                                    </span>
+                                </a> -->
+												<!--    <a href="talentalerts" class="list-group-item">
+                                 <span class="badge pull-left btn btn-primary">4</span>
+                                    <i class="fa fa-bell fa-fw"></i> Talentex Alerts
+                                    <span class="pull-right text-muted small"><em>27 minutes ago</em>
+                                    </span>
+                                </a> -->
+
+												<!--    <a href="schedueleinterview" class="list-group-item">
+                                 <span class="badge pull-left btn btn-primary">4</span>
+                                    <i class="fa fa-tasks fa-fw"></i> Accepted Interviews
+                                    <span class="pull-right text-muted small"><em>11:32 AM</em>
+                                    </span>
+                                </a> -->
+												<!-- <a href="passedinterviews" class="list-group-item"> <span class="badge pull-left btn btn-primary">0</span>
+													<i class="fa fa-clipboard  fa-fw"></i> Past Interviews         <span class="pull-right text-muted small"><em>11:13 AM</em>
+												</a> -->
+												
+												 <a href="assessment" class="list-group-item"> <%-- <span class="badge pull-left btn btn-primary">${dashboard.scheduledExamCount}</span> --%>
+													<i class="fa fa-graduation-cap fa-fw"></i> Assessment
+													<!--    <span class="pull-right text-muted small"><em>10:57 AM</em> -->
+												</a> 
+											<%-- 	<a href="pastexam" class="list-group-item">   <span class="badge pull-left btn btn-primary">${dashboard.pastExamCount}</span>
+													<i class="fa fa-clipboard fa-fw"></i> Past Exams <!-- <span class="pull-right text-muted small"><em>9:49 AM</em> -->
+												</a> --%>
+												<!--    <a href="#" class="list-group-item">
+                                    <i class="fa fa-money fa-fw"></i> Payments History
+                                    <span class="pull-right text-muted small"><em>Yesterday</em>
+                                    </span>
+                                </a> -->
+											</div>
+											<!-- /.list-group -->
+											<!--   <a href="#" class="btn btn-default btn-block">View All Alerts</a> -->
+										</div>
+										<!-- /.panel-body -->
+									</div>
+</div>
+								</div>
+							</div>
+						</div>
+						<!-- SIDE PANEL END-->
+
+						<!-- PANEL RIGHT FULL -->
+						<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+
+							<div class="row" style="height: auto">
+								<div id="page-wrapper">
+									<div class="row">
+										<div class="col-lg-12">
+											<h2 class="page-header">Dashboard</h2>
+										</div>
+										<!-- /.col-lg-12 -->
+									</div>
+									<!-- /.row -->
+									<div class="row">
+										<div class="col-lg-3 col-md-6">
+											<a href="announcement">
+												<div class="panel panel-primary">
+													<div class="panel-heading">
+														<div class="row">
+															<div class="col-xs-3">
+																<i class="fa fa-bullhorn fa-5x"></i>
+															</div>
+															<div class="col-xs-9 text-right">
+																<div class="huge">${dashboard.announcementCount}</div>
+																<div style="font-size: 15px;"><br/>Announcements!</div>
+															</div>
+														</div>
+													</div>
+
+													<div class="panel-footer">
+														<span class="pull-left">View Details</span> <span
+															class="pull-right"><i
+															class="fa fa-arrow-circle-right"></i></span>
+														<div class="clearfix"></div>
+													</div>
+
+												</div>
+											</a>
+										</div>
+										<div class="col-lg-3 col-md-6">
+											<a href="calletter">
+												<div class="panel panel-green">
+													<div class="panel-heading">
+														<div class="row">
+															<div class="col-xs-3">
+																<i class="glyphicon glyphicon-road"
+																	style="font-size: 5em;"></i>
+															</div>
+															<div class="col-xs-9 text-right">
+																<div class="huge">${dashboard.acceptInterviewCount}</div><br/>
+																<div style="font-size: 15px;">Interview Calls!</div>
+															</div>
+														</div>
+													</div>
+
+													<div class="panel-footer">
+														<span class="pull-left">View Details</span> <span
+															class="pull-right"><i
+															class="fa fa-arrow-circle-right"></i></span>
+														<div class="clearfix"></div>
+													</div>
+
+												</div>
+											</a>
+										</div>
+										<div class="col-lg-3 col-md-6">
+											<a href="assessment">
+												<div class="panel panel-yellow">
+													<div class="panel-heading">
+														<div class="row">
+															<div class="col-xs-3">
+																<i class="fa fa-graduation-cap fa-5x"></i>
+															</div>
+															<div class="col-xs-9 text-right">
+																<div class="huge">&nbsp;</div>
+																<br/>
+																<div style="font-size: 15px;">Assessment!</div>
+															</div>
+														</div>
+													</div>
+
+													<div class="panel-footer">
+														<span class="pull-left">View Details</span> <span
+															class="pull-right"><i
+															class="fa fa-arrow-circle-right"></i></span>
+														<div class="clearfix"></div>
+													</div> 
+
+												</div>
+											</a>
+										</div>
+										<div class="col-lg-3 col-md-6">
+											<a href="points">
+												<div class="panel panel-red">
+													<div class="panel-heading">
+														<div class="row">
+															<div class="col-xs-3">
+																<i class="fa fa-support fa-5x"></i>
+															</div>
+															<div class="col-xs-9 text-right">
+																<div class="huge">${dashboard.totalCredits}</div>
+																<div style="font-size: 15px;">Your Total Points!</div>
+															</div>
+														</div>
+													</div>
+
+													<div class="panel-footer">
+														<span class="pull-left">View Details</span> <span
+															class="pull-right"><i
+															class="fa fa-arrow-circle-right"></i></span>
+														<div class="clearfix"></div>
+													</div>
+
+												</div>
+											</a>
+										</div>
+									</div>
+									<!-- /.row -->
+									<div class="row">
+										<div class="col-lg-8">
+
+											<div class="panel panel-primary" style="">
+												<div class="panel-heading">
+													<i class="fa fa-clock-o fa-fw"></i> Job Announcements Status
+												</div>
+												<!-- /.panel-heading -->
+												<div class="panel-body" style="padding: 5px;min-height:324px;">
+																<table id="langtable">
+																		<thead>
+																			<tr>
+																				<th>S.No</th>
+																				<th data-field="CompanyName" >Company Name</th>
+																				<th data-field="Position" >Position</th>
+																				<th data-field="Status" data-align="center">Status</th>
+																				<th data-field="View" data-align="center">Details</th>
+																				<th class="hi"></th>
+																			</tr>
+																		</thead>
+																		<tbody>
+																			<c:forEach var="langlist" varStatus="counter"
+																				items="${announcement}">
+																				<tr id="row${counter.count}" class="hid">
+																					<td>${counter.count}</td>
+																					<td class='name'>${langlist.companyName}</td>
+																					<td class="position" style="text-transform: capitalize;">${langlist.postion}</td>
+																					<td class="acceotstats"><span style="text-transform: capitalize;top: 5px;position: relative;font-size: 13px;">${langlist.acceptStatus}</span></td>
+																					<td class=""><a class="view" href='javascript:void(0)' style="font-size: 15px;">view</a></td>
+																					<td class="hi">${langlist.announcementid}</td>
+																				</tr>
+																			</c:forEach>
+
+																		</tbody>
+																	</table>
+												
+												
+												
+							<!-- 						<ul class="timeline">
+														<li>
+
+															<div class="timeline-panel">
+																<div class="timeline-heading">
+																	<h4 class="timeline-title">Job Announcemt</h4>
+																	<h4 class="timeline-title">Company Name : EMC</h4>
+																	<h4 class="timeline-title">Job Role : System
+																		Administrator</h4>
+																	      <p><small class="text-muted"><i class="fa fa-clock-o"></i> 11 hours ago via Twitter</small>
+                                            </p>
+																</div>
+																<div class="timeline-body">
+																	<p>EMC looks for System Admin(STORAGE AREA NETWORK
+																		/ BACKUP AND RECOVERY)&nbsp;to​&nbsp;support at L1
+																		level on a contract basis.
+																</div>
+																<a href="announcement" class="pull-right"><i
+																	class="btn btn-success">more</i></a>
+															</div>
+														</li>
+														<li>
+
+															<div class="timeline-panel">
+																<div class="timeline-heading">
+																	<h4 class="timeline-title">Job Announcement</h4>
+																	<h4 class="timeline-title">Company Name: FBT</h4>
+																	<h4 class="timeline-title">Job Role: Linux
+																		Administrator</h4>
+																</div>
+																<div class="timeline-body">
+
+																	<p>Experience into Linux administrator with
+																		installation, configuration, and management.Expertise
+																		in implementation, configuration and management of NIS
+																		& DNS.Advanced ability of analyzing,installing,
+																		maintaining, software, networks and configuration.
+																</div>
+																<a href="announcement" class="pull-right"><i
+																	class="btn btn-success">more</i></a>
+															</div>
+														</li>
+
+
+													</ul> -->
+												</div>
+												<!-- /.panel-body -->
+											</div>
+											<!-- /.panel -->
+										</div>
+
+										<div class="col-lg-4">
+
+											<div class="panel panel-primary" style="">
+												<div class="panel-heading">
+													<i class="fa fa-comments fa-fw"></i> TalentEx Scores 
+<!-- Recently Placed Notifications --></div>
+												<div class="panel-body" style="max-height: 324px;min-height: 324px;">
+  <div class="score-card" style="display: none;">
+	 <c:forEach items="${examscorelist}" var="scoreitems" varStatus="counter">
+	<div id="rank${counter.count}"><p ><span style="font-weight:bold;text-transform: capitalize;">${scoreitems.courseName}&nbsp;&nbsp;:&nbsp;</span>
+	<span> ${scoreitems.examScore}%</span></p>
+     <div class="progress">
+     <div class="progress-bar barwidth" id="pro${counter.count}" style="width:${scoreitems.examScore}%"></div></div>
+     </div>
+     </c:forEach> 
+     <ul class="pagination pull-right"  style="  margin: -4px 0px 0px 0px;" id="pagination-nav"></ul>
+    <!--  <br/>
+     <p class="pull-left"><a href="pastexam" class="">View Full Details</a></p> -->
+	</div>	 
+	
+	<div class="noscore-card" style="display: none;">
+	<p style="color:#A76C3D;">You have not Taken TalentEx Exam yet!</p>
+	<a href="assessment"><input type="button" class="btn btn-success pull-right" value="Take TalentEx Exam"/></a>
+	</div>
+
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+						</div>
+						<!-- PANEL RIGHT FULL END -->
+
+
+
+
+					</div>
+					<div class="row">
+					
+					<div class="col-lg-6 col-md-6 col-sm-12 col-md-12" style="margin-left:-10px">
+								<div class="panel panel-primary" style="">
+												<div class="panel-heading">
+													<i class="glyphicon glyphicon-road"></i> Interview Status
+												</div>
+												<!-- /.panel-heading -->
+												<div class="panel-body" style="padding: 5px;min-height:324px;">
+															<table id="langtable1">
+																		<thead>
+																			<tr >
+																				<th>S.No</th>
+																				<th data-field="CompanyName" >Company Name</th>
+																				<th data-field="Position" >Position</th>
+																				<th data-field="Status" data-align="center">Status</th>
+																				<th data-field="View" data-align="center">Details</th>
+																				<th class="hi"></th>
+																			</tr>
+																		</thead>
+																		<tbody>
+																			<c:forEach var="langlist" varStatus="counter"
+																				items="${interviews}">
+																				<tr id="row${counter.count}" class="hid1">
+																					<td>${counter.count}</td>
+																					<td class='name'>${langlist.companyName}</td>
+																					<td class="position" style="text-transform: capitalize;">${langlist.postion}</td>
+																					<td class="acceotstats"><span style="text-transform: capitalize;top: 5px;position: relative;font-size: 13px;">${langlist.acceptStatus}</span></td>
+																					<td class=""><a class="view1" href='javascript:void(0)' style="font-size: 15px;">view</a></td>
+																					<td class="hi">${langlist.interviewid}</td>
+																				</tr>
+																			</c:forEach>
+
+																		</tbody>
+																	</table> 
+												
+												
+												
+					
+												</div>
+												<!-- /.panel-body -->
+											</div>
+					
+					
+					
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-12 col-md-12" style="margin-left:-2px">
+					
+					       <div class="panel panel-primary">
+                        <div class="panel-heading"><i class="glyphicon glyphicon-envelope" ></i>
+                           Your Referal Friends List 
+                        </div>
+                        <div class="panel-body" style="padding: 5px;min-height: 324px;">
+                                <table id="langtable2">
+                                    <thead>
+                                        <tr>
+                                            <th>S.NO</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Status</th>
+                                             <th>Points Received</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <c:forEach var="techlists" varStatus="counter"	items="${refhistory}" >
+                                        <tr>
+                                            <td>${counter.count}</td>
+                                            <td>${techlists.userName}</td>
+                                            <td>${techlists.userEmail}</td>
+                                            <td>${techlists.referralStatus}</td>
+                                            <td>${techlists.pointsEarned}</td>
+                                        </tr>
+                                 </c:forEach>
+
+                                    </tbody>
+                                </table>
+                                <a href="referfriends" class="pull-right">Refer more friends</a>
+                        </div>
+                    </div>
+					
+					</div>
+					
+					</div>
+					
+					
+				</div>
+			</div>
+		</div>
+
+	</div>
+<%@include file="/WEB-INF/common/footer_back.jsp"%>
+	<div style="display: none;" id="reftype"><%=(session.getAttribute("reftype"))%></div>
+	<input type="text" value="11/12/1991" id="chk_dob"
+		style="display: none;" />
+	<input type="text" id="alertvalue" style="display: none;">
+	<input type="text" id="alertdata" style="display: none;">
+	<input type="hidden" id="mstatus" value="${mobistatus}" />	
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/menu.js"></script>
+	<script src="js/bootstrap-table.min.js"></script>
+	<script>
+$(document).ready(function(){
+
+	
+	$(document).on("click",".view",function(){
+    	var id1 = $(this).closest("tr").find("td:eq(5)").text();
+    	console.log("the id is-->"+id1);
+    	 $.post("announceid",{id:id1})
+    		.done(function(){
+    	       	window.setTimeout(
+             function() {
+    	   				 window.location.href="announcement-detail"; 
+    	   				}, 300);
+    			
+    			})
+    });
+	
+	$(document).on("click",".view1",function(){
+    	var id1 = $(this).closest("tr").find("td:eq(5)").text();
+    	console.log("the id is-->"+id1);
+    	 $.post("interviewid",{id:id1})
+    		.done(function(){
+    	       	window.setTimeout(function() {
+    	   				  window.location.href="interview-detail";  
+    	   				}, 300);
+    			
+    			})
+    });
+	
+	
+		  $('.timeline li:nth-child(even)').addClass('timeline-inverted');
+		  var count=0;
+		  $(".barwidth").each(function(){
+			count++; 
+			  var id="#"+$(this).attr("id");
+			  console.log($(id).width());
+			  /* var widthtext=($(id).width() / $(id).parent().width() * 100).toFixed(1); */
+			  var widthtext=$(id).width();
+			   if(widthtext < "15" )
+				{
+				$(id).css("background-color","#C61F00");
+				}
+			else if(widthtext > "15" && widthtext < "25")
+			{
+			$(id).css("background-color","#06799F");
+			}
+			else if(widthtext > "25" && widthtext < "40")
+			{
+			$(id).css("background-color","#FF9700");
+			}
+			else if(widthtext > "40")
+				{
+				$(id).css("background-color","#5CB85C");
+				}
+			else
+				{
+
+				} 
+			  
+			  
+		  });
+		  $(".hid").each(function(){
+			  var statusempty=$(this).find("td:eq(3)").text();
+			  if(statusempty==="")
+				  {
+				  $(this).find("td:eq(3)").find("span").addClass("label label-default").text("Not Applied")          ;
+				  }
+			  else  if(statusempty==="decline")
+				  {
+				  $(this).find("td:eq(3)").find("span").addClass("label label-danger");
+				  }
+			  else if(statusempty==="applied")
+				  {
+				  $(this).find("td:eq(3)").find("span").addClass("label label-success");
+				  }
+			  else
+				  {
+				  
+				  }
+		  });
+		  
+		  $(".hid1").each(function(){
+			  var statusempty1=$(this).find("td:eq(3)").text();
+			  console.log("the status1 is-->"+statusempty1);
+			  if(statusempty1==="3")
+				  {
+				  $(this).find("td:eq(3)").find("span").addClass("label label-default").text("Not Applied")          ;
+				  }
+			  else  if(statusempty1==="2")
+				  {
+				  $(this).find("td:eq(3)").find("span").addClass("label label-danger").text("Declined");
+				  }
+			  else if(statusempty1==="1")
+				  {
+				  $(this).find("td:eq(3)").find("span").addClass("label label-success").text("Applied");
+				  }
+			  else
+				  {
+				  
+				  }
+		  });
+		  
+		  
+		  $('#langtable').bootstrapTable({
+				clickToSelect: true,
+				pagination: true,
+				pageList: [3, 4, 5],
+		  pageSize : 3
+			});
+		  $('#langtable1').bootstrapTable({
+				clickToSelect: true,
+				pagination: true,
+				pageList: [3, 4, 5],
+		  pageSize : 3
+			});
+		  $('#langtable2').bootstrapTable({
+				clickToSelect: true,
+				pagination: true,
+				pageList: [5, 6, 7],
+		  pageSize : 5
+			});
+		 console.log("The count value is-->"+count);
+		 
+		 if(count===0)
+			 {
+			 $(".noscore-card").show();
+			 }
+		 else
+			 {
+			 $(".score-card").show();
+			 }
+		 
+		 if(count <= 4)
+		 {
+		 $("#pagination-nav").hide();
+		 } 
+		 
+		 var total=count;
+		 var noofdiv=3;
+		pagination();
+	    function pagination()
+	    {
+		 for(var k=0;k<Math.ceil((total/noofdiv)+2);k++)
+	    	 {
+			  $("#pagination-nav").append(" <li><a href=\"javascript:void(0);\"></a></li>");
+	          $("#pagination-nav li:nth-child("+(k+1)+") a").html(k);
+	          $("#pagination-nav li:nth-child(1) a").html("<");
+	          $("#pagination-nav li:nth-child("+Math.ceil((total/noofdiv)+2)+") a").html(">");
+	         
+	         }
+		 
+		 for(var k=1;k<=count;k++)
+		 {
+			 if(k>3) 
+		     {
+				 $("#rank"+k).hide();
+		     }
+		 }
+		 
+		 
+		 
+		 $("#from").html("1");
+	     $("#to").html(noofdiv);
+	     $("#total").html(total);	
+	     $("#pagination-nav li").removeClass("active");
+	     $("#pagination-nav li:nth-child(2)").addClass("active");
+	     $("#pagination-nav li a").click(function(){
+	         var data=$(this).html();
+	        
+	         if(data!= $("#pagination-nav li:nth-child("+Math.ceil((total/noofdiv)+2)+") a").html() && data!= $("#pagination-nav li:nth-child(1) a").html())
+	         {
+	        	 $("#pagination-nav li").removeClass("active");
+	             $(this).parent("li").addClass("active");
+	             var min=(data*noofdiv)-(noofdiv-1);
+	             var max=(data*noofdiv);
+	             if(min<=total)
+	                 {
+	                 $("#from").html(min);
+	                 }
+	             if(max>total)
+	        	 {
+	        	 $("#to").html(total);
+	        	 }
+	         else
+	        	 {
+	        	 $("#to").html(max);
+	        	 }
+	         $("#total").html(total);
+	             for(var i=1;i<=total;i++){
+	                 if(i>=min && i<=max){
+	                	 $("#rank"+i).show();
+	                 }
+	                 else{
+	                	 $("#rank"+i).hide();
+	                 }
+	             }
+	                
+	         }
+	         else
+	             {
+	             var current=parseInt($("#pagination-nav .active a").html());
+	             var data1=$(this).html();
+	             if(current!=Math.ceil((total/noofdiv)) && current>=1 && data1==$("#pagination-nav li:nth-child("+Math.ceil((total/noofdiv)+2)+") a").html())
+	 			{
+	             $("#pagination-nav li:nth-child("+(current+1)+")").removeClass("active");
+	             $("#pagination-nav li:nth-child("+(current+2)+")").addClass("active");
+	             var min=((current+1)*noofdiv)-(noofdiv-1);
+	             var max=((current+1)*noofdiv);
+	             if(min<=total)
+	             {
+	             $("#from").html(min);
+	             }
+	             
+	             if(max>total)
+	        	 {
+	        	 $("#to").html(total);
+	        	 }
+	         else
+	        	 {
+	        	 $("#to").html(max);
+	        	 }
+	         $("#total").html(total);
+	               for(var i=1;i<=total;i++){
+	                   if(i>=min && i<=max){
+	                	   $("#rank"+i).show();
+	                   }
+	                   else{
+	                	   $("#rank"+i).hide();
+	                   }
+	               }
+	            
+	               }
+	             else if(current!=1 && current < Math.ceil((total/noofdiv)+1) && data1==$("#pagination-nav li:nth-child(1) a").html()){
+	                 $("#pagination-nav li:nth-child("+(current+1)+")").removeClass("active");
+	                 $("#pagination-nav li:nth-child("+(current)+")").addClass("active");
+	                 var min=((current-1)*noofdiv)-(noofdiv-1);
+	                 var max=((current-1)*noofdiv);
+	                 if(min<=total){
+	                 $("#from").html(min);
+	                 }
+	                 if(max>total)
+	            	 {
+	            	 $("#to").html(total);
+	            	 }
+	             else
+	            	 {
+	            	 $("#to").html(max);
+	            	 }
+	             $("#total").html(total);
+	                 for(var i=1;i<=total;i++){
+	                	 if(i>=min && i<=max){
+	                  	   $("#rank"+i).show();
+	                     }
+	                     else{
+	                  	   $("#rank"+i).hide();
+	                     }
+	                 }
+	                 
+	                 }
+	             }
+
+
+
+
+
+
+	         
+	     });
+	    }
+		 
+		 
+		 
+		 
+		 
+});
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,661 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@include file="/WEB-INF/common/taglibs.jsp"%>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width">
+<link rel="icon" type="img/ico" href="images/ex.ico">
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/menu.css" rel="stylesheet">
+<link rel="stylesheet" href="css/bootstrap-table.min.css" />
+<link href="css/font-awesome.css" rel="stylesheet">
+<style>
+.pp{
+padding-top:5px;
+}
+#main_body { 
+  background: url("images/collage.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+}
+.hi
+{
+display:none;
+}
+</style>
+<script src="js/jquery.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ 
+  ga('create', 'UA-58259459-1', 'auto');
+  ga('send', 'pageview');
+ </script>
+<title>TalentEx - Take Exam</title>
+</head>
+<body>
+<div class="container-fluid">
+<!-- col-lg-  col-md-  col-sm-  col-xs- -->
+<!-- col-lg-pull-  col-md-pull-  col-sm-pull-  col-xs-pull- -->
+<!-- col-lg-push-  col-md-push-  col-sm-push-  col-xs-push- -->
+<!-- visible-lg-  visible-md-  visible-sm-  visible-xs- --> 
+<!-- hidden-lg hidden-md hidden-sm hidden-xs -->
+<!-- <img src="" 
+	data-position="" data-in="" data-delay="" data-step="" data-out=""> -->
+	<!-- <p class="small"
+		data-position="" data-in="" data-delay="" data-step="" data-out="">
+								
+	</p> -->
+
+
+
+
+
+	<%@include file="/WEB-INF/common/header_back.jsp"%>
+		
+		<%@include file="/WEB-INF/common/menu.jsp"%>
+	
+	<!-- <div class="row clearfix">
+		<div class="col-md-12 column" style="border-bottom: 2px solid #e3e3e3;padding-bottom:3px">		
+			<div id='cssmenu' class="pull-right" style="margin-right: 15px;">
+<ul>
+   <li><a  href='dashboard' id="loginbut">Dashboard</a></li>
+   <li class='has-sub'><a href='javascript:void(0)'>Profile</a>
+      <ul>
+		<li><a href="personal">Personal</a></li>
+		<li><a href="address">Address</a></li>
+		<li><a href="education">Education</a></li>
+		<li><a href="techskills">Existing Skills</a></li>
+		<li><a href="experience">Experience</a></li>
+		<li><a href="preference">Work Preference</a></li>
+		<li><a href="password">Change Password</a></li>
+	  </ul>
+   </li>
+    <li class='has-sub'><a href='javascript:void(0)'>Announcements</a>
+    	<ul>
+    		<li><a href="announcement">Job Announcement </a></li>
+   	<li><a href="workshop">Workshops & Seminars</a></li>
+    	</ul>
+    </li>
+    <li class='has-sub'><a href='javascript:void(0)' class='active' >Skills</a>
+    	<ul>
+    		<li><a href="mycourse">My Skills</a></li>
+			<li><a href="tech">Technical Skills</a></li>
+			<li><a href="nontech">Non-Technical Skills</a></li>
+			<li><a href="schedulexams">Scheduled Exams</a></li>
+			<li><a href="pastexam">Past Exams</a></li>
+    	</ul>
+    </li>
+    <li class='has-sub'><a href='javascript:void(0)'>Interviews</a>
+    	<ul>
+    		<li><a href="calletter">Interview Calls</a></li>
+   	<li><a href="schedueleinterview">Scheduled Interviews</a></li>
+			<li><a href="passedinterviews">Passed Interviews</a></li>
+    	</ul>
+    </li>
+     
+    
+</ul>
+</div>
+		</div>
+	</div> -->
+	<div class="row clearfix" id="main_body">
+			<div class="col-md-12 column" style="padding: 0px">
+				<div class="container" style="background-color:white;border-right: 6px solid grey;border-left: 6px solid grey">
+				
+				
+					<div class="row" style="min-height: 450px; border: solid 0px black; ">
+			<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="">
+				<div class="row" style="min-height: 450px;margin-top:10px">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<%@include file="/WEB-INF/common/userwidget.jsp"%>
+					</div>
+
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+						style="margin-top: 5px;">
+					<!-- 	<div class="list-group">
+							<a class="list-group-item" style='cursor: default;'>  Courses
+							</a>
+						</div> -->
+						<div class="row" style=margin-left:-9px;">
+						<div class="panel panel-primary"><div class="panel-heading">Assessment</div><div class="panel-body">
+						<a id="assessment" class="list-group-item"
+							style="cursor: pointer; margin:auto;"> <span
+							class="fa fa-graduation-cap"></span> Assessment
+						</a>
+					<!-- 	<div class="panel-group" style="margin:auto;" id="accordion">
+							<div style="cursor: pointer;" data-toggle="collapse"
+								data-parent="#accordion" href="#collapseOne"
+								class="panel panel-default">
+								<div class="panel-heading">
+									<div data-toggle="collapse" data-parent="#accordion"
+										class="glyphicon glyphicon-folder-open" href="#collapseOne"></div>Skills <i class="glyphicon glyphicon-chevron-left pull-right"></i>
+								</div>
+								<div id="collapseOne" class="panel-collapse collapse">
+									<div class="panel-body">
+										<div class="list-group" style="">
+											<a id="tech" class="list-group-item"> <span
+												class="glyphicon glyphicon-tower"></span> Technical Skills
+											</a> <a id="nontech" class="list-group-item"> <span
+												class="glyphicon glyphicon-pushpin"></span> Non-Technical
+												Skills
+											</a>
+										</div>
+
+									</div>
+								</div>
+							</div>
+							<div data-toggle="collapse" data-parent="#accordion"
+								href="#collapseTwo"
+								style="margin:auto; cursor: pointer; text-decoration: none;"
+								class="panel panel-default">
+								<div style="text-decoration: none;" class="panel-heading">
+									<div style="text-decoration: none;"
+										class="glyphicon glyphicon-bell"></div>Exams <i class="glyphicon glyphicon-chevron-left pull-right"></i>
+								</div>
+
+								<div id="collapseTwo" class="panel-collapse collapse in">
+									<div class="panel-body">
+										<div class="list-group" style="">
+											<a id="schedulexams" class="list-group-item active"> <span class="fa fa-graduation-cap fa-fw"  style="color:black;"></span> Scheduled Exams
+											</a> <a id="pastexam" class="list-group-item"> <span class="fa fa-clipboard fa-fw"  style="color:black;"></span> Past Exams
+											</a>
+										</div>
+									</div>
+									:
+								</div>
+							</div>
+						</div> -->
+</div></div></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+				<div class="row" style="height: auto">
+
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+						style="height: auto">
+						<div class="row">
+
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+								style="display: none; height: 70px;">
+								<div class="alert alert-success alert-dismissible" role="alert"
+									style="display: none">
+									<button type="button" class="close" data-dismiss="alert">
+										<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+									</button>
+									<strong>Warning!</strong> Better check yourself, you're not
+									looking too good.
+								</div>
+								<div class="alert alert-info alert-dismissible" role="alert">
+									<button type="button" class="close" data-dismiss="alert">
+										<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+									</button>
+									<strong>Warning!</strong> Better check yourself, you're not
+									looking too good.
+								</div>
+								<div class="alert alert-warning alert-dismissible" role="alert"
+									style="display: none">
+									<button type="button" class="close" data-dismiss="alert">
+										<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+									</button>
+									<strong>Warning!</strong> Better check yourself, you're not
+									looking too good.
+								</div>
+								<div class="alert alert-danger alert-dismissible" role="alert"
+									style="display: none">
+									<button type="button" class="close" data-dismiss="alert">
+										<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+									</button>
+									<strong>Warning!</strong> Better check yourself, you're not
+									looking too good.
+								</div>
+							</div>
+							<hr style="display: none;" />
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style=""
+								id="dandanakka">
+								<!--                                    <div class="row">
+                                                                                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="height: 410px;"></div>
+                                                                                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="height: 410px;"></div>
+                                                                                                            </div>-->
+								<div class="breadcrumb">
+									<li><a href="personal"><span
+													class="glyphicon glyphicon-home"></span></a></li>
+									<li class="active">Assessment</li>
+									
+								</div>
+								<div class="row">
+									
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+										style="border: 0; margin-top: 2px;">
+										<div class="panel panel-primary" id="jobannouncement">
+											<div class="panel-heading">
+												<strong style="color: white;">Your Assessment
+													Details</strong>
+											</div>
+										<div class="row">
+											<div class="col-lg-12 col-md-12 com-sm-12 ">
+											<span class="label label-success pull-right"
+											style="font-size:15px;margin-right:5px;margin-top:3px;"> <span
+											class="glyphicon glyphicon-inbox"></span>&nbsp;Assessment count:&nbsp;<span id="nocourse"></span>
+										</span></div></div>
+											<div class="panel-body">
+												<table id="tablevalue" class="table-responsive">
+													<thead>
+
+														<tr>
+															<th data-field="name" data-align="center">S.no</th>
+															<th data-field="role" data-align="center">Skill
+																code</th>
+															<th data-field="location" data-align="center">Skill
+																Name</th>
+															 <th class="hi" data-field="time" data-align="center">Exam Center</th>
+															 <th data-field="status" data-align="center">Take
+																Exam</th>
+																<th class="hi"></th>
+																<th class="hi"></th>
+																<th class="hi"></th>
+															<!-- <th>Resheduled</th> -->
+														
+														</tr>
+													</thead>
+													<tbody>
+													<c:forEach var="list" varStatus="counter"	items="${exams}">
+													<tr class="rkv">
+													<td>${counter.count}</td>
+													<td>${list.courseCode.toUpperCase()}</td>
+													<td>${list.courseName.toUpperCase()}</td>
+													 <td>${list.centerName.toUpperCase()}</td> 
+												<td><a class="rkv1" href="javascript:void(0)">Take Exam</a></td>
+												<td class="hi">${list.centerCode}</td>
+												<td class="hi">${list.courseId}</td>
+												<td class="hi">${list.examTakenCount}</td>
+													</tr></c:forEach>
+													           </tbody>
+												</table>
+												<br/>
+												
+												<div class="row" id="sms" style="display:none;">
+												
+												<div class="col-lg-12 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12" >
+												<div style="font-size:17px;"class="label label-primary">Please choose skill in My skill to Schedule</div>
+												<a href="mycourse">Go to My Skill</a>
+												</div>
+												</div>
+												<br/>
+											<!-- 	<a href="mycourse" id="showbut" style="display:none;"><button class="btn btn-primary pull-left">Schedule more Skill</button></a>
+ -->												
+											</div>
+										</div>
+									</div>
+
+
+								</div>
+							</div>
+
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+				
+				
+				
+				
+			</div>
+		</div>
+	</div>
+
+		
+	</div>	
+<%@include file="/WEB-INF/common/footer_back.jsp"%>
+		
+		
+		
+		<div id="takeExam" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title">Exam Access Code</h4>
+					</div>
+					
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align: center;">
+					<div style="text-align:center;margin-top:10px;margin-bottom:10px;    font-size: 19px;">Choose below option to take exam</div>
+				<label style="cursor:pointer;" id="code"><input type="radio" value="access" class="ctype dis" name="pctype" ><span
+																		class="text-primary txbx">&nbsp;I Have Access Code</span>&nbsp;&nbsp;</label>
+			
+				<label style="cursor:pointer;display:none;" id="mobilelabel"><input type="radio" value="email" class="ctype dis" name="pctype" ><span
+																		class="text-primary txbx">&nbsp;Verify your mobile number to take exam</span>&nbsp;&nbsp;</label>
+																		
+																		
+				<label style="cursor:pointer;display:none;" id="maillabel"><input type="radio" value="email" class="ctype dis" name="pctype" id="mail"><span
+																		class="text-primary txbx">&nbsp;Send a Access Code to my Email-ID</span>&nbsp;&nbsp;</label>
+			
+		
+						
+						
+						</div>
+						
+						<div style="text-align: center;margin-top:20px;">
+						<button  id="takeexamlabel" class="btn btn-primary" type="button" style="color: #ffffff;background-color: #337ab7;border-color: #337ab7;margin-bottom: 10px;margin-top: 15px;"  disabled="disabled">Take Exam</button>
+						</div>
+						<!-- 
+						<div class="modal-footer">
+												
+						</div> -->
+					
+				</div>
+			</div>
+		</div>
+		 <div class="modal fade" id="count4" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content" style="font-family:Helvetica;">
+      <div class="modal-header">
+        <button type="button" class="close ok" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Notification</h4>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 17px;">Your are exceeded the maximum number of Free Exams allowed.&hellip;</p>
+        <div style="font-style: italic;text-align: center;font-size: 18px;margin-bottom: 11px;color: green;">Would you like our Paid Exam</div>
+     <div style="text-align: center;">
+     <button class="btn btn-danger" id="notnowexam" style="width: 100px;font-size: 18px;">Not now</button>
+     <button class="btn btn-primary" id="yesexam" style="width: 100px;font-size: 18px;">Yes</button>
+     
+     </div>
+      </div>
+ <!--      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" class="ok">OK</button>
+     
+      </div> -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+		
+		
+<input type="text" id="alertvalue" style="display: none;">
+	<input type="text" id="alertdata" style="display: none;">
+
+<script src="js/bootstrap.min.js"></script>
+<script src="js/menu.js"></script>
+<script type="text/javascript" src="js/bootstrap-table.min.js"></script>
+<script>
+            $(document).ready(function() {
+            	$(".assessment").addClass("active");   
+            	var count = 0;
+        		$(".rkv").each(function() {
+        			count++;
+        		});
+if($(".rkv").closest("tr").find("td:eq(1)").text()==="")
+	{
+	$("#tablevalue tbody tr").remove();
+	  $('#tablevalue').bootstrapTable({
+         pagination: false,
+      });
+     /*  $("#sms").show(); */
+      $("#nocourse").text("0");
+	}
+else
+	{
+	  $('#tablevalue').bootstrapTable({
+
+          clickToSelect: true,
+          pagination: true,
+          pageList: [5, 10, 15],
+
+      });
+	 $("#nocourse").text(count);
+	 $("#showbut").show();
+	}
+                
+
+
+var data1,data2,data3,data4;
+
+
+
+$(document).on('click', '.rkv1', function() {
+
+     data1 = $(this).closest('tr').find('td:eq(2)').text().replace(" ","");
+     data2= $(this).closest('tr').find('td:eq(5)').text().replace(" ","");
+     data3=$(this).closest('tr').find('td:eq(6)').text().replace(" ","");
+     data4=$(this).closest('tr').find('td:eq(7)').text().replace(" ","");
+      console.log("The center is-->"+data4);
+   
+     
+      
+      
+      
+      if(data4>=3)
+    	  {
+    	  console.log('More than 3');
+    	  $("#count4").modal('show');
+    	  }
+      else
+    	  {
+    	  $("#takeExam").modal('show');
+          
+          
+          if(($("#ms").text()==="0" || $("#ms").text()==="null"))
+        	  
+        	  {
+        	  $("#mobilelabel").show();
+        	  }
+          
+          else
+        	  {
+        	  $("#maillabel").show();
+        	  }
+    	  }
+      
+      
+      
+      
+      
+ /*      if(($("#ms").text()==="0" || $("#ms").text()==="null"))
+	{
+	 $("#myModal3").modal('show');
+	 $("#logoutid1").hide();
+	 
+	 
+	 
+	}
+    else
+    	{
+      console.log("The course name-->"+data1+" course id-->"+data2+" center id-->"+data3+" count-->"+data4);
+    var setdata={
+    		coursename:data1,
+    		courseid:data3,
+    		centercode:data2,
+    		count:data4
+    };
+      
+      
+     	$.ajax({
+  		 type:"post",
+  		 url:"takemodelassessment",
+  		 data:setdata,
+  		 success: function(response) {
+  			 console.log("the response"+$.trim(response).replace(" ",""));
+  			 window.open($.trim(response).replace(" ",""),'_self'); 
+  		 }
+   }); 
+    	} */
+   
+   
+   
+});
+
+
+
+$(document).on("click","#notnowexam",function(){
+	
+	$("#count4").modal('hide');
+	
+	$.ajax({
+		 type:"post",
+		 url:"examrequest",
+		 data:{"data":"0"},
+		 success: function() {
+	
+		 }
+ }); 
+	
+});
+
+
+
+$(document).on("click","#yesexam",function(){
+	
+	$("#count4").modal('hide');
+	
+	$.ajax({
+		 type:"post",
+		 url:"examrequest",
+		 data:{"data":"1"},
+		 success: function() {
+	
+		 }
+}); 
+	
+	
+});
+
+
+
+
+
+
+$(document).on("click","#mobilelabel",function(){
+	$("#takeexamlabel").text("Send OTP");
+	$("#takeexamlabel").removeAttr("disabled");
+	$("#takeexamlabel").addClass("nvsign");
+	$("#takeexamlabel").addClass("mocode");
+	
+});
+
+$(document).on("click","#maillabel",function(){
+	$("#takeexamlabel").removeAttr("disabled");
+	$("#takeexamlabel").text("Send Email");
+	$("#takeexamlabel").addClass("emcode");
+
+});
+
+$(document).on("click","#code",function(){
+	$("#takeexamlabel").removeAttr("disabled");
+	$("#takeexamlabel").text("Take Exam");
+	$("#takeexamlabel").removeClass("nvsign");
+	$("#takeexamlabel").addClass("hcode");
+	
+});
+
+
+
+
+$(document).on("click",".hcode",function(){
+
+	
+	
+    console.log("The course name-->"+data1+" course id-->"+data2+" center id-->"+data3+" count-->"+data4);
+    var setdata={
+    		coursename:data1,
+    		courseid:data3,
+    		centercode:data2,
+    		count:data4
+    };
+      
+      
+     	$.ajax({
+  		 type:"post",
+  		 url:"takemodelassessment",
+  		 data:setdata,
+  		 success: function(response) {
+  			 console.log("the response"+$.trim(response).replace(" ",""));
+  			 window.open($.trim(response).replace(" ",""),'_self'); 
+  		 }
+   }); 
+	
+	
+	
+})
+
+
+$(document).on("click",".emcode",function(){
+	$.ajax({
+		 type:"post",
+		 url:"sendaccess",
+		 success: function() {
+	
+		 }
+ }); 
+    console.log("The course name-->"+data1+" course id-->"+data2+" center id-->"+data3+" count-->"+data4);
+    var setdata={
+    		coursename:data1,
+    		courseid:data3,
+    		centercode:data2,
+    		count:data4
+    };
+      
+      
+     	$.ajax({
+  		 type:"post",
+  		 url:"takemodelassessment",
+  		 data:setdata,
+  		 success: function(response) {
+  			 console.log("the response"+$.trim(response).replace(" ",""));
+  			 window.open($.trim(response).replace(" ",""),'_self'); 
+  		 }
+   }); 
+	
+	
+	
+});
+
+
+$(document).on("click",".mocode",function(){
+	
+	
+	  $("#takeExam").modal('hide');
+	
+});
+                
+                
+
+   
+                                                       $("#pastexam").click(function() {
+                                                            window.location.href = "pastexam";
+                                                        });
+                                                        $("#schedulexams").click(function() {
+                                                            window.location.href = "schedulexams";
+                                                        });
+                                                        $("#nontech").click(function() {
+                                                            window.location.href = "nontech";
+                                                        });
+                                                        $("#tech").click(function() {
+                                                            window.location.href = "tech";
+                                                        });
+                                                        $("#mycourse").click(function() {
+                                                            window.location.href = "mycourse";
+                                                        }); 
+                                                        $('.close').click(function() {
+                                                	        $('.alert').fadeOut('slow');
+                                                	    });
+                                                        
+            });
+                                                	  
+                                                    </script>
+</body>
+
+</html>

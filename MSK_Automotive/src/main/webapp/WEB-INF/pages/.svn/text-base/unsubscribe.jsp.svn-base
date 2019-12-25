@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>feedback</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+</head>
+<body>
+<div class="container-fluid">
+
+ <nav class="navbar navbar-fixed-top">
+
+        <div class="navbar-header">
+          <img alt="logo" src="images/talentexcb.png" height="60px" width="150px">
+        </div>
+
+    </nav>
+    </div>
+
+
+<div class="container">
+<div class="col-lg-12" style="padding-top:50px;">
+<div class="row">
+<div class="col-lg-6">
+<div class="col-lg-12 ">
+<p class="h3 text-danger">Please don't go? What can we do !</p><br>
+<p class="h4"><strong>Send you fewer E-mails?</strong></p>
+<div class="radio">
+    <label>
+      <input type="radio" value="weekly" name="selector"><strong>Weekly</strong>
+    </label>
+  </div>
+<div class="radio">
+    <label >
+      <input type="radio" value="monthly" name="selector"><strong>Monthly</strong>
+    </label>
+  </div>
+  <div class="radio">
+    <label >
+      <input type="radio" value="quarterly" name="selector"><strong>Quarterly</strong>
+    </label>
+  </div>
+  <div class="radio">
+    <label >
+      <input type="radio" value="nochange" name="selector"><strong>Never mind,no changes</strong>
+    </label>
+  </div>
+   <button id="btn_update" type="button" class="btn btn-success btn-lg " style="border-radius:20px; width:200px;">Update frequency
+   <span class="glyphicon glyphicon-chevron-right" 
+   style="font-size:15px; 
+   background-color:#008000;
+   padding:5px;
+   border-radius:20px;
+   "></span>
+   </button>
+   
+  
+
+
+  </div>
+ 
+  <div class="col-lg-12" style="padding-top:50px;">
+<p><strong>Sorry, i am not interested to get mails from you.</strong></p>
+  <p>Please unsubscribe me from all mailings </p>
+  <button id="btn_unsubscribe" type="button" class="btn btn-danger btn-lg " style="border-radius:20px; width:200px;">Unsubscribe me
+  <span class="glyphicon glyphicon-chevron-right" 
+   style="font-size:15px; 
+   background-color:#bb0000;
+   padding:5px;
+   border-radius:20px;
+   margin-left:3px;
+   "></span>
+  </button>
+  </div>
+ 
+<div class="col-lg-12 text-warning" style="padding-top:70px;">
+<small>Please note that unsubscribe process may take 5-10 days ...<br>
+<!-- It's not us,this how these unsubscribe works usually. -->
+</small>
+</div>
+</div>
+
+<div class="col-lg-6">
+<img src="images/Unsubscribe.jpg"/>
+<center><h4><a href="http://talentex.in">www.talentex.in</a></h4></center>
+<div class="form-group">
+  <label for="comment">Comment:</label>
+  <textarea class="form-control" rows="5" id="comment"></textarea><br/>
+   <button id="btn_unsubfeed" type="button" class="btn btn-danger btn-lg pull-right" style="border-radius:20px; width:300px;">Unsubscribe me with comment
+  <span class="glyphicon glyphicon-chevron-right" 
+   style="font-size:15px; 
+   background-color:#bb0000;
+   padding:5px;
+   border-radius:20px;
+   margin-left:3px;
+   "></span>
+  </button>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+ <div id="unsubscribe" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Unsubscribe</h4>
+            </div>
+            <div class="modal-body">
+              <p>We are sorry that we are loosing you,we would unsubscribe from our mail</p>
+              <!-- <p>If you have accidently clicked the unsubscribe.<a href="#">Click here</a> to re-subscribe</p> -->
+           
+            </div>
+            <div class="modal-footer">
+                <button  type="button" class="btn btn-default" data-dismiss="modal" onclick="window.location='/portal';">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <div id="update" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Update frequency</h4>
+            </div>
+            <div class="modal-body">
+              <p>Thank you! We have upgraded yourself in our mailing list as per your preference.
+           
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="window.location='/portal';">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+<script>
+$(document).ready(function(){
+	
+	$('#btn_update').click(function(){
+			
+		
+		var  val =  $('input:radio[name=selector]:checked').val();
+	       
+	        console.log("val->"+val);
+	        var usData={
+	        		"unsubscribe":"false",
+	        		"status":"update",
+	        		"udata":val,
+	        		"page":"unsubscribe"
+	        };
+	        $.ajax({
+	        	url:"unsubinfo",
+	        	type:"POST",
+	        	data:usData,
+	        	success:function(response){
+	        		console.log("SUCCESS");
+	        	},
+	        	error:function(){
+	        		console.log("ERROR");
+	        	}
+	        });
+			$("#update").modal('show');
+	});
+	$('#btn_unsubscribe,#btn_unsubfeed').click(function(){
+		var comment=$("#comment").val();
+		console.log("comment->"+comment);
+		 var usData={
+	        		"unsubscribe":"true",
+	        		"status":"unsubscribe",
+	        		"udata":comment,
+	        		"page":"unsubscribe"
+	        };
+	        $.ajax({
+	        	url:"unsubinfo",
+	        	type:"POST",
+	        	data:usData,
+	        	success:function(response){
+	        		console.log("SUCCESS");
+	        	},
+	        	error:function(){
+	        		console.log("ERROR");
+	        	}
+	        });
+			$("#unsubscribe").modal('show');
+	});
+	
+	
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<div class="container-fluid" style="padding: 0px">
+
+		<div class="row clearfix">
+
+			<div class="col-md-12 column">
+				<div
+					style="background-color: #222222; height: auto; padding-bottom: 10px">
+					<div class="row ">
+
+						<div class="col-md-6 column align-center" style="color: #fff;">
+							<div class="row clearfix">
+								<div
+									class="col-lg-offset-3 col-md-offset-3 col-sm-offset-1 col-xs-offset-1">
+									<ul class="nav nav-pills align-center"
+										style="margin-left: 100px;">
+										<li id="foot-nav"><a href="dashboard">Home</a></li>
+				<!-- 						<li id="foot-nav"><a href="about">About us</a></li>
+										<li id="foot-nav"><a href="contact">Contact us</a></li> -->
+										<li id="foot-nav"><a href="" class="logoutid">Logout</a></li>
+										<!--  <li id="foot-nav"><a href="#">FAQ</a></li> -->
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+							style="padding-top: 10px;">
+							<div class="row clearfix">
+								<div class="col-md-3"></div>
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"></div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="row clearfix" style="background-color: #222222">
+					<div class="container">
+						<div class="col-md-12 column">
+							<div class="row clearfix">
+								<div class="col-md-5 " style="font-size: 16px; color: white;">
+
+									<center>
+										<h5>
+											<i style="color: #2282AE" class="fa fa-2x fa-map-marker"></i>&nbsp;&nbsp;
+											MS Towers, 2nd floor, 633/1 Aminjikarai Chennai, Tamil Nadu
+											600029
+
+										</h5>
+									</center>
+								</div>
+								<div class="col-md-6 col-md-offset-1 column"
+									style="color: white;">
+									<center>
+										<h4 style="color: white; font-weight: bolder">
+											<i style="color: #2282AE" class="fa fa-lg fa-envelope-o"></i> SMS: "JOBS" &lt;SPACE&gt; Name to&nbsp;+91
+											72000 19191
+										</h4>
+									</center>
+								<!-- 	<center>
+										<h4 style="color: white; font-weight: bolder">
+											<i style="color: #2282AE" class="fa fa-lg fa-envelope-o"></i>&nbsp;&nbsp;+91
+											72000 19191
+										</h4>
+									</center> -->
+									<center>
+										<h4 style="color: white; font-weight: bolder">
+											<i style="color: #2282AE" class="fa fa-lg fa-phone"></i>&nbsp;&nbsp;&nbsp;&nbsp;044-3190
+											3195
+										</h4>
+									</center>
+
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					<div style="background: black">
+						<div class="container-fluid">
+							<div class="row clearfix">
+								<div class="col-md-12 column">
+									<div class="row clearfix">
+										<div class="col-md-6">
+
+
+											<p
+												style="color: #9C9C9C; margin-top: 14px; padding-left: 20px;">&copy;
+												 2015 Fore Brain Technologies - All rights
+												reserved.</p>
+
+										</div>
+										<div class="col-md-6">
+											<a href="http://www.fbtech.in" target="_blank"><img
+												style="margin-top: 10px; padding-right: 20px;"
+												src="images/poweredby.png" class="pull-right"></a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+	</div>

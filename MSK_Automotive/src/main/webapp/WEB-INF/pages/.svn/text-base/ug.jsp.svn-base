@@ -1,0 +1,1122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@include file="/WEB-INF/common/taglibs.jsp"%>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width">
+<link rel="icon" type="img/ico" href="images/ex.ico">
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/menu.css" rel="stylesheet">
+<link href="css/font-awesome.css" rel="stylesheet">
+<link rel="stylesheet" href="css/bootstrapValidator.css">
+<link rel="stylesheet" href="css/bootstrap-select.min.css">
+<style>
+.pp{
+padding-top:5px;
+}
+#main_body { 
+  background: url("images/collage.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+}
+#ugform .form-control-feedback {
+	top: 22px;
+	right: -25px;
+}
+</style>
+<script src="js/jquery.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ 
+  ga('create', 'UA-58259459-1', 'auto');
+  ga('send', 'pageview');
+ </script>
+<title>TalentEx - UG Studies</title>
+</head>
+<body>
+<%
+if(session.getAttribute("jobseekerid") == null){
+    response.sendRedirect("index");
+}
+response.setHeader("Pragma","no-cache"); 
+response.setHeader("Cache-Control","no-store"); 
+response.setHeader("Expires","0"); 
+response.setDateHeader("Expires",-1); 
+
+%>
+<div class="container-fluid">
+<!-- col-lg-  col-md-  col-sm-  col-xs- -->
+<!-- col-lg-pull-  col-md-pull-  col-sm-pull-  col-xs-pull- -->
+<!-- col-lg-push-  col-md-push-  col-sm-push-  col-xs-push- -->
+<!-- visible-lg-  visible-md-  visible-sm-  visible-xs- --> 
+<!-- hidden-lg hidden-md hidden-sm hidden-xs -->
+<!-- <img src="" 
+	data-position="" data-in="" data-delay="" data-step="" data-out=""> -->
+	<!-- <p class="small"
+		data-position="" data-in="" data-delay="" data-step="" data-out="">
+								
+	</p> -->
+
+
+
+
+
+	<%@include file="/WEB-INF/common/header_back.jsp"%>
+		<!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 column">
+			<div class="row clearfix">
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 column">
+					<img src="images/talentexcb.png" width="180px" height="60px"/>
+				</div>
+				<div class="col-lg-9 col-md-9 col-sm-6 col-xs-6 column">
+						<ul class="nav nav-pills pull-right" style="font-size: 13px">
+							<li role="presentation" class="active"><a href="https://www.facebook.com/talentex" target="_blank"><i style="color:#364F88" class="fa fa-2x fa-facebook-official"></i></a></li>
+							<li role="presentation" class="active"><a href="https://twitter.com/talent_ex" target="_blank"><i style="color:#179FD0" class="fa fa-2x fa-twitter-square"></i></a></li>
+							<li role="presentation" class="active"><a href="https://www.linkedin.com/grp/home?gid=6732104" target="_blank"><i style="color:#198ABA" class="fa fa-2x fa-linkedin-square"></i></a></li>
+							<li role="presentation" class="active"><a href="https://plus.google.com/105845670791792255444/posts" target="_blank"><i style="color:#E15C4D" class="fa fa-2x fa-google-plus-square"></i></a></li>
+							<li role="presentation" class="active pp"><a href="dashboard"><i class="fa fa-home"></i> HOME</a></li>
+							<li role="presentation" class="pp"><a href="service"><i class="fa fa-cogs"></i> SERVICES</a></li>
+							<li role="presentation" class="pp"><a href="about" target="_blank"><i class="fa fa-building-o"></i> ABOUT US</a></li>
+							<li role="presentation" class="pp"><a href="contact" target="_blank"><i class="fa fa-map-marker"></i> CONTACT</a></li>
+							<li role="presentation" class="pp"><a href="logout"><i class="fa fa-sign-out"></i> LOGOUT</a></li>
+						
+							<li role="presentation"><a href="faq">FAQ</a></li>
+						</ul>
+					</div>
+			</div>
+			
+		</div> -->
+	</div>
+<!-- 	<div class="row clearfix">
+		<div class="col-md-12 column" style="border-bottom: 2px solid #e3e3e3;padding-bottom:3px">		
+			<div id='cssmenu' class="pull-right" style="margin-right: 15px;">
+<ul>
+   <li><a  href='dashboard' id="loginbut">Dashboard</a></li>
+   <li class='has-sub'><a class='active' href='javascript:void(0)'>Profile</a>
+      <ul>
+		<li><a href="personal">Personal</a></li>
+		<li><a href="address">Address</a></li>
+		<li><a href="seducation">Education</a></li>
+		<li><a href="techskills">Existing Skills</a></li>
+		<li><a href="experience">Experience</a></li>
+		<li><a href="preference">Work Preference</a></li>
+		<li><a href="password">Change Password</a></li>
+	  </ul>
+   </li>
+    <li class='has-sub'><a href='javascript:void(0)'>Announcements</a>
+    	<ul>
+    		<li><a href="announcement">Job Announcement </a></li>
+   	<li><a href="workshop">Workshops & Seminars</a></li>
+    	</ul>
+    </li>
+    <li class='has-sub'><a href='javascript:void(0)'>Skills</a>
+    	<ul>
+    		<li><a href="mycourse">My Skills</a></li>
+			<li><a href="tech">Technical Skills</a></li>
+			<li><a href="nontech">Non-Technical Skills</a></li>
+			<li><a href="schedulexams">Scheduled Exams</a></li>
+			<li><a href="pastexam">Past Exams</a></li>
+    	</ul>
+    </li>
+    <li class='has-sub'><a href='javascript:void(0)'>Interviews</a>
+    	<ul>
+    		<li><a href="calletter">Interview Calls</a></li>
+   	<li><a href="schedueleinterview">Scheduled Interviews</a></li>
+			<li><a href="passedinterviews">Passed Interviews</a></li>
+    	</ul>
+    </li>
+     
+    
+</ul>
+</div>
+		</div>
+	</div> -->
+	
+	<%@include file="/WEB-INF/common/menu.jsp"%>
+	<div class="row clearfix" id="main_body">
+			<div class="col-md-12 column" style="padding: 0px">
+				<div class="container" style="background-color:white;border-right: 6px solid grey;border-left: 6px solid grey">
+				
+				
+				<div class="row" style="min-height: 450px; border: solid 0px black">
+			<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="">
+				<div class="row" style="min-height: 450px;margin-top:10px">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<%@include file="/WEB-INF/common/userwidget.jsp"%>
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+						style="margin-top: 3px;">
+						<div class="row" style=margin-left:-9px;">
+						<div class="panel panel-primary" style="width: 100%;margin: auto;">
+                        <div class="panel-heading">Profile</div>
+                        <div class="panel-body">
+						<div class="list-group">
+							<a href="personal" class="list-group-item"> <span
+								class="glyphicon glyphicon-user"></span> Personal <span id="perdetails" class="text-danger pull-right  glyphicon-asterisk"><span style="font-size:10px;">(mandatory)</span></span>
+							</a> <a href="address" class="list-group-item"> <span
+								class="glyphicon glyphicon-road"></span> Address <span id='address' class="text-danger pull-right  glyphicon-asterisk"><span style="font-size:10px;">(mandatory)</span></span>
+							</a> <a href="javascript:void(0)" class="list-group-item active">
+								<span class="glyphicon glyphicon-book"></span> Education <span id="education" class="text-danger pull-right  glyphicon-asterisk"><span style="font-size:10px;">(mandatory)</span></span>
+							</a> <a href="techskills" class="list-group-item"> <span
+								class="glyphicon glyphicon-star-empty"></span> Skills 
+							</a> <a href="experience" class="list-group-item"> <span
+								class="glyphicon glyphicon-list-alt"></span> Experience 
+							</a> <a href="preference" class="list-group-item "> <span
+								class="glyphicon glyphicon-list-alt"></span> Work Preference
+							</a> <a href="password" class="list-group-item"> <span
+								class="glyphicon glyphicon-off"></span> Change Password
+							</a>
+						</div></div></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12" style="">
+				<div class="row" style="height: auto">
+					<form id="ugform" action="suug" method="POST">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+							style="height: auto">
+							<div class="row">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+									style="display: none;">
+
+									<div class="alert alert-success alert-dismissible" role="alert"
+										style="display: none">
+										<button type="button" class="close" data-dismiss="alert">
+											<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+										</button>
+										<strong>Warning!</strong> Better check yourself, you're not
+										looking too good.
+									</div>
+									<div class="alert alert-info alert-dismissible" role="alert"
+										style="display: none">
+										<button type="button" class="close" data-dismiss="alert">
+											<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+										</button>
+										<strong>Warning!</strong> Better check yourself, you're not
+										looking too good.
+									</div>
+									<div class="alert alert-warning alert-dismissible" role="alert"
+										style="display: none">
+										<button type="button" class="close" data-dismiss="alert">
+											<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+										</button>
+										<strong>Warning!</strong> Better check yourself, you're not
+										looking too good.
+									</div>
+									<div class="alert alert-danger alert-dismissible" role="alert"
+										style="display: none">
+										<button type="button" class="close" data-dismiss="alert">
+											<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+										</button>
+										<strong>Warning!</strong> Better check yourself, you're not
+										looking too good.
+									</div>
+								</div>
+								<hr style="display: none;" />
+
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+									style="border: 0px solid;">
+									<div class="row">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+											style="border: 0px solid;">
+											<div class="breadcrumb">
+												<li><a href="personal"><span
+														class="glyphicon glyphicon-home"></span></a></li>
+											    <li class="active">Profile</li>
+												<li class="active">Education</li>
+												<li class="active">UG</</li>
+											</div>
+										</div>
+									</div>
+
+									<div class="panel panel-primary" id="displaydiv">
+
+										<div class="panel-heading">UG Details</div>
+										<div class="panel-body">
+											<ul class="nav nav-tabs" role="tablist">
+												<li><a href="education">10th</a></li>
+												<li><a href="education1">12th</a></li>
+												<li><a href="diploma">Diploma</a></li>
+												<li class="active"><a style="color:blue;font-weight:bold;" href="javascript:void(0);">U.G</a></li>
+
+												<li id="pgt" class="disabled pgt"><a  class="disabled pgt" href="pg">P.G</a></li>
+
+
+											</ul>
+											  <p style="border-bottom: 1px solid #D6D7D8;font-size: 15px;padding: 10px 0 3px;text-align: center;">
+   <strong style="color: #999;font-size:17px;">UG Details</strong>
+   </p>
+											<div class="row">
+
+												<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+													<div class="row">
+														
+														<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+															<div class="form-group">
+																<h5>Course Type</h5>
+																<div class="input-group input-group-sm">
+
+																	<span class="input-group-addon"><span
+																		class="glyphicon glyphicon-book"></span></span> 
+																		<span id="cname" class="form-control hsc">${ug.uggraduationtype}</span>
+
+																</div>
+															</div>
+
+
+
+
+															<div class="form-group ">
+																<h5>University:</h5>
+																<div class="input-group input-group-sm">
+
+																	<span class="input-group-addon"><span
+																		class="glyphicon glyphicon-book"></span></span> <span
+																		id="sname" class="form-control hsc" style="height:inherit;">${ug.ugunivercity}</span>
+
+																</div>
+
+															</div>
+
+
+															<div class="form-group ">
+																<h5>College / institution:</h5>
+
+
+																<div class="input-group input-group-sm">
+
+																	<span class="input-group-addon"><span
+																		class="glyphicon glyphicon-book"></span></span> <span
+																		id="iname" class="form-control hsc" style="height:inherit;">${ug.ugcollegename}</span>
+
+																</div>
+															</div>
+
+
+															<div class="form-group">
+																<h5>Degree:</h5>
+																<div class="input-group input-group-sm">
+
+																	<span class="input-group-addon"><span
+																		class="glyphicon glyphicon-book"></span></span> <span
+																		id="dname" class="form-control hsc">${ug.ugdegreetype}</span>
+
+																</div>
+															</div>
+															<div class="form-group">
+																<h5>Department / Major:</h5>
+
+
+																<div class="input-group input-group-sm">
+
+																	<span class="input-group-addon"><span
+																		class="glyphicon glyphicon-book"></span></span> <span
+																		id="sname" class="form-control hsc" style="height:inherit;">${ug.ugdepartment}</span>
+
+																</div>
+															</div>
+
+														</div>
+													
+													</div>
+												</div>
+
+
+												<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+													<div class="row sgpd" id="diploma">
+														
+														<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+															<div class="form-group">
+																<h5>Course mode</h5>
+																<div class="input-group input-group-sm">
+
+																	<span class="input-group-addon"><span
+																		class="glyphicon glyphicon-book"></span></span> <span
+																		id="name" class="form-control hsc">${ug.ugcollegemode}</span>
+
+																</div>
+															</div>
+
+															<div class="form-group ">
+																<h5>Year of completion:</h5>
+																<div class="input-group input-group-sm">
+
+																	<span class="input-group-addon"><span
+																		class="glyphicon glyphicon-book"></span></span> 
+																		<span id="yocname" class="form-control hsc">${ug.ugyoc}</span>
+
+
+																</div>
+																
+															</div>
+
+
+															<div class="form-group">
+																<h5>Exam registration number :</h5>
+																<div class="input-group input-group-sm">
+																	<span class="input-group-addon"><span
+																		class="glyphicon glyphicon-book"></span></span> <span
+																	id="ernum"	class="form-control">${ug.ugregnumber }</span>
+																</div>
+															</div>
+
+
+															<div class="form-group">
+																<h5>Backlogs / Arrears:</h5>
+																<div class="input-group input-group-sm">
+
+																	<span class="input-group-addon"><span
+																		class="glyphicon glyphicon-book"></span></span> <span
+																		id="backlog" class="form-control hsc">${ug.ugbacklogs}</span>
+
+																</div>
+															</div>
+
+
+															<div class="form-group">
+																<h5>Aggregate / Percentage: </h5>
+																<div class="input-group input-group-sm"
+																	style="width: 150px">
+
+																	<span id="agg" class="form-control">${ug.ugaggregate }</span> <input
+																		type="hidden" name="uiid" value="${ug.uiid}" /> <input
+																		type="hidden" name="uniqueid"
+																		value="${ug.userUniqueid}" /><span
+																		class="input-group-addon">% / CGPA</span>
+																</div>
+															</div>
+
+
+														</div>
+														
+													</div>
+												</div>
+											</div>
+                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+												style="border: 0px solid black; height: 50px">
+
+												<button type="button" id="edit"
+													class="btn btn-default pull-right"
+													style="position: absolute; bottom: 5px; right: 5px;width:100px;">Edit</button>
+
+											</div>
+
+										</div>
+									</div>
+
+
+
+
+
+
+
+
+
+									<div class="panel panel-primary" id="editdiv"
+										style="display: none;">
+
+										<div class="panel-heading">UG Details</div>
+										<div class="panel-body">
+											<ul class="nav nav-tabs" role="tablist">
+												<li><a href="education">10th</a></li>
+												<li><a href="education1">12th</a></li>
+												<li><a href="diploma">Diploma</a></li>
+
+											<li class="active"><a style="color:blue;font-weight:bold;" href="javascript:void(0);">U.G</a></li>
+											<li id="pgt" class="disabled pgt"><a  class="disabled pgt" href="pg">P.G</a></li>
+
+
+											</ul>
+										<p style="border-bottom: 1px solid #D6D7D8;font-size: 15px;padding: 10px 0 3px;text-align: center;">
+   <strong style="color: #999;font-size:17px;">UG Details</strong>
+   </p>
+											<div class="row">
+
+												<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+													<div class="row">
+														<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
+														<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+															<div class="form-group">
+																<h5><span class="text-danger">* </span>Course Type</h5>
+																<div class="input-group input-group-sm">
+
+																	<label style="cursor:pointer;"><input type="radio" value="engg" class="ctype txbx" name="uctype" id="engg"><span
+																		class="text-primary">&nbsp;Engineering</span>&nbsp;&nbsp;</label>
+																	<label style="cursor:pointer;"><input type="radio" value="arts" class="ctype txbx" name="uctype" id="arts"><span
+																		class="text-primary">&nbsp;Arts and Science</span></label>
+																</div>
+															</div>
+															<div class="form-group ">
+																<h5><span class="text-danger">* </span>University:</h5>
+																<select name="uuniv" class="input-group-sm form-control usel txbx" id="uuniv" data-live-search="true">
+
+																	<c:forEach var="uguniv" items="${univlist}">
+																		<option value="${uguniv}">${uguniv}</option>
+																	</c:forEach>
+
+																</select>
+															</div>
+															
+															<div class="form-group ">
+<h5><span class="text-danger">* </span>College / institution: [ <input type="checkbox" style="color:blue" class="check" id="ucol3"> Others ] </h5> 
+
+
+																<select name="ucol" class="form-control usel txbx " id="ucol" style="height:inherit;" data-live-search="true">
+																			<c:forEach var="ugcol" items="${collegelist}">
+																		<option value="${ugcol.id}">${ugcol.name.toUpperCase()}</option>
+																	</c:forEach>
+																	
+																</select>
+																
+															</div>
+															
+															<div class="form-group" style="display: none;"  id="ucol4">
+																<h5>
+																	<span class="text-danger">* </span>Enter your College Name:
+																</h5>
+																<div class="input-group" id="">
+																	<!-- <span class="input-group-addon"></span> -->
+																	<input name="collname" class="form-control txbx" 
+																		id="collegename" style="border-radius: 4px;" />
+
+																		
+
+																</div>
+															</div>
+															<input type="hidden" name="sandc" id="req" value="1" />
+															<div class="form-group">
+																<h5><span class="text-danger">* </span>Degree: [ <input type="checkbox" style="color:blue" class="check" id="udeg3"> Others ]</h5>
+
+
+																<select name="udeg"
+																	class="input-group-sm form-control usel txbx "  id="udeg" data-live-search="true">
+											
+																	<c:forEach var="ugdeg" items="${degreelist}">
+																		<option value="${ugdeg}">${ugdeg.toUpperCase()}</option>
+																	</c:forEach>
+																</select>
+															</div>
+																<div class="form-group" style="display: none;"  id="udeg4">
+																<h5>
+																	<span class="text-danger">* </span>Enter your Degree Name:
+																</h5>
+																<div class="input-group" id="">
+																	<!-- <span class="input-group-addon"></span> -->
+																	<input name="degname" class="form-control txbx" id="degname"
+																		 style="border-radius: 4px;" />
+
+																		
+
+																</div>
+															</div>
+															<div class="form-group">
+																<h5><span class="text-danger">* </span>Department / Major: [ <input type="checkbox" style="color:blue" class="check" id="udep3"> Others ]</h5>
+																<select name="udep"
+																	class="input-group-sm form-control usel txbx "  id="udep" data-live-search="true">
+															
+																	<c:forEach var="ugdep" items="${deplist}">
+																		<option value="${ugdep.dno}">${ugdep.department.toUpperCase()}</option>
+																	</c:forEach>
+																</select>
+															</div>
+																<div class="form-group" style="display: none;"  id="udep4">
+																<h5>
+																	<span class="text-danger">* </span>Enter your Department Name:
+																</h5>
+																<div class="input-group" id="">
+																	<!-- <span class="input-group-addon"></span> -->
+																	<input name="depname" class="form-control txbx" id="depname"
+																		 style="border-radius: 4px;" />
+
+																		
+
+																</div>
+															</div>
+
+														</div>
+														<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
+													</div>
+												</div>
+
+
+												<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+													<div class="row sgpd" id="diploma">
+														<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
+														<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+															<div class="form-group">
+																<h5><span class="text-danger">* </span>Course Mode</h5>
+																<div class="input-group input-group-sm">
+
+																	
+																	<label style="cursor:pointer;"><input type="radio" class="txbx mode" value="Full Time"
+																		id="fulltime" name="ugcollegemode"><span
+																		class="text-primary">&nbsp;Full Time</span>&nbsp;&nbsp;</label>
+															        <label style="cursor:pointer;"><input type="radio" class="txbx mode" value="Part Time"
+																		id="parttime" name="ugcollegemode"><span
+																		class="text-primary">&nbsp;Part Time</span>&nbsp;&nbsp;</label>
+																	<label style="cursor:pointer;"><input type="radio" class="txbx mode cor"
+																		value="Corres" id="corres" name="ugcollegemode"><span
+																		class="text-primary cor">&nbsp;Corres</span></label>
+																</div>
+															</div>
+
+															<div class="form-group ">
+																<h5><span class="text-danger">* </span>Year of completion:</h5>
+																<select name="uyop" class="input-group-sm form-control txbx"
+																	id="uyop" data-live-search="true">
+																	<option value="" disabled selected></option>
+																</select>
+															</div>
+															<div class="form-group">
+																<h5>Exam registration number :<span> (Optional)</span></h5>
+																<div class="input-group input-group-sm">
+
+																	<input type="text" id="ernum1" name="examreg" maxlength="14" class="form-control" data-bv-excluded="true"> 
+																	<span class="input-group-addon"><span class="glyphicon glyphicon-book"></span></span>
+																</div>
+															</div>
+															<div class="form-group">
+																<h5><span class="text-danger">* </span>Backlogs / Arrears:</h5>
+
+
+																<select name="ubglk" class="input-group-sm form-control txbx"
+																	id="ubacklog" data-live-search="true">
+																	
+																	
+																</select>
+															</div>
+
+															
+
+															<div class="form-group">
+																<h5>*Aggregate / Percentage:</h5>
+																<div class="input-group input-group-sm"
+																	style="width: 150px">
+
+																	<input id="agg1" type="text" value="" name="uaggr"
+																		class="form-control" maxlength="5"> <input type="hidden"
+																		name="uiid" value="" /> <input type="hidden"
+																		name="uniqueid" value="" /><span
+																		class="input-group-addon">% / CGPA</span>
+																</div>
+															</div>
+														</div>
+														<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
+													</div>
+												</div>
+											</div>
+
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+												style="border: 0px solid black;">
+												<p class="text-danger">
+																<i><span class="text-danger">( * )</span> Indicates required field</i>
+															</p>
+
+											</div>
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+												style="border: 0px solid black; height: 50px">
+
+												<input type="submit" id="save" value="Update"
+													class="btn btn-primary pull-right"
+													style="position: absolute; bottom: 5px; right: 5px;width:100px;"/>
+
+											</div>
+
+										</div>
+									</div>
+
+
+								</div>
+							</div>
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
+		
+		
+				
+				
+				
+			</div>
+		</div>
+	</div>
+
+	
+<%@include file="/WEB-INF/common/footer_back.jsp"%>
+		
+	
+
+<script src="js/bootstrap.min.js"></script>
+<script src="js/menu.js"></script>
+<script src="js/bootstrapValidator.js"></script>
+<script src="js/bootstrap-select.min.js"></script>
+
+<input type="text" id="alertvalue" style="display: none;">
+	<input type="text" id="alertdata" style="display: none;">
+	<form action="editug" id="editform" method="POST">
+		 <input type="submit" id="efbut" style="display: none" />
+
+	</form>
+
+	<script>
+		$(document)
+				.ready(
+						function() {
+							$("#collegename").attr("data-bv-excluded","true");
+						
+							//For Select
+$('#uyop').empty();
+								$('#ubacklog').empty();
+							$('input[name=uctype]').change(function() {
+												var ctype = $('input[name=uctype]:checked','#ugform').attr('id');
+												console.log("the ctype is"+ctype);
+												$
+														.ajax({
+															url : 'univServ',
+															type : 'post',
+															data : {
+																'ctype' : ctype,
+																'type' : 'ug'
+															},
+															success : function(
+																	response) {
+																console.log("The value is-->"+response);
+																		document.getElementById('uuniv').innerHTML = response;
+																		$("#uuniv option[value='other']").remove();
+																$('#ugform').find('[name="uuniv"]').selectpicker('refresh');
+															},
+															error : function() {
+															
+															}
+														});
+
+											});
+
+							$('.usel')
+									.change(
+											function() {
+
+												var id = $(this).attr('id');
+												//console.log(type+id);
+												var oselect = "#" + id
+														+ " option:selected";
+
+												switch (id) {
+												case "uuniv":
+													var univ = $(oselect)
+															.text();
+													$
+															.ajax({
+																url : 'colServ',
+																type : 'post',
+																data : {
+																	'univ' : univ,
+																	'type' : 'ug'
+																},
+																success : function(
+																		response) {
+																	
+																	document
+																			.getElementById('ucol').innerHTML = response;
+																	
+																	/* $('#ucol').append("<option value='other'>OTHERS</option>"); */
+																	$('#ugform').find('[name="ucol"]').selectpicker('refresh');
+																},
+																error : function() {
+																	
+																}
+															});
+													$
+															.ajax({
+																url : 'degServ',
+																type : 'post',
+																data : {
+																	'type' : 'ug'
+																},
+																success : function(
+																		response) {
+																	
+																	document
+																			.getElementById('udeg').innerHTML = response;
+																	$("#udeg option[value='other']").remove();
+																	$('#ugform').find('[name="udeg"]').selectpicker('refresh');
+																},
+																error : function() {
+																	
+																}
+															});
+													break;
+
+												case "udeg":
+													var deg = $(oselect).text();
+													$
+															.ajax({
+																url : 'depServ',
+																type : 'post',
+																data : {
+																	'deg' : deg,
+																	'type' : 'ug'
+																},
+																success : function(
+																		response) {
+																
+																	document
+																			.getElementById('udep').innerHTML = response;
+																	/* $('#udep').append("<option value='other'>OTHERS</option>"); */
+																	$('#ugform').find('[name="udep"]').selectpicker('refresh');
+																	},
+																error : function() {
+																
+																}
+															});
+													break;
+												default:
+												}
+
+											});
+
+
+							$('.mode').on('change click',function(){
+								$('#uyop').empty();
+								$('#ubacklog').empty();
+								$('#uyop').append("<option value='' disabled selected>Select your option</option>");
+								var yoc = parseInt($("#syoc").text(), 10) + 5;
+								var yocto = parseInt(yoc, 10) + 5;
+												for (i = yoc; i <= yocto; i++) {
+							
+									$('#uyop').append("<option value='"+i+"'>"+ i+ "</option>");
+								}
+								$('#ubacklog').append("<option value='' disabled selected>Select your option</option><option value='0'>Nil</option><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>Above 5</option>");
+								
+								 $('#ugform').bootstrapValidator('revalidateField', 'uyop');
+								 $('#ugform').bootstrapValidator('revalidateField', 'ubglk');
+								});
+							var detect = $("#cname").text();
+                           
+							if (detect === "" || detect === null)
+						    {
+							    $("#save").attr("value","Save and Continue").css("width","140px");
+							    $("#editdiv").show();
+								$("#displaydiv").hide();
+
+							} else {
+								$("#editdiv").hide();
+								$("#displaydiv").show();
+
+if($("#backlog").text()==="6")
+	{
+	$("#backlog").text("Above 5");
+	}
+								$("#edit").click(function() {
+									
+										
+										$('#efbut').trigger('click');
+//									
+								});
+									
+							
+
+							}
+
+							$(".check").click(function(){
+								var id1="#"+$(this).attr("id");
+								var name1=id1.substring(1, id1.length-1);;
+								var id2=id1.substring(0,id1.length - 1)+"4";
+								
+								if($(id1).prop("checked"))
+									{
+									if(id1==="#udeg3")
+										{
+										  $('#ugform').find('[name="udeg"]').selectpicker('hide'); 
+										  $('#ugform').find('[name="udep"]').selectpicker('hide');
+										  $("#udep3").hide();
+										  $("#udeg4").show();
+										  $("#udep4").show();
+										}
+									
+								    $('#ugform').find('[name="'+name1+'"]').selectpicker('hide'); 
+							        $(id2).show();
+							        if(id1==="#ucol3")
+								        {
+								        $("#collegename").on('change,keyup',function(){
+								        	 $("#collegename").attr("data-bv-excluded", "false");
+										        $('#ugform').bootstrapValidator('revalidateField', 'collname');
+									        })
+								       
+								        }
+									}
+								else
+									{
+									if(id1==="#udeg3")
+									{
+									$('#ugform').find('[name="udeg"]').selectpicker('show'); 
+								    $('#ugform').find('[name="udep"]').selectpicker('show');
+								
+									$("#udep3").show();
+									$("#udeg4").hide();
+									$("#udep4").hide();
+									}
+									if(id1==="#ucol3")
+							        {
+							        $("#collegename").attr("data-bv-excluded", "true");
+							        }
+								    $('#ugform').find('[name="'+name1+'"]').selectpicker('show');
+							     	$(id2).hide();
+									}
+								
+							});
+							
+
+							$(".txbx").change(function(){
+			                	var id="#"+$(this).attr("id");
+			                	$(id).attr("data-bv-excluded","false");
+			                });
+
+
+							
+							$('#ugform').find('[name="uuniv"]')
+				            .change(function(e) {
+				                // revalidate the color when it is changed
+				                $('#ugform').bootstrapValidator('revalidateField', 'uuniv');
+				            })
+				            .end()
+				        .find('[name="ucol"]')
+				            .change(function(e) {
+				                // revalidate the language when it is changed
+				                $('#ugform').bootstrapValidator('revalidateField', 'ucol');
+				            })
+				            .end()
+				            .find('[name="udeg"]')
+				            .change(function(e) {
+				                // revalidate the language when it is changed
+				                $('#ugform').bootstrapValidator('revalidateField', 'udeg');
+				            })
+				            .end()
+				            .find('[name="udep"]')
+				            .change(function(e) {
+				                // revalidate the language when it is changed
+				                $('#ugform').bootstrapValidator('revalidateField', 'udep');
+				            })
+				            .end()
+				            .find('[name="uyop"]')
+				            .change(function(e) {
+				                // revalidate the language when it is changed
+				                $('#ugform').bootstrapValidator('revalidateField', 'uyop');
+				            })
+				            .end()
+				            .find('[name="ubglk"]')
+				            .change(function(e) {
+				                // revalidate the language when it is changed
+				                $('#ugform').bootstrapValidator('revalidateField', 'ubglk');
+				            })
+				            .end().find('[name="depname"]')
+				            .change(function(e) {
+				                // revalidate the language when it is changed
+				                $('#ugform').bootstrapValidator('revalidateField', 'depname');
+				            })
+				            .end().find('[name="degname"]')
+				            .change(function(e) {
+				                // revalidate the language when it is changed
+				                $('#ugform').bootstrapValidator('revalidateField', 'degname');
+				            })
+				            .end()
+									.bootstrapValidator(
+											{
+												feedbackIcons : {
+													valid : 'glyphicon glyphicon-ok',
+													invalid : 'glyphicon glyphicon-remove',
+													validating : 'glyphicon glyphicon-refresh'
+												},
+												fields : {
+													uctype : {
+														message : 'The course type is not valid',
+														validators : {
+															notEmpty : {
+																message : 'The course type is required and cannot be empty'
+															}
+														}
+													},
+													ugcollegemode : {
+														message : 'The course type is not valid',
+														validators : {
+															notEmpty : {
+																message : 'The course mode is required and cannot be empty'
+															}
+														}
+													},
+													uuniv : {
+														message : 'The university is not valid',
+														validators : {
+															notEmpty : {
+																message : 'The university is required and cannot be empty'
+															}
+														}
+													},
+													ucol : {
+														message : 'The college is not valid',
+														validators : {
+															notEmpty : {
+																message : 'The college is required and cannot be empty'
+															}
+														}
+													},
+													udeg : {
+														
+														message : 'The degree is not valid',
+														validators : {
+															notEmpty : {
+																message : 'The degree is required and cannot be empty'
+															}
+														}
+													},
+													collname : {
+														live:'enabled',
+														trigger:'blur',
+														message : 'The degree is not valid',
+														validators : {
+															notEmpty : {
+																message : 'The college name is required and cannot be empty'
+															}
+														}
+													},
+													depname : {
+														message : 'The degree is not valid',
+														validators : {
+															notEmpty : {
+																message : 'The department name is required and cannot be empty'
+															}
+														}
+													},
+													degname : {
+														message : 'The degree is not valid',
+														validators : {
+															notEmpty : {
+																message : 'The degree name is required and cannot be empty'
+															}
+														}
+													},
+													udep : {
+														message : 'The department is not valid',
+														validators : {
+															notEmpty : {
+																message : 'The department is required and cannot be empty'
+															}
+														}
+													},
+													uyop : {
+														message : 'The year of passing is not valid',
+														validators : {
+															notEmpty : {
+																message : 'The year of passing is required and cannot be empty'
+															}
+														}
+
+													},
+													ubglk : {
+														
+														message : 'The backlog is not valid',
+														validators : {
+															notEmpty : {
+																message : 'The backlog is required and cannot be empty'
+															}
+														}
+													},
+
+													uaggr : {
+														message : 'The aggregate is not valid',
+														validators : {
+															notEmpty : {
+																message : 'The aggregate is required and cannot be empty'
+															},
+															regexp: {
+																regexp: /^(?:[1-9][0-9](?:\.0)?|[1-9][0-9](?:\.[0-9])|[1-9][0-9](?:\.[0-9][0-9])|[5-9](?:\.[0-9])|[5-9](?:\.[0-9][0-9])|[5-9])$/i,
+							        	                        message: 'Enter a valid Percentages'
+							        	                    }
+
+														}
+													}
+
+												}
+											})
+									.on(
+											'status.field.bv',
+											function(e, data) {
+												if (data.bv.isValid()) {
+													data.bv
+															.disableSubmitButtons(false);
+													$('#save')
+															.removeClass(
+																	'btn-default')
+															.addClass(
+																	'btn-primary');
+												} else {
+													data.bv
+															.disableSubmitButtons(true);
+												}
+											});
+
+							$(".cor").tooltip({
+			                    title: 'Correspondence',
+			                    placement: 'bottom'
+			                });
+
+							
+							$('.close').click(function() {
+								$('.alert').fadeOut('slow');
+							});
+							if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+							    $('.selectpicker').selectpicker('mobile');
+							}
+
+							$("#collegename").bind("input",function(){
+						        this.value= this.value.toUpperCase();
+						});
+							$("#depname").bind("input",function(){
+						        this.value= this.value.toUpperCase();
+						});
+							$("#degname").bind("input",function(){
+						        this.value= this.value.toUpperCase();
+						});
+
+						if($("#backlog").text()==="0")
+							{
+							
+							}
+						else
+							{
+							$("#pgt").tooltip({
+								title: 'First you would Complete your UG Arrears.',
+								position: 'bottom'
+							});
+							 $(".pgt").addClass("disabled");
+						$("li a, .tec").on("click",function(e)
+								{
+							
+							 if ($(this).hasClass("disabled")) {
+								 e.preventDefault();
+								   return false;
+								 }
+							}); 
+						}
+						$(".profileactive").addClass("active");   
+						});
+	</script>
+
+
+</body>
+
+</html>
