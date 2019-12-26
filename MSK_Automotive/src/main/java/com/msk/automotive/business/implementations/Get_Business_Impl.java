@@ -278,8 +278,7 @@ public class Get_Business_Impl implements Get_Business_Interface {
 
 	@Override
 	public List<String> getSparePartsAtParticularModel(String model_id) {
-		// TODO Auto-generated method stub
-		List<Parts> parts = get_DAO_Interface.getSparePartsAtParticularModel(model_id);
+		List<Parts> parts = parts_Repository.findByCar_Models(Integer.parseInt(model_id));
 		List<String> parts_list = new ArrayList<String>();
 
 		if (!parts.isEmpty()) {
@@ -294,7 +293,6 @@ public class Get_Business_Impl implements Get_Business_Interface {
 
 	@Override
 	public String getVerifyAccessCode(String username, String access_code) {
-		// TODO Auto-generated method stub
 		List<MSK_Owner> msk_Owners = mSKOwners_Repository.findByEmail(username);
 		String status = "failure";
 
@@ -312,18 +310,16 @@ public class Get_Business_Impl implements Get_Business_Interface {
 	}
 
 	public Spare_Parts_Pojo getSparePartsAtParticularModelParts(String model_id, String part) {
-		// TODO Auto-generated method stub
-		List<Parts> spare_parts = get_DAO_Interface.getSparePartsAtParticularModelParts(Integer.parseInt(model_id),
-				part);
+		List<Parts> spare_parts = parts_Repository.findByCar_ModelsAndPart(Integer.parseInt(model_id), part);
 		Spare_Parts_Pojo spare_Parts_Pojo = new Spare_Parts_Pojo();
 
 		if (!spare_parts.isEmpty()) {
-			List<Car_Models> models = carModel_Repository.findBy(spare_parts.get(0).getCar_Models().getId());
+			Optional<Car_Models> models = carModel_Repository.findById(spare_parts.get(0).getCar_Models().getId());
 
-			spare_Parts_Pojo.setBrand(carModel_Repository.findByCar_BrandsId(models.get(0).getCar_Brands().getId())
-					.get().getBrand().replace("+", " "));
+			spare_Parts_Pojo.setBrand(carModel_Repository.findByCar_BrandsId(models.get().getCar_Brands().getId())
+					.get(0).getCar_Brands().getBrand().replace("+", " "));
 			spare_Parts_Pojo.setId("1");
-			spare_Parts_Pojo.setModel(models.get(0).getModel().replace("+", " "));
+			spare_Parts_Pojo.setModel(models.get().getModel().replace("+", " "));
 			spare_Parts_Pojo.setPrice_per_unit(Double.toString(spare_parts.get(0).getAmount()));
 			spare_Parts_Pojo.setQuantity(Integer.toString(spare_parts.get(0).getQuantity()));
 			spare_Parts_Pojo.setSpare_part_id(Integer.toString(spare_parts.get(0).getId()));
@@ -339,7 +335,6 @@ public class Get_Business_Impl implements Get_Business_Interface {
 
 	@Override
 	public List<Customer_Details_Pojo> getExistingCustomerModelDetails(String model_id) {
-		// TODO Auto-generated method stub
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
 		List<Customer_Details> customer_Details = get_DAO_Interface
