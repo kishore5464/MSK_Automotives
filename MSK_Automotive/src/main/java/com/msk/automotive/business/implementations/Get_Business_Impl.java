@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,11 @@ import com.msk.automotive.dao.repositories.CarBrand_Repository;
 import com.msk.automotive.dao.repositories.CarModel_Repository;
 import com.msk.automotive.dao.repositories.CustomerContactDetails_Repository;
 import com.msk.automotive.dao.repositories.CustomerDetails_Repository;
+import com.msk.automotive.dao.repositories.Location_Repository;
 import com.msk.automotive.dao.repositories.MSKOwners_Repository;
+import com.msk.automotive.dao.repositories.Parts_Repository;
+import com.msk.automotive.dao.repositories.ServiceInvoiceCard_Repository;
+import com.msk.automotive.dao.repositories.ServiceType_Repository;
 import com.msk.automotive.service.entities.Car_Brands;
 import com.msk.automotive.service.entities.Car_Models;
 import com.msk.automotive.service.entities.Customer_Contact_Details;
@@ -59,6 +64,18 @@ public class Get_Business_Impl implements Get_Business_Interface {
 	@Autowired
 	private CustomerContactDetails_Repository customerContactDetails_Repository;
 
+	@Autowired
+	private ServiceInvoiceCard_Repository serviceInvoiceCard_Repository;
+
+	@Autowired
+	private Parts_Repository parts_Repository;
+
+	@Autowired
+	private Location_Repository location_Repository;
+
+	@Autowired
+	private ServiceType_Repository serviceType_Repository;
+
 	@Override
 	public List<Car_Brands_Pojo> getAllBrands(String type) {
 		List<Car_Brands> brands = carBrand_Repository.findAll();
@@ -87,7 +104,6 @@ public class Get_Business_Impl implements Get_Business_Interface {
 
 	@Override
 	public List<Car_Models_Pojo> getModels(String car_brands_id, String type) {
-		// TODO Auto-generated method stub
 		List<Car_Models> models = carModel_Repository.findByCar_BrandsId(Integer.parseInt(car_brands_id));
 		List<Car_Models_Pojo> uiCar_Models_Pojos = new ArrayList<Car_Models_Pojo>();
 
@@ -115,7 +131,6 @@ public class Get_Business_Impl implements Get_Business_Interface {
 
 	@Override
 	public String getMSKOwnerDetail(String username, String password) {
-		// TODO Auto-generated method stub
 		List<MSK_Owner> msk_Owner = mSKOwners_Repository.findByEmail(username);
 		Encrypt_Decrypt password_Encrypt_Decrypt = new Encrypt_Decrypt();
 		String encrypt_password = password_Encrypt_Decrypt.encrypt(password);
@@ -137,10 +152,9 @@ public class Get_Business_Impl implements Get_Business_Interface {
 
 	@Override
 	public List<Customer_Details_Pojo> getExistingCustomerDetails() {
-		// TODO Auto-generated method stub
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
-		List<Customer_Details> customer_Details = get_DAO_Interface.getAllCustomerDetails();
+		List<Customer_Details> customer_Details = customerDetails_Repository.findAll();
 		List<Customer_Details_Pojo> customer_Details_Pojos = new ArrayList<Customer_Details_Pojo>();
 
 		if (!customer_Details.isEmpty()) {
@@ -152,12 +166,12 @@ public class Get_Business_Impl implements Get_Business_Interface {
 				customer_Details_Pojo.setGst_no(customer_Details.get(i).getGst_no());
 				customer_Details_Pojo.setRegistration_no(customer_Details.get(0).getRegistration_no());
 
-				List<Car_Models> car_Model = get_DAO_Interface
-						.getModelById(customer_Details.get(i).getCar_Models().getId());
-				customer_Details_Pojo.setModel(car_Model.get(0).getModel());
+				Optional<Car_Models> car_Model = carModel_Repository
+						.findById(customer_Details.get(i).getCar_Models().getId());
+				customer_Details_Pojo.setModel(car_Model.get().getModel());
 
-				List<Service_Invoice_Card> service_Invoice_Cards = get_DAO_Interface
-						.getSericeInvoiceCard(customer_Details.get(i).getId());
+				List<Service_Invoice_Card> service_Invoice_Cards = serviceInvoiceCard_Repository
+						.findByCustomer_Details(customer_Details.get(i).getId());
 				customer_Details_Pojo.setExpire_service_date(dateFormat
 						.format(service_Invoice_Cards.get(service_Invoice_Cards.size() - 1).getService_expire_date()));
 
@@ -170,8 +184,7 @@ public class Get_Business_Impl implements Get_Business_Interface {
 
 	@Override
 	public List<Location_Pojo> getLocation() {
-		// TODO Auto-generated method stub
-		List<Location> locations = get_DAO_Interface.getLocation();
+		List<Location> locations = location_Repository.findAll();
 		List<Location_Pojo> location_Pojos = new ArrayList<Location_Pojo>();
 
 		if (!locations.isEmpty()) {
@@ -189,8 +202,7 @@ public class Get_Business_Impl implements Get_Business_Interface {
 
 	@Override
 	public List<Service_Type_Pojo> getServiceType() {
-		// TODO Auto-generated method stub
-		List<Service_Type> service_Types = get_DAO_Interface.getServiceType();
+		List<Service_Type> service_Types = serviceType_Repository.findAll();
 		List<Service_Type_Pojo> service_Type_Pojos = new ArrayList<Service_Type_Pojo>();
 
 		if (!service_Types.isEmpty()) {
@@ -208,8 +220,7 @@ public class Get_Business_Impl implements Get_Business_Interface {
 
 	@Override
 	public String getServiceCardNo() {
-		// TODO Auto-generated method stub
-		List<Service_Invoice_Card> service_Invoice_Cards = get_DAO_Interface.getServiceInvoiceCards();
+		List<Service_Invoice_Card> service_Invoice_Cards = serviceInvoiceCard_Repository.findAll();
 		String service_card_id = null;
 
 		if (!service_Invoice_Cards.isEmpty()) {
@@ -231,25 +242,23 @@ public class Get_Business_Impl implements Get_Business_Interface {
 
 	@Override
 	public List<Spare_Parts_Pojo> getSparePartsInStock(String stock_status) {
-		// TODO Auto-generated method stub
-
 		if (stock_status.equals("notpurchased")) {
 			stock_status = "not_purchased";
 		}
 
-		List<Parts> spare_parts = get_DAO_Interface.getSparePartsInStock(stock_status);
+		List<Parts> spare_parts = parts_Repository.findByParts_status(stock_status);
 		List<Spare_Parts_Pojo> spare_Parts_Pojos = new ArrayList<Spare_Parts_Pojo>();
 
 		if (!spare_parts.isEmpty()) {
 			for (int i = 0; i < spare_parts.size(); i++) {
 				Spare_Parts_Pojo spare_Parts_Pojo = new Spare_Parts_Pojo();
 
-				List<Car_Models> models = get_DAO_Interface.getModelById(spare_parts.get(i).getCar_Models().getId());
+				Optional<Car_Models> models = carModel_Repository.findById(spare_parts.get(i).getCar_Models().getId());
 
 				spare_Parts_Pojo.setId(Integer.toString(i + 1));
-				spare_Parts_Pojo.setBrand(get_DAO_Interface.getBrandById(models.get(0).getCar_Brands().getId()).get(0)
+				spare_Parts_Pojo.setBrand(carBrand_Repository.findById(models.get().getCar_Brands().getId()).get()
 						.getBrand().replace("+", " "));
-				spare_Parts_Pojo.setModel(models.get(0).getModel().replace("+", " "));
+				spare_Parts_Pojo.setModel(models.get().getModel().replace("+", " "));
 				spare_Parts_Pojo.setSpare_part_id(Integer.toString(spare_parts.get(i).getId()));
 				spare_Parts_Pojo.setSpare_part_name(spare_parts.get(i).getPart());
 				spare_Parts_Pojo.setQuantity(Integer.toString(spare_parts.get(i).getQuantity()));
@@ -286,7 +295,7 @@ public class Get_Business_Impl implements Get_Business_Interface {
 	@Override
 	public String getVerifyAccessCode(String username, String access_code) {
 		// TODO Auto-generated method stub
-		List<MSK_Owner> msk_Owners = get_DAO_Interface.getMSKOwnerDetail(username);
+		List<MSK_Owner> msk_Owners = mSKOwners_Repository.findByEmail(username);
 		String status = "failure";
 
 		if (!msk_Owners.isEmpty()) {
@@ -294,7 +303,7 @@ public class Get_Business_Impl implements Get_Business_Interface {
 			String access = encrypt_Decrypt.decrypt(msk_Owners.get(0).getAccess_code());
 			if (access.equals(access_code)) {
 				msk_Owners.get(0).setAccess_code("0");
-				update_DAO_Interface.updateMSKOwner(msk_Owners.get(0));
+				mSKOwners_Repository.save(msk_Owners.get(0));
 				status = "success";
 			}
 		}
@@ -309,10 +318,10 @@ public class Get_Business_Impl implements Get_Business_Interface {
 		Spare_Parts_Pojo spare_Parts_Pojo = new Spare_Parts_Pojo();
 
 		if (!spare_parts.isEmpty()) {
-			List<Car_Models> models = get_DAO_Interface.getModelById(spare_parts.get(0).getCar_Models().getId());
+			List<Car_Models> models = carModel_Repository.findBy(spare_parts.get(0).getCar_Models().getId());
 
-			spare_Parts_Pojo.setBrand(get_DAO_Interface.getBrandById(models.get(0).getCar_Brands().getId()).get(0)
-					.getBrand().replace("+", " "));
+			spare_Parts_Pojo.setBrand(carModel_Repository.findByCar_BrandsId(models.get(0).getCar_Brands().getId())
+					.get().getBrand().replace("+", " "));
 			spare_Parts_Pojo.setId("1");
 			spare_Parts_Pojo.setModel(models.get(0).getModel().replace("+", " "));
 			spare_Parts_Pojo.setPrice_per_unit(Double.toString(spare_parts.get(0).getAmount()));
@@ -352,11 +361,11 @@ public class Get_Business_Impl implements Get_Business_Interface {
 
 				customer_Details_Pojo.setRegistration_no(customer_Details.get(0).getRegistration_no());
 
-				List<Car_Models> car_Model = get_DAO_Interface
-						.getModelById(customer_Details.get(i).getCar_Models().getId());
-				customer_Details_Pojo.setModel(car_Model.get(0).getModel());
+				Optional<Car_Models> car_Model = carModel_Repository
+						.findById(customer_Details.get(i).getCar_Models().getId());
+				customer_Details_Pojo.setModel(car_Model.get().getModel());
 
-				List<Service_Invoice_Card> service_Invoice_Cards = get_DAO_Interface
+				List<Service_Invoice_Card> service_Invoice_Cards = serviceInvoiceCard_Repository
 						.getSericeInvoiceCard(customer_Details.get(i).getId());
 
 				if (!service_Invoice_Cards.isEmpty()) {
@@ -375,7 +384,7 @@ public class Get_Business_Impl implements Get_Business_Interface {
 
 	public List<Notifcation_Message_Pojo> getServiceNotificationMessage() {
 		// TODO Auto-generated method stub
-		List<Notification> notification = get_DAO_Interface.getAllNotificationDetails();
+		List<Notification> notification = .getAllNotificationDetails();
 		List<Notifcation_Message_Pojo> notifcation_Message_Pojos = new ArrayList<Notifcation_Message_Pojo>();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
