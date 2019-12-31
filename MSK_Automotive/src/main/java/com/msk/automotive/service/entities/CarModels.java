@@ -7,12 +7,10 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -51,7 +49,7 @@ public class CarModels implements Serializable {
 	}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false)
 	public Integer getId() {
 		return id;
@@ -61,8 +59,8 @@ public class CarModels implements Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "carBrandsId")
+//	@ManyToOne(fetch = FetchType.LAZY)
+//	@JoinColumn(name = "carBrandsId")
 	public CarBrands getCarBrands() {
 		return carBrands;
 	}
@@ -99,7 +97,8 @@ public class CarModels implements Serializable {
 		this.createdDate = createdDate;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "car_Models")
+	@OneToMany
+	@JoinColumn(name = "carModelsId")
 	public Set<CustomerDetails> getCustomerDetails() {
 		return customerDetails;
 	}
@@ -108,7 +107,8 @@ public class CarModels implements Serializable {
 		this.customerDetails = customerDetails;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "car_Models")
+	@OneToMany
+	@JoinColumn(name = "carModelsId")
 	public Set<Parts> getParts() {
 		return parts;
 	}
@@ -117,7 +117,8 @@ public class CarModels implements Serializable {
 		this.parts = parts;
 	}
 
-	//@OneToMany(fetch = FetchType.LAZY, mappedBy = "car_Models")
+	@OneToMany
+	@JoinColumn(name = "carModelsId")
 	public Set<PartsStockMaintain> getPartsStockMaintains() {
 		return partsStockMaintains;
 	}
