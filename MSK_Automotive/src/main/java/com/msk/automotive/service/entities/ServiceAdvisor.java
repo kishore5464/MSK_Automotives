@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,7 +20,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "service_adviser")
+@Table(name = "serviceAdviser")
 public class ServiceAdvisor implements Serializable {
 
 	/**
@@ -28,26 +29,26 @@ public class ServiceAdvisor implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
-	private MSKOwner msk_Owner;
+	private MSKOwner mskOwner;
 	private String name;
 	private String mobile;
-	private Date created_date;
+	private Date createdDate;
 
-	private Set<ServiceInvoiceCard> service_Invoice_Cards = new HashSet<ServiceInvoiceCard>();
+	private Set<ServiceInvoiceCard> serviceInvoiceCards = new HashSet<ServiceInvoiceCard>();
 
 	public ServiceAdvisor() {
 		super();
 	}
 
-	public ServiceAdvisor(Integer id, MSKOwner msk_Owner, String name, String mobile, Date created_date,
-			Set<ServiceInvoiceCard> service_Invoice_Cards) {
+	public ServiceAdvisor(Integer id, MSKOwner mskOwner, String name, String mobile, Date createdDate,
+			Set<ServiceInvoiceCard> serviceInvoiceCards) {
 		super();
 		this.id = id;
-		this.msk_Owner = msk_Owner;
+		this.mskOwner = mskOwner;
 		this.name = name;
 		this.mobile = mobile;
-		this.created_date = created_date;
-		this.setService_Invoice_Cards(service_Invoice_Cards);
+		this.createdDate = createdDate;
+		this.setServiceInvoiceCards(serviceInvoiceCards);
 	}
 
 	@Id
@@ -61,14 +62,14 @@ public class ServiceAdvisor implements Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "msk_owner_id")
-	public MSKOwner getMsk_Owner() {
-		return msk_Owner;
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "mskOwnerId")
+	public MSKOwner getMskOwner() {
+		return mskOwner;
 	}
 
-	public void setMsk_Owner(MSKOwner msk_Owner) {
-		this.msk_Owner = msk_Owner;
+	public void setMskOwner(MSKOwner mskOwner) {
+		this.mskOwner = mskOwner;
 	}
 
 	@Column(name = "name")
@@ -90,22 +91,22 @@ public class ServiceAdvisor implements Serializable {
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "created_date")
-	public Date getCreated_date() {
-		return created_date;
+	@Column(name = "createdDate")
+	public Date getCreatedDate() {
+		return createdDate;
 	}
 
-	public void setCreated_date(Date created_date) {
-		this.created_date = created_date;
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "service_Adviser")
-	public Set<ServiceInvoiceCard> getService_Invoice_Cards() {
-		return service_Invoice_Cards;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "serviceAdviser", cascade = CascadeType.ALL)
+	public Set<ServiceInvoiceCard> getServiceInvoiceCards() {
+		return serviceInvoiceCards;
 	}
 
-	public void setService_Invoice_Cards(Set<ServiceInvoiceCard> service_Invoice_Cards) {
-		this.service_Invoice_Cards = service_Invoice_Cards;
+	public void setServiceInvoiceCards(Set<ServiceInvoiceCard> serviceInvoiceCards) {
+		this.serviceInvoiceCards = serviceInvoiceCards;
 	}
 
 }

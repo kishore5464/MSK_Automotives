@@ -5,12 +5,15 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -59,8 +62,8 @@ public class CarModels implements Serializable {
 		this.id = id;
 	}
 
-//	@ManyToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(name = "carBrandsId")
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "carBrandsId")
 	public CarBrands getCarBrands() {
 		return carBrands;
 	}
@@ -97,8 +100,7 @@ public class CarModels implements Serializable {
 		this.createdDate = createdDate;
 	}
 
-	@OneToMany
-	@JoinColumn(name = "carModelsId")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "carModels", cascade = CascadeType.ALL)
 	public Set<CustomerDetails> getCustomerDetails() {
 		return customerDetails;
 	}
@@ -107,8 +109,7 @@ public class CarModels implements Serializable {
 		this.customerDetails = customerDetails;
 	}
 
-	@OneToMany
-	@JoinColumn(name = "carModelsId")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "carModels", cascade = CascadeType.ALL)
 	public Set<Parts> getParts() {
 		return parts;
 	}
@@ -117,8 +118,7 @@ public class CarModels implements Serializable {
 		this.parts = parts;
 	}
 
-	@OneToMany
-	@JoinColumn(name = "carModelsId")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "carModels", cascade = CascadeType.ALL)
 	public Set<PartsStockMaintain> getPartsStockMaintains() {
 		return partsStockMaintains;
 	}

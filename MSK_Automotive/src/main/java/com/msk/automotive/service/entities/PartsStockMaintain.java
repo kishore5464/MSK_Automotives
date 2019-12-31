@@ -3,6 +3,7 @@ package com.msk.automotive.service.entities;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,7 +17,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "parts_stock_maintain")
+@Table(name = "partsStockMaintain")
 public class PartsStockMaintain implements Serializable {
 
 	/**
@@ -25,39 +26,39 @@ public class PartsStockMaintain implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
-	private Integer original_quantity;
-	private Integer customer_quantity;
-	private Integer available_quantity;
-	private Double original_amount;
-	private Double customer_amount;
-	private Double difference_amount;
+	private Integer originalQuantity;
+	private Integer customerQuantity;
+	private Integer availableQuantity;
+	private Double originalAmount;
+	private Double customerAmount;
+	private Double differenceAmount;
 
 	private Parts parts;
-	private CustomerDetails customer_Details;
-	private CarModels car_Models;
+	private CustomerDetails customerDetails;
+	private CarModels carModels;
 
-	private Date created_date;
+	private Date createdDate;
 
 	public PartsStockMaintain() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public PartsStockMaintain(Integer id, Integer original_quantity, Integer customer_quantity,
-			Integer available_quantity, Double original_amount, Double customer_amount, Double difference_amount,
-			Parts parts, CustomerDetails customer_Details, CarModels car_Models, Date created_date) {
+	public PartsStockMaintain(Integer id, Integer originalQuantity, Integer customerQuantity,
+			Integer availableQuantity, Double originalAmount, Double customerAmount, Double differenceAmount,
+			Parts parts, CustomerDetails customerDetails, CarModels carModels, Date createdDate) {
 		super();
 		this.id = id;
-		this.original_quantity = original_quantity;
-		this.customer_quantity = customer_quantity;
-		this.available_quantity = available_quantity;
-		this.original_amount = original_amount;
-		this.customer_amount = customer_amount;
-		this.difference_amount = difference_amount;
+		this.originalQuantity = originalQuantity;
+		this.customerQuantity = customerQuantity;
+		this.availableQuantity = availableQuantity;
+		this.originalAmount = originalAmount;
+		this.customerAmount = customerAmount;
+		this.differenceAmount = differenceAmount;
 		this.parts = parts;
-		this.customer_Details = customer_Details;
-		this.car_Models = car_Models;
-		this.created_date = created_date;
+		this.customerDetails = customerDetails;
+		this.carModels = carModels;
+		this.createdDate = createdDate;
 	}
 
 	@Id
@@ -71,62 +72,62 @@ public class PartsStockMaintain implements Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "original_quantity")
-	public Integer getOriginal_quantity() {
-		return original_quantity;
+	@Column(name = "originalQuantity")
+	public Integer getOriginalQuantity() {
+		return originalQuantity;
 	}
 
-	public void setOriginal_quantity(Integer original_quantity) {
-		this.original_quantity = original_quantity;
+	public void setOriginalQuantity(Integer originalQuantity) {
+		this.originalQuantity = originalQuantity;
 	}
 
-	@Column(name = "customer_quantity")
-	public Integer getCustomer_quantity() {
-		return customer_quantity;
+	@Column(name = "customerQuantity")
+	public Integer getCustomerQuantity() {
+		return customerQuantity;
 	}
 
-	public void setCustomer_quantity(Integer customer_quantity) {
-		this.customer_quantity = customer_quantity;
+	public void setCustomerQuantity(Integer customerQuantity) {
+		this.customerQuantity = customerQuantity;
 	}
 
-	@Column(name = "available_quantity")
-	public Integer getAvailable_quantity() {
-		return available_quantity;
+	@Column(name = "availableQuantity")
+	public Integer getAvailableQuantity() {
+		return availableQuantity;
 	}
 
-	public void setAvailable_quantity(Integer available_quantity) {
-		this.available_quantity = available_quantity;
+	public void setAvailableQuantity(Integer availableQuantity) {
+		this.availableQuantity = availableQuantity;
 	}
 
-	@Column(name = "original_amount")
-	public Double getOriginal_amount() {
-		return original_amount;
+	@Column(name = "originalAmount")
+	public Double getOriginalAmount() {
+		return originalAmount;
 	}
 
-	public void setOriginal_amount(Double original_amount) {
-		this.original_amount = original_amount;
+	public void setOriginalAmount(Double originalAmount) {
+		this.originalAmount = originalAmount;
 	}
 
-	@Column(name = "customer_amount")
-	public Double getCustomer_amount() {
-		return customer_amount;
+	@Column(name = "customerAmount")
+	public Double getCustomerAmount() {
+		return customerAmount;
 	}
 
-	public void setCustomer_amount(Double customer_amount) {
-		this.customer_amount = customer_amount;
+	public void setCustomerAmount(Double customerAmount) {
+		this.customerAmount = customerAmount;
 	}
 
-	@Column(name = "difference_amount")
-	public Double getDifference_amount() {
-		return difference_amount;
+	@Column(name = "differenceAmount")
+	public Double getDifferenceAmount() {
+		return differenceAmount;
 	}
 
-	public void setDifference_amount(Double difference_amount) {
-		this.difference_amount = difference_amount;
+	public void setDifferenceAmount(Double differenceAmount) {
+		this.differenceAmount = differenceAmount;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "part_id")
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "partId")
 	public Parts getParts() {
 		return parts;
 	}
@@ -135,34 +136,34 @@ public class PartsStockMaintain implements Serializable {
 		this.parts = parts;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "customer_id")
-	public CustomerDetails getCustomer_Details() {
-		return customer_Details;
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "customerId")
+	public CustomerDetails getCustomerDetails() {
+		return customerDetails;
 	}
 
-	public void setCustomer_Details(CustomerDetails customer_Details) {
-		this.customer_Details = customer_Details;
+	public void setCustomerDetails(CustomerDetails customerDetails) {
+		this.customerDetails = customerDetails;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "model_id")
-	public CarModels getCar_Models() {
-		return car_Models;
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "modelId")
+	public CarModels getCarModels() {
+		return carModels;
 	}
 
-	public void setCar_Models(CarModels car_Models) {
-		this.car_Models = car_Models;
+	public void setCarModels(CarModels carModels) {
+		this.carModels = carModels;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "created_date")
-	public Date getCreated_date() {
-		return created_date;
+	@Column(name = "createdDate")
+	public Date getCreatedDate() {
+		return createdDate;
 	}
 
-	public void setCreated_date(Date created_date) {
-		this.created_date = created_date;
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
 	}
 
 }

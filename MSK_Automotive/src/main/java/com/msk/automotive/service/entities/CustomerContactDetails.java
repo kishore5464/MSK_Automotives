@@ -3,11 +3,15 @@ package com.msk.automotive.service.entities;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -94,6 +98,8 @@ public class CustomerContactDetails implements Serializable {
 		this.createdDate = createdDate;
 	}
 
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "locationId")
 	public Location getLocation() {
 		return location;
 	}
@@ -102,6 +108,8 @@ public class CustomerContactDetails implements Serializable {
 		this.location = location;
 	}
 
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "customerDetailsId")
 	public CustomerDetails getCustomerDetails() {
 		return customerDetails;
 	}

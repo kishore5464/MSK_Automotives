@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -28,7 +29,6 @@ public class CustomerDetails implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
-	private CarModels carModels;
 	private String customerId;
 	private String firstName;
 	private String lastName;
@@ -40,6 +40,8 @@ public class CustomerDetails implements Serializable {
 	private Date policyExpiresDate;
 	private String gstNo;
 	private Date createdDate;
+
+	private CarModels carModels;
 
 	private Set<CustomerContactDetails> customerContactDetails = new HashSet<CustomerContactDetails>();
 	private Set<ServiceInvoiceCard> serviceInvoiceCards = new HashSet<ServiceInvoiceCard>();
@@ -82,7 +84,7 @@ public class CustomerDetails implements Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "carModelsId")
 	public CarModels getCarModels() {
 		return carModels;
@@ -165,34 +167,6 @@ public class CustomerDetails implements Serializable {
 		this.gstNo = gstNo;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "createdDate")
-	public Date getCreatedDate() {
-		return createdDate;
-	}
-
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customerDetails")
-	public Set<CustomerContactDetails> getCustomerContactDetails() {
-		return customerContactDetails;
-	}
-
-	public void setCustomerContactDetails(Set<CustomerContactDetails> customerContactDetails) {
-		this.customerContactDetails = customerContactDetails;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customerDetails")
-	public Set<ServiceInvoiceCard> getServiceInvoiceCards() {
-		return serviceInvoiceCards;
-	}
-
-	public void setServiceInvoiceCards(Set<ServiceInvoiceCard> serviceInvoiceCards) {
-		this.serviceInvoiceCards = serviceInvoiceCards;
-	}
-
 	@Column(name = "engineNo")
 	public String getengineNo() {
 		return engineNo;
@@ -212,7 +186,35 @@ public class CustomerDetails implements Serializable {
 		this.policyExpiresDate = policyExpiresDate;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customerDetails")
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "createdDate")
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customerDetails", cascade = CascadeType.ALL)
+	public Set<CustomerContactDetails> getCustomerContactDetails() {
+		return customerContactDetails;
+	}
+
+	public void setCustomerContactDetails(Set<CustomerContactDetails> customerContactDetails) {
+		this.customerContactDetails = customerContactDetails;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customerDetails", cascade = CascadeType.ALL)
+	public Set<ServiceInvoiceCard> getServiceInvoiceCards() {
+		return serviceInvoiceCards;
+	}
+
+	public void setServiceInvoiceCards(Set<ServiceInvoiceCard> serviceInvoiceCards) {
+		this.serviceInvoiceCards = serviceInvoiceCards;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customerDetails", cascade = CascadeType.ALL)
 	public Set<PartsStockMaintain> getPartsStockMaintains() {
 		return partsStockMaintains;
 	}

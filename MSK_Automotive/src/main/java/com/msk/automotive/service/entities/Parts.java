@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -30,29 +31,29 @@ public class Parts implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
-	private CarModels car_Models;
+	private CarModels carModels;
 	private String part;
 	private Integer quantity;
-	private StockStatus parts_status;
+	private StockStatus partsStatus;
 	private Double amount;
-	private Date created_date;
+	private Date createdDate;
 
-	private Set<PartsStockMaintain> parts_Stock_Maintains = new HashSet<PartsStockMaintain>();
+	private Set<PartsStockMaintain> partsStockMaintains = new HashSet<PartsStockMaintain>();
 
 	public Parts() {
 		super();
 	}
 
-	public Parts(Integer id, CarModels car_Models, String part, Integer quantity, StockStatus parts_status,
-			Double amount, Date created_date) {
+	public Parts(Integer id, CarModels carModels, String part, Integer quantity, StockStatus partsStatus,
+			Double amount, Date createdDate) {
 		super();
 		this.id = id;
-		this.car_Models = car_Models;
+		this.carModels = carModels;
 		this.part = part;
 		this.quantity = quantity;
-		this.setParts_status(parts_status);
+		this.setPartsStatus(partsStatus);
 		this.amount = amount;
-		this.created_date = created_date;
+		this.createdDate = createdDate;
 	}
 
 	@Id
@@ -66,14 +67,14 @@ public class Parts implements Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "car_models_id")
-	public CarModels getCar_Models() {
-		return car_Models;
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "carModelsId")
+	public CarModels getCarModels() {
+		return carModels;
 	}
 
-	public void setCar_Models(CarModels car_Models) {
-		this.car_Models = car_Models;
+	public void setCarModels(CarModels carModels) {
+		this.carModels = carModels;
 	}
 
 	@Column(name = "part")
@@ -86,13 +87,13 @@ public class Parts implements Serializable {
 	}
 
 	@Enumerated(EnumType.STRING)
-	@Column(name = "parts_status")
-	public StockStatus getParts_status() {
-		return parts_status;
+	@Column(name = "partsStatus")
+	public StockStatus getPartsStatus() {
+		return partsStatus;
 	}
 
-	public void setParts_status(StockStatus parts_status) {
-		this.parts_status = parts_status;
+	public void setPartsStatus(StockStatus partsStatus) {
+		this.partsStatus = partsStatus;
 	}
 
 	@Column(name = "quantity")
@@ -114,22 +115,22 @@ public class Parts implements Serializable {
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "created_date")
-	public Date getCreated_date() {
-		return created_date;
+	@Column(name = "createdDate")
+	public Date getCreatedDate() {
+		return createdDate;
 	}
 
-	public void setCreated_date(Date created_date) {
-		this.created_date = created_date;
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "parts")
-	public Set<PartsStockMaintain> getParts_Stock_Maintains() {
-		return parts_Stock_Maintains;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "parts", cascade = CascadeType.ALL)
+	public Set<PartsStockMaintain> getPartsStockMaintains() {
+		return partsStockMaintains;
 	}
 
-	public void setParts_Stock_Maintains(Set<PartsStockMaintain> parts_Stock_Maintains) {
-		this.parts_Stock_Maintains = parts_Stock_Maintains;
+	public void setPartsStockMaintains(Set<PartsStockMaintain> partsStockMaintains) {
+		this.partsStockMaintains = partsStockMaintains;
 	}
 
 }

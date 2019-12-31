@@ -3,6 +3,7 @@ package com.msk.automotive.service.entities;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -18,7 +19,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "service_invoice_card")
+@Table(name = "serviceInvoiceCard")
 public class ServiceInvoiceCard implements Serializable {
 
 	/**
@@ -27,58 +28,58 @@ public class ServiceInvoiceCard implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
-	private String service_id;
+	private String serviceId;
 
-	private CustomerDetails customer_Details;
-	private ServiceType service_Type;
-	private ServiceAdvisor service_Adviser;
+	private CustomerDetails customerDetails;
+	private ServiceType serviceType;
+	private ServiceAdvisor serviceAdviser;
 
-	private String service_detail;
-	private String tool_kit;
-	private String spare_wheel;
+	private String serviceDetail;
+	private String toolKit;
+	private String spareWheel;
 	private String jack;
-	private String jack_handler;
-	private String car_perfume;
+	private String jackHandler;
+	private String carPerfume;
 	private String clock;
-	private String cd_player;
+	private String cdPlayer;
 	private Integer kilometer;
-	private CardType card_type;
-	private CardStatus card_status;
-	private Date current_service_date;
-	private Date service_expire_date;
-	private Double total_amount;
-	private Date created_date;
+	private CardType cardType;
+	private CardStatus cardStatus;
+	private Date currentServiceDate;
+	private Date serviceExpireDate;
+	private Double totalAmount;
+	private Date createdDate;
 
 	public ServiceInvoiceCard() {
 		super();
 	}
 
-	public ServiceInvoiceCard(Integer id, String service_id, CustomerDetails customer_Details,
-			ServiceType service_Type, ServiceAdvisor service_Adviser, String service_detail, String tool_kit,
-			String spare_wheel, String jack, String jack_handler, String car_perfume, String clock, String cd_player,
-			Integer kilometer, CardType card_type, CardStatus card_status, Date current_service_date,
-			Date service_expire_date, Double total_amount, Date created_date) {
+	public ServiceInvoiceCard(Integer id, String serviceId, CustomerDetails customerDetails,
+			ServiceType serviceType, ServiceAdvisor serviceAdviser, String serviceDetail, String toolKit,
+			String spareWheel, String jack, String jackHandler, String carPerfume, String clock, String cdPlayer,
+			Integer kilometer, CardType cardType, CardStatus cardStatus, Date currentServiceDate,
+			Date serviceExpireDate, Double totalAmount, Date createdDate) {
 		super();
 		this.id = id;
-		this.service_id = service_id;
-		this.customer_Details = customer_Details;
-		this.service_Type = service_Type;
-		this.service_Adviser = service_Adviser;
-		this.service_detail = service_detail;
-		this.tool_kit = tool_kit;
-		this.spare_wheel = spare_wheel;
+		this.serviceId = serviceId;
+		this.customerDetails = customerDetails;
+		this.serviceType = serviceType;
+		this.serviceAdviser = serviceAdviser;
+		this.serviceDetail = serviceDetail;
+		this.toolKit = toolKit;
+		this.spareWheel = spareWheel;
 		this.jack = jack;
-		this.jack_handler = jack_handler;
-		this.car_perfume = car_perfume;
+		this.jackHandler = jackHandler;
+		this.carPerfume = carPerfume;
 		this.clock = clock;
-		this.cd_player = cd_player;
+		this.cdPlayer = cdPlayer;
 		this.kilometer = kilometer;
-		this.card_type = card_type;
-		this.card_status = card_status;
-		this.current_service_date = current_service_date;
-		this.service_expire_date = service_expire_date;
-		this.total_amount = total_amount;
-		this.created_date = created_date;
+		this.cardType = cardType;
+		this.cardStatus = cardStatus;
+		this.currentServiceDate = currentServiceDate;
+		this.serviceExpireDate = serviceExpireDate;
+		this.totalAmount = totalAmount;
+		this.createdDate = createdDate;
 	}
 
 	@Id
@@ -92,70 +93,70 @@ public class ServiceInvoiceCard implements Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "service_id", nullable = false, unique = true)
-	public String getService_id() {
-		return service_id;
+	@Column(name = "serviceId", nullable = false, unique = true)
+	public String getServiceId() {
+		return serviceId;
 	}
 
-	public void setService_id(String service_id) {
-		this.service_id = service_id;
+	public void setServiceId(String serviceId) {
+		this.serviceId = serviceId;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "customer_details_id", nullable = false)
-	public CustomerDetails getCustomer_Details() {
-		return customer_Details;
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "customerDetailsId", nullable = false)
+	public CustomerDetails getCustomerDetails() {
+		return customerDetails;
 	}
 
-	public void setCustomer_Details(CustomerDetails customer_Details) {
-		this.customer_Details = customer_Details;
+	public void setCustomerDetails(CustomerDetails customerDetails) {
+		this.customerDetails = customerDetails;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "services_type_id")
-	public ServiceType getService_Type() {
-		return service_Type;
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "servicesTypeId")
+	public ServiceType getServiceType() {
+		return serviceType;
 	}
 
-	public void setService_Type(ServiceType service_Type) {
-		this.service_Type = service_Type;
+	public void setServiceType(ServiceType serviceType) {
+		this.serviceType = serviceType;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "service_adviser_id")
-	public ServiceAdvisor getService_Adviser() {
-		return service_Adviser;
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "serviceAdviserId")
+	public ServiceAdvisor getServiceAdviser() {
+		return serviceAdviser;
 	}
 
-	public void setService_Adviser(ServiceAdvisor service_Adviser) {
-		this.service_Adviser = service_Adviser;
+	public void setServiceAdviser(ServiceAdvisor serviceAdviser) {
+		this.serviceAdviser = serviceAdviser;
 	}
 
-	@Column(name = "service_detail")
-	public String getService_detail() {
-		return service_detail;
+	@Column(name = "serviceDetail")
+	public String getServiceDetail() {
+		return serviceDetail;
 	}
 
-	public void setService_detail(String service_detail) {
-		this.service_detail = service_detail;
+	public void setServiceDetail(String serviceDetail) {
+		this.serviceDetail = serviceDetail;
 	}
 
-	@Column(name = "tool_kit")
-	public String getTool_kit() {
-		return tool_kit;
+	@Column(name = "toolKit")
+	public String getToolKit() {
+		return toolKit;
 	}
 
-	public void setTool_kit(String tool_kit) {
-		this.tool_kit = tool_kit;
+	public void setToolKit(String toolKit) {
+		this.toolKit = toolKit;
 	}
 
-	@Column(name = "spare_wheel")
-	public String getSpare_wheel() {
-		return spare_wheel;
+	@Column(name = "spareWheel")
+	public String getSpareWheel() {
+		return spareWheel;
 	}
 
-	public void setSpare_wheel(String spare_wheel) {
-		this.spare_wheel = spare_wheel;
+	public void setSpareWheel(String spareWheel) {
+		this.spareWheel = spareWheel;
 	}
 
 	@Column(name = "jack")
@@ -167,22 +168,22 @@ public class ServiceInvoiceCard implements Serializable {
 		this.jack = jack;
 	}
 
-	@Column(name = "jack_handler")
-	public String getJack_handler() {
-		return jack_handler;
+	@Column(name = "jackHandler")
+	public String getJackHandler() {
+		return jackHandler;
 	}
 
-	public void setJack_handler(String jack_handler) {
-		this.jack_handler = jack_handler;
+	public void setJackHandler(String jackHandler) {
+		this.jackHandler = jackHandler;
 	}
 
-	@Column(name = "car_perfume")
-	public String getCar_perfume() {
-		return car_perfume;
+	@Column(name = "carPerfume")
+	public String getCarPerfume() {
+		return carPerfume;
 	}
 
-	public void setCar_perfume(String car_perfume) {
-		this.car_perfume = car_perfume;
+	public void setCarPerfume(String carPerfume) {
+		this.carPerfume = carPerfume;
 	}
 
 	@Column(name = "clock")
@@ -194,13 +195,13 @@ public class ServiceInvoiceCard implements Serializable {
 		this.clock = clock;
 	}
 
-	@Column(name = "cd_player")
-	public String getCd_player() {
-		return cd_player;
+	@Column(name = "cdPlayer")
+	public String getCdPlayer() {
+		return cdPlayer;
 	}
 
-	public void setCd_player(String cd_player) {
-		this.cd_player = cd_player;
+	public void setCdPlayer(String cdPlayer) {
+		this.cdPlayer = cdPlayer;
 	}
 
 	@Column(name = "kilometer")
@@ -213,62 +214,62 @@ public class ServiceInvoiceCard implements Serializable {
 	}
 
 	@Enumerated(EnumType.STRING)
-	@Column(name = "card_type")
-	public CardType getCard_type() {
-		return card_type;
+	@Column(name = "cardType")
+	public CardType getCardType() {
+		return cardType;
 	}
 
-	public void setCard_type(CardType card_type) {
-		this.card_type = card_type;
+	public void setCardType(CardType cardType) {
+		this.cardType = cardType;
 	}
 
 	@Enumerated(EnumType.STRING)
-	@Column(name = "card_status")
-	public CardStatus getCard_status() {
-		return card_status;
+	@Column(name = "cardStatus")
+	public CardStatus getCardStatus() {
+		return cardStatus;
 	}
 
-	public void setCard_status(CardStatus card_status) {
-		this.card_status = card_status;
-	}
-
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "current_service_date")
-	public Date getCurrent_service_date() {
-		return current_service_date;
-	}
-
-	public void setCurrent_service_date(Date current_service_date) {
-		this.current_service_date = current_service_date;
+	public void setCardStatus(CardStatus cardStatus) {
+		this.cardStatus = cardStatus;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "service_expire_date")
-	public Date getService_expire_date() {
-		return service_expire_date;
+	@Column(name = "currentServiceDate")
+	public Date getCurrentServiceDate() {
+		return currentServiceDate;
 	}
 
-	public void setService_expire_date(Date service_expire_date) {
-		this.service_expire_date = service_expire_date;
-	}
-
-	@Column(name = "total_amount")
-	public Double getTotal_amount() {
-		return total_amount;
-	}
-
-	public void setTotal_amount(Double total_amount) {
-		this.total_amount = total_amount;
+	public void setCurrentServiceDate(Date currentServiceDate) {
+		this.currentServiceDate = currentServiceDate;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "created_date")
-	public Date getCreated_date() {
-		return created_date;
+	@Column(name = "serviceExpireDate")
+	public Date getServiceExpireDate() {
+		return serviceExpireDate;
 	}
 
-	public void setCreated_date(Date created_date) {
-		this.created_date = created_date;
+	public void setServiceExpireDate(Date serviceExpireDate) {
+		this.serviceExpireDate = serviceExpireDate;
+	}
+
+	@Column(name = "totalAmount")
+	public Double getTotalAmount() {
+		return totalAmount;
+	}
+
+	public void setTotalAmount(Double totalAmount) {
+		this.totalAmount = totalAmount;
+	}
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "createdDate")
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
 	}
 
 }
