@@ -19,7 +19,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "customer_details")
+@Table(name = "customerDetails")
 public class CustomerDetails implements Serializable {
 
 	/**
@@ -28,47 +28,47 @@ public class CustomerDetails implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
-	private CarModels car_Models;
-	private String customer_id;
-	private String first_name;
-	private String last_name;
+	private CarModels carModels;
+	private String customerId;
+	private String firstName;
+	private String lastName;
 	private String mobile;
 	private String email;
 	private Date dob;
-	private String registration_no;
-	private String engine_no;
-	private Date policy_expires_date;
-	private String gst_no;
-	private Date created_date;
+	private String registrationNo;
+	private String engineNo;
+	private Date policyExpiresDate;
+	private String gstNo;
+	private Date createdDate;
 
-	private Set<CustomerContactDetails> customer_Contact_Details = new HashSet<CustomerContactDetails>();
-	private Set<ServiceInvoiceCard> service_Invoice_Cards = new HashSet<ServiceInvoiceCard>();
-	private Set<PartsStockMaintain> parts_Stock_Maintains = new HashSet<PartsStockMaintain>();
+	private Set<CustomerContactDetails> customerContactDetails = new HashSet<CustomerContactDetails>();
+	private Set<ServiceInvoiceCard> serviceInvoiceCards = new HashSet<ServiceInvoiceCard>();
+	private Set<PartsStockMaintain> partsStockMaintains = new HashSet<PartsStockMaintain>();
 
 	public CustomerDetails() {
 		super();
 	}
 
-	public CustomerDetails(Integer id, CarModels car_Models, String customer_id, String first_name, String last_name,
-			String mobile, String email, Date dob, String registration_no, String engine_no, Date policy_expires_date,
-			String gst_no, Date created_date, Set<CustomerContactDetails> customer_Contact_Details,
-			Set<ServiceInvoiceCard> service_Invoice_Cards) {
+	public CustomerDetails(Integer id, CarModels carModels, String customerId, String firstName, String lastName,
+			String mobile, String email, Date dob, String registrationNo, String engineNo, Date policyExpiresDate,
+			String gstNo, Date createdDate, Set<CustomerContactDetails> customerContactDetails,
+			Set<ServiceInvoiceCard> serviceInvoiceCards) {
 		super();
 		this.id = id;
-		this.car_Models = car_Models;
-		this.customer_id = customer_id;
-		this.first_name = first_name;
-		this.last_name = last_name;
+		this.carModels = carModels;
+		this.customerId = customerId;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.mobile = mobile;
 		this.email = email;
 		this.dob = dob;
-		this.registration_no = registration_no;
-		this.engine_no = engine_no;
-		this.setPolicy_expires_date(policy_expires_date);
-		this.gst_no = gst_no;
-		this.created_date = created_date;
-		this.customer_Contact_Details = customer_Contact_Details;
-		this.service_Invoice_Cards = service_Invoice_Cards;
+		this.registrationNo = registrationNo;
+		this.engineNo = engineNo;
+		this.policyExpiresDate = policyExpiresDate;
+		this.gstNo = gstNo;
+		this.createdDate = createdDate;
+		this.customerContactDetails = customerContactDetails;
+		this.serviceInvoiceCards = serviceInvoiceCards;
 	}
 
 	@Id
@@ -83,40 +83,40 @@ public class CustomerDetails implements Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "car_models_id")
-	public CarModels getCar_Models() {
-		return car_Models;
+	@JoinColumn(name = "carModelsId")
+	public CarModels getCarModels() {
+		return carModels;
 	}
 
-	public void setCar_Models(CarModels car_Models) {
-		this.car_Models = car_Models;
+	public void setCarModels(CarModels carModels) {
+		this.carModels = carModels;
 	}
 
-	@Column(name = "customer_id", nullable = false)
-	public String getCustomer_id() {
-		return customer_id;
+	@Column(name = "customerId", nullable = false)
+	public String getCustomerId() {
+		return customerId;
 	}
 
-	public void setCustomer_id(String customer_id) {
-		this.customer_id = customer_id;
+	public void setCustomerId(String customerId) {
+		this.customerId = customerId;
 	}
 
-	@Column(name = "first_name", nullable = false)
-	public String getFirst_name() {
-		return first_name;
+	@Column(name = "firstName", nullable = false)
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	@Column(name = "last_name", nullable = true)
-	public String getLast_name() {
-		return last_name;
+	@Column(name = "lastName", nullable = true)
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	@Column(name = "mobile", nullable = false)
@@ -147,78 +147,78 @@ public class CustomerDetails implements Serializable {
 		this.dob = dob;
 	}
 
-	@Column(name = "registration_no")
-	public String getRegistration_no() {
-		return registration_no;
+	@Column(name = "registrationNo")
+	public String getRegistrationNo() {
+		return registrationNo;
 	}
 
-	public void setRegistration_no(String registration_no) {
-		this.registration_no = registration_no;
+	public void setRegistrationNo(String registrationNo) {
+		this.registrationNo = registrationNo;
 	}
 
-	@Column(name = "gst_no", nullable = true)
-	public String getGst_no() {
-		return gst_no;
+	@Column(name = "gstNo", nullable = true)
+	public String getGstNo() {
+		return gstNo;
 	}
 
-	public void setGst_no(String gst_no) {
-		this.gst_no = gst_no;
+	public void setGstNo(String gstNo) {
+		this.gstNo = gstNo;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "created_date")
-	public Date getCreated_date() {
-		return created_date;
+	@Column(name = "createdDate")
+	public Date getCreatedDate() {
+		return createdDate;
 	}
 
-	public void setCreated_date(Date created_date) {
-		this.created_date = created_date;
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer_Details")
-	public Set<CustomerContactDetails> getCustomer_Contact_Details() {
-		return customer_Contact_Details;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customerDetails")
+	public Set<CustomerContactDetails> getCustomerContactDetails() {
+		return customerContactDetails;
 	}
 
-	public void setCustomer_Contact_Details(Set<CustomerContactDetails> customer_Contact_Details) {
-		this.customer_Contact_Details = customer_Contact_Details;
+	public void setCustomerContactDetails(Set<CustomerContactDetails> customerContactDetails) {
+		this.customerContactDetails = customerContactDetails;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer_Details")
-	public Set<ServiceInvoiceCard> getService_Invoice_Cards() {
-		return service_Invoice_Cards;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customerDetails")
+	public Set<ServiceInvoiceCard> getServiceInvoiceCards() {
+		return serviceInvoiceCards;
 	}
 
-	public void setService_Invoice_Cards(Set<ServiceInvoiceCard> service_Invoice_Cards) {
-		this.service_Invoice_Cards = service_Invoice_Cards;
+	public void setServiceInvoiceCards(Set<ServiceInvoiceCard> serviceInvoiceCards) {
+		this.serviceInvoiceCards = serviceInvoiceCards;
 	}
 
-	@Column(name = "engine_no")
-	public String getEngine_no() {
-		return engine_no;
+	@Column(name = "engineNo")
+	public String getengineNo() {
+		return engineNo;
 	}
 
-	public void setEngine_no(String engine_no) {
-		this.engine_no = engine_no;
+	public void setengineNo(String engineNo) {
+		this.engineNo = engineNo;
 	}
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "policy_expires_date")
-	public Date getPolicy_expires_date() {
-		return policy_expires_date;
+	@Column(name = "policyExpiresDate")
+	public Date getpolicyExpiresDate() {
+		return policyExpiresDate;
 	}
 
-	public void setPolicy_expires_date(Date policy_expires_date) {
-		this.policy_expires_date = policy_expires_date;
+	public void setpolicyExpiresDate(Date policyExpiresDate) {
+		this.policyExpiresDate = policyExpiresDate;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer_Details")
-	public Set<PartsStockMaintain> getParts_Stock_Maintains() {
-		return parts_Stock_Maintains;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customerDetails")
+	public Set<PartsStockMaintain> getPartsStockMaintains() {
+		return partsStockMaintains;
 	}
 
-	public void setParts_Stock_Maintains(Set<PartsStockMaintain> parts_Stock_Maintains) {
-		this.parts_Stock_Maintains = parts_Stock_Maintains;
+	public void setPartsStockMaintains(Set<PartsStockMaintain> partsStockMaintains) {
+		this.partsStockMaintains = partsStockMaintains;
 	}
 
 }

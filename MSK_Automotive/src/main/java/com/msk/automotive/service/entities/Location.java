@@ -27,19 +27,19 @@ public class Location implements Serializable {
 
 	private Integer id;
 	private String city;
-	private Date created_date;
+	private Date createdDate;
 
-	private Set<CustomerContactDetails> customer_Contact_Details = new HashSet<CustomerContactDetails>();
+	private Set<CustomerContactDetails> customerContactDetails = new HashSet<CustomerContactDetails>();
 
 	public Location() {
 		super();
 	}
 
-	public Location(Integer id, String city, Date created_date) {
+	public Location(Integer id, String city, Date createdDate) {
 		super();
 		this.id = id;
 		this.city = city;
-		this.created_date = created_date;
+		this.createdDate = createdDate;
 	}
 
 	@Id
@@ -63,22 +63,22 @@ public class Location implements Serializable {
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "created_date")
-	public Date getCreated_date() {
-		return created_date;
+	@Column(name = "createdDate")
+	public Date getCreatedDate() {
+		return createdDate;
 	}
 
-	public void setCreated_date(Date created_date) {
-		this.created_date = created_date;
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "location")
-	public Set<CustomerContactDetails> getCustomer_Contact_Details() {
-		return customer_Contact_Details;
+	public Set<CustomerContactDetails> getCustomerContactDetails() {
+		return customerContactDetails;
 	}
 
-	public void setCustomer_Contact_Details(Set<CustomerContactDetails> customer_Contact_Details) {
-		this.customer_Contact_Details = customer_Contact_Details;
+	public void setCustomerContactDetails(Set<CustomerContactDetails> customerContactDetails) {
+		this.customerContactDetails = customerContactDetails;
 	}
 
 }

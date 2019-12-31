@@ -5,48 +5,45 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "customer_contact_details")
-public class CustomerContactDetails implements Serializable
-{
+@Table(name = "customerContactDetails")
+public class CustomerContactDetails implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private Integer id;
-	private CustomerDetails customer_Details;
-	private String address_line_1;
-	private String address_line_2;
-	private Location location;
+	private String addressLine1;
+	private String addressLine2;
 	private Integer pincode;
-	private Date created_date;
+	private Date createdDate;
+
+	private CustomerDetails customerDetails;
+	private Location location;
 
 	public CustomerContactDetails() {
 		super();
 	}
 
-	public CustomerContactDetails(Integer id, CustomerDetails customer_Details, String address_line_1,
-			String address_line_2, Location location, Integer pincode, Date created_date) {
+	public CustomerContactDetails(Integer id, CustomerDetails customerDetails, String addressLine1, String addressLine2,
+			Location location, Integer pincode, Date createdDate) {
 		super();
 		this.id = id;
-		this.customer_Details = customer_Details;
-		this.address_line_1 = address_line_1;
-		this.address_line_2 = address_line_2;
+		this.customerDetails = customerDetails;
+		this.addressLine1 = addressLine1;
+		this.addressLine2 = addressLine2;
 		this.location = location;
 		this.pincode = pincode;
-		this.created_date = created_date;
+		this.createdDate = createdDate;
 	}
 
 	@Id
@@ -60,42 +57,22 @@ public class CustomerContactDetails implements Serializable
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "customer_details_id")
-	public CustomerDetails getCustomer_Details() {
-		return customer_Details;
+	@Column(name = "addressLine1", nullable = false)
+	public String getaddressLine1() {
+		return addressLine1;
 	}
 
-	public void setCustomer_Details(CustomerDetails customer_Details) {
-		this.customer_Details = customer_Details;
+	public void setaddressLine1(String addressLine1) {
+		this.addressLine1 = addressLine1;
 	}
 
-	@Column(name = "address_line_1", nullable = false)
-	public String getAddress_line_1() {
-		return address_line_1;
+	@Column(name = "addressLine2", nullable = true)
+	public String getaddressLine2() {
+		return addressLine2;
 	}
 
-	public void setAddress_line_1(String address_line_1) {
-		this.address_line_1 = address_line_1;
-	}
-
-	@Column(name = "address_line_2", nullable = true)
-	public String getAddress_line_2() {
-		return address_line_2;
-	}
-
-	public void setAddress_line_2(String address_line_2) {
-		this.address_line_2 = address_line_2;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "location_id")
-	public Location getLocation() {
-		return location;
-	}
-
-	public void setLocation(Location location) {
-		this.location = location;
+	public void setaddressLine2(String addressLine2) {
+		this.addressLine2 = addressLine2;
 	}
 
 	@Column(name = "pincode")
@@ -108,13 +85,28 @@ public class CustomerContactDetails implements Serializable
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "created_date")
-	public Date getCreated_date() {
-		return created_date;
+	@Column(name = "createdDate")
+	public Date getcreatedDate() {
+		return createdDate;
 	}
 
-	public void setCreated_date(Date created_date) {
-		this.created_date = created_date;
+	public void setcreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
 	}
 
+	public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
+	}
+
+	public CustomerDetails getCustomerDetails() {
+		return customerDetails;
+	}
+
+	public void setCustomerDetails(CustomerDetails customerDetails) {
+		this.customerDetails = customerDetails;
+	}
 }

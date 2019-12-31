@@ -7,17 +7,17 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "msk_owner")
+@Table(name = "mskOwner")
 public class MSKOwner implements Serializable {
 
 	/**
@@ -30,26 +30,26 @@ public class MSKOwner implements Serializable {
 	private String email;
 	private String mobile;
 	private String password;
-	private String access_code;
-	private Date created_date;
+	private String accessCode;
+	private Date createdDate;
 
-	private Set<ServiceAdvisor> service_Advisers = new HashSet<ServiceAdvisor>();
+	private Set<ServiceAdvisor> serviceAdvisers = new HashSet<ServiceAdvisor>();
 
 	public MSKOwner() {
 		super();
 	}
 
-	public MSKOwner(Integer id, String name, String email, String mobile, String password, String access_code,
-			Date created_date, Set<ServiceAdvisor> service_Advisers) {
+	public MSKOwner(Integer id, String name, String email, String mobile, String password, String accessCode,
+			Date createdDate, Set<ServiceAdvisor> serviceAdvisers) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.mobile = mobile;
 		this.password = password;
-		this.access_code = access_code;
-		this.created_date = created_date;
-		this.setService_Advisers(service_Advisers);
+		this.accessCode = accessCode;
+		this.createdDate = createdDate;
+		this.serviceAdvisers = serviceAdvisers;
 	}
 
 	@Id
@@ -99,32 +99,33 @@ public class MSKOwner implements Serializable {
 		this.password = password;
 	}
 
-	@Column(name = "access_code")
-	public String getAccess_code() {
-		return access_code;
+	@Column(name = "accessCode")
+	public String getAccessCode() {
+		return accessCode;
 	}
 
-	public void setAccess_code(String access_code) {
-		this.access_code = access_code;
+	public void setAccessCode(String accessCode) {
+		this.accessCode = accessCode;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "created_date")
-	public Date getCreated_date() {
-		return created_date;
+	@Column(name = "createdDate")
+	public Date getCreatedDate() {
+		return createdDate;
 	}
 
-	public void setCreated_date(Date created_date) {
-		this.created_date = created_date;
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "msk_Owner")
-	public Set<ServiceAdvisor> getService_Advisers() {
-		return service_Advisers;
+	@OneToMany
+	@JoinColumn(name = "mskOwnerId")
+	public Set<ServiceAdvisor> getServiceAdvisers() {
+		return serviceAdvisers;
 	}
 
-	public void setService_Advisers(Set<ServiceAdvisor> service_Advisers) {
-		this.service_Advisers = service_Advisers;
+	public void setServiceAdvisers(Set<ServiceAdvisor> serviceAdvisers) {
+		this.serviceAdvisers = serviceAdvisers;
 	}
 
 }
