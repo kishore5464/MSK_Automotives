@@ -42,6 +42,7 @@ import com.msk.automotive.service.pojo.ServiceAdvicer_Pojo;
 import com.msk.automotive.service.pojo.ServiceCard_Pojo;
 import com.msk.automotive.service.pojo.ServiceParts_Pojo;
 import com.msk.automotive.service.pojo.ServiceType_Pojo;
+import com.msk.automotive.service.pojo.SpareParts_Pojo;
 import com.msk.automotive.utilities.Encrypt_Decrypt;
 
 @Service
@@ -307,9 +308,9 @@ public class Get_Business_Impl implements Get_Business_Interface {
 		return status;
 	}
 
-	public Spare_Parts_Pojo getSparePartsAtParticularModelParts(String model_id, String part) {
+	public SpareParts_Pojo getSparePartsAtParticularModelParts(String model_id, String part) {
 		List<Parts> spare_parts = parts_Repository.findByCarModelsAndPart(Integer.parseInt(model_id), part);
-		Spare_Parts_Pojo spare_Parts_Pojo = new Spare_Parts_Pojo();
+		SpareParts_Pojo spare_Parts_Pojo = new SpareParts_Pojo();
 
 		if (!spare_parts.isEmpty()) {
 			Optional<CarModels> models = carModel_Repository.findById(spare_parts.get(0).getCarModels().getId());
@@ -728,6 +729,12 @@ public class Get_Business_Impl implements Get_Business_Interface {
 			}
 		}
 		return jobCardStatus_Pojos;
+	}
+
+	@Override
+	public List<CustomerDetails_Pojo> getExistingCustomerDetails() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
