@@ -19,8 +19,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "car_models")
-public class Car_Models implements Serializable {
+@Table(name = "carModels")
+public class CarModels implements Serializable {
 
 	/**
 	 * 
@@ -28,26 +28,26 @@ public class Car_Models implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
-	private Car_Brands car_Brands;
+	private CarBrands carBrands;
 	private String model;
 	private String image;
-	private Date created_date;
+	private Date createdDate;
 
-	private Set<Customer_Details> customer_Details = new HashSet<Customer_Details>();
+	private Set<CustomerDetails> customerDetails = new HashSet<CustomerDetails>();
 	private Set<Parts> parts = new HashSet<Parts>();
-	private Set<Parts_Stock_Maintain> parts_Stock_Maintains = new HashSet<Parts_Stock_Maintain>();
+	private Set<PartsStockMaintain> partsStockMaintains = new HashSet<PartsStockMaintain>();
 
-	public Car_Models() {
+	public CarModels() {
 		super();
 	}
 
-	public Car_Models(Integer id, Car_Brands car_Brands, String model, String image, Date created_date) {
+	public CarModels(Integer id, CarBrands carBrands, String model, String image, Date createdDate) {
 		super();
 		this.id = id;
-		this.car_Brands = car_Brands;
+		this.carBrands = carBrands;
 		this.model = model;
 		this.image = image;
-		this.created_date = created_date;
+		this.createdDate = createdDate;
 	}
 
 	@Id
@@ -62,13 +62,13 @@ public class Car_Models implements Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "car_brands_id")
-	public Car_Brands getCar_Brands() {
-		return car_Brands;
+	@JoinColumn(name = "carBrandsId")
+	public CarBrands getCarBrands() {
+		return carBrands;
 	}
 
-	public void setCar_Brands(Car_Brands car_Brands) {
-		this.car_Brands = car_Brands;
+	public void setCarBrands(CarBrands carBrands) {
+		this.carBrands = carBrands;
 	}
 
 	@Column(name = "model")
@@ -90,22 +90,22 @@ public class Car_Models implements Serializable {
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "created_date")
-	public Date getCreated_date() {
-		return created_date;
+	@Column(name = "createdDate")
+	public Date getCreatedDate() {
+		return createdDate;
 	}
 
-	public void setCreated_date(Date created_date) {
-		this.created_date = created_date;
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "car_Models")
-	public Set<Customer_Details> getCustomer_Details() {
-		return customer_Details;
+	public Set<CustomerDetails> getCustomerDetails() {
+		return customerDetails;
 	}
 
-	public void setCustomer_Details(Set<Customer_Details> customer_Details) {
-		this.customer_Details = customer_Details;
+	public void setCustomerDetails(Set<CustomerDetails> customerDetails) {
+		this.customerDetails = customerDetails;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "car_Models")
@@ -117,13 +117,13 @@ public class Car_Models implements Serializable {
 		this.parts = parts;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "car_Models")
-	public Set<Parts_Stock_Maintain> getParts_Stock_Maintains() {
-		return parts_Stock_Maintains;
+	//@OneToMany(fetch = FetchType.LAZY, mappedBy = "car_Models")
+	public Set<PartsStockMaintain> getPartsStockMaintains() {
+		return partsStockMaintains;
 	}
 
-	public void setParts_Stock_Maintains(Set<Parts_Stock_Maintain> parts_Stock_Maintains) {
-		this.parts_Stock_Maintains = parts_Stock_Maintains;
+	public void setPartsStockMaintains(Set<PartsStockMaintain> partsStockMaintains) {
+		this.partsStockMaintains = partsStockMaintains;
 	}
 
 }

@@ -7,18 +7,18 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "car_brands")
-public class Car_Brands implements Serializable {
+@Table(name = "carBrands")
+public class CarBrands implements Serializable {
 
 	/**
 	 * 
@@ -28,21 +28,20 @@ public class Car_Brands implements Serializable {
 	private Integer id;
 	private String brand;
 	private String logo;
-	private Date created_date;
+	private Date createdDate;
 
-	private Set<Car_Models> car_Models = new HashSet<Car_Models>();
+	private Set<CarModels> carModels = new HashSet<CarModels>();
 
-	public Car_Brands() {
+	public CarBrands() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Car_Brands(Integer id, String brand, String logo, Date created_date) {
+	public CarBrands(Integer id, String brand, String logo, Date createdDate) {
 		super();
 		this.id = id;
 		this.brand = brand;
 		this.logo = logo;
-		this.created_date = created_date;
+		this.createdDate = createdDate;
 	}
 
 	@Id
@@ -75,22 +74,23 @@ public class Car_Brands implements Serializable {
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "created_date")
-	public Date getCreated_date() {
-		return created_date;
+	@Column(name = "createdDate")
+	public Date getCreatedDate() {
+		return createdDate;
 	}
 
-	public void setCreated_date(Date created_date) {
-		this.created_date = created_date;
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "car_Brands")
-	public Set<Car_Models> getCar_Models() {
-		return car_Models;
+	@OneToMany
+	@JoinColumn(name = "carModelId")
+	public Set<CarModels> getCarModels() {
+		return carModels;
 	}
 
-	public void setCar_Models(Set<Car_Models> car_Models) {
-		this.car_Models = car_Models;
+	public void setCarModels(Set<CarModels> carModels) {
+		this.carModels = carModels;
 	}
 
 }

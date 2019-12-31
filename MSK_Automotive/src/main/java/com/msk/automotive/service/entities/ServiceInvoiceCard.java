@@ -19,7 +19,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "service_invoice_card")
-public class Service_Invoice_Card implements Serializable {
+public class ServiceInvoiceCard implements Serializable {
 
 	/**
 	 * 
@@ -29,9 +29,9 @@ public class Service_Invoice_Card implements Serializable {
 	private Integer id;
 	private String service_id;
 
-	private Customer_Details customer_Details;
-	private Service_Type service_Type;
-	private Service_Advisor service_Adviser;
+	private CustomerDetails customer_Details;
+	private ServiceType service_Type;
+	private ServiceAdvisor service_Adviser;
 
 	private String service_detail;
 	private String tool_kit;
@@ -42,21 +42,21 @@ public class Service_Invoice_Card implements Serializable {
 	private String clock;
 	private String cd_player;
 	private Integer kilometer;
-	private Card_Type card_type;
-	private Card_Status card_status;
+	private CardType card_type;
+	private CardStatus card_status;
 	private Date current_service_date;
 	private Date service_expire_date;
 	private Double total_amount;
 	private Date created_date;
 
-	public Service_Invoice_Card() {
+	public ServiceInvoiceCard() {
 		super();
 	}
 
-	public Service_Invoice_Card(Integer id, String service_id, Customer_Details customer_Details,
-			Service_Type service_Type, Service_Advisor service_Adviser, String service_detail, String tool_kit,
+	public ServiceInvoiceCard(Integer id, String service_id, CustomerDetails customer_Details,
+			ServiceType service_Type, ServiceAdvisor service_Adviser, String service_detail, String tool_kit,
 			String spare_wheel, String jack, String jack_handler, String car_perfume, String clock, String cd_player,
-			Integer kilometer, Card_Type card_type, Card_Status card_status, Date current_service_date,
+			Integer kilometer, CardType card_type, CardStatus card_status, Date current_service_date,
 			Date service_expire_date, Double total_amount, Date created_date) {
 		super();
 		this.id = id;
@@ -103,31 +103,31 @@ public class Service_Invoice_Card implements Serializable {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "customer_details_id", nullable = false)
-	public Customer_Details getCustomer_Details() {
+	public CustomerDetails getCustomer_Details() {
 		return customer_Details;
 	}
 
-	public void setCustomer_Details(Customer_Details customer_Details) {
+	public void setCustomer_Details(CustomerDetails customer_Details) {
 		this.customer_Details = customer_Details;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "services_type_id")
-	public Service_Type getService_Type() {
+	public ServiceType getService_Type() {
 		return service_Type;
 	}
 
-	public void setService_Type(Service_Type service_Type) {
+	public void setService_Type(ServiceType service_Type) {
 		this.service_Type = service_Type;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "service_adviser_id")
-	public Service_Advisor getService_Adviser() {
+	public ServiceAdvisor getService_Adviser() {
 		return service_Adviser;
 	}
 
-	public void setService_Adviser(Service_Advisor service_Adviser) {
+	public void setService_Adviser(ServiceAdvisor service_Adviser) {
 		this.service_Adviser = service_Adviser;
 	}
 
@@ -214,21 +214,21 @@ public class Service_Invoice_Card implements Serializable {
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "card_type")
-	public Card_Type getCard_type() {
+	public CardType getCard_type() {
 		return card_type;
 	}
 
-	public void setCard_type(Card_Type card_type) {
+	public void setCard_type(CardType card_type) {
 		this.card_type = card_type;
 	}
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "card_status")
-	public Card_Status getCard_status() {
+	public CardStatus getCard_status() {
 		return card_status;
 	}
 
-	public void setCard_status(Card_Status card_status) {
+	public void setCard_status(CardStatus card_status) {
 		this.card_status = card_status;
 	}
 

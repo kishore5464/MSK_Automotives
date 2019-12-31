@@ -1,22 +1,22 @@
 package com.msk.automotive.dao.repositories;
 
-import com.msk.automotive.service.entities.Car_Brands;
-import com.msk.automotive.service.entities.Car_Models;
-import com.msk.automotive.service.entities.Customer_Contact_Details;
-import com.msk.automotive.service.entities.Customer_Details;
-import com.msk.automotive.service.entities.MSK_Owner;
+import com.msk.automotive.service.entities.CarBrands;
+import com.msk.automotive.service.entities.CarModels;
+import com.msk.automotive.service.entities.CustomerContactDetails;
+import com.msk.automotive.service.entities.CustomerDetails;
+import com.msk.automotive.service.entities.MSKOwner;
 import com.msk.automotive.service.entities.Parts;
 
 public interface Insert_DAO_Interface {
 
-	void insertCarBrand(Car_Brands car_Brands);
+	void insertCarBrand(CarBrands car_Brands);
 
-	void insertCarModel(Car_Models car_Models);
+	void insertCarModel(CarModels car_Models);
 
-	void insertCustomerDetails(Customer_Details customer_Details, Customer_Contact_Details customer_Contact_Details);
+	void insertCustomerDetails(CustomerDetails customer_Details, CustomerContactDetails customer_Contact_Details);
 
 	void insertSparePart(Parts parts);
 
-	void insertAccessCodeAndSend(MSK_Owner msk_Owner);
+	void insertAccessCodeAndSend(MSKOwner msk_Owner);
 
 }

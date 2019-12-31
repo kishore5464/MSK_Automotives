@@ -30,20 +30,20 @@ public class Parts implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
-	private Car_Models car_Models;
+	private CarModels car_Models;
 	private String part;
 	private Integer quantity;
-	private Stock_Status parts_status;
+	private StockStatus parts_status;
 	private Double amount;
 	private Date created_date;
 
-	private Set<Parts_Stock_Maintain> parts_Stock_Maintains = new HashSet<Parts_Stock_Maintain>();
+	private Set<PartsStockMaintain> parts_Stock_Maintains = new HashSet<PartsStockMaintain>();
 
 	public Parts() {
 		super();
 	}
 
-	public Parts(Integer id, Car_Models car_Models, String part, Integer quantity, Stock_Status parts_status,
+	public Parts(Integer id, CarModels car_Models, String part, Integer quantity, StockStatus parts_status,
 			Double amount, Date created_date) {
 		super();
 		this.id = id;
@@ -68,11 +68,11 @@ public class Parts implements Serializable {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "car_models_id")
-	public Car_Models getCar_Models() {
+	public CarModels getCar_Models() {
 		return car_Models;
 	}
 
-	public void setCar_Models(Car_Models car_Models) {
+	public void setCar_Models(CarModels car_Models) {
 		this.car_Models = car_Models;
 	}
 
@@ -87,11 +87,11 @@ public class Parts implements Serializable {
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "parts_status")
-	public Stock_Status getParts_status() {
+	public StockStatus getParts_status() {
 		return parts_status;
 	}
 
-	public void setParts_status(Stock_Status parts_status) {
+	public void setParts_status(StockStatus parts_status) {
 		this.parts_status = parts_status;
 	}
 
@@ -124,11 +124,11 @@ public class Parts implements Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "parts")
-	public Set<Parts_Stock_Maintain> getParts_Stock_Maintains() {
+	public Set<PartsStockMaintain> getParts_Stock_Maintains() {
 		return parts_Stock_Maintains;
 	}
 
-	public void setParts_Stock_Maintains(Set<Parts_Stock_Maintain> parts_Stock_Maintains) {
+	public void setParts_Stock_Maintains(Set<PartsStockMaintain> parts_Stock_Maintains) {
 		this.parts_Stock_Maintains = parts_Stock_Maintains;
 	}
 

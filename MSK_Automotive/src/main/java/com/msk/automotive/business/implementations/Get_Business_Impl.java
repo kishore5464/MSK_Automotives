@@ -337,7 +337,7 @@ public class Get_Business_Impl implements Get_Business_Interface {
 	public List<Customer_Details_Pojo> getExistingCustomerModelDetails(String model_id) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
-		List<Customer_Details> customer_Details = get_DAO_Interface
+		List<Customer_Details> customer_Details = customerDetails_Repository
 				.getExistingCustomerModelDetails(Integer.parseInt(model_id));
 		List<Customer_Details_Pojo> customer_Details_Pojos = new ArrayList<Customer_Details_Pojo>();
 

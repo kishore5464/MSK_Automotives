@@ -2,47 +2,47 @@ package com.msk.automotive.dao.repositories;
 
 import java.util.List;
 
-import com.msk.automotive.service.entities.Car_Brands;
-import com.msk.automotive.service.entities.Car_Models;
-import com.msk.automotive.service.entities.Customer_Contact_Details;
-import com.msk.automotive.service.entities.Customer_Details;
+import com.msk.automotive.service.entities.CarBrands;
+import com.msk.automotive.service.entities.CarModels;
+import com.msk.automotive.service.entities.CustomerContactDetails;
+import com.msk.automotive.service.entities.CustomerDetails;
 import com.msk.automotive.service.entities.Location;
-import com.msk.automotive.service.entities.MSK_Owner;
+import com.msk.automotive.service.entities.MSKOwner;
 import com.msk.automotive.service.entities.Notification;
 import com.msk.automotive.service.entities.Parts;
-import com.msk.automotive.service.entities.Service_Advisor;
-import com.msk.automotive.service.entities.Service_Invoice_Card;
-import com.msk.automotive.service.entities.Service_Type;
+import com.msk.automotive.service.entities.ServiceAdvisor;
+import com.msk.automotive.service.entities.ServiceInvoiceCard;
+import com.msk.automotive.service.entities.ServiceType;
 
 public interface Get_DAO_Interface {
 
-	List<Car_Brands> getAllBrands();
+	List<CarBrands> getAllBrands();
 
-	List<Car_Models> getModelsByBrandId(Integer car_brands_id);
+	List<CarModels> getModelsByBrandId(Integer car_brands_id);
 
-	List<Car_Models> getModelsByBrandIdAndModel(Integer car_brands_id, String model);
+	List<CarModels> getModelsByBrandIdAndModel(Integer car_brands_id, String model);
 
-	List<MSK_Owner> getMSKOwnerDetail(String username);
+	List<MSKOwner> getMSKOwnerDetail(String username);
 
-	List<Car_Brands> getBrandById(Integer brand_id);
+	List<CarBrands> getBrandById(Integer brand_id);
 
-	List<Car_Models> getModelById(Integer model_id);
+	List<CarModels> getModelById(Integer model_id);
 
-	List<Car_Brands> getByBrand(String brand);
+	List<CarBrands> getByBrand(String brand);
 
-	List<Customer_Details> getAllCustomerDetails();
+	List<CustomerDetails> getAllCustomerDetails();
 
-	List<Customer_Contact_Details> getCustomerContactDetails(Integer customer_id);
+	List<CustomerContactDetails> getCustomerContactDetails(Integer customer_id);
 
-	List<Service_Invoice_Card> getSericeInvoiceCard(Integer customer_id);
+	List<ServiceInvoiceCard> getSericeInvoiceCard(Integer customer_id);
 
 	List<Location> getLocation();
 
-	List<Service_Type> getServiceType();
+	List<ServiceType> getServiceType();
 
-	List<Service_Invoice_Card> getServiceInvoiceCards();
+	List<ServiceInvoiceCard> getServiceInvoiceCards();
 
-	List<Service_Invoice_Card> getServiceInvoiceCardsByStatus(String service_card_status);
+	List<ServiceInvoiceCard> getServiceInvoiceCardsByStatus(String service_card_status);
 
 	String getLocationByCityId(Integer location_id);
 
@@ -54,21 +54,21 @@ public interface Get_DAO_Interface {
 
 	List<Parts> getSparePartsAtParticularModelParts(Integer model_id, String part);
 
-	List<Customer_Details> getExistingCustomerModelDetails(Integer car_models_id);
+	List<CustomerDetails> getExistingCustomerModelDetails(Integer car_models_id);
 
-	List<Service_Advisor> getServiceAdvicers();
+	List<ServiceAdvisor> getServiceAdvicers();
 
 	List<Notification> getAllNotificationDetails();
 
-	List<Customer_Details> getCustomerRegistrationNo(String registration_no);
+	List<CustomerDetails> getCustomerRegistrationNo(String registration_no);
 
-	List<Customer_Details> getCustomerDetailByCustomerId(String customer_id);
+	List<CustomerDetails> getCustomerDetailByCustomerId(String customer_id);
 
-	List<Customer_Details> getCustomerDetailById(Integer id);
+	List<CustomerDetails> getCustomerDetailById(Integer id);
 
 	List<Notification> getNotificationDetailsById(Integer notification_id);
 
-	List<Service_Type> getServiceTypeById(Integer id);
+	List<ServiceType> getServiceTypeById(Integer id);
 
-	List<Service_Invoice_Card> getSericeInvoiceCardByServiceId(String service_id);
+	List<ServiceInvoiceCard> getSericeInvoiceCardByServiceId(String service_id);
 }

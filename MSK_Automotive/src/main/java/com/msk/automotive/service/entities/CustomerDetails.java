@@ -20,7 +20,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "customer_details")
-public class Customer_Details implements Serializable {
+public class CustomerDetails implements Serializable {
 
 	/**
 	 * 
@@ -28,7 +28,7 @@ public class Customer_Details implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
-	private Car_Models car_Models;
+	private CarModels car_Models;
 	private String customer_id;
 	private String first_name;
 	private String last_name;
@@ -41,18 +41,18 @@ public class Customer_Details implements Serializable {
 	private String gst_no;
 	private Date created_date;
 
-	private Set<Customer_Contact_Details> customer_Contact_Details = new HashSet<Customer_Contact_Details>();
-	private Set<Service_Invoice_Card> service_Invoice_Cards = new HashSet<Service_Invoice_Card>();
-	private Set<Parts_Stock_Maintain> parts_Stock_Maintains = new HashSet<Parts_Stock_Maintain>();
+	private Set<CustomerContactDetails> customer_Contact_Details = new HashSet<CustomerContactDetails>();
+	private Set<ServiceInvoiceCard> service_Invoice_Cards = new HashSet<ServiceInvoiceCard>();
+	private Set<PartsStockMaintain> parts_Stock_Maintains = new HashSet<PartsStockMaintain>();
 
-	public Customer_Details() {
+	public CustomerDetails() {
 		super();
 	}
 
-	public Customer_Details(Integer id, Car_Models car_Models, String customer_id, String first_name, String last_name,
+	public CustomerDetails(Integer id, CarModels car_Models, String customer_id, String first_name, String last_name,
 			String mobile, String email, Date dob, String registration_no, String engine_no, Date policy_expires_date,
-			String gst_no, Date created_date, Set<Customer_Contact_Details> customer_Contact_Details,
-			Set<Service_Invoice_Card> service_Invoice_Cards) {
+			String gst_no, Date created_date, Set<CustomerContactDetails> customer_Contact_Details,
+			Set<ServiceInvoiceCard> service_Invoice_Cards) {
 		super();
 		this.id = id;
 		this.car_Models = car_Models;
@@ -84,11 +84,11 @@ public class Customer_Details implements Serializable {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "car_models_id")
-	public Car_Models getCar_Models() {
+	public CarModels getCar_Models() {
 		return car_Models;
 	}
 
-	public void setCar_Models(Car_Models car_Models) {
+	public void setCar_Models(CarModels car_Models) {
 		this.car_Models = car_Models;
 	}
 
@@ -176,20 +176,20 @@ public class Customer_Details implements Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer_Details")
-	public Set<Customer_Contact_Details> getCustomer_Contact_Details() {
+	public Set<CustomerContactDetails> getCustomer_Contact_Details() {
 		return customer_Contact_Details;
 	}
 
-	public void setCustomer_Contact_Details(Set<Customer_Contact_Details> customer_Contact_Details) {
+	public void setCustomer_Contact_Details(Set<CustomerContactDetails> customer_Contact_Details) {
 		this.customer_Contact_Details = customer_Contact_Details;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer_Details")
-	public Set<Service_Invoice_Card> getService_Invoice_Cards() {
+	public Set<ServiceInvoiceCard> getService_Invoice_Cards() {
 		return service_Invoice_Cards;
 	}
 
-	public void setService_Invoice_Cards(Set<Service_Invoice_Card> service_Invoice_Cards) {
+	public void setService_Invoice_Cards(Set<ServiceInvoiceCard> service_Invoice_Cards) {
 		this.service_Invoice_Cards = service_Invoice_Cards;
 	}
 
@@ -213,11 +213,11 @@ public class Customer_Details implements Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer_Details")
-	public Set<Parts_Stock_Maintain> getParts_Stock_Maintains() {
+	public Set<PartsStockMaintain> getParts_Stock_Maintains() {
 		return parts_Stock_Maintains;
 	}
 
-	public void setParts_Stock_Maintains(Set<Parts_Stock_Maintain> parts_Stock_Maintains) {
+	public void setParts_Stock_Maintains(Set<PartsStockMaintain> parts_Stock_Maintains) {
 		this.parts_Stock_Maintains = parts_Stock_Maintains;
 	}
 

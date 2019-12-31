@@ -20,7 +20,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "service_adviser")
-public class Service_Advisor implements Serializable {
+public class ServiceAdvisor implements Serializable {
 
 	/**
 	 * 
@@ -28,19 +28,19 @@ public class Service_Advisor implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
-	private MSK_Owner msk_Owner;
+	private MSKOwner msk_Owner;
 	private String name;
 	private String mobile;
 	private Date created_date;
 
-	private Set<Service_Invoice_Card> service_Invoice_Cards = new HashSet<Service_Invoice_Card>();
+	private Set<ServiceInvoiceCard> service_Invoice_Cards = new HashSet<ServiceInvoiceCard>();
 
-	public Service_Advisor() {
+	public ServiceAdvisor() {
 		super();
 	}
 
-	public Service_Advisor(Integer id, MSK_Owner msk_Owner, String name, String mobile, Date created_date,
-			Set<Service_Invoice_Card> service_Invoice_Cards) {
+	public ServiceAdvisor(Integer id, MSKOwner msk_Owner, String name, String mobile, Date created_date,
+			Set<ServiceInvoiceCard> service_Invoice_Cards) {
 		super();
 		this.id = id;
 		this.msk_Owner = msk_Owner;
@@ -63,11 +63,11 @@ public class Service_Advisor implements Serializable {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "msk_owner_id")
-	public MSK_Owner getMsk_Owner() {
+	public MSKOwner getMsk_Owner() {
 		return msk_Owner;
 	}
 
-	public void setMsk_Owner(MSK_Owner msk_Owner) {
+	public void setMsk_Owner(MSKOwner msk_Owner) {
 		this.msk_Owner = msk_Owner;
 	}
 
@@ -100,11 +100,11 @@ public class Service_Advisor implements Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "service_Adviser")
-	public Set<Service_Invoice_Card> getService_Invoice_Cards() {
+	public Set<ServiceInvoiceCard> getService_Invoice_Cards() {
 		return service_Invoice_Cards;
 	}
 
-	public void setService_Invoice_Cards(Set<Service_Invoice_Card> service_Invoice_Cards) {
+	public void setService_Invoice_Cards(Set<ServiceInvoiceCard> service_Invoice_Cards) {
 		this.service_Invoice_Cards = service_Invoice_Cards;
 	}
 

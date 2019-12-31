@@ -18,7 +18,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "service_type")
-public class Service_Type implements Serializable {
+public class ServiceType implements Serializable {
 
 	/**
 	 * 
@@ -30,14 +30,14 @@ public class Service_Type implements Serializable {
 	private String common_service;
 	private Date created_date;
 
-	private Set<Service_Invoice_Card> service_Invoice_Cards = new HashSet<Service_Invoice_Card>();
+	private Set<ServiceInvoiceCard> service_Invoice_Cards = new HashSet<ServiceInvoiceCard>();
 
-	public Service_Type() {
+	public ServiceType() {
 		super();
 	}
 
-	public Service_Type(Integer id, String service_type, String common_service, Date created_date,
-			Set<Service_Invoice_Card> service_Invoice_Cards) {
+	public ServiceType(Integer id, String service_type, String common_service, Date created_date,
+			Set<ServiceInvoiceCard> service_Invoice_Cards) {
 		super();
 		this.id = id;
 		this.service_type = service_type;
@@ -86,11 +86,11 @@ public class Service_Type implements Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "service_Type")
-	public Set<Service_Invoice_Card> getService_Invoice_Cards() {
+	public Set<ServiceInvoiceCard> getService_Invoice_Cards() {
 		return service_Invoice_Cards;
 	}
 
-	public void setService_Invoice_Cards(Set<Service_Invoice_Card> service_Invoice_Cards) {
+	public void setService_Invoice_Cards(Set<ServiceInvoiceCard> service_Invoice_Cards) {
 		this.service_Invoice_Cards = service_Invoice_Cards;
 	}
 

@@ -18,7 +18,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "msk_owner")
-public class MSK_Owner implements Serializable {
+public class MSKOwner implements Serializable {
 
 	/**
 	 * 
@@ -33,14 +33,14 @@ public class MSK_Owner implements Serializable {
 	private String access_code;
 	private Date created_date;
 
-	private Set<Service_Advisor> service_Advisers = new HashSet<Service_Advisor>();
+	private Set<ServiceAdvisor> service_Advisers = new HashSet<ServiceAdvisor>();
 
-	public MSK_Owner() {
+	public MSKOwner() {
 		super();
 	}
 
-	public MSK_Owner(Integer id, String name, String email, String mobile, String password, String access_code,
-			Date created_date, Set<Service_Advisor> service_Advisers) {
+	public MSKOwner(Integer id, String name, String email, String mobile, String password, String access_code,
+			Date created_date, Set<ServiceAdvisor> service_Advisers) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -119,11 +119,11 @@ public class MSK_Owner implements Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "msk_Owner")
-	public Set<Service_Advisor> getService_Advisers() {
+	public Set<ServiceAdvisor> getService_Advisers() {
 		return service_Advisers;
 	}
 
-	public void setService_Advisers(Set<Service_Advisor> service_Advisers) {
+	public void setService_Advisers(Set<ServiceAdvisor> service_Advisers) {
 		this.service_Advisers = service_Advisers;
 	}
 

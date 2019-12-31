@@ -17,7 +17,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "parts_stock_maintain")
-public class Parts_Stock_Maintain implements Serializable {
+public class PartsStockMaintain implements Serializable {
 
 	/**
 	 * 
@@ -33,19 +33,19 @@ public class Parts_Stock_Maintain implements Serializable {
 	private Double difference_amount;
 
 	private Parts parts;
-	private Customer_Details customer_Details;
-	private Car_Models car_Models;
+	private CustomerDetails customer_Details;
+	private CarModels car_Models;
 
 	private Date created_date;
 
-	public Parts_Stock_Maintain() {
+	public PartsStockMaintain() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Parts_Stock_Maintain(Integer id, Integer original_quantity, Integer customer_quantity,
+	public PartsStockMaintain(Integer id, Integer original_quantity, Integer customer_quantity,
 			Integer available_quantity, Double original_amount, Double customer_amount, Double difference_amount,
-			Parts parts, Customer_Details customer_Details, Car_Models car_Models, Date created_date) {
+			Parts parts, CustomerDetails customer_Details, CarModels car_Models, Date created_date) {
 		super();
 		this.id = id;
 		this.original_quantity = original_quantity;
@@ -137,21 +137,21 @@ public class Parts_Stock_Maintain implements Serializable {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "customer_id")
-	public Customer_Details getCustomer_Details() {
+	public CustomerDetails getCustomer_Details() {
 		return customer_Details;
 	}
 
-	public void setCustomer_Details(Customer_Details customer_Details) {
+	public void setCustomer_Details(CustomerDetails customer_Details) {
 		this.customer_Details = customer_Details;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "model_id")
-	public Car_Models getCar_Models() {
+	public CarModels getCar_Models() {
 		return car_Models;
 	}
 
-	public void setCar_Models(Car_Models car_Models) {
+	public void setCar_Models(CarModels car_Models) {
 		this.car_Models = car_Models;
 	}
 

@@ -29,7 +29,7 @@ public class Location implements Serializable {
 	private String city;
 	private Date created_date;
 
-	private Set<Customer_Contact_Details> customer_Contact_Details = new HashSet<Customer_Contact_Details>();
+	private Set<CustomerContactDetails> customer_Contact_Details = new HashSet<CustomerContactDetails>();
 
 	public Location() {
 		super();
@@ -73,11 +73,11 @@ public class Location implements Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "location")
-	public Set<Customer_Contact_Details> getCustomer_Contact_Details() {
+	public Set<CustomerContactDetails> getCustomer_Contact_Details() {
 		return customer_Contact_Details;
 	}
 
-	public void setCustomer_Contact_Details(Set<Customer_Contact_Details> customer_Contact_Details) {
+	public void setCustomer_Contact_Details(Set<CustomerContactDetails> customer_Contact_Details) {
 		this.customer_Contact_Details = customer_Contact_Details;
 	}
 

@@ -17,7 +17,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "customer_contact_details")
-public class Customer_Contact_Details implements Serializable
+public class CustomerContactDetails implements Serializable
 {
 
 	/**
@@ -26,18 +26,18 @@ public class Customer_Contact_Details implements Serializable
 	private static final long serialVersionUID = 1L;
 	
 	private Integer id;
-	private Customer_Details customer_Details;
+	private CustomerDetails customer_Details;
 	private String address_line_1;
 	private String address_line_2;
 	private Location location;
 	private Integer pincode;
 	private Date created_date;
 
-	public Customer_Contact_Details() {
+	public CustomerContactDetails() {
 		super();
 	}
 
-	public Customer_Contact_Details(Integer id, Customer_Details customer_Details, String address_line_1,
+	public CustomerContactDetails(Integer id, CustomerDetails customer_Details, String address_line_1,
 			String address_line_2, Location location, Integer pincode, Date created_date) {
 		super();
 		this.id = id;
@@ -62,11 +62,11 @@ public class Customer_Contact_Details implements Serializable
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "customer_details_id")
-	public Customer_Details getCustomer_Details() {
+	public CustomerDetails getCustomer_Details() {
 		return customer_Details;
 	}
 
-	public void setCustomer_Details(Customer_Details customer_Details) {
+	public void setCustomer_Details(CustomerDetails customer_Details) {
 		this.customer_Details = customer_Details;
 	}
 
