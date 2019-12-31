@@ -17,7 +17,7 @@ import com.msk.automotive.business.interfaces.Get_Business_Interface;
 import com.msk.automotive.business.interfaces.Insert_Business_Interface;
 import com.msk.automotive.business.interfaces.Update_Business_Interface;
 import com.msk.automotive.exception.CustomGenericException;
-import com.msk.automotive.service.pojo.Notifcation_Message_Pojo;
+import com.msk.automotive.service.pojo.NotifcationMessage_Pojo;
 import com.msk.automotive.service.pojo.Notifcation_Pojo;
 
 import net.minidev.json.JSONObject;

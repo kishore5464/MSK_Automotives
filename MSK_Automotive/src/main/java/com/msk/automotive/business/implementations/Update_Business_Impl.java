@@ -19,8 +19,8 @@ import com.msk.automotive.service.entities.MSKOwner;
 import com.msk.automotive.service.entities.Parts;
 import com.msk.automotive.service.entities.ServiceInvoiceCard;
 import com.msk.automotive.service.entities.StockStatus;
-import com.msk.automotive.service.pojo.Service_Card_Pojo;
-import com.msk.automotive.service.pojo.Service_Parts_Pojo;
+import com.msk.automotive.service.pojo.ServiceCard_Pojo;
+import com.msk.automotive.service.pojo.ServiceParts_Pojo;
 import com.msk.automotive.utilities.Encrypt_Decrypt;
 
 @Service

@@ -1,6 +1,6 @@
 package com.msk.automotive.business.interfaces;
 
-import com.msk.automotive.service.pojo.Service_Card_Pojo;
+import com.msk.automotive.service.pojo.ServiceCard_Pojo;
 
 public interface Insert_Business_Interface {
 
@@ -12,7 +12,7 @@ public interface Insert_Business_Interface {
 
 	void insertCarModel(String brand_id, String model, String image);
 
-	Service_Card_Pojo insertCustomerDetail(String model_id, String first_name, String last_name, String mobile,
+	ServiceCard_Pojo insertCustomerDetail(String model_id, String first_name, String last_name, String mobile,
 			String email, String dob, String registration_no, String gst_no, String address_line_1,
 			String address_line_2, String location_id, String pincode);
 

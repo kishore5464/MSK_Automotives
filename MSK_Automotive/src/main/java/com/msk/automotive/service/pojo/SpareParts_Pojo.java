@@ -3,7 +3,7 @@ package com.msk.automotive.service.pojo;
 import java.util.Comparator;
 import java.util.Date;
 
-public class Spare_Parts_Pojo implements Comparator<Spare_Parts_Pojo> {
+public class SpareParts_Pojo implements Comparator<SpareParts_Pojo> {
 
 	private String id;
 	private String brand;
@@ -15,12 +15,12 @@ public class Spare_Parts_Pojo implements Comparator<Spare_Parts_Pojo> {
 	private String total_price;
 	private Date created_date;
 
-	public Spare_Parts_Pojo() {
+	public SpareParts_Pojo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Spare_Parts_Pojo(String id, String brand, String model, String spare_part_id, String spare_part_name,
+	public SpareParts_Pojo(String id, String brand, String model, String spare_part_id, String spare_part_name,
 			String quantity, String price_per_unit, String total_price, Date created_date) {
 		super();
 		this.id = id;
@@ -115,7 +115,7 @@ public class Spare_Parts_Pojo implements Comparator<Spare_Parts_Pojo> {
 	}
 
 	@Override
-	public int compare(Spare_Parts_Pojo spare1, Spare_Parts_Pojo spare2) {
+	public int compare(SpareParts_Pojo spare1, SpareParts_Pojo spare2) {
 		// TODO Auto-generated method stub
 		return spare2.getCreated_date().compareTo(spare1.getCreated_date());
 	}

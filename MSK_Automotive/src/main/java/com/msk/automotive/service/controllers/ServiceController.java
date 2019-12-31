@@ -22,11 +22,11 @@ import com.msk.automotive.business.interfaces.Get_Business_Interface;
 import com.msk.automotive.business.interfaces.Insert_Business_Interface;
 import com.msk.automotive.business.interfaces.Update_Business_Interface;
 import com.msk.automotive.exception.CustomGenericException;
-import com.msk.automotive.service.pojo.Job_Card_Status_Pojo;
-import com.msk.automotive.service.pojo.Service_Advicer_Pojo;
-import com.msk.automotive.service.pojo.Service_Card_Pojo;
-import com.msk.automotive.service.pojo.Service_Parts_Pojo;
-import com.msk.automotive.service.pojo.Service_Type_Pojo;
+import com.msk.automotive.service.pojo.JobCardStatus_Pojo;
+import com.msk.automotive.service.pojo.ServiceAdvicer_Pojo;
+import com.msk.automotive.service.pojo.ServiceCard_Pojo;
+import com.msk.automotive.service.pojo.ServiceParts_Pojo;
+import com.msk.automotive.service.pojo.ServiceType_Pojo;
 
 import net.minidev.json.JSONObject;
 

@@ -1,16 +1,16 @@
 package com.msk.automotive.service.pojo;
 
-public class Notifcation_Message_Pojo {
+public class NotifcationMessage_Pojo {
 
 	private String notification_id;
 	private String message;
 
-	public Notifcation_Message_Pojo() {
+	public NotifcationMessage_Pojo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Notifcation_Message_Pojo(String notification_id, String message) {
+	public NotifcationMessage_Pojo(String notification_id, String message) {
 		super();
 		this.notification_id = notification_id;
 		this.message = message;

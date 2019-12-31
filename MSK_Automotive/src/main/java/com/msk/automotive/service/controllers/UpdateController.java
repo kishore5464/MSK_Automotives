@@ -19,7 +19,7 @@ import com.msk.automotive.business.interfaces.Get_Business_Interface;
 import com.msk.automotive.business.interfaces.Insert_Business_Interface;
 import com.msk.automotive.business.interfaces.Update_Business_Interface;
 import com.msk.automotive.exception.CustomGenericException;
-import com.msk.automotive.service.pojo.Spare_Parts_Pojo;
+import com.msk.automotive.service.pojo.SpareParts_Pojo;
 
 import net.minidev.json.JSONObject;
 

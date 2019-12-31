@@ -1,18 +1,18 @@
 package com.msk.automotive.service.pojo;
 
-public class Car_Models_Pojo {
+public class CarModels_Pojo {
 
 	private String brand_id;
 	private String model_id;
 	private String model;
 	private String image;
 
-	public Car_Models_Pojo() {
+	public CarModels_Pojo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Car_Models_Pojo(String brand_id, String model_id, String model, String image) {
+	public CarModels_Pojo(String brand_id, String model_id, String model, String image) {
 		super();
 		this.brand_id = brand_id;
 		this.model_id = model_id;

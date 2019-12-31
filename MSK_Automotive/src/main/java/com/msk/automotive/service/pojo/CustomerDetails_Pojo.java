@@ -1,6 +1,6 @@
 package com.msk.automotive.service.pojo;
 
-public class Customer_Details_Pojo {
+public class CustomerDetails_Pojo {
 
 	private String customer_id;
 	private String first_name;
@@ -10,12 +10,12 @@ public class Customer_Details_Pojo {
 	private String gst_no;
 	private String expire_service_date;
 
-	public Customer_Details_Pojo() {
+	public CustomerDetails_Pojo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Customer_Details_Pojo(String customer_id, String first_name, String mobile, String model,
+	public CustomerDetails_Pojo(String customer_id, String first_name, String mobile, String model,
 			String registration_no, String gst_no, String expire_service_date) {
 		super();
 		this.customer_id = customer_id;

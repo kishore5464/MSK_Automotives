@@ -1,16 +1,16 @@
 package com.msk.automotive.service.pojo;
 
-public class Car_Brands_Pojo {
+public class CarBrands_Pojo {
 
 	private String brand_id;
 	private String brand;
 	private String logo;
 
-	public Car_Brands_Pojo() {
+	public CarBrands_Pojo() {
 		super();
 	}
 
-	public Car_Brands_Pojo(String brand_id, String brand, String logo) {
+	public CarBrands_Pojo(String brand_id, String brand, String logo) {
 		super();
 		this.brand_id = brand_id;
 		this.brand = brand;

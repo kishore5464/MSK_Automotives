@@ -1,6 +1,6 @@
 package com.msk.automotive.service.pojo;
 
-public class Job_Card_Status_Pojo {
+public class JobCardStatus_Pojo {
 
 	private String job_card_id;
 	private String brand;
@@ -13,11 +13,11 @@ public class Job_Card_Status_Pojo {
 	private String service_date;
 	private String card_status;
 
-	public Job_Card_Status_Pojo() {
+	public JobCardStatus_Pojo() {
 		super();
 	}
 
-	public Job_Card_Status_Pojo(String job_card_id, String brand, String model, String customer_name,
+	public JobCardStatus_Pojo(String job_card_id, String brand, String model, String customer_name,
 			String customer_mobile, String registration_no, String service_type, String total_amount,
 			String service_date, String card_status) {
 		super();

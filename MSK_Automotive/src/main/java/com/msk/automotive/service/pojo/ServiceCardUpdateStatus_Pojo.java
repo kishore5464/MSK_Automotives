@@ -1,6 +1,6 @@
 package com.msk.automotive.service.pojo;
 
-public class Service_Card_Pojo {
+public class ServiceCardUpdateStatus_Pojo {
 
 	private String invoice_no;
 	private String customer_id;
@@ -15,12 +15,12 @@ public class Service_Card_Pojo {
 	private String city;
 	private String pincode;
 
-	public Service_Card_Pojo() {
+	public ServiceCardUpdateStatus_Pojo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Service_Card_Pojo(String invoice_no, String customer_id, String name, String mobile, String registration_no,
+	public ServiceCardUpdateStatus_Pojo(String invoice_no, String customer_id, String name, String mobile, String registration_no,
 			String engine_no, String policy_expires_date, String gst_no, String address_line, String city,
 			String pincode) {
 		super();
