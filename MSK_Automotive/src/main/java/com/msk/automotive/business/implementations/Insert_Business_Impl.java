@@ -1,38 +1,89 @@
 package com.msk.automotive.business.implementations;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.msk.automotive.business.interfaces.Insert_Business_Interface;
-import com.msk.automotive.dao.repositories.Get_DAO_Interface;
-import com.msk.automotive.dao.repositories.Insert_DAO_Interface;
-import com.msk.automotive.dao.repositories.Update_DAO_Interface;
+import com.msk.automotive.dao.repositories.CarBrand_Repository;
+import com.msk.automotive.dao.repositories.CarModel_Repository;
+import com.msk.automotive.dao.repositories.CustomerContactDetails_Repository;
+import com.msk.automotive.dao.repositories.Location_Repository;
+import com.msk.automotive.dao.repositories.MSKOwners_Repository;
+import com.msk.automotive.dao.repositories.Notification_Repository;
+import com.msk.automotive.dao.repositories.PartsStockMaintain_Repository;
+import com.msk.automotive.dao.repositories.Parts_Repository;
+import com.msk.automotive.dao.repositories.ServiceAdvisor_Repository;
+import com.msk.automotive.dao.repositories.ServiceInvoiceCard_Repository;
+import com.msk.automotive.dao.repositories.ServiceType_Repository;
 import com.msk.automotive.service.entities.CarBrands;
+import com.msk.automotive.service.entities.CarModels;
 
 @Service
 public class Insert_Business_Impl implements Insert_Business_Interface {
 
 	@Autowired
-	private Get_DAO_Interface get_DAO_Interface;
+	private CarBrand_Repository carBrand_Repository;
 
 	@Autowired
-	private Insert_DAO_Interface insert_DAO_Interface;
+	private CarModel_Repository carModel_Repository;
 
 	@Autowired
-	private Update_DAO_Interface update_DAO_Interface;
+	private CustomerContactDetails_Repository update_DAO_Interface;
+
+	@Autowired
+	private Location_Repository location_Repository;
+
+	@Autowired
+	private MSKOwners_Repository mskOwners_Repository;
+
+	@Autowired
+	private Notification_Repository notification_Repository;
+
+	@Autowired
+	private Parts_Repository parts_Repository;
+
+	@Autowired
+	private PartsStockMaintain_Repository partsStockMaintain_Repository;
+
+	@Autowired
+	private ServiceAdvisor_Repository serviceAdvisor_Repository;
+
+	@Autowired
+	private ServiceInvoiceCard_Repository serviceInvoiceCard_Repository;
+
+	@Autowired
+	private ServiceType_Repository serviceType_Repository;
 
 	@Override
 	public void insertCarBrand(String brand, String logo) {
-		List<CarBrands> brands = get_DAO_Interface.getByBrand(brand);
+		List<CarBrands> brands = carBrand_Repository.findByBrand(brand);
 
 		if (brands.isEmpty()) {
 			CarBrands car_Brands = new CarBrands();
 			car_Brands.setBrand(brand);
 			car_Brands.setLogo(logo);
 
-			insert_DAO_Interface.insertCarBrand(car_Brands);
+			carBrand_Repository.save(car_Brands);
+		}
+	}
+
+	@Override
+	public void insertCarModel(String brand_id, String model, String image) {
+		Optional<CarModels> models = carModel_Repository.findById(Integer.parseInt(brand_id));
+
+		if (models.isPresent() && models.get().getModel().equals(models)) {
+			CarBrands car_Brands = new CarBrands();
+			car_Brands.setId(Integer.parseInt(brand_id));
+
+			CarModels car_Models = new CarModels();
+			car_Models.setCarBrands(car_Brands);
+			car_Models.setModel(model);
+			car_Models.setImage(image);
+
+			carModel_Repository.save(car_Models);
 		}
 	}
 
@@ -60,38 +111,6 @@ public class Insert_Business_Impl implements Insert_Business_Interface {
 //			model.get(0).setImage(logo);
 //
 //			update_DAO_Interface.updateModelDetail(model.get(0));
-//		}
-//	}
-//
-//	@Override
-//	public void insertCarBrand(String brand, String logo) {
-//		// TODO Auto-generated method stub
-//		List<Car_Brands> brands = get_DAO_Interface.getByBrand(brand);
-//
-//		if (brands.isEmpty()) {
-//			Car_Brands car_Brands = new Car_Brands();
-//			car_Brands.setBrand(brand);
-//			car_Brands.setLogo(logo);
-//
-//			insert_DAO_Interface.insertCarBrand(car_Brands);
-//		}
-//	}
-//
-//	@Override
-//	public void insertCarModel(String brand_id, String model, String image) {
-//		// TODO Auto-generated method stub
-//		List<Car_Models> models = get_DAO_Interface.getModelsByBrandIdAndModel(Integer.parseInt(brand_id), model);
-//
-//		if (models.isEmpty()) {
-//			Car_Brands car_Brands = new Car_Brands();
-//			car_Brands.setId(Integer.parseInt(brand_id));
-//
-//			Car_Models car_Models = new Car_Models();
-//			car_Models.setCar_Brands(car_Brands);
-//			car_Models.setModel(model);
-//			car_Models.setImage(image);
-//
-//			insert_DAO_Interface.insertCarModel(car_Models);
 //		}
 //	}
 //
