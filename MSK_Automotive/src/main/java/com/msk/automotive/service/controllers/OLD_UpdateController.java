@@ -27,7 +27,7 @@ import net.minidev.json.JSONObject;
 @PropertySource("classpath:/application_path.properties")
 @Controller
 @Path("/")
-public class UpdateController_OLD {
+public class OLD_UpdateController {
 
 	// HERE I WROTE SERVLET FOR UPDATE BRAND, MODEL, PARTS, CUSTOMER DETAILS
 

@@ -33,7 +33,7 @@ import net.minidev.json.JSONObject;
 @PropertySource("classpath:/application_path.properties")
 @RestController
 @Path("/")
-public class AddingController_OLD {
+public class OLD_AddingController {
 
 	// HERE I WROTE SERVLET FOR ADDING BRAND, MODEL, PARTS, CUSTOMER DETAILS
 	@Autowired

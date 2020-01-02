@@ -15,7 +15,7 @@ import com.msk.automotive.business.interfaces.Update_Business_Interface;
 @PropertySource("classpath:/application_path.properties")
 @RestController
 @Path("/")
-public class DownloadController_OLD {
+public class OLD_DownloadController {
 
 	@Autowired
 	private Get_Business_Interface get_Business_Interface;

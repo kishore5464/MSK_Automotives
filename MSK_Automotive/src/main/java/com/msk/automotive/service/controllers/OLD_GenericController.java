@@ -21,7 +21,7 @@ import com.msk.automotive.exception.CustomGenericException;
 @PropertySource("classpath:/application_path.properties")
 @RestController
 @Path("/")
-public class GenericController_OLD {
+public class OLD_GenericController {
 
 	@Autowired
 	private Get_Business_Interface get_Business_Interface;

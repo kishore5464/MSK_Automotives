@@ -26,7 +26,7 @@ import net.minidev.json.JSONObject;
 @PropertySource("classpath:/application_path.properties")
 @Controller
 @Path("/")
-public class NotificationController_OLD {
+public class OLD_NotificationController {
 
 	@Autowired
 	private Get_Business_Interface get_Business_Interface;

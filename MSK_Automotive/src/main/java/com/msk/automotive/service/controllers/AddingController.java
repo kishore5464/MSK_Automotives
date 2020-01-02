@@ -13,6 +13,7 @@ import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -35,16 +36,15 @@ public class AddingController {
 
 	// HERE I WROTE SERVLET FOR ADDING BRAND, MODEL, PARTS, CUSTOMER DETAILS
 	@Autowired
-	Get_Business_Interface get_Business_Interface;
+	private Get_Business_Interface get_Business_Interface;
 
 	@Autowired
-	Insert_Business_Interface insert_Business_Interface;
+	private Insert_Business_Interface insert_Business_Interface;
 
 	@Autowired
-	Update_Business_Interface update_Business_Interface;
+	private Update_Business_Interface update_Business_Interface;
 
-	@POST
-	@Path("/add-car-brand")
+	@PostMapping(value = "/add-car-brand")
 	public Response add_car_brand(@FormParam("brand") String brand, @FormParam("logo") String logo,
 			@Context HttpServletRequest request) {
 		JSONObject mix = new JSONObject();

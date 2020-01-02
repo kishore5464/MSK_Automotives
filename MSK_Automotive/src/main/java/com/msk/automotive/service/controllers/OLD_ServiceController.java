@@ -34,7 +34,7 @@ import net.minidev.json.JSONObject;
 @PropertySource("classpath:/application_path.properties")
 @Controller
 @Path("/")
-public class ServiceController_OLD {
+public class OLD_ServiceController {
 
 	@Autowired
 	private Get_Business_Interface get_Business_Interface;

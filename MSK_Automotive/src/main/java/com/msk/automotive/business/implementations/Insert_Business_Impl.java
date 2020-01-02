@@ -1,9 +1,6 @@
 package com.msk.automotive.business.implementations;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,36 +10,39 @@ import com.msk.automotive.dao.repositories.Get_DAO_Interface;
 import com.msk.automotive.dao.repositories.Insert_DAO_Interface;
 import com.msk.automotive.dao.repositories.Update_DAO_Interface;
 import com.msk.automotive.service.entities.CarBrands;
-import com.msk.automotive.service.entities.CarModels;
-import com.msk.automotive.service.entities.CustomerContactDetails;
-import com.msk.automotive.service.entities.CustomerDetails;
-import com.msk.automotive.service.entities.Location;
-import com.msk.automotive.service.entities.MSKOwner;
-import com.msk.automotive.service.entities.Parts;
-import com.msk.automotive.service.entities.ServiceInvoiceCard;
-import com.msk.automotive.service.entities.StockStatus;
-import com.msk.automotive.service.pojo.ServiceCard_Pojo;
-import com.msk.automotive.utilities.Encrypt_Decrypt;
 
 @Service
-public class Insert_Business_Impl{ //implements Insert_Business_Interface {
+public class Insert_Business_Impl implements Insert_Business_Interface {
+
+	@Autowired
+	private Get_DAO_Interface get_DAO_Interface;
+
+	@Autowired
+	private Insert_DAO_Interface insert_DAO_Interface;
+
+	@Autowired
+	private Update_DAO_Interface update_DAO_Interface;
+
+	@Override
+	public void insertCarBrand(String brand, String logo) {
+		List<CarBrands> brands = get_DAO_Interface.getByBrand(brand);
+
+		if (brands.isEmpty()) {
+			CarBrands car_Brands = new CarBrands();
+			car_Brands.setBrand(brand);
+			car_Brands.setLogo(logo);
+
+			insert_DAO_Interface.insertCarBrand(car_Brands);
+		}
+	}
 
 //	@Autowired
-//	private Get_DAO_Interface get_DAO_Interface;
-//
-//	@Autowired
-//	private Insert_DAO_Interface insert_DAO_Interface;
-//
-//	@Autowired
-//	private Update_DAO_Interface update_DAO_Interface;
-//
-////	@Autowired
-////	MailSenderService mailSenderService;
-//
+//	MailSenderService mailSenderService;
+
 //	@Override
 //	public void insertOrUpdateBrandLogo(String brand_id, String logo) {
 //		// TODO Auto-generated method stub
-//		List<Car_Brands> brand = get_DAO_Interface.getBrandById(Integer.parseInt(brand_id));
+//		List<CarBrands> brand = get_DAO_Interface.getBrandById(Integer.parseInt(brand_id));
 //
 //		if (!brand.isEmpty()) {
 //			brand.get(0).setLogo(logo);

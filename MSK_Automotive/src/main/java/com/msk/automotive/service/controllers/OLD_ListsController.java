@@ -31,7 +31,7 @@ import net.minidev.json.JSONObject;
 @PropertySource("classpath:/application_path.properties")
 @RestController
 @Path("/")
-public class ListsController_OLD {
+public class OLD_ListsController {
 
 	@Autowired
 	private Get_Business_Interface get_Business_Interface;
