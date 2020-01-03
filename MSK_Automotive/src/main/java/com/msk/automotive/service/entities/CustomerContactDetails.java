@@ -62,20 +62,20 @@ public class CustomerContactDetails implements Serializable {
 	}
 
 	@Column(name = "addressLine1", nullable = false)
-	public String getaddressLine1() {
+	public String getAddressLine1() {
 		return addressLine1;
 	}
 
-	public void setaddressLine1(String addressLine1) {
+	public void setAddressLine1(String addressLine1) {
 		this.addressLine1 = addressLine1;
 	}
 
 	@Column(name = "addressLine2", nullable = true)
-	public String getaddressLine2() {
+	public String getAddressLine2() {
 		return addressLine2;
 	}
 
-	public void setaddressLine2(String addressLine2) {
+	public void setAddressLine2(String addressLine2) {
 		this.addressLine2 = addressLine2;
 	}
 
@@ -90,11 +90,11 @@ public class CustomerContactDetails implements Serializable {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "createdDate")
-	public Date getcreatedDate() {
+	public Date getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setcreatedDate(Date createdDate) {
+	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
 

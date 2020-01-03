@@ -11,5 +11,8 @@ import com.msk.automotive.service.entities.CustomerDetails;
 @Repository
 public interface CustomerDetails_Repository extends JpaRepository<CustomerDetails, Integer> {
 
-	List<CustomerDetails> findByCar_Models(CarModels car_Models);
+	public List<CustomerDetails> findByCar_Models(CarModels car_Models);
+
+	public List<CustomerDetails> findByRegistrationNo(String registrationNo);
+
 }
