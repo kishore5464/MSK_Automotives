@@ -26,7 +26,9 @@ import com.msk.automotive.service.entities.CarModels;
 import com.msk.automotive.service.entities.CustomerContactDetails;
 import com.msk.automotive.service.entities.CustomerDetails;
 import com.msk.automotive.service.entities.Location;
+import com.msk.automotive.service.entities.Parts;
 import com.msk.automotive.service.entities.ServiceInvoiceCard;
+import com.msk.automotive.service.entities.StockStatus;
 import com.msk.automotive.service.pojo.ServiceCard_Pojo;
 
 @Service
@@ -196,6 +198,36 @@ public class Insert_Business_Impl implements Insert_Business_Interface {
 		return service_Card_Pojo;
 	}
 
+	@Override
+	public void insertSparePart(String model_id, String part, String quantity, String amount) {
+		List<Parts> parts_List = parts_Repository.findByCarModelsAndPart(Integer.parseInt(model_id), part);
+		if (!parts_List.isEmpty()) {
+			CarModels car_Models = new CarModels();
+			car_Models.setId(parts_List.get(0).getCarModels().getId());
+
+			parts_List.get(0).setCarModels(car_Models);
+			parts_List.get(0).setPart(part);
+			parts_List.get(0).setQuantity(Integer.parseInt(quantity));
+			parts_List.get(0).setPartsStatus(StockStatus.INSTOCK);
+			parts_List.get(0).setAmount(Double.parseDouble(amount));
+
+			parts_Repository.save(parts_List.get(0));
+		} else {
+			Parts parts = new Parts();
+
+			CarModels car_Models = new CarModels();
+			car_Models.setId(Integer.parseInt(model_id));
+
+			parts.setCarModels(car_Models);
+			parts.setPart(part);
+			parts.setQuantity(Integer.parseInt(quantity));
+			parts.setAmount(Double.parseDouble(amount));
+			parts.setPartsStatus(StockStatus.INSTOCK);
+
+			parts_Repository.save(parts);
+		}
+	}
+
 //	@Autowired
 //	MailSenderService mailSenderService;
 
@@ -220,38 +252,6 @@ public class Insert_Business_Impl implements Insert_Business_Interface {
 //			model.get(0).setImage(logo);
 //
 //			update_DAO_Interface.updateModelDetail(model.get(0));
-//		}
-//	}
-//
-//	@Override
-//	public void insertSparePart(String model_id, String part, String quantity, String amount) {
-//		// TODO Auto-generated method stub
-//		List<Parts> parts_List = get_DAO_Interface.getSparePartsAtParticularModelParts(Integer.parseInt(model_id),
-//				part);
-//		if (!parts_List.isEmpty()) {
-//			Car_Models car_Models = new Car_Models();
-//			car_Models.setId(parts_List.get(0).getCar_Models().getId());
-//
-//			parts_List.get(0).setCar_Models(car_Models);
-//			parts_List.get(0).setPart(part);
-//			parts_List.get(0).setQuantity(Integer.parseInt(quantity));
-//			parts_List.get(0).setParts_status(Stock_Status.INSTOCK);
-//			parts_List.get(0).setAmount(Double.parseDouble(amount));
-//
-//			update_DAO_Interface.updateSparePartsInStock(parts_List.get(0));
-//		} else {
-//			Parts parts = new Parts();
-//
-//			Car_Models car_Models = new Car_Models();
-//			car_Models.setId(Integer.parseInt(model_id));
-//
-//			parts.setCar_Models(car_Models);
-//			parts.setPart(part);
-//			parts.setQuantity(Integer.parseInt(quantity));
-//			parts.setAmount(Double.parseDouble(amount));
-//			parts.setParts_status(Stock_Status.INSTOCK);
-//
-//			insert_DAO_Interface.insertSparePart(parts);
 //		}
 //	}
 //
