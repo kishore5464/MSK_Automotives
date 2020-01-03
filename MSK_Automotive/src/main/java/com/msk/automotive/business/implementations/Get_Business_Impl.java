@@ -24,6 +24,7 @@ import com.msk.automotive.dao.repositories.ServiceType_Repository;
 import com.msk.automotive.service.entities.CarBrands;
 import com.msk.automotive.service.entities.CarModels;
 import com.msk.automotive.service.entities.CustomerContactDetails;
+import com.msk.automotive.service.entities.CustomerDetails;
 import com.msk.automotive.service.entities.Location;
 import com.msk.automotive.service.entities.MSKOwner;
 import com.msk.automotive.service.entities.Notification;
@@ -153,7 +154,7 @@ public class Get_Business_Impl implements Get_Business_Interface {
 	public List<CustomerDetails_Pojo> getExistingCustomer_Details() {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
-		List<Customer_Details> customer_Details = customerDetails_Repository.findAll();
+		List<CustomerDetails> customer_Details = customerDetails_Repository.findAll();
 		List<CustomerDetails_Pojo> customerDetails_Pojos = new ArrayList<CustomerDetails_Pojo>();
 
 		if (!customer_Details.isEmpty()) {
