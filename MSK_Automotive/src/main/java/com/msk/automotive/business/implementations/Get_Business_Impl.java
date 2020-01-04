@@ -519,8 +519,8 @@ public class Get_Business_Impl implements Get_Business_Interface {
 					serviceCard_Pojo.setAddress_line(CustomerContactDetails.get().getAddressLine1());
 				}
 
-				serviceCard_Pojo
-						.setCity(location_Repository.findByCity(CustomerContactDetails.get().getLocation().getId()));
+				serviceCard_Pojo.setCity(location_Repository
+						.findByCity(CustomerContactDetails.get().getLocation().getCity()).get(0).getCity());
 				serviceCard_Pojo.setPincode(Integer.toString(CustomerContactDetails.get().getPincode()));
 			}
 
