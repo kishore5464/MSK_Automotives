@@ -179,7 +179,7 @@ public class Get_Business_Impl implements Get_Business_Interface {
 				customerDetails_Pojo.setModel(car_Model.get().getModel());
 
 				List<ServiceInvoiceCard> ServiceInvoiceCards = serviceInvoiceCard_Repository
-						.findByCustomer_Details(customer_Details.get(i).getId());
+						.findByCustomerDetails(customer_Details.get(i).getId());
 				customerDetails_Pojo.setExpire_service_date(dateFormat
 						.format(ServiceInvoiceCards.get(ServiceInvoiceCards.size() - 1).getServiceExpireDate()));
 
@@ -368,7 +368,7 @@ public class Get_Business_Impl implements Get_Business_Interface {
 				customerDetails_Pojo.setModel(car_Model.get().getModel());
 
 				List<ServiceInvoiceCard> ServiceInvoiceCards = serviceInvoiceCard_Repository
-						.findByCustomer_Details(customer_Details.get(i).getId());
+						.findByCustomerDetails(customer_Details.get(i).getId());
 
 				if (!ServiceInvoiceCards.isEmpty()) {
 					customerDetails_Pojo.setExpire_service_date(dateFormat
@@ -453,7 +453,6 @@ public class Get_Business_Impl implements Get_Business_Interface {
 
 	@Override
 	public List<ServiceAdvicer_Pojo> getServiceAdvicers() {
-		// TODO Auto-generated method stub
 		List<ServiceAdvisor> service_advicer_list = serviceAdvisor_Repository.findAll();
 		List<ServiceAdvicer_Pojo> serviceAdvicer_Pojos = new ArrayList<ServiceAdvicer_Pojo>();
 
@@ -525,7 +524,7 @@ public class Get_Business_Impl implements Get_Business_Interface {
 				serviceCard_Pojo.setPincode(Integer.toString(CustomerContactDetails.get().getPincode()));
 			}
 
-			List<ServiceInvoiceCard> ServiceInvoiceCards = get_DAO_Interface.getServiceInvoiceCards();
+			List<ServiceInvoiceCard> ServiceInvoiceCards = serviceInvoiceCard_Repository.findAll();
 
 			if (!ServiceInvoiceCards.isEmpty()) {
 				if (ServiceInvoiceCards.get(ServiceInvoiceCards.size() - 1).getId() < 9) {
@@ -550,33 +549,33 @@ public class Get_Business_Impl implements Get_Business_Interface {
 
 	@Override
 	public List<Notifcation_Pojo> getCustomerServiceNotification(String notification_id) {
-		// TODO Auto-generated method stub
 		List<Notifcation_Pojo> notifcation_Pojos = new ArrayList<Notifcation_Pojo>();
-		List<Notification> notification;
+		Optional<Notification> notification = null;
+		List<Notification> notifications = null;
 
 		if (notification_id.equals("0")) {
-			notification = get_DAO_Interface.getAllNotificationDetails();
+			notifications = notification_Repository.findAll();
 		} else {
-			notification = get_DAO_Interface.getNotificationDetailsById(Integer.parseInt(notification_id));
+			notification = notification_Repository.findById(Integer.parseInt(notification_id));
 		}
 
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-		if (!notification.isEmpty()) {
-			for (int i = 0; i < notification.size(); i++) {
-				if (dateFormat.format(notification.get(i).getDob()).substring(5, 9)
+		if (!notifications.isEmpty()) {
+			for (int i = 0; i < notifications.size(); i++) {
+				if (dateFormat.format(notifications.get(i).getDob()).substring(5, 9)
 						.equals(dateFormat.format(new Date()).substring(5, 9))) {
 					Notifcation_Pojo notifcation_Pojo = new Notifcation_Pojo();
-					notifcation_Pojo.setNotification_id(Integer.toString(notification.get(i).getId()));
+					notifcation_Pojo.setNotification_id(Integer.toString(notifications.get(i).getId()));
 
-					notifcation_Pojo.setCustomer_name(notification.get(i).getCustomer_name());
-					notifcation_Pojo.setMobile(notification.get(i).getMobile());
-					notifcation_Pojo.setRegistration_no(notification.get(i).getRegistration_no());
-					notifcation_Pojo.setDob(dateFormat.format(notification.get(i).getDob()));
-					notifcation_Pojo.setCar_brand(notification.get(i).getCar_brand());
-					notifcation_Pojo.setCar_model(notification.get(i).getCar_model());
+					notifcation_Pojo.setCustomer_name(notifications.get(i).getCustomerName());
+					notifcation_Pojo.setMobile(notifications.get(i).getMobile());
+					notifcation_Pojo.setRegistration_no(notifications.get(i).getRegistrationNo());
+					notifcation_Pojo.setDob(dateFormat.format(notifications.get(i).getDob()));
+					notifcation_Pojo.setCar_brand(notifications.get(i).getCarBrand());
+					notifcation_Pojo.setCar_model(notifications.get(i).getCarModel());
 					notifcation_Pojo
-							.setService_expire_date(dateFormat.format(notification.get(i).getService_expire_date()));
+							.setService_expire_date(dateFormat.format(notifications.get(i).getServiceExpireDate()));
 
 					notifcation_Pojos.add(notifcation_Pojo);
 				}
@@ -594,58 +593,138 @@ public class Get_Business_Impl implements Get_Business_Interface {
 				twoDay = twoDayCalendar.getTime();
 
 				// TODAY
-				if (dateFormat.format(notification.get(i).getService_expire_date()).substring(5, 9)
+				if (dateFormat.format(notifications.get(i).getServiceExpireDate()).substring(5, 9)
 						.equals(dateFormat.format(new Date()).substring(5, 9))) {
 					Notifcation_Pojo notifcation_Pojo = new Notifcation_Pojo();
-					notifcation_Pojo.setNotification_id(Integer.toString(notification.get(i).getId()));
+					notifcation_Pojo.setNotification_id(Integer.toString(notifications.get(i).getId()));
 
-					notifcation_Pojo.setCustomer_name(notification.get(i).getCustomer_name());
-					notifcation_Pojo.setMobile(notification.get(i).getMobile());
-					notifcation_Pojo.setRegistration_no(notification.get(i).getRegistration_no());
-					notifcation_Pojo.setDob(dateFormat.format(notification.get(i).getDob()));
-					notifcation_Pojo.setCar_brand(notification.get(i).getCar_brand());
-					notifcation_Pojo.setCar_model(notification.get(i).getCar_model());
+					notifcation_Pojo.setCustomer_name(notifications.get(i).getCustomerName());
+					notifcation_Pojo.setMobile(notifications.get(i).getMobile());
+					notifcation_Pojo.setRegistration_no(notifications.get(i).getRegistrationNo());
+					notifcation_Pojo.setDob(dateFormat.format(notifications.get(i).getDob()));
+					notifcation_Pojo.setCar_brand(notifications.get(i).getCarBrand());
+					notifcation_Pojo.setCar_model(notifications.get(i).getCarModel());
 					notifcation_Pojo
-							.setService_expire_date(dateFormat.format(notification.get(i).getService_expire_date()));
+							.setService_expire_date(dateFormat.format(notifications.get(i).getServiceExpireDate()));
 
 					notifcation_Pojos.add(notifcation_Pojo);
 				}
 
 				// TOMORROW
-				if (dateFormat.format(notification.get(i).getService_expire_date()).substring(5, 9)
+				if (dateFormat.format(notifications.get(i).getServiceExpireDate()).substring(5, 9)
 						.equals(dateFormat.format(oneDay).substring(5, 9))) {
 					Notifcation_Pojo notifcation_Pojo = new Notifcation_Pojo();
-					notifcation_Pojo.setNotification_id(Integer.toString(notification.get(i).getId()));
+					notifcation_Pojo.setNotification_id(Integer.toString(notifications.get(i).getId()));
 
-					notifcation_Pojo.setCustomer_name(notification.get(i).getCustomer_name());
-					notifcation_Pojo.setMobile(notification.get(i).getMobile());
-					notifcation_Pojo.setRegistration_no(notification.get(i).getRegistration_no());
-					notifcation_Pojo.setDob(dateFormat.format(notification.get(i).getDob()));
-					notifcation_Pojo.setCar_brand(notification.get(i).getCar_brand());
-					notifcation_Pojo.setCar_model(notification.get(i).getCar_model());
+					notifcation_Pojo.setCustomer_name(notifications.get(i).getCustomerName());
+					notifcation_Pojo.setMobile(notifications.get(i).getMobile());
+					notifcation_Pojo.setRegistration_no(notifications.get(i).getRegistrationNo());
+					notifcation_Pojo.setDob(dateFormat.format(notifications.get(i).getDob()));
+					notifcation_Pojo.setCar_brand(notifications.get(i).getCarBrand());
+					notifcation_Pojo.setCar_model(notifications.get(i).getCarModel());
 					notifcation_Pojo
-							.setService_expire_date(dateFormat.format(notification.get(i).getService_expire_date()));
+							.setService_expire_date(dateFormat.format(notifications.get(i).getServiceExpireDate()));
 
 					notifcation_Pojos.add(notifcation_Pojo);
 				}
 
 				// DAY AFTER TOMORROW
-				if (dateFormat.format(notification.get(i).getService_expire_date()).substring(5, 9)
+				if (dateFormat.format(notifications.get(i).getServiceExpireDate()).substring(5, 9)
 						.equals(dateFormat.format(twoDay).substring(5, 9))) {
 					Notifcation_Pojo notifcation_Pojo = new Notifcation_Pojo();
-					notifcation_Pojo.setNotification_id(Integer.toString(notification.get(i).getId()));
+					notifcation_Pojo.setNotification_id(Integer.toString(notifications.get(i).getId()));
 
-					notifcation_Pojo.setCustomer_name(notification.get(i).getCustomer_name());
-					notifcation_Pojo.setMobile(notification.get(i).getMobile());
-					notifcation_Pojo.setRegistration_no(notification.get(i).getRegistration_no());
-					notifcation_Pojo.setDob(dateFormat.format(notification.get(i).getDob()));
-					notifcation_Pojo.setCar_brand(notification.get(i).getCar_brand());
-					notifcation_Pojo.setCar_model(notification.get(i).getCar_model());
+					notifcation_Pojo.setCustomer_name(notifications.get(i).getCustomerName());
+					notifcation_Pojo.setMobile(notifications.get(i).getMobile());
+					notifcation_Pojo.setRegistration_no(notifications.get(i).getRegistrationNo());
+					notifcation_Pojo.setDob(dateFormat.format(notifications.get(i).getDob()));
+					notifcation_Pojo.setCar_brand(notifications.get(i).getCarBrand());
+					notifcation_Pojo.setCar_model(notifications.get(i).getCarModel());
 					notifcation_Pojo
-							.setService_expire_date(dateFormat.format(notification.get(i).getService_expire_date()));
+							.setService_expire_date(dateFormat.format(notifications.get(i).getServiceExpireDate()));
 
 					notifcation_Pojos.add(notifcation_Pojo);
 				}
+			}
+		} else if (!notification.isPresent()) {
+
+			if (dateFormat.format(notification.get().getDob()).substring(5, 9)
+					.equals(dateFormat.format(new Date()).substring(5, 9))) {
+				Notifcation_Pojo notifcation_Pojo = new Notifcation_Pojo();
+				notifcation_Pojo.setNotification_id(Integer.toString(notification.get().getId()));
+
+				notifcation_Pojo.setCustomer_name(notification.get().getCustomerName());
+				notifcation_Pojo.setMobile(notification.get().getMobile());
+				notifcation_Pojo.setRegistration_no(notification.get().getRegistrationNo());
+				notifcation_Pojo.setDob(dateFormat.format(notification.get().getDob()));
+				notifcation_Pojo.setCar_brand(notification.get().getCarBrand());
+				notifcation_Pojo.setCar_model(notification.get().getCarModel());
+				notifcation_Pojo.setService_expire_date(dateFormat.format(notification.get().getServiceExpireDate()));
+
+				notifcation_Pojos.add(notifcation_Pojo);
+			}
+
+			Date oneDay = new Date();
+			Calendar oneDayCalendar = Calendar.getInstance();
+			oneDayCalendar.setTime(oneDay);
+			oneDayCalendar.add(Calendar.DATE, 1);
+			oneDay = oneDayCalendar.getTime();
+
+			Date twoDay = new Date();
+			Calendar twoDayCalendar = Calendar.getInstance();
+			twoDayCalendar.setTime(twoDay);
+			twoDayCalendar.add(Calendar.DATE, 2);
+			twoDay = twoDayCalendar.getTime();
+
+			// TODAY
+			if (dateFormat.format(notification.get().getServiceExpireDate()).substring(5, 9)
+					.equals(dateFormat.format(new Date()).substring(5, 9))) {
+				Notifcation_Pojo notifcation_Pojo = new Notifcation_Pojo();
+				notifcation_Pojo.setNotification_id(Integer.toString(notification.get().getId()));
+
+				notifcation_Pojo.setCustomer_name(notification.get().getCustomerName());
+				notifcation_Pojo.setMobile(notification.get().getMobile());
+				notifcation_Pojo.setRegistration_no(notification.get().getRegistrationNo());
+				notifcation_Pojo.setDob(dateFormat.format(notification.get().getDob()));
+				notifcation_Pojo.setCar_brand(notification.get().getCarBrand());
+				notifcation_Pojo.setCar_model(notification.get().getCarModel());
+				notifcation_Pojo.setService_expire_date(dateFormat.format(notification.get().getServiceExpireDate()));
+
+				notifcation_Pojos.add(notifcation_Pojo);
+			}
+
+			// TOMORROW
+			if (dateFormat.format(notification.get().getServiceExpireDate()).substring(5, 9)
+					.equals(dateFormat.format(oneDay).substring(5, 9))) {
+				Notifcation_Pojo notifcation_Pojo = new Notifcation_Pojo();
+				notifcation_Pojo.setNotification_id(Integer.toString(notification.get().getId()));
+
+				notifcation_Pojo.setCustomer_name(notification.get().getCustomerName());
+				notifcation_Pojo.setMobile(notification.get().getMobile());
+				notifcation_Pojo.setRegistration_no(notification.get().getRegistrationNo());
+				notifcation_Pojo.setDob(dateFormat.format(notification.get().getDob()));
+				notifcation_Pojo.setCar_brand(notification.get().getCarBrand());
+				notifcation_Pojo.setCar_model(notification.get().getCarModel());
+				notifcation_Pojo.setService_expire_date(dateFormat.format(notification.get().getServiceExpireDate()));
+
+				notifcation_Pojos.add(notifcation_Pojo);
+			}
+
+			// DAY AFTER TOMORROW
+			if (dateFormat.format(notification.get().getServiceExpireDate()).substring(5, 9)
+					.equals(dateFormat.format(twoDay).substring(5, 9))) {
+				Notifcation_Pojo notifcation_Pojo = new Notifcation_Pojo();
+				notifcation_Pojo.setNotification_id(Integer.toString(notification.get().getId()));
+
+				notifcation_Pojo.setCustomer_name(notification.get().getCustomerName());
+				notifcation_Pojo.setMobile(notification.get().getMobile());
+				notifcation_Pojo.setRegistration_no(notification.get().getRegistrationNo());
+				notifcation_Pojo.setDob(dateFormat.format(notification.get().getDob()));
+				notifcation_Pojo.setCar_brand(notification.get().getCarBrand());
+				notifcation_Pojo.setCar_model(notification.get().getCarModel());
+				notifcation_Pojo.setService_expire_date(dateFormat.format(notification.get().getServiceExpireDate()));
+
+				notifcation_Pojos.add(notifcation_Pojo);
 			}
 		}
 
@@ -653,8 +732,7 @@ public class Get_Business_Impl implements Get_Business_Interface {
 	}
 
 	public List<ServiceParts_Pojo> getSparePartsAtParticularModelPojo(String model_id) {
-		// TODO Auto-generated method stub
-		List<Parts> parts = get_DAO_Interface.getSparePartsAtParticularModel(model_id);
+		List<Parts> parts = parts_Repository.findByCarModels(Integer.parseInt(model_id));
 		List<ServiceParts_Pojo> parts_list = new ArrayList<ServiceParts_Pojo>();
 
 		if (!parts.isEmpty()) {
@@ -675,21 +753,18 @@ public class Get_Business_Impl implements Get_Business_Interface {
 
 	@Override
 	public List<ServiceParts_Pojo> getSparePartsAtParticularAmt(String part_id) {
-		// TODO Auto-generated method stub
-		List<Parts> parts = get_DAO_Interface.getSparePartsInStockById(part_id);
+		Optional<Parts> parts = parts_Repository.findById(Integer.parseInt(part_id));
 		List<ServiceParts_Pojo> parts_list = new ArrayList<ServiceParts_Pojo>();
 
-		if (!parts.isEmpty()) {
-			for (int i = 0; i < parts.size(); i++) {
-				ServiceParts_Pojo part = new ServiceParts_Pojo();
-				part.setPart_id(Integer.toString(parts.get(i).getId()));
-				part.setPart(parts.get(i).getPart());
+		if (!parts.isPresent()) {
+			ServiceParts_Pojo part = new ServiceParts_Pojo();
+			part.setPart_id(Integer.toString(parts.get().getId()));
+			part.setPart(parts.get().getPart());
 
-				part.setQuantity(Integer.toString(parts.get(i).getQuantity()));
-				part.setAmount(Double.toString(parts.get(i).getAmount()));
+			part.setQuantity(Integer.toString(parts.get().getQuantity()));
+			part.setAmount(Double.toString(parts.get().getAmount()));
 
-				parts_list.add(part);
-			}
+			parts_list.add(part);
 		}
 
 		return parts_list;
@@ -697,8 +772,8 @@ public class Get_Business_Impl implements Get_Business_Interface {
 
 	@Override
 	public List<JobCardStatus_Pojo> getJobCardStatus(String invoice_status) {
-		// TODO Auto-generated method stub
-		List<ServiceInvoiceCard> ServiceInvoiceCard = get_DAO_Interface.getServiceInvoiceCardsByStatus(invoice_status);
+		List<ServiceInvoiceCard> ServiceInvoiceCard = serviceInvoiceCard_Repository
+				.findByCardStatus(Integer.parseInt(invoice_status));
 		List<JobCardStatus_Pojo> jobCardStatus_Pojos = new ArrayList<JobCardStatus_Pojo>();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
@@ -706,31 +781,30 @@ public class Get_Business_Impl implements Get_Business_Interface {
 			for (int i = 0; i < ServiceInvoiceCard.size(); i++) {
 				JobCardStatus_Pojo jobCardStatus_Pojo = new JobCardStatus_Pojo();
 
-				List<Customer_Details> customer = get_DAO_Interface
-						.getCustomerDetailById(ServiceInvoiceCard.get(i).getCustomer_Details().getId());
-				List<CarModels> models = get_DAO_Interface.getModelById(customer.get(0).getCarModels().getId());
-				List<CarBrands> brands = get_DAO_Interface.getBrandById(models.get(0).getCarBrands().getId());
-				List<ServiceType> ServiceType = get_DAO_Interface
-						.getServiceTypeById(ServiceInvoiceCard.get(i).getServiceType().getId());
+				Optional<CustomerDetails> customer = customerDetails_Repository
+						.findById(ServiceInvoiceCard.get(i).getCustomerDetails().getId());
+				Optional<CarModels> models = carModel_Repository.findById(customer.get().getCarModels().getId());
+				Optional<CarBrands> brands = carBrand_Repository.findById(models.get().getCarBrands().getId());
+				Optional<ServiceType> ServiceType = serviceType_Repository
+						.findById(ServiceInvoiceCard.get(i).getServiceType().getId());
 
-				jobCardStatus_Pojo.setJob_card_id(ServiceInvoiceCard.get(i).getService_id());
-				jobCardStatus_Pojo.setBrand(brands.get(0).getBrand());
-				jobCardStatus_Pojo.setModel(models.get(0).getModel());
+				jobCardStatus_Pojo.setJobCardId(ServiceInvoiceCard.get(i).getServiceId());
+				jobCardStatus_Pojo.setBrand(brands.get().getBrand());
+				jobCardStatus_Pojo.setModel(models.get().getModel());
 				jobCardStatus_Pojo.setCardStatus(ServiceInvoiceCard.get(i).getCardStatus().toString());
 
-				if (customer.get(0).getLast_name() == null) {
-					jobCardStatus_Pojo.setCustomer_name(customer.get(0).getFirst_name());
+				if (customer.get().getLastName() == null) {
+					jobCardStatus_Pojo.setCustomerName(customer.get().getFirstName());
 				} else {
 					jobCardStatus_Pojo
-							.setCustomer_name(customer.get(0).getFirst_name() + " " + customer.get(0).getLast_name());
+							.setCustomerName(customer.get().getFirstName() + " " + customer.get().getLastName());
 				}
 
-				jobCardStatus_Pojo.setCustomer_mobile(customer.get(0).getMobile());
-				jobCardStatus_Pojo.setRegistration_no(customer.get(0).getRegistration_no());
-				jobCardStatus_Pojo.setServiceType(ServiceType.get(0).getServiceType());
-				jobCardStatus_Pojo.setTotal_amount(Double.toString(ServiceInvoiceCard.get(i).getTotal_amount()));
-				jobCardStatus_Pojo
-						.setService_date(dateFormat.format(ServiceInvoiceCard.get(i).getCurrent_service_date()));
+				jobCardStatus_Pojo.setCustomerMobile(customer.get().getMobile());
+				jobCardStatus_Pojo.setRegistrationNo(customer.get().getRegistrationNo());
+				jobCardStatus_Pojo.setServiceType(ServiceType.get().getServiceType());
+				jobCardStatus_Pojo.setTotalAmount(Double.toString(ServiceInvoiceCard.get(i).getTotalAmount()));
+				jobCardStatus_Pojo.setServiceDate(dateFormat.format(ServiceInvoiceCard.get(i).getCurrentServiceDate()));
 
 				jobCardStatus_Pojos.add(jobCardStatus_Pojo);
 			}

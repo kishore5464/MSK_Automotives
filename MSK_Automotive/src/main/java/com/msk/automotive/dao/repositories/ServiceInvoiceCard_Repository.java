@@ -12,6 +12,8 @@ import com.msk.automotive.service.entities.ServiceInvoiceCard;
 public interface ServiceInvoiceCard_Repository extends JpaRepository<ServiceInvoiceCard, Integer> {
 
 	@Query(value = "SELECT invoice FROM Service_Invoice_Card invoice WHERE invoice.customer_details_id = :customer_id")
-	List<ServiceInvoiceCard> findByCustomer_Details(Integer customer_id);
+	List<ServiceInvoiceCard> findByCustomerDetails(Integer customer_id);
+
+	List<ServiceInvoiceCard> findByCardStatus(Integer cardStatus);
 
 }
