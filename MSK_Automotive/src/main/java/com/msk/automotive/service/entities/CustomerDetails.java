@@ -168,21 +168,21 @@ public class CustomerDetails implements Serializable {
 	}
 
 	@Column(name = "engineNo")
-	public String getengineNo() {
+	public String getEngineNo() {
 		return engineNo;
 	}
 
-	public void setengineNo(String engineNo) {
+	public void setEngineNo(String engineNo) {
 		this.engineNo = engineNo;
 	}
 
 	@Temporal(TemporalType.DATE)
 	@Column(name = "policyExpiresDate")
-	public Date getpolicyExpiresDate() {
+	public Date getPolicyExpiresDate() {
 		return policyExpiresDate;
 	}
 
-	public void setpolicyExpiresDate(Date policyExpiresDate) {
+	public void setPolicyExpiresDate(Date policyExpiresDate) {
 		this.policyExpiresDate = policyExpiresDate;
 	}
 
