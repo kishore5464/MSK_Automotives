@@ -16,4 +16,6 @@ public interface ServiceInvoiceCard_Repository extends JpaRepository<ServiceInvo
 
 	List<ServiceInvoiceCard> findByCardStatus(Integer cardStatus);
 
+	List<ServiceInvoiceCard> findByServiceId(String serviceId);
+
 }

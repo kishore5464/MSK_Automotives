@@ -1,40 +1,62 @@
 package com.msk.automotive.business.implementations;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.msk.automotive.business.interfaces.Update_Business_Interface;
-import com.msk.automotive.dao.repositories.Get_DAO_Interface;
-import com.msk.automotive.dao.repositories.Update_DAO_Interface;
+import com.msk.automotive.dao.repositories.CarBrand_Repository;
+import com.msk.automotive.dao.repositories.CarModel_Repository;
+import com.msk.automotive.dao.repositories.CustomerContactDetails_Repository;
+import com.msk.automotive.dao.repositories.CustomerDetails_Repository;
+import com.msk.automotive.dao.repositories.Location_Repository;
+import com.msk.automotive.dao.repositories.MSKOwners_Repository;
+import com.msk.automotive.dao.repositories.Parts_Repository;
+import com.msk.automotive.dao.repositories.ServiceInvoiceCard_Repository;
 import com.msk.automotive.service.entities.CarModels;
 import com.msk.automotive.service.entities.CardStatus;
 import com.msk.automotive.service.entities.CardType;
-import com.msk.automotive.service.entities.CustomerContactDetails;
 import com.msk.automotive.service.entities.CustomerDetails;
 import com.msk.automotive.service.entities.MSKOwner;
 import com.msk.automotive.service.entities.Parts;
 import com.msk.automotive.service.entities.ServiceInvoiceCard;
 import com.msk.automotive.service.entities.StockStatus;
 import com.msk.automotive.service.pojo.ServiceCard_Pojo;
-import com.msk.automotive.service.pojo.ServiceParts_Pojo;
 import com.msk.automotive.utilities.Encrypt_Decrypt;
 
 @Service
 public class Update_Business_Impl implements Update_Business_Interface {
 
 	@Autowired
-	Update_DAO_Interface update_DAO_Interface;
+	private CarBrand_Repository carBrand_Repository;
 
 	@Autowired
-	Get_DAO_Interface get_DAO_Interface;
+	private CarModel_Repository carModel_Repository;
+
+	@Autowired
+	private CustomerDetails_Repository customerDetails_Repository;
+
+	@Autowired
+	private CustomerContactDetails_Repository customerContactDetails_Repository;
+
+	@Autowired
+	private Location_Repository location_Repository;
+
+	@Autowired
+	private MSKOwners_Repository mskOwners_Repository;
+
+	@Autowired
+	private Parts_Repository parts_Repository;
+
+	@Autowired
+	private ServiceInvoiceCard_Repository serviceInvoiceCard_Repository;
 
 	@Override
 	public String updateMSKOwnerPassword(String username, String password) {
-		List<MSK_Owner> msk_Owner = get_DAO_Interface.getMSKOwnerDetail(username);
+		List<MSKOwner> msk_Owner = mskOwners_Repository.findByEmail(username);
 
 		String status = "not update";
 
@@ -42,7 +64,7 @@ public class Update_Business_Impl implements Update_Business_Interface {
 			Encrypt_Decrypt encrypt_Decrypt = new Encrypt_Decrypt();
 			msk_Owner.get(0).setPassword(encrypt_Decrypt.encrypt(password));
 
-			update_DAO_Interface.updateMSKOwner(msk_Owner.get(0));
+			mskOwners_Repository.save(msk_Owner.get(0));
 			status = "updated";
 		}
 
@@ -51,71 +73,69 @@ public class Update_Business_Impl implements Update_Business_Interface {
 
 	@Override
 	public void updateSparePartsInStock(String spare_part_id, String quantity, String price_per_unit) {
-		// TODO Auto-generated method stub
 		List<Parts> parts = get_DAO_Interface.getSparePartsInStockById(spare_part_id);
 
 		if (!parts.isEmpty()) {
-			Car_Models car_Models = new Car_Models();
-			car_Models.setId(parts.get(0).getCar_Models().getId());
+			CarModels car_Models = new CarModels();
+			car_Models.setId(parts.get(0).getCarModels().getId());
 
-			parts.get(0).setCar_Models(car_Models);
+			parts.get(0).setCarModels(car_Models);
 			parts.get(0).setQuantity(Integer.parseInt(quantity));
 			parts.get(0).setAmount(Double.parseDouble(price_per_unit));
-			parts.get(0).setParts_status(Stock_Status.INSTOCK);
+			parts.get(0).setPartsStatus(StockStatus.INSTOCK);
 
-			update_DAO_Interface.updateSparePartsInStock(parts.get(0));
+			parts_Repository.save(parts.get(0));
 		}
 	}
 
 	@Override
-	public Service_Card_Pojo updateExistingServiceCardStatus(String service_type, String invoice_no,
+	public ServiceCard_Pojo updateExistingServiceCardStatus(String service_type, String invoice_no,
 			String process_type) {
-		// TODO Auto-generated method stub
-		Service_Card_Pojo service_Card_Pojo = new Service_Card_Pojo();
+		ServiceCard_Pojo service_Card_Pojo = new ServiceCard_Pojo();
 
-		List<Service_Invoice_Card> service_Invoice = get_DAO_Interface.getSericeInvoiceCardByServiceId(invoice_no);
+		List<ServiceInvoiceCard> service_Invoice = serviceInvoiceCard_Repository.findByServiceId(invoice_no);
 
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
 		if (!service_Invoice.isEmpty()) {
 			for (int i = 0; i < service_Invoice.size(); i++) {
-				List<Customer_Details> customer_details = get_DAO_Interface
-						.getCustomerDetailById(service_Invoice.get(i).getCustomer_Details().getId());
+				Optional<CustomerDetails> customer_details = customerDetails_Repository
+						.findById(service_Invoice.get(i).getCustomerDetails().getId());
 
-				if (service_Invoice.get(i).getCard_status().equals(Card_Status.OPEN)
+				if (service_Invoice.get(i).getCardStatus().equals(CardStatus.OPEN)
 						&& service_type.equalsIgnoreCase("open")) {
 					if (process_type.equals("close") || process_type.equals("closed")) {
-						service_Invoice.get(i).setCard_status(Card_Status.CLOSED);
-						service_Invoice.get(i).setCard_type(Card_Type.INVOICE);
+						service_Invoice.get(i).setCardStatus(CardStatus.CLOSED);
+						service_Invoice.get(i).setCardType(CardType.INVOICE);
 
-						update_DAO_Interface.updateExistingServiceCardStatus(service_Invoice.get(i));
+						serviceInvoiceCard_Repository.save(service_Invoice.get(i));
 					}
-				} else if (service_Invoice.get(i).getCard_status().equals(Card_Status.CLOSED)
+				} else if (service_Invoice.get(i).getCardStatus().equals(CardStatus.CLOSED)
 						&& service_type.equalsIgnoreCase("closed")) {
 					if (process_type.equals("bill") || process_type.equals("billed")) {
-						service_Invoice.get(i).setCard_status(Card_Status.BILLED);
-						service_Invoice.get(i).setCard_type(Card_Type.INVOICE);
+						service_Invoice.get(i).setCardStatus(CardStatus.BILLED);
+						service_Invoice.get(i).setCardType(CardType.INVOICE);
 
-						update_DAO_Interface.updateExistingServiceCardStatus(service_Invoice.get(i));
+						serviceInvoiceCard_Repository.save(service_Invoice.get(i));
 					}
 				}
 
 				service_Card_Pojo.setInvoice_no(invoice_no);
-				if (customer_details.get(0).getPolicy_expires_date() != null) {
-					service_Card_Pojo.setPolicy_expires_date(
-							dateFormat.format(customer_details.get(0).getPolicy_expires_date()));
+				if (customer_details.get().getPolicyExpiresDate() != null) {
+					service_Card_Pojo
+							.setPolicy_expires_date(dateFormat.format(customer_details.get().getPolicyExpiresDate()));
 				} else {
 					service_Card_Pojo.setPolicy_expires_date("not available");
 				}
 
-				service_Card_Pojo.setCustomer_id(customer_details.get(0).getCustomer_id());
-				if (customer_details.get(0).getLast_name() != null) {
+				service_Card_Pojo.setCustomer_id(customer_details.get().getCustomerId());
+				if (customer_details.get().getLastName() != null) {
 					service_Card_Pojo.setName(
-							customer_details.get(0).getFirst_name() + " " + customer_details.get(0).getLast_name());
+							customer_details.get().getFirstName() + " " + customer_details.get().getLastName());
 				} else {
-					service_Card_Pojo.setName(customer_details.get(0).getFirst_name());
+					service_Card_Pojo.setName(customer_details.get().getFirst_name());
 				}
-				service_Card_Pojo.setModel_id(Integer.toString(customer_details.get(0).getCar_Models().getId()));
+				service_Card_Pojo.setModel_id(Integer.toString(customer_details.get().getCar_Models().getId()));
 				service_Card_Pojo.setMobile(customer_details.get(0).getMobile());
 				service_Card_Pojo.setRegistration_no(customer_details.get(0).getRegistration_no());
 				service_Card_Pojo.setGst_no(customer_details.get(0).getGst_no());
@@ -150,7 +170,7 @@ public class Update_Business_Impl implements Update_Business_Interface {
 	public List<Service_Parts_Pojo> updateStockPartsAndStatus(String model_id, Service_Parts_Pojo service_Parts_Pojo) {
 		// TODO Auto-generated method stub
 		List<Parts> parts = get_DAO_Interface.getSparePartsAtParticularModel(model_id);
-		//List<Service_Parts_Pojo> parts_list = new ArrayList<Service_Parts_Pojo>();
+		// List<Service_Parts_Pojo> parts_list = new ArrayList<Service_Parts_Pojo>();
 
 		if (!parts.isEmpty()) {
 			for (int i = 0; i < parts.size(); i++) {
