@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.msk.automotive.business.interfaces.Update_Business_Interface;
-import com.msk.automotive.dao.repositories.CarBrand_Repository;
-import com.msk.automotive.dao.repositories.CarModel_Repository;
 import com.msk.automotive.dao.repositories.CustomerContactDetails_Repository;
 import com.msk.automotive.dao.repositories.CustomerDetails_Repository;
 import com.msk.automotive.dao.repositories.Location_Repository;
@@ -31,12 +29,6 @@ import com.msk.automotive.utilities.Encrypt_Decrypt;
 
 @Service
 public class Update_Business_Impl implements Update_Business_Interface {
-
-	@Autowired
-	private CarBrand_Repository carBrand_Repository;
-
-	@Autowired
-	private CarModel_Repository carModel_Repository;
 
 	@Autowired
 	private CustomerDetails_Repository customerDetails_Repository;
