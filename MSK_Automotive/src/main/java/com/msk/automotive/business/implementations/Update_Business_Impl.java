@@ -19,12 +19,14 @@ import com.msk.automotive.dao.repositories.ServiceInvoiceCard_Repository;
 import com.msk.automotive.service.entities.CarModels;
 import com.msk.automotive.service.entities.CardStatus;
 import com.msk.automotive.service.entities.CardType;
+import com.msk.automotive.service.entities.CustomerContactDetails;
 import com.msk.automotive.service.entities.CustomerDetails;
 import com.msk.automotive.service.entities.MSKOwner;
 import com.msk.automotive.service.entities.Parts;
 import com.msk.automotive.service.entities.ServiceInvoiceCard;
 import com.msk.automotive.service.entities.StockStatus;
 import com.msk.automotive.service.pojo.ServiceCard_Pojo;
+import com.msk.automotive.service.pojo.ServiceParts_Pojo;
 import com.msk.automotive.utilities.Encrypt_Decrypt;
 
 @Service
@@ -73,7 +75,7 @@ public class Update_Business_Impl implements Update_Business_Interface {
 
 	@Override
 	public void updateSparePartsInStock(String spare_part_id, String quantity, String price_per_unit) {
-		List<Parts> parts = get_DAO_Interface.getSparePartsInStockById(spare_part_id);
+		List<Parts> parts = parts_Repository.findByPartsStatus(spare_part_id);
 
 		if (!parts.isEmpty()) {
 			CarModels car_Models = new CarModels();
@@ -133,32 +135,32 @@ public class Update_Business_Impl implements Update_Business_Interface {
 					service_Card_Pojo.setName(
 							customer_details.get().getFirstName() + " " + customer_details.get().getLastName());
 				} else {
-					service_Card_Pojo.setName(customer_details.get().getFirst_name());
+					service_Card_Pojo.setName(customer_details.get().getFirstName());
 				}
-				service_Card_Pojo.setModel_id(Integer.toString(customer_details.get().getCar_Models().getId()));
-				service_Card_Pojo.setMobile(customer_details.get(0).getMobile());
-				service_Card_Pojo.setRegistration_no(customer_details.get(0).getRegistration_no());
-				service_Card_Pojo.setGst_no(customer_details.get(0).getGst_no());
-				if (customer_details.get(0).getEngine_no() != null) {
-					service_Card_Pojo.setEngine_no(customer_details.get(0).getEngine_no());
+				service_Card_Pojo.setModel_id(Integer.toString(customer_details.get().getCarModels().getId()));
+				service_Card_Pojo.setMobile(customer_details.get().getMobile());
+				service_Card_Pojo.setRegistration_no(customer_details.get().getRegistrationNo());
+				service_Card_Pojo.setGst_no(customer_details.get().getGstNo());
+				if (customer_details.get().getEngineNo() != null) {
+					service_Card_Pojo.setEngine_no(customer_details.get().getEngineNo());
 				} else {
 					service_Card_Pojo.setEngine_no("not available");
 				}
 
-				List<Customer_Contact_Details> customer_contact_details = get_DAO_Interface
-						.getCustomerContactDetails(customer_details.get(0).getId());
-				if (!customer_contact_details.isEmpty()) {
+				Optional<CustomerContactDetails> customer_contact_details = customerContactDetails_Repository
+						.findById(customer_details.get().getId());
+				if (!customer_contact_details.isPresent()) {
 
-					if (customer_contact_details.get(0).getAddress_line_2() != null) {
-						service_Card_Pojo.setAddress_line(customer_contact_details.get(0).getAddress_line_1() + ", "
-								+ customer_contact_details.get(0).getAddress_line_2());
+					if (customer_contact_details.get().getAddressLine2() != null) {
+						service_Card_Pojo.setAddress_line(customer_contact_details.get().getAddressLine1() + ", "
+								+ customer_contact_details.get().getAddressLine2());
 					} else {
-						service_Card_Pojo.setAddress_line(customer_contact_details.get(0).getAddress_line_1());
+						service_Card_Pojo.setAddress_line(customer_contact_details.get().getAddressLine1());
 					}
 
-					service_Card_Pojo.setCity(get_DAO_Interface
-							.getLocationByCityId(customer_contact_details.get(0).getLocation().getId()));
-					service_Card_Pojo.setPincode(Integer.toString(customer_contact_details.get(0).getPincode()));
+					service_Card_Pojo.setCity(location_Repository
+							.findById(customer_contact_details.get().getLocation().getId()).get().getCity());
+					service_Card_Pojo.setPincode(Integer.toString(customer_contact_details.get().getPincode()));
 				}
 			}
 		}
@@ -167,10 +169,8 @@ public class Update_Business_Impl implements Update_Business_Interface {
 	}
 
 	@Override
-	public List<Service_Parts_Pojo> updateStockPartsAndStatus(String model_id, Service_Parts_Pojo service_Parts_Pojo) {
-		// TODO Auto-generated method stub
-		List<Parts> parts = get_DAO_Interface.getSparePartsAtParticularModel(model_id);
-		// List<Service_Parts_Pojo> parts_list = new ArrayList<Service_Parts_Pojo>();
+	public List<ServiceParts_Pojo> updateStockPartsAndStatus(String model_id, ServiceParts_Pojo service_Parts_Pojo) {
+		List<Parts> parts = parts_Repository.findByCarModels(Integer.parseInt(model_id));
 
 		if (!parts.isEmpty()) {
 			for (int i = 0; i < parts.size(); i++) {
@@ -182,23 +182,22 @@ public class Update_Business_Impl implements Update_Business_Interface {
 						parts.get(i).setQuantity(
 								parts.get(i).getQuantity() - Integer.parseInt(service_Parts_Pojo.getQuantity()));
 
-						parts.get(i).setParts_status(Stock_Status.INSTOCK);
+						parts.get(i).setPartsStatus(StockStatus.INSTOCK);
 
-						update_DAO_Interface.updateSparePartsInStock(parts.get(i));
 					} else if (parts.get(i).getQuantity() == Integer.parseInt(service_Parts_Pojo.getQuantity())) {
 						parts.get(i).setQuantity(
 								parts.get(i).getQuantity() - Integer.parseInt(service_Parts_Pojo.getQuantity()));
 
-						parts.get(i).setParts_status(Stock_Status.OUTSTOCK);
+						parts.get(i).setPartsStatus(StockStatus.OUTSTOCK);
 
-						update_DAO_Interface.updateSparePartsInStock(parts.get(i));
 					} else if (parts.get(i).getQuantity() < Integer.parseInt(service_Parts_Pojo.getQuantity())) {
 //						parts.get(i).setQuantity(quantity);
 
-						parts.get(i).setParts_status(Stock_Status.NOT_PURCHASED);
+						parts.get(i).setPartsStatus(StockStatus.NOT_PURCHASED);
 
-						update_DAO_Interface.updateSparePartsInStock(parts.get(i));
 					}
+
+					parts_Repository.save(parts.get(i));
 
 				}
 			}
