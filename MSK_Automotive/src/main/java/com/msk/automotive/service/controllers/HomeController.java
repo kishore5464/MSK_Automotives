@@ -11,14 +11,11 @@ import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.msk.automotive.business.interfaces.Get_Business_Interface;
-import com.msk.automotive.business.interfaces.Insert_Business_Interface;
-import com.msk.automotive.business.interfaces.Update_Business_Interface;
 import com.msk.automotive.exception.CustomGenericException;
 
 import net.minidev.json.JSONObject;
@@ -30,15 +27,6 @@ public class HomeController {
 
 	@Autowired
 	private Get_Business_Interface get_Business_Interface;
-
-	@Autowired
-	private Insert_Business_Interface insert_Business_Interface;
-
-	@Autowired
-	private Update_Business_Interface update_Business_Interface;
-
-	@Autowired
-	Environment env;
 
 	@GetMapping(value = "/index")
 	public ModelAndView index() {

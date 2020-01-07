@@ -18,7 +18,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.msk.automotive.business.interfaces.Get_Business_Interface;
 import com.msk.automotive.business.interfaces.Insert_Business_Interface;
-import com.msk.automotive.business.interfaces.Update_Business_Interface;
 import com.msk.automotive.exception.CustomGenericException;
 import com.msk.automotive.service.pojo.CarBrands_Pojo;
 import com.msk.automotive.service.pojo.CarModels_Pojo;
@@ -38,9 +37,6 @@ public class ListsController {
 
 	@Autowired
 	private Insert_Business_Interface insert_Business_Interface;
-
-	@Autowired
-	private Update_Business_Interface update_Business_Interface;
 
 	@POST
 	@Path("/upload-model")
@@ -116,8 +112,7 @@ public class ListsController {
 		ModelAndView view = null;
 		// try {
 		System.out.println(model_id);
-		List<CustomerDetails_Pojo> existing_customer = get_Business_Interface
-				.getExistingCustomerModelDetails(model_id);
+		List<CustomerDetails_Pojo> existing_customer = get_Business_Interface.getExistingCustomerModelDetails(model_id);
 
 		data.put("customer", existing_customer);
 		mix.put("data", data);

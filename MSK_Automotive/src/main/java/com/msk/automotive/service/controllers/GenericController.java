@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.msk.automotive.business.interfaces.Get_Business_Interface;
 import com.msk.automotive.business.interfaces.Insert_Business_Interface;
-import com.msk.automotive.business.interfaces.Update_Business_Interface;
 import com.msk.automotive.exception.CustomGenericException;
 
 @Configuration
@@ -28,9 +27,6 @@ public class GenericController {
 
 	@Autowired
 	private Insert_Business_Interface insert_Business_Interface;
-
-	@Autowired
-	private Update_Business_Interface update_Business_Interface;
 
 	@POST
 	@Path("/forget-password")

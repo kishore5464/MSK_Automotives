@@ -16,8 +16,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.msk.automotive.business.interfaces.Get_Business_Interface;
-import com.msk.automotive.business.interfaces.Insert_Business_Interface;
-import com.msk.automotive.business.interfaces.Update_Business_Interface;
 import com.msk.automotive.exception.CustomGenericException;
 import com.msk.automotive.service.pojo.CarBrands_Pojo;
 import com.msk.automotive.service.pojo.CarModels_Pojo;
@@ -35,12 +33,6 @@ public class StockController {
 	// HERE I WROTE SERVLET FOR ADDING BRAND, MODEL, PARTS, CUSTOMER DETAILS
 	@Autowired
 	private Get_Business_Interface get_Business_Interface;
-
-	@Autowired
-	private Insert_Business_Interface insert_Business_Interface;
-
-	@Autowired
-	private Update_Business_Interface update_Business_Interface;
 
 	// CHECK BRANDS FOR ADD SPARE PARTS
 	@POST
