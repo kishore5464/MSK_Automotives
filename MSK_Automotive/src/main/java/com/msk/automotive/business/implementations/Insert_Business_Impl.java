@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,21 +16,19 @@ import com.msk.automotive.dao.repositories.CustomerContactDetails_Repository;
 import com.msk.automotive.dao.repositories.CustomerDetails_Repository;
 import com.msk.automotive.dao.repositories.Location_Repository;
 import com.msk.automotive.dao.repositories.MSKOwners_Repository;
-import com.msk.automotive.dao.repositories.Notification_Repository;
-import com.msk.automotive.dao.repositories.PartsStockMaintain_Repository;
 import com.msk.automotive.dao.repositories.Parts_Repository;
-import com.msk.automotive.dao.repositories.ServiceAdvisor_Repository;
 import com.msk.automotive.dao.repositories.ServiceInvoiceCard_Repository;
-import com.msk.automotive.dao.repositories.ServiceType_Repository;
 import com.msk.automotive.service.entities.CarBrands;
 import com.msk.automotive.service.entities.CarModels;
 import com.msk.automotive.service.entities.CustomerContactDetails;
 import com.msk.automotive.service.entities.CustomerDetails;
 import com.msk.automotive.service.entities.Location;
+import com.msk.automotive.service.entities.MSKOwner;
 import com.msk.automotive.service.entities.Parts;
 import com.msk.automotive.service.entities.ServiceInvoiceCard;
 import com.msk.automotive.service.entities.StockStatus;
 import com.msk.automotive.service.pojo.ServiceCard_Pojo;
+import com.msk.automotive.utilities.Encrypt_Decrypt;
 
 @Service
 public class Insert_Business_Impl implements Insert_Business_Interface {
@@ -53,22 +52,10 @@ public class Insert_Business_Impl implements Insert_Business_Interface {
 	private MSKOwners_Repository mskOwners_Repository;
 
 	@Autowired
-	private Notification_Repository notification_Repository;
-
-	@Autowired
 	private Parts_Repository parts_Repository;
 
 	@Autowired
-	private PartsStockMaintain_Repository partsStockMaintain_Repository;
-
-	@Autowired
-	private ServiceAdvisor_Repository serviceAdvisor_Repository;
-
-	@Autowired
 	private ServiceInvoiceCard_Repository serviceInvoiceCard_Repository;
-
-	@Autowired
-	private ServiceType_Repository serviceType_Repository;
 
 	@Override
 	public void insertCarBrand(String brand, String logo) {
@@ -231,60 +218,57 @@ public class Insert_Business_Impl implements Insert_Business_Interface {
 //	@Autowired
 //	MailSenderService mailSenderService;
 
-//	@Override
-//	public void insertOrUpdateBrandLogo(String brand_id, String logo) {
-//		// TODO Auto-generated method stub
-//		List<CarBrands> brand = get_DAO_Interface.getBrandById(Integer.parseInt(brand_id));
-//
-//		if (!brand.isEmpty()) {
-//			brand.get(0).setLogo(logo);
-//
-//			update_DAO_Interface.updateBrandDetail(brand.get(0));
-//		}
-//	}
-//
-//	@Override
-//	public void insertOrUpdateModelLogo(String model_id, String logo) {
-//		// TODO Auto-generated method stub
-//		List<Car_Models> model = get_DAO_Interface.getModelById(Integer.parseInt(model_id));
-//
-//		if (!model.isEmpty()) {
-//			model.get(0).setImage(logo);
-//
-//			update_DAO_Interface.updateModelDetail(model.get(0));
-//		}
-//	}
-//
-//	@Override
-//	public String insertAccessCodeAndSend(String username) {
-//		// TODO Auto-generated method stub
-//		List<MSK_Owner> msk_Owners = get_DAO_Interface.getMSKOwnerDetail(username);
-//		String status = "failure";
-//
-//		if (!msk_Owners.isEmpty()) {
-//			String secret;
-//
-//			Encrypt_Decrypt encrypt_Decrypt = new Encrypt_Decrypt();
-//
-//			if (!msk_Owners.get(0).getAccess_code().equals("0")) {
-////				mailSenderService.sendAccessCode(msk_Owners.get(0).getEmail(),
-////						encrypt_Decrypt.decrypt(msk_Owners.get(0).getAccess_code()));
-//
-//				status = "success";
-//			} else {
-//				Random random = new Random();
-//				secret = "" + random.nextInt(999999);
-//
-//				msk_Owners.get(0).setAccess_code(encrypt_Decrypt.encrypt(secret));
-//				update_DAO_Interface.updateMSKOwner(msk_Owners.get(0));
-//
-////				mailSenderService.sendAccessCode(msk_Owners.get(0).getEmail(), secret);
-//
-//				status = "success";
-//			}
-//		}
-//
-//		return status;
-//	}
+	@Override
+	public void insertOrUpdateBrandLogo(String brand_id, String logo) {
+		Optional<CarBrands> brand = carBrand_Repository.findById(Integer.parseInt(brand_id));
+
+		if (!brand.isPresent()) {
+			brand.get().setLogo(logo);
+
+			carBrand_Repository.save(brand.get());
+		}
+	}
+
+	@Override
+	public void insertOrUpdateModelLogo(String model_id, String logo) {
+		Optional<CarModels> model = carModel_Repository.findById(Integer.parseInt(model_id));
+
+		if (!model.isPresent()) {
+			model.get().setImage(logo);
+
+			carModel_Repository.save(model.get());
+		}
+	}
+
+	@Override
+	public String insertAccessCodeAndSend(String username) {
+		List<MSKOwner> msk_Owners = mskOwners_Repository.findByEmail(username);
+		String status = "failure";
+
+		if (!msk_Owners.isEmpty()) {
+			String secret;
+
+			Encrypt_Decrypt encrypt_Decrypt = new Encrypt_Decrypt();
+
+			if (!msk_Owners.get(0).getAccessCode().equals("0")) {
+//				mailSenderService.sendAccessCode(msk_Owners.get(0).getEmail(),
+//						encrypt_Decrypt.decrypt(msk_Owners.get(0).getAccess_code()));
+
+				status = "success";
+			} else {
+				Random random = new Random();
+				secret = "" + random.nextInt(999999);
+
+				msk_Owners.get(0).setAccessCode(encrypt_Decrypt.encrypt(secret));
+				mskOwners_Repository.save(msk_Owners.get(0));
+
+//				mailSenderService.sendAccessCode(msk_Owners.get(0).getEmail(), secret);
+
+				status = "success";
+			}
+		}
+
+		return status;
+	}
 
 }

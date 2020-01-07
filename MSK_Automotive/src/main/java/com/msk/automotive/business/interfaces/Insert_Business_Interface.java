@@ -4,9 +4,9 @@ import com.msk.automotive.service.pojo.ServiceCard_Pojo;
 
 public interface Insert_Business_Interface {
 
-//	void insertOrUpdateBrandLogo(String brand_id, String logo);
-//
-//	void insertOrUpdateModelLogo(String model_id, String logo);
+	void insertOrUpdateBrandLogo(String brand_id, String logo);
+
+	void insertOrUpdateModelLogo(String model_id, String logo);
 
 	void insertCarBrand(String brand, String logo);
 
@@ -18,6 +18,6 @@ public interface Insert_Business_Interface {
 
 	void insertSparePart(String model_id, String part, String quantity, String amount);
 
-//	String insertAccessCodeAndSend(String username);
+	String insertAccessCodeAndSend(String username);
 
 }
